@@ -1,16 +1,35 @@
-import http from './httpService';
+import http from "./httpService";
 
-
-
-const apiEndPointEmp = '/employee/applyleave';
-const apiEndPointAdmin = '/admin/allleaves';
-
+const apiEndPointEmp = "http://cghrportal.herokuapp.com/api/employee/applyleave";
+const apiEndPointEmpleaves = "http://cghrportal.herokuapp.com/api/employee/getleaves";
+const apiEndPointAdmin = "http://cghrportal.herokuapp.com/api/admin/allleaves";
+const apiEndPointAdminsta = "http://cghrportal.herokuapp.com/api/admin/leavestatus";
 
 // export function checkOut(user) {
 //     return http.post(apiEndPoint, {outTime: user});
 //   }
 
+export async function applyLeave(data) {
+  const { data: jwt } = await http.post(apiEndPointEmp, {
+    from_Date: data.from_Date,
+    to_Date: data.to_Date,
+    subject: data.subject,
+    reason: data.reason,
+    leave_type: data.leave_type,
+    To: data.To,
+  });
 
-  export function getLeaves() {
-    return http.get(apiEndPointAdmin);
-   }
+  return jwt;
+}
+
+export async function leavestatus(data) {
+  return await http.post(apiEndPointAdminsta, data);
+}
+
+export function getLeaves() {
+  return http.get(apiEndPointAdmin);
+}
+
+export function getempLeaves() {
+  return http.post(apiEndPointEmpleaves);
+}

@@ -1,12 +1,15 @@
 import React from "react";
 import Joi from "joi-browser";
-import Inputs from "./input";
+import Input from "./input";
+import Dropdown from "./dropdown";
+
 // import Select from './select';
 
-class Forms extends React.Component {
+class Form extends React.Component {
   state = {
     data: {},
     errors: {},
+    select: {},
   };
 
   validate = () => {
@@ -38,17 +41,20 @@ class Forms extends React.Component {
     this.doSubmit();
   };
 
-  handleselect = ({ currentTarget: input }) => {
+  handleselect = async (res) => {
+    const input = { name: res.name, value: res.id.target.value };
+    const errors = { ...this.state.errors };
+    const errorMessage = this.validateProperty(input);
+    if (errorMessage) errors[input.name] = errorMessage;
+    else delete errors[input.name];
     const data = { ...this.state.data };
-    console.log(input.value);
     data[input.name] = input.value;
-
-    this.setState({ data });
-    console.log(this.state);
+    this.setState({ data, errors });
   };
 
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
+
     const errorMessage = this.validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;
     else delete errors[input.name];
@@ -69,7 +75,7 @@ class Forms extends React.Component {
   renderInput(name, label, type = "text") {
     const { data, errors } = this.state;
     return (
-      <Inputs
+      <Input
         name={name}
         type={type}
         onChange={this.handleChange}
@@ -79,7 +85,20 @@ class Forms extends React.Component {
       />
     );
   }
- 
+  renderDropdown(name, label, options) {
+    const { data, errors } = this.state;
+
+    return (
+      <Dropdown
+        name={name}
+        options={options}
+        onChange={this.handleselect}
+        value={data[name]}
+        label={label}
+        error={errors[name]}
+      />
+    );
+  }
 }
 
-export default Forms;
+export default Form;

@@ -145,7 +145,7 @@ class Login extends Forms {
             </div>
           </Container>
           
-      <Col lg="5" md="7" style={{marginLeft:"30%", paddingTop: "28px"}}>
+      <Col lg="5" md="7" style={{marginLeft:"30%", }}>
         <Card className="bg-secondary shadow border-0">
           <CardBody className="px-lg-5 py-lg-5">
             <div className="text-center text-muted mb-4">
@@ -164,28 +164,29 @@ class Login extends Forms {
                 </Button>
               </div>
             </Form>
-          </CardBody>
-        </Card>
-        {/* <Row className="mt-3">
+          <Row className="mt-3">
           <Col xs="6">
             <a
-              className="text-light"
+              className="text-success"
               href="#pablo"
               onClick={(e) => e.preventDefault()}
-            >
+              >
               <small>Forgot password?</small>
             </a>
           </Col>
           <Col className="text-right" xs="6">
             <a
-              className="text-light"
+              className="text-success"
               href="#pablo"
               onClick={(e) => e.preventDefault()}
-            >
+              >
               <small>Create new account</small>
             </a>
           </Col>
-        </Row> */}
+        </Row>
+              </CardBody>
+        </Card>
+       
       </Col>
           <div className="separator separator-bottom separator-skew zindex-100">
             <svg

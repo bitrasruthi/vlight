@@ -44,43 +44,48 @@ import Icons from "views/examples/Icons.js";
 import AddNew from './../Admin Files/addNewEmp';
 import Logout from './../Logins/logout';
 import EmpList from './../Admin Files/emplist';
-import LeaveList from './../Admin Files/leavelist';
+import TimeCard from "components/Employee Files/timecard";
+import AttList from './../Employee Files/myattendance';
+import LeaveForm from './../Employee Files/leaveform';
+import ELeavsList from './../Employee Files/eleavelist';
 
 
 
 var ps;
 
-const Sidebar = (props) => {
+const ESidebar = (props) => {
   var routes = [
     {
       path: "/index",
       name: "Dashboard",
       icon: "ni ni-tv-2 text-primary",
       component: Index,
-      layout: "/dashboard",
+      layout: "/edashboard",
     },  
+    {
+        path: "/attlist",
+        name: "Attendance",
+        icon: "ni ni-bullet-list-67 text-danger",
+        component: AttList,
+        layout: "/attlist",
+      },  
+      {
+        path: "/leaveform",
+        name: "Leave Form",
+        icon: "ni ni-single-copy-04 text-danger",
+        component: LeaveForm,
+        layout: "/leaveform",
+      }, 
+      {
+        path: "/eleavelist",
+        name: "My Leaves",
+        icon: "ni ni-map-big text-danger",
+        component: ELeavsList,
+        layout: "/eleavelist",
+      },  
+
     
-    {
-      path: "/addnewep",
-      name: "Add New Employee",
-      icon: "ni ni-circle-08 text-success",
-      component: AddNew,
-      layout: "/addnewemp",
-    },
-    {
-      path: "/emplist",
-      name: "Employee List",
-      icon: "ni ni-bullet-list-67 text-warning",
-      component:EmpList,
-      layout: "/emplist",
-    },
-    {
-      path: "/leavelist",
-      name: "Leave List",
-      icon: "ni ni-bullet-list-67 text-info",
-      component:LeaveList,
-      layout: "/leavelist",
-    },
+    
   ];
   const [collapseOpen, setCollapseOpen] = useState();
   // verifies if routeName is the one active (in browser input)
@@ -207,11 +212,11 @@ const Sidebar = (props) => {
   );
 };
 
-Sidebar.defaultProps = {
+ESidebar.defaultProps = {
   routes: [{}],
 };
 
-Sidebar.propTypes = {
+ESidebar.propTypes = {
   // links that will be displayed inside the component
   routes: PropTypes.arrayOf(PropTypes.object),
   logo: PropTypes.shape({
@@ -228,4 +233,4 @@ Sidebar.propTypes = {
   }),
 };
 
-export default Sidebar;
+export default ESidebar;

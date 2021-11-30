@@ -2,6 +2,7 @@ import Footer from 'components/Footers/AdminFooter';
 import Sidebar from 'components/Sidebar/Sidebar';
 import React from 'react'
 import NavBar from './navbar';
+import Calendar from 'react-calendar'
 
 class Dashboard extends React.Component {
     render() { 
