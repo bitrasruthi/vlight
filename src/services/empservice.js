@@ -5,7 +5,8 @@ const apiEndPoint = "http://cghrportal.herokuapp.com/api/employee/login";
 
 const apiEndPointatt = "http://cghrportal.herokuapp.com/api/employee";
 
-const apiEndPointchange = "http://cghrportal.herokuapp.com/api/employee/changepassword";
+const apiEndPointchange =
+  "http://cghrportal.herokuapp.com/api/employee/changepassword";
 
 const apiEndPointlogout = "http://cghrportal.herokuapp.com/api/employee/logout";
 
@@ -20,8 +21,8 @@ function logurl(id) {
   return `${apiEndPointlogout}/${id}`;
 }
 
-export async function login(EmployeeId, Password) {
-  const { data: jwt } = await http.post(apiEndPoint, { EmployeeId, Password });
+export async function login(Email, Password) {
+  const { data: jwt } = await http.post(apiEndPoint, { Email, Password });
   localStorage.setItem(tokenKey, jwt.token);
   return jwt;
 }
