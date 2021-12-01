@@ -20,8 +20,8 @@ function logurl(id) {
   return `${apiEndPointlogout}/${id}`;
 }
 
-export async function login(EmployeeId, Password) {
-  const { data: jwt } = await http.post(apiEndPoint, { EmployeeId, Password });
+export async function login(Email, Password) {
+  const { data: jwt } = await http.post(apiEndPoint, { Email, Password });
   localStorage.setItem(tokenKey, jwt.token);
   return jwt;
 }

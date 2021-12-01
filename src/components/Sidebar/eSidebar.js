@@ -48,6 +48,7 @@ import TimeCard from "components/Employee Files/timecard";
 import AttList from './../Employee Files/myattendance';
 import LeaveForm from './../Employee Files/leaveform';
 import ELeavsList from './../Employee Files/eleavelist';
+import Countdown from './../Logins/countdown';
 
 
 
@@ -82,7 +83,14 @@ const ESidebar = (props) => {
         icon: "ni ni-map-big text-danger",
         component: ELeavsList,
         layout: "/eleavelist",
-      },  
+      }, 
+      // {
+      //   path: "/countdown",
+      //   name: "Countdown",
+      //   icon: "ni ni-tv-2 text-orange",
+      //   component: Countdown,
+      //   layout: "/countdown",
+      // },   
 
     
     

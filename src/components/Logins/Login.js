@@ -30,9 +30,9 @@ import {
 } from "reactstrap";
 
 class Login extends Forms {
-  state = {  data: {AdminId: "", Password: ""} , errors: {} };
+  state = {  data: {Email: "", Password: ""} , errors: {} };
   schema = {
-    AdminId: Joi.string().required(),
+    Email: Joi.string().required(),
     Password: Joi.string().required(),
   };
    
@@ -40,7 +40,7 @@ class Login extends Forms {
     
     try {
       const { data } = this.state;
-       await auth.login(data.AdminId, data.Password);
+       await auth.login(data.Email, data.Password);
       // this.props.history.push('/');
       if (data) {
         toast.success("Login Successful");
@@ -52,7 +52,7 @@ class Login extends Forms {
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
-        errors.AdminId = ex.response.data.data;
+        errors.Email = ex.response.data.data;
         this.setState({ errors });
       }
     }
@@ -153,7 +153,7 @@ class Login extends Forms {
             </div>
             <Form role="form" onSubmit={this.handleSubmit}>
                   
-                  {this.renderInput("AdminId", "Admin ID")}
+                  {this.renderInput("Email", "Email Id")}
 
              
                   {this.renderInput("Password", "Password", "Password")}
@@ -177,8 +177,7 @@ class Login extends Forms {
           <Col className="text-right" xs="6">
             <a
               className="text-success"
-              href="#pablo"
-              onClick={(e) => e.preventDefault()}
+              href="/register"
               >
               <small>Create new account</small>
             </a>

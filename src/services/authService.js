@@ -7,10 +7,12 @@ const tokenKey = "token";
 
 // http.setJwt(getJwt());
 
-export async function login(AdminId, Password) {
-  const { data: jwt } = await http.post(apiEndPoint, { AdminId, Password });
+export async function login(Email, Password) {
+  const { data: jwt } = await http.post(apiEndPoint, { Email, Password });
   localStorage.setItem(tokenKey, jwt);
 }
+
+
 
 export function loginWithJwt(jwt) {
   return localStorage.setItem(tokenKey, jwt);

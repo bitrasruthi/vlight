@@ -6,6 +6,8 @@ import { Switch, Redirect } from 'react-router-dom';
 import routes from 'routes.js';
 import { Link } from "react-router-dom";
 import Forms from '../../components/Common/form';
+import * as userService from '../../services/userService';
+
 
 import {
   Button,
@@ -31,16 +33,17 @@ import {
 
 class Register extends Forms {
     
-    state = {data: {EmployeeName: '', Password: '', Email: ''},errors: { }};
-    schema = {EmployeeName: Joi.string().required(), Password: Joi.string().min(8).required(), Email:Joi.string().required()};
+    state = {data: {Name: '', Password: '', Email: '', organisation: ''},errors: { }};
+    schema = {Name: Joi.string().required(), Password: Joi.string().min(5).required(),
+         Email:Joi.string().required(), organisation: Joi.string().required()};
     
     doSubmit = async()=>{
         try{
-        const response = await userService.register(this.state.data);
+        const response = await userService.registerAdmin(this.state.data);
         auth.loginWithJwt(response.headers['x-auth-token']);
         if (response) {toast.success('Register Successful')}
         setTimeout(() => {
-            window.location = "/dashboard";
+            window.location = "/login";
           }, 2000);
         // window.location = '/';
         // notify = () =>{ toast('HI')}
@@ -50,7 +53,7 @@ class Register extends Forms {
             if(ex.response && ex.response.status === 400){
                 const errors = {...this.state.errors};
                 const err = ex.response.data.includes('User')
-                err ? (errors.username = ex.response.data) : (errors.email = ex.response.data)
+                err ? (errors.Name = ex.response.data) : (errors.Email = ex.response.data)
                 // errors.email = ex.response.data;
     
                 // toast.error('Email Already Exists');
@@ -105,6 +108,7 @@ class Register extends Forms {
                   <span style={{color: 'purple'}}className="nav-link-inner--text">Dashboard</span>
                 </NavLink>
               </NavItem> */}
+
               <NavItem >
                 <NavLink
                   className="nav-link-icon"
@@ -149,12 +153,13 @@ class Register extends Forms {
         <Card className="bg-secondary shadow border-0">
           <CardBody className="px-lg-5 py-lg-5">
             <div className="text-center text-muted mb-4">
-              <h4 style={{color: '#172B4D'}}>Admin Login</h4>
+              <h4 style={{color: '#172B4D'}}>Register</h4>
             </div>
             <Form role="form" onSubmit={this.handleSubmit}>
                   
-                  {this.renderInput("EmployeeName", "Username")}
+                  {this.renderInput("Name", "Username")}
                   {this.renderInput("Email", "Email Id")}
+                  {this.renderInput("organisation", "Organization")}
                   {this.renderInput("Password", "Password", "Password")}
                 
               <div className="text-center">

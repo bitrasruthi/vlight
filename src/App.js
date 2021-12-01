@@ -22,6 +22,8 @@ import LeaveList from './components/Admin Files/leavelist';
 import LeaveForm from './components/Employee Files/leaveform';
 import ELeaveList from './components/Employee Files/eleavelist';
 import ApproveReject from './components/Admin Files/approvereject';
+import Register  from './components/Logins/register';
+import Countdown from './components/Logins/countdown';
 
 
 class App extends React.Component {
@@ -37,6 +39,7 @@ class App extends React.Component {
                 <Switch>
             {/* <Route path="/notready" component={NotFound} /> */}
             <Route path="/elogin" component={ELogin} /> 
+            <Route path="/register" component={Register} /> 
             <Route path="/addnewemp" component={AddNew} /> 
             <Route path="/emplist" component={EmpList} /> 
             <Route path="/leavelist" component={LeaveList} /> 
@@ -45,6 +48,7 @@ class App extends React.Component {
             <Route path="/navbar" component={NavBar} /> 
             <Route path="/dashboard" component={Dashboard} /> 
             <Route path="/edashboard" component={EDashboard} /> 
+            <Route path="/countdown" component={Countdown} /> 
             <Route path="/timecard" component={TimeCard} /> 
             <Route path="/attlist" component={AttList} /> 
             <Route path="/leaveform" component={LeaveForm} /> 
