@@ -27,8 +27,8 @@ export default class Settings extends React.Component {
         </DropdownToggle>
         <DropdownMenu>
         
-          <DropdownItem><Link to="/holidays"> Holiday List</Link></DropdownItem>
-          <DropdownItem><Link to="/officehours"> Office Hours</Link></DropdownItem>
+          <DropdownItem><Link style={{color: 'darkgray'}} to="/holidays"> Holiday List</Link></DropdownItem>
+          <DropdownItem><Link style={{color: 'darkgray'}} to="/officehours"> Office Hours</Link></DropdownItem>
         
         </DropdownMenu>
       </Dropdown>
