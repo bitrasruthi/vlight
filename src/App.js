@@ -25,7 +25,8 @@ import ApproveReject from "./components/Admin Files/approvereject";
 import Register from "./components/Logins/register";
 import Countdown from "./components/Logins/countdown";
 import EmpAttList from "components/Admin Files/empAttList";
-import Holidays from './components/Common/holidays';
+import Holidays from "components/Admin Files/holidays";
+import OfficeHours from "components/Admin Files/officeHours";
 
 class App extends React.Component {
   render() {
@@ -56,6 +57,8 @@ class App extends React.Component {
                 <Route path="/eleavelist" component={ELeaveList} />
                 <Route path="/leaveapproval/:id" component={ApproveReject} />
                 <Route path="/empattlist/:id" component={EmpAttList} />
+                <Route path="/holidays" component={Holidays} />
+                <Route path="/officehours" component={OfficeHours} />
 
                 <Route path="/" component={Login} />
                 <Redirect from="/" exact to="/home" />

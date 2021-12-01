@@ -5,31 +5,30 @@ import { checkIn } from "../../services/inService";
 import { getEmployees } from "../../services/userService";
 import { checkOut } from "../../services/outService";
 import Forms from "../../components/Common/form";
-import ESidebar  from '../../components/Sidebar/eSidebar';
+import ESidebar from "../../components/Sidebar/eSidebar";
 import ENavBar from "components/Common/enavbar";
 
 import {
-    Button,
-    Card,
-    CardHeader,
-    CardBody,
-    FormGroup,
-    Form,
-    UncontrolledCollapse,
-    NavbarBrand,
-    Navbar,
-    NavItem,
-    NavLink,
-    Nav,
-    Container,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
-    Row,
-    Col,
-  } from "reactstrap";
-  
+  Button,
+  Card,
+  CardHeader,
+  CardBody,
+  FormGroup,
+  Form,
+  UncontrolledCollapse,
+  NavbarBrand,
+  Navbar,
+  NavItem,
+  NavLink,
+  Nav,
+  Container,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Row,
+  Col,
+} from "reactstrap";
 
 class TimeCard extends Forms {
   state = { inTime: "", outTime: "" };
@@ -41,6 +40,8 @@ class TimeCard extends Forms {
   doIn = async () => {
     var today = new Date(),
       time = today.getHours() + ":" + today.getMinutes();
+
+    if (time < "09:30") return toast.error("Contract Admin");
     try {
       await this.setState({ inTime: time });
       await checkIn(this.state.inTime);
@@ -66,6 +67,7 @@ class TimeCard extends Forms {
   doOut = async () => {
     var today = new Date(),
       time = today.getHours() + ":" + today.getMinutes();
+
     try {
       await this.setState({ outTime: time });
       await checkOut(this.state.outTime);
@@ -74,9 +76,6 @@ class TimeCard extends Forms {
       if (this.state) {
         toast.success("Work Closed!!!");
       }
-      setTimeout(() => {
-        window.location = state ? state.from.pathname : "/edashboard";
-      }, 2000);
       const { state } = this.props.location;
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -98,26 +97,48 @@ class TimeCard extends Forms {
 
   render() {
     return (
-        <div>
-           
-        <div className="container" style={{ paddingLeft: "400px", paddingRight: '300px' }}>
-              <Card style={{marginTop: '40px'}} className="bg-secondary shadow border-0">
-             <CardBody className="px-lg-7 py-lg-1">
-             <h1 style={{textAlign: 'center'}}>Welcome !!!</h1>
+      <div>
+        <div
+          className="container"
+          style={{ paddingLeft: "400px", paddingRight: "300px" }}
+        >
+          <Card
+            style={{ marginTop: "40px" }}
+            className="bg-secondary shadow border-0"
+          >
+            <CardBody className="px-lg-7 py-lg-1">
+              <h1 style={{ textAlign: "center" }}>Welcome !!!</h1>
 
-              <h3 class="card-title" style={{textAlign: 'center', marginTop: '20px'}}>{new Date().toLocaleDateString()}</h3>
-                 <Row style={{paddingLeft: '12px'}}>
-                <Button style={{background: '#B965E0', border: 'none', }} onClick={this.doIn} className="  my-4" color="primary" type="submit">
+              <h3
+                class="card-title"
+                style={{ textAlign: "center", marginTop: "20px" }}
+              >
+                {new Date().toLocaleDateString()}
+              </h3>
+              <Row style={{ paddingLeft: "12px" }}>
+                <Button
+                  style={{ background: "#B965E0", border: "none" }}
+                  onClick={this.doIn}
+                  className="  my-4"
+                  color="primary"
+                  type="submit"
+                >
                   Check In
                 </Button>
-                <Button style={{background: '#B965E0', border: 'none'}} onClick={this.doOut} className=" my-4" color="primary" type="submit">
+                <Button
+                  style={{ background: "#B965E0", border: "none" }}
+                  onClick={this.doOut}
+                  className=" my-4"
+                  color="primary"
+                  type="submit"
+                >
                   Check Out
                 </Button>
-                </Row>
-              </CardBody>
-              </Card>
-            </div>
-          </div>
+              </Row>
+            </CardBody>
+          </Card>
+        </div>
+      </div>
     );
   }
 }

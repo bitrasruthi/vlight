@@ -5,20 +5,21 @@ import { Link, Redirect } from "react-router-dom";
 
 class LeaveTable extends React.Component {
   columns = [
-     {
+    {
       path: "EmployeeId",
       label: "Employee Id",
       content: (emp) => (
         <Link to={`/leaveapproval/${emp._id}`}>{emp.EmployeeId}</Link>
       ),
     },
-      { path: "EmployeeName", label: "Name" },
-    { path: "To",label: "To" },
+    { path: "EmployeeName", label: "Name" },
+
     { path: "from_Date", label: "From Date" },
     { path: "to_Date", label: "To Date" },
     { path: "subject", label: "Subject" },
     { path: "reason", label: "Reason" },
     { path: "leave_type", label: "Type of Leave" },
+    { path: "status", label: "Status" },
   ];
 
   render() {
@@ -26,10 +27,10 @@ class LeaveTable extends React.Component {
 
     return (
       <Table
-      columns={this.columns}
-      data={leaves}
-      sortColumn={sortColumn}
-      onSort={onSort}
+        columns={this.columns}
+        data={leaves}
+        sortColumn={sortColumn}
+        onSort={onSort}
         // LoadingComponent={Spinner}
       />
     );

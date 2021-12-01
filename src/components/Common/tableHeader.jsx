@@ -20,10 +20,11 @@ class TableHeader extends React.Component {
 
   render() {
     return (
-      <thead class="bg-gradient-success">
-        <tr >
+      <thead className="bg-gradient-success">
+        <tr>
           {this.props.columns.map((column) => (
-            <th style={{fontSize: '15px', color: 'white'}}
+            <th
+              style={{ fontSize: "15px", color: "white" }}
               key={column.path || column.key}
               onClick={() => this.raiseSort(column.path)}
             >

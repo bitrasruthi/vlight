@@ -32,8 +32,7 @@ class Employees extends React.Component {
 
   async componentDidMount() {
     if (!this.props.getemployeelist) {
-      const tt = await get_employeelist();
-      console.log(tt);
+      await get_employeelist();
     }
     // const {data:movies} = await getMovies();
     const dd = await this.props.getemployeelist;
