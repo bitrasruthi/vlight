@@ -24,11 +24,7 @@ import ELeaveList from "./components/Employee Files/eleavelist";
 import ApproveReject from "./components/Admin Files/approvereject";
 import Register from "./components/Logins/register";
 import Countdown from "./components/Logins/countdown";
-import Settings from "./components/Common/settings";
 import EmpAttList from "components/Admin Files/empAttList";
-import Holidays from './components/Common/holidays';
-import OfficeHours from './components/Common/officeHours';
-
 
 class App extends React.Component {
   render() {
@@ -47,36 +43,32 @@ class App extends React.Component {
                 <Route path="/emplist" component={EmpList} />
                 <Route path="/leavelist" component={LeaveList} />
                 <Route path="/logout" component={Logout} />
-                <Route path="/settings" component={Settings} />
-            <Route path="/holidays" component={Holidays} /> 
-            <Route path="/officehours" component={OfficeHours} /> 
 
+                <Route path="/navbar" component={NavBar} />
+                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/edashboard" component={EDashboard} />
+                <Route path="/countdown" component={Countdown} />
+                <Route path="/timecard" component={TimeCard} />
+                <Route path="/attlist" component={AttList} />
+                <Route path="/leaveform" component={LeaveForm} />
+                <Route path="/eleavelist" component={ELeaveList} />
+                <Route path="/leaveapproval/:id" component={ApproveReject} />
+                <Route path="/empattlist/:id" component={EmpAttList} />
 
-            <Route path="/navbar" component={NavBar} /> 
-            <Route path="/dashboard" component={Dashboard} /> 
-            <Route path="/edashboard" component={EDashboard} /> 
-            <Route path="/countdown" component={Countdown} /> 
-            <Route path="/timecard" component={TimeCard} /> 
-            <Route path="/attlist" component={AttList} /> 
-            <Route path="/leaveform" component={LeaveForm} /> 
-            <Route path="/eleavelist" component={ELeaveList} /> 
-            <Route path="/leaveapproval/:id" component={ApproveReject} /> 
-
-            <Route path="/" component={Login} />
-            <Redirect from="/" exact to="/home" />
+                <Route path="/" component={Login} />
+                <Redirect from="/" exact to="/home" />
                 <Redirect to="/not-found" />
 
-
-
-             {/* <Route path="/admin" render={(props) => <AdminLayout {...props} />} /> */}
-      {/* <Route path="/auth" render={(props) => <AuthLayout {...props} />} /> */}
-      </Switch>
-      <Footer/>
+                {/* <Route path="/admin" render={(props) => <AdminLayout {...props} />} /> */}
+                {/* <Route path="/auth" render={(props) => <AuthLayout {...props} />} /> */}
+              </Switch>
+              <Footer />
             </main>
-            </React.Fragment>
-            </Provider>
-            </div>
-        );
-    }
+          </React.Fragment>
+        </Provider>
+      </div>
+    );
+  }
 }
+
 export default App;
