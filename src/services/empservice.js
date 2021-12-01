@@ -5,7 +5,8 @@ const apiEndPoint = "http://cghrportal.herokuapp.com/api/employee/login";
 
 const apiEndPointatt = "http://cghrportal.herokuapp.com/api/employee";
 
-const apiEndPointchange = "http://cghrportal.herokuapp.com/api/employee/changepassword";
+const apiEndPointchange =
+  "http://cghrportal.herokuapp.com/api/employee/changepassword";
 
 const apiEndPointlogout = "http://cghrportal.herokuapp.com/api/employee/logout";
 
