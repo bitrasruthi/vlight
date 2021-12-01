@@ -24,6 +24,7 @@ import ELeaveList from './components/Employee Files/eleavelist';
 import ApproveReject from './components/Admin Files/approvereject';
 import Register  from './components/Logins/register';
 import Countdown from './components/Logins/countdown';
+import Settings from './components/Common/settings';
 
 
 class App extends React.Component {
@@ -44,6 +45,7 @@ class App extends React.Component {
             <Route path="/emplist" component={EmpList} /> 
             <Route path="/leavelist" component={LeaveList} /> 
             <Route path="/logout" component={Logout} /> 
+            <Route path="/settings" component={Settings} /> 
 
             <Route path="/navbar" component={NavBar} /> 
             <Route path="/dashboard" component={Dashboard} /> 

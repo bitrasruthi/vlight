@@ -45,6 +45,7 @@ import AddNew from './../Admin Files/addNewEmp';
 import Logout from './../Logins/logout';
 import EmpList from './../Admin Files/emplist';
 import LeaveList from './../Admin Files/leavelist';
+import Settings from './../Common/settings';
 
 
 
@@ -81,6 +82,13 @@ const Sidebar = (props) => {
       component:LeaveList,
       layout: "/leavelist",
     },
+    // {
+    //   path: "/settings",
+    //   name: "Settings",
+    //   icon: "ni ni-settings-gear-65 text-yellow",
+    //   component:Settings,
+    //   layout: "/settings",
+    // },
   ];
   const [collapseOpen, setCollapseOpen] = useState();
   // verifies if routeName is the one active (in browser input)
@@ -191,8 +199,14 @@ const Sidebar = (props) => {
           {/* Navigation */}
           <Nav navbar>{createLinks(routes)}</Nav>
           {/* Divider */}
-          <hr style={{paddingTop: '50px'}} className="my-3"/>
-          <Nav className="mb-md-3" navbar>
+          <hr style={{paddingTop: '50px'}} className="my"/>
+          <Nav className="mb" navbar>
+            <NavItem>
+              <NavLink href="#">
+                <i className="ni ni-settings-gear-65 text-yellow" />
+                <Settings/>
+              </NavLink>
+            </NavItem>
             <NavItem>
               <NavLink href="/logout">
                 <i className="fas fa-sign-out-alt text-danger" />

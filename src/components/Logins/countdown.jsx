@@ -68,7 +68,7 @@ class Countdown extends React.Component {
           return(
             <div>
                 <ESidebar/>
-                <div style={{textAlign: 'center'}}>
+                <div style={{textAlign: 'center',}}>
               <br />
               h: {this.state.time.h} m: {this.state.time.m} s: {this.state.time.s}
             </div>

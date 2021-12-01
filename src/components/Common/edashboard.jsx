@@ -11,7 +11,7 @@ class EDashboard extends React.Component {
     render() { 
         return <div>
             <ESidebar/>
-            <ENavBar/>            
+            {/* <ENavBar/>             */}
             <TimeCard/>
         </div>;
     }
