@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 export default class Settings extends React.Component {
   constructor(props) {
@@ -21,12 +22,13 @@ export default class Settings extends React.Component {
     return (
       <Dropdown style={{marginLeft: '-20px'}} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle 
-        style={{backgroundColor: 'white',border:"none", boxShadow:" none"}} caret>
+        style={{backgroundColor: 'white',border:"none", boxShadow:" none", fontWeight: "normal", color: 'darkgray'}} caret>
           Settings
         </DropdownToggle>
         <DropdownMenu>
         
-          <DropdownItem>Holiday List</DropdownItem>
+          <DropdownItem><Link to="/holidays"> Holiday List</Link></DropdownItem>
+          <DropdownItem><Link to="/officehours"> Office Hours</Link></DropdownItem>
         
         </DropdownMenu>
       </Dropdown>
