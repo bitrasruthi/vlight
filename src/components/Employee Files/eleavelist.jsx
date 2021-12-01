@@ -1,17 +1,17 @@
 import React from "react";
-import paginate  from "../Common/paginate";
+import paginate from "../Common/paginate";
 import Pagination from "../Common/pagination";
 import _ from "lodash";
 import { connect } from "react-redux";
 import get_empleavelist from "../../reduxstore/actions/empleaveTable";
 
 import ELeavsTable from "./eleavetable";
-import Paginations from './../Common/pagination';
+import Paginations from "./../Common/pagination";
 
 class ELeavsList extends React.Component {
   state = {
     leaves: [],
-    pageSize: 4,
+    pageSize: 10,
     currentPage: 1,
     sortColumn: { path: "Date", order: "asc" },
   };

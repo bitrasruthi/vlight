@@ -1,6 +1,5 @@
 import Table from "../Common/table";
 import React from "react";
-import ESidebar from "../Sidebar/eSidebar";
 
 class EmpTable extends React.Component {
   columns = [
@@ -27,7 +26,6 @@ class EmpTable extends React.Component {
     const { employess, sortColumn, onSort } = this.props;
     return (
       <div>
-        <ESidebar />
         <Table
           columns={this.columns}
           data={employess}

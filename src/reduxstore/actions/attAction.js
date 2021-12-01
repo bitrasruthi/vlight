@@ -9,7 +9,6 @@ async function get_attlist() {
 
   const id = jwt.EmployeeId;
   const data = await emp.getAttendance(id);
-  console.log(data.data.data);
 
   store.dispatch({
     type: GET_ATTENDANCE_LIST,

@@ -8,9 +8,10 @@ class EmployeeTable extends React.Component {
     {
       path: "EmployeeId",
       label: "Employee Id",
-      // content: (emp) => (
-      //   <Link to={`"/admin/getall"${emp._id}`}>{emp.name}</Link>
-      // ),
+
+      content: (emp) => (
+        <Link to={`/empattlist/${emp.EmployeeId}`}> {emp.EmployeeId}</Link>
+      ),
     },
     { path: "EmployeeName", label: "Name" },
     { path: "Email", label: "Email" },
@@ -25,10 +26,10 @@ class EmployeeTable extends React.Component {
 
     return (
       <Table
-      columns={this.columns}
-      data={employees}
-      sortColumn={sortColumn}
-      onSort={onSort}
+        columns={this.columns}
+        data={employees}
+        sortColumn={sortColumn}
+        onSort={onSort}
         // LoadingComponent={Spinner}
       />
     );

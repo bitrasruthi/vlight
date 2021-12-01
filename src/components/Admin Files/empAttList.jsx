@@ -1,14 +1,14 @@
 import React from "react";
-import EmpTable from "./attTable";
+import EmpTable from "../Employee Files/attTable";
 import Pagination from "../Common/pagination";
 import paginate from "../Common/paginate";
 import _ from "lodash";
-import get_attlist from "../../reduxstore/actions/attAction";
+import get_empattlist from "../../reduxstore/actions/adminattAction";
 import emp from "../../services/empservice";
 import { connect } from "react-redux";
 import Paginations from "./../Common/pagination";
 import Joi from "joi-browser";
-import ESidebar from "../Sidebar/eSidebar";
+import Sidebar from "components/Sidebar/Sidebar";
 
 import Forms from "components/Common/form";
 
@@ -34,11 +34,11 @@ import {
   Col,
 } from "reactstrap";
 
-class AttList extends Forms {
+class EmpAttList extends Forms {
   state = {
     data: { to_Date: "", from_Date: "" },
     employess: [],
-    pageSize: 4,
+    pageSize: 10,
     errors: [],
     currentPage: 1,
     sortColumn: { path: "Date", order: "asc" },
@@ -92,10 +92,10 @@ class AttList extends Forms {
 
   async componentDidMount() {
     if (!this.props.getattlist) {
-      await get_attlist();
+      await get_empattlist(this.props.match.params.id);
     }
 
-    const dd = await this.props.getattlist;
+    const dd = await this.props.getademplist;
     await this.setState({ employess: dd });
 
     // const jwt = await emp.getCurrentUser();
@@ -111,7 +111,7 @@ class AttList extends Forms {
     const { totalCount, data: employess } = this.getPageData();
     return (
       <div>
-        <ESidebar />
+        <Sidebar />
         <EmpTable
           employess={employess}
           sortColumn={sortColumn}
@@ -185,8 +185,8 @@ class AttList extends Forms {
 
 const mapStateToProps = (state) => {
   return {
-    getattlist: state.getattlist,
+    getademplist: state.getademplist,
   };
 };
 
-export default connect(mapStateToProps)(AttList);
+export default connect(mapStateToProps)(EmpAttList);

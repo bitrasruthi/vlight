@@ -10,6 +10,9 @@ const apiEndPointchange =
 
 const apiEndPointlogout = "http://cghrportal.herokuapp.com/api/employee/logout";
 
+const getAttendanceser =
+  "http://cghrportal.herokuapp.com/api/admin/attendancestats";
+
 const tokenKey = "token";
 
 // http.setJwt(getJwt());
@@ -38,6 +41,10 @@ export async function changepassword(data) {
 
 export function getAttendance(empid) {
   return http.get(atturl(empid));
+}
+export async function getAttendanceserc(data) {
+  const { data: ser } = await http.post(getAttendanceser, data);
+  return ser;
 }
 
 export function loginWithJwt(jwt) {
@@ -70,5 +77,6 @@ const emp = {
   getJwt,
   getAttendance,
   changepassword,
+  getAttendanceserc,
 };
 export default emp;
