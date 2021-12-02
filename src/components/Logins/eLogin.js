@@ -166,7 +166,7 @@ class ELogin extends Forms {
                   <h4 style={{ color: "#172B4D" }}>Employee Login</h4>
                 </div>
                 <Form role="form" onSubmit={this.handleSubmit}>
-                  {this.renderInput("Email", "Employee ID")}
+                  {this.renderInput("Email", "Email ID")}
                   {this.renderInput("Password", "Password", "Password")}
 
                   <div className="text-center">

@@ -40,8 +40,8 @@ class TimeCard extends Forms {
   doIn = async () => {
     var today = new Date(),
       time = today.getHours() + ":" + today.getMinutes();
-
-    if (time < "09:30") return toast.error("Contract Admin");
+        console.log(time)
+    // if (time > "09:30") return toast.error("Contract Admin");
     try {
       await this.setState({ inTime: time });
       await checkIn(this.state.inTime);
