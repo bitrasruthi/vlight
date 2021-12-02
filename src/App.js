@@ -45,7 +45,6 @@ class App extends React.Component {
                 <Route path="/emplist" component={EmpList} />
                 <Route path="/leavelist" component={LeaveList} />
                 <Route path="/logout" component={Logout} />
-                <Route path="/holidays" component={Holidays} />
 
                 <Route path="/navbar" component={NavBar} />
                 <Route path="/dashboard" component={Dashboard} />
@@ -67,7 +66,7 @@ class App extends React.Component {
                 {/* <Route path="/admin" render={(props) => <AdminLayout {...props} />} /> */}
                 {/* <Route path="/auth" render={(props) => <AuthLayout {...props} />} /> */}
               </Switch>
-              <Footer />
+              {/* <Footer /> */}
             </main>
           </React.Fragment>
         </Provider>

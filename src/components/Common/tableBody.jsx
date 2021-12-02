@@ -27,7 +27,7 @@ class TableBody extends React.Component {
   render() {
     const { data, columns } = this.props;
     return (
-      <tbody >
+      <tbody style={{zIndex: "1001"}}>
         {data.map((item) => (
           <tr key={item._id}>
             {columns.map((column) => (

@@ -5,7 +5,7 @@ import Dropdown from "./dropdown";
 
 // import Select from './select';
 
-class Form extends React.Component {
+class Forms extends React.Component {
   state = {
     data: {},
     errors: {},
@@ -101,4 +101,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default Forms;

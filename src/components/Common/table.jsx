@@ -29,7 +29,7 @@ class Table extends React.Component {
         > */}
         {/* <div  className="row justify-content-center"> */}
     <div style={{textAlign: 'center', marginLeft: '130px'}} className="col-auto">
-      <table style={{marginTop: '50px',}} className=" table table-responsive">
+      <table style={{marginTop: '50px', }} className=" table table-responsive">
           <TableHeader
             columns={columns}
             sortColumn={sortColumn}

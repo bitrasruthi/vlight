@@ -110,45 +110,44 @@ class AttList extends Forms {
     const { pageSize, currentPage, sortColumn } = this.state;
     const { totalCount, data: employess } = this.getPageData();
     return (
-      <div>
+      <div style={{ paddingBottom: "70%" }}>
         <ESidebar />
         <EmpTable
           employess={employess}
           sortColumn={sortColumn}
           onSort={this.handleSort}
         />
-        <Paginations
+        {/* <Paginations
           itemsCount={totalCount}
           pageSize={pageSize}
           currentPage={currentPage}
           onPageChange={this.handlePageChange}
-        />
+        /> */}
         <Col
-          lg="5"
-          md="5"
+          lg="3"
+          md="3"
           style={{
-            marginLeft: "30%",
-            paddingTop: "28px",
+            marginLeft: "60%",
+            marginTop: "-300px",
+            position: "fixed",
           }}
         >
-          <Card className="bg-secondary shadow border-0">
-            <h1
+          <Card className="card__wrap--inner bg-secondary shadow border-0">
+            {/* <h1
               style={{
-                marginLeft: "30%",
+                marginLeft: "60px",
                 paddingTop: "28px",
               }}
             >
-              Att search
-            </h1>{" "}
-            <br />
+              Filter </h1> */}
             <CardBody className="px-lg-2 py-sm-5">
               <Form
                 role="form"
                 onSubmit={this.handleSubmit}
                 style={{
-                  padding: "10px 20px",
-                  textAlign: "end",
-                  color: "white",
+                  padding: "0px 20px",
+                  textAlign: "",
+                  color: "",
                 }}
               >
                 {this.renderInput("from_Date", "From Date", "date")}
