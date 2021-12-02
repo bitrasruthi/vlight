@@ -43,3 +43,8 @@ export function registerAdmin(user) {
 export function getEmployees() {
   return http.get(apiEndPointGet);
 }
+
+
+export function deleteEmployees(EmployeeId){
+  return http.delete(apiEndPointGet + '/' + EmployeeId);
+}
