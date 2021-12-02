@@ -39,6 +39,7 @@ class EmpAttList extends Forms {
     data: { to_Date: "", from_Date: "" },
     employess: [],
     pageSize: 10,
+    id:[],
     errors: [],
     currentPage: 1,
     sortColumn: { path: "Date", order: "asc" },
@@ -59,8 +60,8 @@ class EmpAttList extends Forms {
 
   doSubmit = async () => {
     try {
-      const { data, employess } = this.state;
-      var ss = { ...data, EmployeeId: employess[0].EmployeeId };
+      const { data, employess,id } = this.state;
+      var ss = { ...data, EmployeeId:id };
       await this.setState({ data: ss });
       const atts = await emp.getAttendanceserc(this.state.data);
       await this.setState({ employess: atts.data });
@@ -91,8 +92,9 @@ class EmpAttList extends Forms {
   };
 
   async componentDidMount() {
+     await this.setState({ id :this.props.match.params.id})
     if (!this.props.getattlist) {
-      await get_empattlist(this.props.match.params.id);
+      await get_empattlist(this.state.id);
     }
 
     const dd = await this.props.getademplist;
