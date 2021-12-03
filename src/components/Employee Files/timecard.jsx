@@ -7,6 +7,8 @@ import { checkOut } from "../../services/outService";
 import Forms from "../../components/Common/form";
 import ESidebar from "../../components/Sidebar/eSidebar";
 import ENavBar from "components/Common/enavbar";
+import { gettime } from '../../services/settings'
+
 
 import {
   Button,
@@ -31,10 +33,11 @@ import {
 } from "reactstrap";
 
 class TimeCard extends Forms {
-  state = { inTime: "", outTime: "" };
+  state = { inTime: "", outTime: "", timelimit: '' };
   schema = {
     inTime: Joi.string(),
     outTime: Joi.string(),
+
   };
 
   doIn = async () => {
@@ -42,8 +45,8 @@ class TimeCard extends Forms {
     var myNumber = today.getMinutes();
     var formattedNumber = ("0" + myNumber).slice(-2);
     var time = today.getHours() + ":" + formattedNumber;
-    console.log(time)
-    // if (time > "09:30") return toast.error("Contract Admin");
+
+    if (time > this.state.timelimit) return toast.error("Contract Admin");
     try {
       await this.setState({ inTime: time });
       await checkIn(this.state.inTime);
@@ -96,6 +99,13 @@ class TimeCard extends Forms {
     if (time === "24:00") {
     }
   };
+  async componentDidMount() {
+    const time = await gettime()
+    const present = { ...time.data[0] }
+
+    await this.setState({ timelimit: present.inTime })
+  }
+
 
   render() {
     return (

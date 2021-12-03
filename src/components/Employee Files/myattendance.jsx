@@ -42,7 +42,7 @@ class AttList extends Forms {
     pageSize: 4,
     errors: [],
     currentPage: 1,
-    sortColumn: { path: "Date", order: "asc" },
+    sortColumn: { path: "", order: "" },
   };
 
   schema = {
@@ -61,8 +61,8 @@ class AttList extends Forms {
   doSubmit = async () => {
     try {
       const { data, employess } = this.state;
-      const jwt =  await emp.getCurrentUser()
-      
+      const jwt = await emp.getCurrentUser()
+
       var ss = { ...data, EmployeeId: jwt.EmployeeId };
       await this.setState({ data: ss });
       const atts = await emp.getAttendanceserc(this.state.data);
@@ -126,7 +126,7 @@ class AttList extends Forms {
           currentPage={currentPage}
           onPageChange={this.handlePageChange}
         /> */}
-       <Filter/>
+        <Filter />
       </div>
     );
   }
