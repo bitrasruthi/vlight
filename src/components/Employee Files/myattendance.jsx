@@ -113,7 +113,7 @@ class AttList extends Forms {
     const { pageSize, currentPage, sortColumn } = this.state;
     const { totalCount, data: employess } = this.getPageData();
     return (
-      <div style={{ paddingBottom: "80%" }}>
+      <div style={{ paddingBottom: "70%" }}>
         <ESidebar />
         <EmpTable
           employess={employess}

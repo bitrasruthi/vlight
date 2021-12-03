@@ -99,10 +99,12 @@ import {
         // console.log(tt);
        
           const {data:profile} = await getProDetails();
-          let pp = profile[0].profile[0];
+          let pp = profile[0].profile;
+          if(pp === []);
+            this.setState(this.state.data)
          console.log(pp);
        
-        this.setState({ data: this.mapToViewModel(pp) });
+        this.setState({ data: this.mapToViewModel(pp[0]) });
       }
 
     mapToViewModel(pro) {

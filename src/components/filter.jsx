@@ -64,9 +64,9 @@ class Filter extends Forms{
           lg="3"
           md="3"
           style={{
-            marginLeft: "60%",
+            marginLeft: "76%",
             marginTop: "-160px",
-            position: "fixed",
+            position: "sticky",
           }}
         >
           <Card className="card__wrap--inner bg-secondary shadow border-0">

@@ -13,10 +13,13 @@ class UserHeader extends React.Component {
   async componentDidMount() {
 
     const {data:profile} = await getProDetails();
-    let pp = profile[0].profile[0];
-   console.log(pp);
+    let pp = profile[0].profile;
+    if(pp === []);
+    this.setState(this.state.data)
+
+   console.log(true);
  
-  this.setState({ data: {FirstName:pp.FirstName, AboutMe:pp.AboutMe } });
+  this.setState({ data: {FirstName:pp[0].FirstName, AboutMe:pp[0].AboutMe } });
 }
 
 handleBack(){

@@ -102,18 +102,20 @@ class Holidays extends Forms {
       <div>
         <Sidebar />
         <div style={{ textAlign: "center" }}>Holiday List</div>
+        <Col lg="7" md="7">
         <HoliTable
           holidays={holidays}
           sortColumn={sortColumn}
           onSort={this.handleSort}
         />
-        <Paginations
+        </Col>
+        {/* <Paginations
           itemsCount={totalCount}
           pageSize={pageSize}
           currentPage={currentPage}
           onPageChange={this.handlePageChange}
-        />
-        <Col lg="5" md="7" style={{ marginLeft: "30%", paddingTop: "28px" }}>
+        /> */}
+        <Col lg="3" md="5" style={{ marginLeft: "50%", position:'fixed',paddingTop: "-128px" }}>
           <Card className="bg-secondary shadow border-0" >
             <CardBody className="px-lg-3 py-sm-5">
               <Form role="form" onSubmit={this.handleSubmit}>
