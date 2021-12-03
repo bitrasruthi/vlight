@@ -108,13 +108,12 @@ class Employees extends React.Component {
           onSort={this.handleSort}
           onDelete={this.handleDelete}
         />
-        <Paginations />
-        <Paginations
+        {/* <Paginations
           itemsCount={totalCount}
           pageSize={pageSize}
           currentPage={currentPage}
           onPageChange={this.handlePageChange}
-        />
+        /> */}
       </div>
     );
   }

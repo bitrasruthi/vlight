@@ -34,7 +34,7 @@ import ProfileDetails from './components/Employee Files/profileDetails';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      
         <Provider store={store}>
           <React.Fragment>
             <ToastContainer />
@@ -75,7 +75,7 @@ class App extends React.Component {
             </main>
           </React.Fragment>
         </Provider>
-      </div>
+      
     );
   }
 }

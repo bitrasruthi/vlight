@@ -3422,7 +3422,7 @@ input[type="button"].btn-block {
         padding-right: 1rem;
         padding-left: 1rem; }
     .navbar-expand-sm > .container,
-    .navbar-expand-sm > .container-fluid, .navbar-expand-sm > .container-sm, .navbar-expand-sm > .container-md, .navbar-expand-sm > .container-lg, .navbar-expand-sm > .container-xl {
+    .navbar-expand-sm > .container-, .navbar-expand-sm > .container-sm, .navbar-expand-sm > .container-md, .navbar-expand-sm > .container-lg, .navbar-expand-sm > .container-xl {
       flex-wrap: nowrap; }
     .navbar-expand-sm .navbar-nav-scroll {
       overflow: visible; }

@@ -11,20 +11,17 @@ class UserHeader extends React.Component {
     Country: '', Pincode:'', AboutMe: '', EducationDetails:''},}
 
   async componentDidMount() {
-
+    
     const {data:profile} = await getProDetails();
     let pp = profile[0].profile;
-    if(pp === []);
-    this.setState(this.state.data)
-
-   console.log(true);
+   console.log(pp);
  
-  this.setState({ data: {FirstName:pp[0].FirstName, AboutMe:pp[0].AboutMe } });
+  this.setState({ data: {FirstName:pp.FirstName, AboutMe:pp.AboutMe } });
 }
 
 handleBack(){
   window.location = '/edashboard'
-}
+} 
 
   render() { 
      return (

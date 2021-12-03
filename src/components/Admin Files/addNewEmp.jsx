@@ -83,7 +83,7 @@ class AddNew extends Forms {
         return <div>
             <Sidebar/>
             <NavBar/>
-            <Col lg="5" md="7" style={{marginLeft:"30%", paddingTop: "28px"}}>
+            <Col lg="5" md="7" style={{marginLeft:"30%", paddingTop: "115px", position: 'absolute'}}>
         <Card className="bg-secondary shadow border-0" >
           <CardBody className="px-lg-3 py-sm-5">
             <Form role="form" onSubmit={this.handleSubmit}>
@@ -97,7 +97,7 @@ class AddNew extends Forms {
                   {this.renderInput("NetSalary", "Net Salary")}
                 
               <div className="text-center">
-                <Button style={{background: '#172B4D', border: 'none'}} className="my-4" color="primary" type="submit">
+                <Button style={{background: '#2DCECB', border: 'none'}} className="my-4" color="primary" type="submit">
                   Add
                 </Button>
               </div>

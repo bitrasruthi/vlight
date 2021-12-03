@@ -77,7 +77,6 @@ import {
         try {
           const { data } = this.state;
           const tt = await profileRegister(data);
-          
           toast.success("Profile Updated Successful");
           setTimeout(() => {
             window.location = state ? state.from.pathname : "/edashboard";
@@ -95,16 +94,16 @@ import {
   
 
     async componentDidMount() {
+        // this.doSubmit();
         // const tt = getEmployees();
         // console.log(tt);
        
           const {data:profile} = await getProDetails();
           let pp = profile[0].profile;
-          if(pp === []);
-            this.setState(this.state.data)
-         console.log(pp);
+          console.log(pp);
+          this.setState({ data: this.mapToViewModel(pp) });
+         if(pp===[]){this.doSubmit();}
        
-        this.setState({ data: this.mapToViewModel(pp[0]) });
       }
 
     mapToViewModel(pro) {

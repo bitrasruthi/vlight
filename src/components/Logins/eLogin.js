@@ -65,7 +65,8 @@ class ELogin extends Forms {
   render() {
     return (
       <>
-        <div className="header bg-gradient-success py-7 py-lg-3 ">
+        <div style = {{height: '100%', position: "absolute", left: '0', width: '100%',overflow: 'hidden'}} 
+        className="header bg-gradient-success py-7 py-lg-3 ">
           <Navbar
             className="navbar-top navbar-horizontal navbar-dark"
             expand="md"
