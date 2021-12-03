@@ -24,6 +24,7 @@ class ELeavsList extends React.Component {
     this.setState({ sortColumn });
   };
 
+  
   getPageData = () => {
     const {
       pageSize,

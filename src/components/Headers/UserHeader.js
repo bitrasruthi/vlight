@@ -1,49 +1,50 @@
-/*!
+import ESidebar from 'components/Sidebar/eSidebar';
+import React from 'react';
+import { getProDetails } from 'services/profileService';
 
-=========================================================
-* Argon Dashboard React - v1.2.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
-// reactstrap components
 import { Button, Container, Row, Col } from "reactstrap";
 
-const UserHeader = () => {
-  return (
+
+class UserHeader extends React.Component {
+  state={
+    data: {FirstName: '', MiddleName: '', LastName: '', Address:'', City: '', 
+    Country: '', Pincode:'', AboutMe: '', EducationDetails:''},}
+
+  async componentDidMount() {
+
+    const {data:profile} = await getProDetails();
+    let pp = profile[0].profile;
+   console.log(pp);
+ 
+  this.setState({ data: {FirstName:pp.FirstName, AboutMe:pp.AboutMe } });
+}
+
+  render() { 
+     return (
     <>
-      <div
-        className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-        style={{
-          minHeight: "600px",
-          backgroundImage:
-            "url(" +
-            require("../../assets/img/theme/profile-cover.jpg").default +
-            ")",
-          backgroundSize: "cover",
-          backgroundPosition: "center top",
-        }}
+    {/* <ESidebar/> */}
+      <div className="header pb-5 pt-5 pt-lg-5 d-flex align-items-center"
+        // style={{
+        //   minHeight: "600px",
+        //   backgroundImage:
+        //     "url(" +
+        //     require("../../assets/img/theme/profile-cover.jpg").default +
+        //     ")",
+        //   backgroundSize: "cover",
+        //   backgroundPosition: "center top",
+        // }}
       >
+
+
         {/* Mask */}
-        <span className="mask bg-gradient-default opacity-8" />
+        <span className="mask bg-gradient-purple opacity-8" />
         {/* Header container */}
         <Container className="d-flex align-items-center" fluid>
-          <Row>
-            <Col lg="7" md="10">
-              <h1 className="display-2 text-white">Hello Jesse</h1>
-              <p className="text-white mt-0 mb-5">
-                This is your profile page. You can see the progress you've made
-                with your work and manage your projects or assigned tasks
+          
+            <Col style={{marginRight: '-140px'}} lg="9" md="10">
+              <h1  className="display-2 text-white">Hello {this.state.data.name}</h1>
+              <p   className="text-white mt-0 mb-5">
+                {this.state.data.AboutMe}
               </p>
               <Button
                 color="info"
@@ -53,11 +54,12 @@ const UserHeader = () => {
                 Edit profile
               </Button>
             </Col>
-          </Row>
+         
         </Container>
       </div>
     </>
   );
 };
+}
 
 export default UserHeader;

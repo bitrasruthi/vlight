@@ -28,6 +28,8 @@ import EmpAttList from "components/Admin Files/empAttList";
 import Holidays from "components/Admin Files/holidays";
 import OfficeHours from "components/Admin Files/officeHours";
 import EmpOptions from './components/Admin Files/empOptions';
+import Profile from './components/Employee Files/profile';
+import ProfileDetails from './components/Employee Files/profileDetails';
 
 class App extends React.Component {
   render() {
@@ -60,6 +62,7 @@ class App extends React.Component {
                 <Route path="/holidays" component={Holidays} />
                 <Route path="/officehours" component={OfficeHours} />
                 <Route path="/empoptions" component={EmpOptions} />
+                <Route path="/profile" component={Profile} />
 
                 <Route path="/" component={Login} />
                 <Redirect from="/" exact to="/home" />

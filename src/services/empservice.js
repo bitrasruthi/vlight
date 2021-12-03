@@ -42,6 +42,8 @@ export async function changepassword(data) {
 export function getAttendance(empid) {
   return http.get(atturl(empid));
 }
+
+
 export async function getAttendanceserc(data) {
   const { data: ser } = await http.post(getAttendanceser, data);
   return ser;

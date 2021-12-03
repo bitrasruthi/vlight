@@ -130,7 +130,7 @@ class AttList extends Forms {
           md="3"
           style={{
             marginLeft: "60%",
-            marginTop: "-300px",
+            marginTop: "-160px",
             position: "fixed",
           }}
         >

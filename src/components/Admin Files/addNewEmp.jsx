@@ -60,7 +60,8 @@ class AddNew extends Forms {
       doSubmit = async () => {
         try {
           const { data } = this.state;
-          await register(data);
+          const pp = await register(data);
+          console.log(pp);
           toast.success("Employee Added");
           setTimeout(() => {
             window.location = state ? state.from.pathname : "/dashboard";
@@ -92,7 +93,7 @@ class AddNew extends Forms {
                   {this.renderInput("Phone", "Phone")}
                   {this.renderInput("Email", "Email ID")}
                   {this.renderInput("Role", "Designation")}
-                  {this.renderInput("DateOfBirth", "Date Of Birth")}             
+                  {this.renderInput("DateOfBirth", "Date Of Birth", "date")}             
                   {this.renderInput("NetSalary", "Net Salary")}
                 
               <div className="text-center">

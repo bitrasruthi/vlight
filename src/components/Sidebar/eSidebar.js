@@ -35,7 +35,6 @@ import {
   Col,
 } from "reactstrap";
 import Index from "views/Index.js";
-import Profile from "views/examples/Profile.js";
 import Maps from "views/examples/Maps.js";
 import Register from "views/examples/Register.js";
 import Login from "../Logins/Login";
@@ -49,6 +48,7 @@ import AttList from './../Employee Files/myattendance';
 import LeaveForm from './../Employee Files/leaveform';
 import ELeavsList from './../Employee Files/eleavelist';
 import Countdown from './../Logins/countdown';
+import Profile from './../Employee Files/profile';
 
 
 
@@ -84,13 +84,13 @@ const ESidebar = (props) => {
         component: ELeavsList,
         layout: "/eleavelist",
       }, 
-      // {
-      //   path: "/countdown",
-      //   name: "Countdown",
-      //   icon: "ni ni-tv-2 text-orange",
-      //   component: Countdown,
-      //   layout: "/countdown",
-      // },   
+      {
+        path: "/profile",
+        name: "Profile",
+        icon: "ni ni-tv-2 text-violet",
+        component: Profile,
+        layout: "/profile",
+      },   
 
     
     
