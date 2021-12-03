@@ -33,14 +33,14 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import Filter from "components/filter";
+
 
 class EmpAttList extends Forms {
   state = {
     data: { to_Date: "", from_Date: "" },
     employess: [],
     pageSize: 10,
-    id:[],
+    id: [],
     errors: [],
     currentPage: 1,
     sortColumn: { path: "Date", order: "asc" },
@@ -61,8 +61,8 @@ class EmpAttList extends Forms {
 
   doSubmit = async () => {
     try {
-      const { data, employess,id } = this.state;
-      var ss = { ...data, EmployeeId:id };
+      const { data, employess, id } = this.state;
+      var ss = { ...data, EmployeeId: id };
       await this.setState({ data: ss });
       const atts = await emp.getAttendanceserc(this.state.data);
       await this.setState({ employess: atts.data });
@@ -93,7 +93,7 @@ class EmpAttList extends Forms {
   };
 
   async componentDidMount() {
-     await this.setState({ id :this.props.match.params.id})
+    await this.setState({ id: this.props.match.params.id })
     if (!this.props.getattlist) {
       await get_empattlist(this.state.id);
     }
@@ -128,7 +128,60 @@ class EmpAttList extends Forms {
           currentPage={currentPage}
           onPageChange={this.handlePageChange}
         /> */}
-       <Filter/>
+        <Col
+          lg="3"
+          md="3"
+          style={{
+            marginLeft: "76%",
+            marginTop: "-160px",
+            position: "sticky",
+          }}
+        >
+          <Card className="card__wrap--inner bg-secondary shadow border-0">
+            {/* <h1
+              style={{
+                marginLeft: "60px",
+                paddingTop: "28px",
+              }}
+            >
+              Filter </h1> */}
+            <CardBody className="px-lg-2 py-sm-5">
+              <Form
+                role="form"
+                onSubmit={this.handleSubmit}
+                style={{
+                  padding: "0px 20px",
+                  textAlign: "",
+                  color: "",
+                }}
+              >
+                {this.renderInput("from_Date", "From Date", "date")}
+                {this.renderInput("to_Date", "To Date", "date")}
+
+                <div className="text-center">
+                  <div
+                  // style={{ background: "#172B4D", border: "none" }}
+                  // className="my-4"
+                  // color="primary"
+                  // type="submit"
+                  >
+                    {" "}
+                    {this.renderButton("Search")}{" "}
+                  </div>
+
+                  {/* <Button
+                    style={{ background: "#172B4D", border: "none" }}
+                    className="my-4"
+                    color="primary"
+                    type="submit"
+                  >
+                    search
+                  </Button> */}
+                </div>
+              </Form>
+            </CardBody>
+          </Card>
+        </Col>
       </div>
     );
   }
