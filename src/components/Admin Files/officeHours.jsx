@@ -17,24 +17,32 @@ class OfficeHours extends Forms {
     state = {
         data: {},
         inTime: '', outTime: '',
-        errors: {}
+        errors: []
     }
     schema = {
-        established: Joi.required(),
+        established: Joi.string().required(),
         type: Joi.string().required(),
         inTime: Joi.string().required(),
         outTime: Joi.string().required(),
     };
 
+    async componentDidMount() {
+        const time = await gettime()
+        const present = { ...time.data[0] }
+
+        await this.setState({ inTime: present.inTime, outTime: present.outTime })
+    }
+
+
     doSubmit = async () => {
         const { data } = this.state
-
-
         try {
-            await save(data)
-            const time = await gettime()
-            console.log(time)
-            await this.setState({ data: {} });
+            const sett = await save(data)
+            const dd = sett.data.data
+
+            await this.setState({ inTime: dd.inTime, outTime: dd.outTime });
+            await this.setState({ data: { established: '', type: '', inTime: '', outTime: '' } });
+
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
                 const errors = { ...this.state.errors };
@@ -43,6 +51,8 @@ class OfficeHours extends Forms {
             }
         }
     };
+
+
 
     render() {
         return <div>

@@ -20,6 +20,7 @@ export async function gettime() {
 export function getholidays(empid) {
   return http.get(apiEndPoint);
 }
-export function postholidays(data) {
-  return http.post(apiEndPoint,{ holidays : [data]});
+export async  function postholidays(data) {
+  const { data: sett}  = await http.post(apiEndPoint,{ holidays : [data]});
+  return sett
 }
