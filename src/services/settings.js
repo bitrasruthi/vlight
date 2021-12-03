@@ -2,11 +2,24 @@ import http from "./httpService";
 import jwtDecode from "jwt-decode";
 
 const apiEndPoint = "http://cghrportal.herokuapp.com/api/admin/holidays";
+const apiEndPointsave = "http://cghrportal.herokuapp.com/api/admin/settings";
 
 function atturl(id) {
   return `${apiEndPoint}/${id}`;
 }
 
+export async function save(data) {
+  return await http.post(apiEndPointsave, data);
+}
+
+export async function gettime() {
+  const { data:time} =  await http.get(apiEndPointsave);
+  return time;
+}
+
 export function getholidays(empid) {
-  return http.get(atturl(empid));
+  return http.get(apiEndPoint);
+}
+export function postholidays(data) {
+  return http.post(apiEndPoint,{ holidays : [data]});
 }

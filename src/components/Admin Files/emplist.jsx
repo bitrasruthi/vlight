@@ -4,13 +4,15 @@ import { Redirect } from "react-router-dom";
 import paginate from "../Common/paginate";
 import Pagination from "../Common/pagination";
 import _ from "lodash";
-import auth from "../../services/authService";
+import {deleteEmp} from "../../services/authService";
 import { connect } from "react-redux";
 import get_employeelist from "../../reduxstore/actions/employeeAction";
 import EmployeeTable from "./emplisttable";
 import Sidebar from "../Sidebar/Sidebar";
 import NavBar from "components/Common/navbar";
 import Paginations from "./../Common/pagination";
+import { toast } from "react-toastify";
+
 
 class Employees extends React.Component {
   constructor(props) {
@@ -42,6 +44,23 @@ class Employees extends React.Component {
   }
 
   handleSort = (sortColumn) => this.setState({ sortColumn });
+
+  handleDelete = async (emp) => {
+    console.log(emp)
+    const originalemployees = this.state.employees;
+    const empl = originalemployees.filter((m) => m._id !== emp._id);
+
+    try {
+      await deleteEmp(emp.EmployeeId);
+      // get_movielist();
+      // setTimeout(async () => {}, 1000);
+      this.setState({ employees:empl });
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404)
+        toast("This Emp already been deleted");
+      this.setState({ employees: originalemployees });
+    }
+  };
 
   getPagedData = () => {
     const {
@@ -87,6 +106,7 @@ class Employees extends React.Component {
           employees={data}
           sortColumn={sortColumn}
           onSort={this.handleSort}
+          onDelete={this.handleDelete}
         />
         <Paginations />
         <Paginations

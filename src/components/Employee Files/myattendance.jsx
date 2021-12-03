@@ -60,7 +60,9 @@ class AttList extends Forms {
   doSubmit = async () => {
     try {
       const { data, employess } = this.state;
-      var ss = { ...data, EmployeeId: employess[0].EmployeeId };
+      const jwt =  await emp.getCurrentUser()
+      
+      var ss = { ...data, EmployeeId: jwt.EmployeeId };
       await this.setState({ data: ss });
       const atts = await emp.getAttendanceserc(this.state.data);
       await this.setState({ employess: atts.data });
