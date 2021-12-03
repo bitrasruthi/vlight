@@ -122,6 +122,8 @@ import {
       render() { 
     return (
       <>
+     
+      
         <UserHeader />
         {/* Page content */}
         <Container className="mt--7" fluid>
@@ -132,14 +134,14 @@ import {
                   <Col className="order-lg-2" lg="3">
                     <div className="card-profile-image">
                       <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        {/* <img
+                        <img
                           alt="..."
                           className="rounded-circle"
                           src={
-                            require("../../assets/img/theme/team-4-800x800.jpg")
+                            require("../../assets/img/theme/nature.jpg")
                               .default
                           }
-                        /> */}
+                        />
                       </a>
                     </div>
                   </Col>
@@ -166,7 +168,7 @@ import {
                     </Button>
                   </div>
                 </CardHeader> */}
-                <CardBody className="pt-0 pt-md-4">
+                <CardBody  className="mt-4 pt-md-4">
                   {/* <Row>
                     <div className="col">
                       <div className="card-profile-stats d-flex justify-content-center mt-md-5">
@@ -185,7 +187,7 @@ import {
                       </div>
                     </div>
                   </Row> */}
-                  <div className="text-center">
+                  <div style={{marginTop: '100px'}} className="text-center">
                     <h3>
                     {this.state.data.FirstName}{this.state.data.MiddleName} {this.state.data.LastName}
                       {/* <span className="font-weight-light">, 27</span> */}
@@ -194,10 +196,7 @@ import {
                       <i className="ni location_pin mr-2" />
                       {this.state.data.City}, {this.state.data.Country}
                     </div>
-                    <div className="h5 mt-4">
-                      <i className="ni business_briefcase-24 mr-2" />
-                      {/* {this.state.data.} */}
-                    </div>
+                   
                     <div>
                       <i className="ni education_hat mr-2" />
                       {this.state.data.EducationDetails}
@@ -208,9 +207,9 @@ import {
                       Nick Murphy — writes, performs and records all of his own
                       music.
                     </p>
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                    {/* <a href="#pablo" onClick={(e) => e.preventDefault()}>
                       Show more
-                    </a>
+                    </a> */}
                   </div>
                 </CardBody>
               </Card>
@@ -251,7 +250,7 @@ import {
                 {this.renderInput("AboutMe", "About me",)}
                 {this.renderInput("EducationDetails", "Education Details",)}
                 <div className="text-center">
-                <Button style={{background: '#172B4D', border: 'none'}} 
+                <Button style={{background: '#B965E0', border: 'none'}} 
                 className="my-4" color="primary" type="submit">
                   Update
                 </Button>

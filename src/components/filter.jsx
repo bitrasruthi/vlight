@@ -63,18 +63,13 @@ class Filter extends Forms{
             <Col
           lg="3"
           md="3"
-          // style={{
-          //   marginLeft: "60%",
-          //   marginTop: "-160px",
-          //   position: "fixed",
-          // }}
-        >
-          <Card 
-           style={{
+          style={{
             marginLeft: "60%",
             marginTop: "-160px",
             position: "fixed",
-          }}className="card__wrap--inner bg-secondary shadow border-0">
+          }}
+        >
+          <Card className="card__wrap--inner bg-secondary shadow border-0">
             {/* <h1
               style={{
                 marginLeft: "60px",

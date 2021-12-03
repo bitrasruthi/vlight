@@ -13,10 +13,14 @@ class UserHeader extends React.Component {
   async componentDidMount() {
 
     const {data:profile} = await getProDetails();
-    let pp = profile[0].profile;
+    let pp = profile[0].profile[0];
    console.log(pp);
  
   this.setState({ data: {FirstName:pp.FirstName, AboutMe:pp.AboutMe } });
+}
+
+handleBack(){
+  window.location = '/edashboard'
 }
 
   render() { 
@@ -25,7 +29,7 @@ class UserHeader extends React.Component {
     {/* <ESidebar/> */}
       <div className="header pb-5 pt-5 pt-lg-5 d-flex align-items-center"
         // style={{
-        //   minHeight: "600px",
+          //   minHeight: "600px",
         //   backgroundImage:
         //     "url(" +
         //     require("../../assets/img/theme/profile-cover.jpg").default +
@@ -34,15 +38,18 @@ class UserHeader extends React.Component {
         //   backgroundPosition: "center top",
         // }}
       >
+         <Button onClick={this.handleBack} style={{marginTop: '-200px',background:'transparent', border: 'none', boxShadow: 'none',
+         marginLeft: '5px', fontSize: '50px', zIndex: '1001', color: 'white'}} > 
+         <i  class="fas fa-chevron-circle-left"></i> </Button>
 
 
         {/* Mask */}
         <span className="mask bg-gradient-purple opacity-8" />
         {/* Header container */}
         <Container className="d-flex align-items-center" fluid>
-          
+
             <Col style={{marginRight: '-140px'}} lg="9" md="10">
-              <h1  className="display-2 text-white">Hello {this.state.data.name}</h1>
+              <h1  className="display-2 text-white">Hello {this.state.data.FirstName}</h1>
               <p   className="text-white mt-0 mb-5">
                 {this.state.data.AboutMe}
               </p>
