@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
             <NavBar/>
             <h1 style={{textAlign: 'center', color: 'black'}}>Welcome Admin!!!</h1>
             <ProductionHours/>
-            <NoOfEmp/>
+            {/* <NoOfEmp/> */}
         </div>;
     }
 }

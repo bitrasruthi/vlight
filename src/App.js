@@ -30,6 +30,8 @@ import OfficeHours from "components/Admin Files/officeHours";
 import EmpOptions from './components/Admin Files/empOptions';
 import Profile from './components/Employee Files/profile';
 import ProfileDetails from './components/Employee Files/profileDetails';
+import ChangePassword from './components/Employee Files/changePassword';
+import EmpWorkingStas from './components/Admin Files/empWorkingStats';
 import ProtectedRoute from "components/Common/protectedRoute";
 import EmpProtectedRoute from "components/Common/empprotectedRoute";
 
@@ -50,6 +52,8 @@ class App extends React.Component {
                 <ProtectedRoute path="/emplist" component={EmpList} />
                 <ProtectedRoute path="/leavelist" component={LeaveList} />
                 <Route path="/logout" component={Logout} />
+                <Route path="/changepassword" component={ChangePassword} />
+                <Route path="/empstats" component={EmpWorkingStas} />
 
                 <Route path="/navbar" component={NavBar} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} />

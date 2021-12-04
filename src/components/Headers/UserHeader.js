@@ -8,7 +8,7 @@ import { Button, Container, Row, Col } from "reactstrap";
 class UserHeader extends React.Component {
   state={
     data: {FirstName: '', MiddleName: '', LastName: '', Address:'', City: '', 
-    Country: '', Pincode:'', AboutMe: '', EducationDetails:''},}
+    Country: '', Pincode:'', AboutMe: '', EducationDetails:{}},}
 
   async componentDidMount() {
     

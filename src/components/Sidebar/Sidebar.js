@@ -46,6 +46,7 @@ import Logout from './../Logins/logout';
 import EmpList from './../Admin Files/emplist';
 import LeaveList from './../Admin Files/leavelist';
 import Settings from './../Common/settings';
+import EmpWorkingStas from './../Admin Files/empWorkingStats';
 
 
 
@@ -82,13 +83,13 @@ const Sidebar = (props) => {
       component:LeaveList,
       layout: "/leavelist",
     },
-    // {
-    //   path: "/settings",
-    //   name: "Settings",
-    //   icon: "ni ni-settings-gear-65 text-yellow",
-    //   component:Settings,
-    //   layout: "/settings",
-    // },
+    {
+      path: "/empstats",
+      name: "Employee Working Stats",
+      icon: "ni ni-chart-bar-32 text-green",
+      component:EmpWorkingStas,
+      layout: "/empstats",
+    },
   ];
   const [collapseOpen, setCollapseOpen] = useState();
   // verifies if routeName is the one active (in browser input)

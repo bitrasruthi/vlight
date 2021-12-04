@@ -49,6 +49,7 @@ import LeaveForm from './../Employee Files/leaveform';
 import ELeavsList from './../Employee Files/eleavelist';
 import Countdown from './../Logins/countdown';
 import Profile from './../Employee Files/profile';
+import ChangePassword from './../Employee Files/changePassword';
 
 
 
@@ -66,32 +67,38 @@ const ESidebar = (props) => {
     {
         path: "/attlist",
         name: "Attendance",
-        icon: "ni ni-bullet-list-67 text-danger",
+        icon: "ni ni-bullet-list-67 text-yellow",
         component: AttList,
         layout: "/attlist",
       },  
       {
         path: "/leaveform",
         name: "Leave Form",
-        icon: "ni ni-single-copy-04 text-danger",
+        icon: "ni ni-single-copy-04 text-orange",
         component: LeaveForm,
         layout: "/leaveform",
       }, 
       {
         path: "/eleavelist",
         name: "My Leaves",
-        icon: "ni ni-map-big text-danger",
+        icon: "ni ni-map-big text-blue",
         component: ELeavsList,
         layout: "/eleavelist",
       }, 
       {
         path: "/profile",
         name: "Profile",
-        icon: "ni ni-tv-2 text-violet",
+        icon: "ni ni-single-02 text-pink",
         component: Profile,
         layout: "/profile",
       },   
-
+      {
+        path: "/changepassword",
+        name: "Change Password",
+        icon: "fa fa-key text-purple",
+        component: ChangePassword,
+        layout: "/changepassword",
+      },   
     
     
   ];
