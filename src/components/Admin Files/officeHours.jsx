@@ -16,7 +16,8 @@ import {
 class OfficeHours extends Forms {
     state = {
         data: {},
-        inTime: '', outTime: '',
+        inTime: '',
+        outTime: '',
         errors: []
     }
     schema = {
@@ -40,8 +41,9 @@ class OfficeHours extends Forms {
             const sett = await save(data)
             const dd = sett.data.data
 
-            await this.setState({ inTime: dd.inTime, outTime: dd.outTime });
             await this.setState({ data: { established: '', type: '', inTime: '', outTime: '' } });
+            this.setState({ inTime: dd.inTime, outTime: dd.outTime })
+
 
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {

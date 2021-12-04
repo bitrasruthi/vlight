@@ -30,6 +30,8 @@ import OfficeHours from "components/Admin Files/officeHours";
 import EmpOptions from './components/Admin Files/empOptions';
 import Profile from './components/Employee Files/profile';
 import ProfileDetails from './components/Employee Files/profileDetails';
+import ProtectedRoute from "components/Common/protectedRoute";
+import EmpProtectedRoute from "components/Common/empprotectedRoute";
 
 class App extends React.Component {
   render() {
@@ -44,23 +46,23 @@ class App extends React.Component {
                 {/* <Route path="/notready" component={NotFound} /> */}
                 <Route path="/elogin" component={ELogin} />
                 <Route path="/register" component={Register} />
-                <Route path="/addnewemp" component={AddNew} />
-                <Route path="/emplist" component={EmpList} />
-                <Route path="/leavelist" component={LeaveList} />
+                <ProtectedRoute path="/addnewemp" component={AddNew} />
+                <ProtectedRoute path="/emplist" component={EmpList} />
+                <ProtectedRoute path="/leavelist" component={LeaveList} />
                 <Route path="/logout" component={Logout} />
 
                 <Route path="/navbar" component={NavBar} />
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/edashboard" component={EDashboard} />
+                <ProtectedRoute path="/dashboard" component={Dashboard} />
+                <EmpProtectedRoute path="/edashboard" component={EDashboard} />
                 <Route path="/countdown" component={Countdown} />
-                <Route path="/timecard" component={TimeCard} />
-                <Route path="/attlist" component={AttList} />
-                <Route path="/leaveform" component={LeaveForm} />
-                <Route path="/eleavelist" component={ELeaveList} />
-                <Route path="/leaveapproval/:id" component={ApproveReject} />
-                <Route path="/empattlist/:id" component={EmpAttList} />
-                <Route path="/holidays" component={Holidays} />
-                <Route path="/officehours" component={OfficeHours} />
+                <EmpProtectedRoute path="/timecard" component={TimeCard} />
+                <EmpProtectedRoute path="/attlist" component={AttList} />
+                <EmpProtectedRoute path="/leaveform" component={LeaveForm} />
+                <EmpProtectedRoute path="/eleavelist" component={ELeaveList} />
+                <ProtectedRoute path="/leaveapproval/:id" component={ApproveReject} />
+                <ProtectedRoute path="/empattlist/:id" component={EmpAttList} />
+                <ProtectedRoute path="/holidays" component={Holidays} />
+                <ProtectedRoute path="/officehours" component={OfficeHours} />
                 <Route path="/empoptions" component={EmpOptions} />
                 <Route path="/profile" component={Profile} />
 

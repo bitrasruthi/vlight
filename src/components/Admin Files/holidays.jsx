@@ -10,6 +10,8 @@ import Paginations from "./../Common/pagination";
 import { connect } from "react-redux";
 import get_hoildays from "../../reduxstore/actions/hoildaysActions";
 import { postholidays } from '../../services/settings'
+import ReactLoading from "react-loading";
+
 import {
   Button,
   Card,
@@ -35,6 +37,7 @@ import {
 class Holidays extends Forms {
   state = {
     data: { date: '', festival: '' },
+    isLoading: true,
     holidays: [],
     pageSize: 10,
     errors: [],
@@ -68,6 +71,10 @@ class Holidays extends Forms {
     const holidays = paginate(sorted, currentPage, pageSize);
     return { totalCount: filtered.length, data: holidays };
   };
+  constructor() {
+    super();
+    this.state.isLoading = true;
+  }
 
   async componentDidMount() {
     if (!this.props.gethoildayslist) {
@@ -77,6 +84,8 @@ class Holidays extends Forms {
     const dd = await this.props.gethoildayslist[0].holidays;
 
     await this.setState({ holidays: dd });
+    this.setState({ isLoading: false });
+
   }
 
   doSubmit = async () => {
@@ -103,11 +112,31 @@ class Holidays extends Forms {
         <Sidebar />
         <div style={{ textAlign: "center" }}>Holiday List</div>
         <Col lg="7" md="7">
-        <HoliTable
-          holidays={holidays}
-          sortColumn={sortColumn}
-          onSort={this.handleSort}
-        />
+          <HoliTable
+            holidays={holidays}
+            sortColumn={sortColumn}
+            onSort={this.handleSort}
+          />
+
+          {this.state.isLoading ? (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                // alignItems: "center",
+                height: "100vh",
+              }}
+            >
+              <ReactLoading
+                type="bars"
+                color="#aaaa"
+                height={"10%"}
+                width={"10%"}
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </Col>
         {/* <Paginations
           itemsCount={totalCount}
@@ -115,7 +144,7 @@ class Holidays extends Forms {
           currentPage={currentPage}
           onPageChange={this.handlePageChange}
         /> */}
-        <Col lg="3" md="5" style={{ marginLeft: "50%", position:'fixed',paddingTop: "-128px" }}>
+        <Col lg="3" md="5" style={{ marginLeft: "50%", position: 'fixed', paddingTop: "-128px" }}>
           <Card className="bg-secondary shadow border-0" >
             <CardBody className="px-lg-3 py-sm-5">
               <Form role="form" onSubmit={this.handleSubmit}>

@@ -3,14 +3,17 @@ import EmpTable from "./attTable";
 import Pagination from "../Common/pagination";
 import paginate from "../Common/paginate";
 import _ from "lodash";
-import get_attlist from "../../reduxstore/actions/attAction";
+import get_attlist, { get_moreattlist } from "../../reduxstore/actions/attAction";
 import emp from "../../services/empservice";
 import { connect } from "react-redux";
 import Paginations from "./../Common/pagination";
 import Joi from "joi-browser";
 import ESidebar from "../Sidebar/eSidebar";
+import { toast } from "react-toastify";
 
 import Forms from "components/Common/form";
+import ReactLoading from "react-loading";
+
 
 import {
   Button,
@@ -39,11 +42,16 @@ class AttList extends Forms {
   state = {
     data: { to_Date: "", from_Date: "" },
     employess: [],
+    isLoading: true,
     pageSize: 4,
     errors: [],
     currentPage: 1,
     sortColumn: { path: "", order: "" },
   };
+  constructor() {
+    super();
+    this.state.isLoading = true;
+  }
 
   schema = {
     from_Date: Joi.string().required(),
@@ -100,6 +108,7 @@ class AttList extends Forms {
 
     const dd = await this.props.getattlist;
     await this.setState({ employess: dd });
+    await this.setState({ isLoading: false });
 
     // const jwt = await emp.getCurrentUser();
     // const id = jwt.EmployeeId;
@@ -109,17 +118,55 @@ class AttList extends Forms {
     // });
   }
 
+  onloadmore = async () => {
+
+    try {
+
+      await get_moreattlist()
+      const dd = await this.props.getattlist;
+      this.setState({ employess: dd })
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data.data);
+      }
+    }
+  };
+
   render() {
     const { pageSize, currentPage, sortColumn } = this.state;
     const { totalCount, data: employess } = this.getPageData();
     return (
       <div style={{ paddingBottom: "70%" }}>
         <ESidebar />
+
         <EmpTable
           employess={employess}
           sortColumn={sortColumn}
           onSort={this.handleSort}
         />
+        <Button variant="contained" onClick={this.onloadmore} style={{
+          zIndex: '1001'
+        }}>
+          Load more
+        </Button>
+        {this.state.employess.length ? <p> No Data</p> : ''}
+        {this.state.isLoading ? (
+          <div
+            style={{
+              zIndex: '1001'
+            }}
+          >
+            <ReactLoading
+              type="bars"
+              color="#aaaa"
+              height={"10%"}
+              width={"10%"}
+            />
+          </div>
+        ) : (
+          ""
+        )}
+
         {/* <Paginations
           itemsCount={totalCount}
           pageSize={pageSize}

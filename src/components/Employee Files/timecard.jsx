@@ -46,20 +46,18 @@ class TimeCard extends Forms {
     var formattedNumber = ("0" + myNumber).slice(-2);
     var time = today.getHours() + ":" + formattedNumber;
 
-    if (time > this.state.timelimit) return toast.error("Contract Admin");
+    if (time > this.state.timelimit) return toast.error("Contact Admin");
     try {
+
       await this.setState({ inTime: time });
-      await checkIn(this.state.inTime);
-      // await getEmployees();
-      this.props.history.push("/employee/inTime");
-      if (this.state) {
-        toast.success("Work Started!!!");
-      }
-      setTimeout(() => {
-        window.location = state ? state.from.pathname : "/edashboard";
-      }, 2000);
+      const res = await checkIn(this.state.inTime);
+      if (res.data) toast.error(res.data)
+
+      toast.success("Work Started!!!");
+
       const { state } = this.props.location;
     } catch (ex) {
+      console.log(ex)
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         errors.inTime = ex.response.inTime;

@@ -7,7 +7,7 @@ const ProtectedRoute = ({ path, component: Component, render, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        if (!auth.getCurrentUser().AdminId)
+        if (auth.getCurrentUser().AdminId)
           return (
             <Redirect
               to={{

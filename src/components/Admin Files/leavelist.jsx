@@ -6,19 +6,24 @@ import LeaveTable from "./leavetable";
 import Sidebar from "../Sidebar/Sidebar";
 import get_leavelist from "../../reduxstore/actions/leaveAction";
 import Paginations from "./../Common/pagination";
+import ReactLoading from "react-loading";
 
 class LeaveList extends React.Component {
+  state = {
+    leaves: [],
+
+    currentPage: 1,
+    pageSize: 4,
+    searchQuery: "",
+    sortColumn: { path: "Leave", order: "asc" },
+    isLoading: true,
+  };
+
   constructor(props) {
     super(props);
 
-    this.state = {
-      leaves: [],
-      currentPage: 1,
-      pageSize: 4,
-      searchQuery: "",
-      sortColumn: { path: "Leave", order: "asc" },
-      isLoading: true,
-    };
+    this.state.isLoading = true;
+
   }
 
   async componentDidMount() {
@@ -30,6 +35,7 @@ class LeaveList extends React.Component {
     // console.log(dd);
     await this.setState({ leaves: dd });
     this.setState({ isLoading: false });
+
   }
 
   handlePageChange = (page) => {
@@ -86,6 +92,25 @@ class LeaveList extends React.Component {
           sortColumn={sortColumn}
           onSort={this.handleSort}
         />
+        {this.state.isLoading ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              // alignItems: "center",
+              height: "100vh",
+            }}
+          >
+            <ReactLoading
+              type="bars"
+              color="#aaaa"
+              height={"10%"}
+              width={"10%"}
+            />
+          </div>
+        ) : (
+          ""
+        )}
 
         <Paginations
           itemsCount={totalCount}

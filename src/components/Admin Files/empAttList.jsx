@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import Paginations from "./../Common/pagination";
 import Joi from "joi-browser";
 import Sidebar from "components/Sidebar/Sidebar";
+import ReactLoading from "react-loading";
 
 import Forms from "components/Common/form";
 
@@ -41,6 +42,7 @@ class EmpAttList extends Forms {
     employess: [],
     pageSize: 10,
     id: [],
+    isLoading: true,
     errors: [],
     currentPage: 1,
     sortColumn: { path: "Date", order: "asc" },
@@ -92,6 +94,8 @@ class EmpAttList extends Forms {
     return { totalCount: filtered.length, data: employess };
   };
 
+
+
   async componentDidMount() {
     await this.setState({ id: this.props.match.params.id })
     if (!this.props.getattlist) {
@@ -100,6 +104,7 @@ class EmpAttList extends Forms {
 
     const dd = await this.props.getademplist;
     await this.setState({ employess: dd });
+    await this.setState({ isLoading: false });
 
     // const jwt = await emp.getCurrentUser();
     // const id = jwt.EmployeeId;
@@ -107,6 +112,11 @@ class EmpAttList extends Forms {
     // this.setState({
     //   employess: dd.data,
     // });
+  }
+
+  constructor() {
+    super();
+    this.state.isLoading = true;
   }
 
   render() {
@@ -121,6 +131,27 @@ class EmpAttList extends Forms {
             sortColumn={sortColumn}
             onSort={this.handleSort}
           />
+          {this.state.employess.length ? '' : <p> No Data</p>}
+
+          {this.state.isLoading ? (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                // alignItems: "center",
+                height: "100vh",
+              }}
+            >
+              <ReactLoading
+                type="bars"
+                color="#aaaa"
+                height={"10%"}
+                width={"10%"}
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </Col>
         {/* <Paginations
           itemsCount={totalCount}

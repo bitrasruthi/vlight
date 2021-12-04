@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import paginate from "../Common/paginate";
 import Pagination from "../Common/pagination";
 import _ from "lodash";
-import {deleteEmp} from "../../services/authService";
+import { deleteEmp } from "../../services/authService";
 import { connect } from "react-redux";
 import get_employeelist from "../../reduxstore/actions/employeeAction";
 import EmployeeTable from "./emplisttable";
@@ -12,20 +12,24 @@ import Sidebar from "../Sidebar/Sidebar";
 import NavBar from "components/Common/navbar";
 import Paginations from "./../Common/pagination";
 import { toast } from "react-toastify";
+import ReactLoading from "react-loading";
+
 
 
 class Employees extends React.Component {
+  state = {
+    employees: [],
+    isLoading: true,
+    currentPage: 1,
+    pageSize: 10,
+    searchQuery: "",
+    sortColumn: { path: "EmployeeName", order: "asc" },
+    isLoading: true,
+  };
+
   constructor(props) {
     super(props);
-
-    this.state = {
-      employees: [],
-      currentPage: 1,
-      pageSize: 10,
-      searchQuery: "",
-      sortColumn: { path: "EmployeeName", order: "asc" },
-      isLoading: true,
-    };
+    this.state.isLoading = true;
   }
 
   handlePageChange = (page) => {
@@ -40,7 +44,9 @@ class Employees extends React.Component {
     const dd = await this.props.getemployeelist;
     // console.log(dd);
     await this.setState({ employees: dd });
-    this.setState({ isLoading: false });
+    await this.setState({ isLoading: false });
+
+
   }
 
   handleSort = (sortColumn) => this.setState({ sortColumn });
@@ -54,13 +60,14 @@ class Employees extends React.Component {
       await deleteEmp(emp.EmployeeId);
       // get_movielist();
       // setTimeout(async () => {}, 1000);
-      this.setState({ employees:empl });
+      this.setState({ employees: empl });
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
         toast("This Emp already been deleted");
       this.setState({ employees: originalemployees });
     }
   };
+
 
   getPagedData = () => {
     const {
@@ -108,6 +115,25 @@ class Employees extends React.Component {
           onSort={this.handleSort}
           onDelete={this.handleDelete}
         />
+        {this.state.isLoading ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+            }}
+          >
+            <ReactLoading
+              type="bars"
+              color="#aaaa"
+              height={"10%"}
+              width={"10%"}
+            />
+          </div>
+        ) : (
+          ""
+        )}
         {/* <Paginations
           itemsCount={totalCount}
           pageSize={pageSize}
