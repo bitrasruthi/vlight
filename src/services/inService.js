@@ -10,7 +10,7 @@ function atturl(id) {
 
 
 export  async function checkIn(user) {
-    const res =  await http.post(apiEndPoint, {inTime: user});
+    const res =  await http.post(apiEndPoint, user);
     return res
     
   }

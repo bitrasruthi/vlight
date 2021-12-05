@@ -20,6 +20,7 @@ const tokenKey = "token";
 function atturl(id) {
   return `${apiEndPointatt}/${id}`;
 }
+
 function logurl(id) {
   return `${apiEndPointlogout}/${id}`;
 }
@@ -39,8 +40,9 @@ export async function changepassword(data) {
   return jwt;
 }
 
-export function getAttendance(empid) {
-  return http.get(atturl(empid));
+export function getAttendance(empid ,skip1) {
+  console.log(skip1)
+  return http.post(atturl(empid) ,{skip:skip1} );
 }
 
 

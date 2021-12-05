@@ -45,12 +45,11 @@ class TimeCard extends Forms {
     var myNumber = today.getMinutes();
     var formattedNumber = ("0" + myNumber).slice(-2);
     var time = today.getHours() + ":" + formattedNumber;
-
-    if (time > this.state.timelimit) return toast.error("Contact Admin");
     try {
 
       await this.setState({ inTime: time });
-      const res = await checkIn(this.state.inTime);
+      var send1 = { inTime: this.state.inTime, timelimit: this.state.timelimit }
+      const res = await checkIn(send1);
       if (res.data) toast.error(res.data)
 
       toast.success("Work Started!!!");
@@ -62,6 +61,12 @@ class TimeCard extends Forms {
         const errors = { ...this.state.errors };
         errors.inTime = ex.response.inTime;
         toast.warn("Already Checked In!!!");
+        this.setState({ errors });
+      }
+      if (ex.response && ex.response.status === 401) {
+        const errors = { ...this.state.errors };
+        errors.inTime = ex.response.inTime;
+        toast.warn("contact Admin");
         this.setState({ errors });
       }
     }
@@ -120,7 +125,7 @@ class TimeCard extends Forms {
               <h1 style={{ textAlign: "center" }}>Welcome !!!</h1>
 
               <h3
-                class="card-title"
+                className="card-title"
                 style={{ textAlign: "center", marginTop: "20px" }}
               >
                 {new Date().toLocaleDateString()}
