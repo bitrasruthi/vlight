@@ -8,6 +8,7 @@ import ECCard from 'components/Admin Files/empCount';
 import get_employeelist from "../../reduxstore/actions/employeeAction";
 import { toast } from "react-toastify";
 import { connect } from "react-redux";
+import ECard from './../Admin Files/empCount';
 
 
 class Dashboard extends React.Component {
@@ -34,7 +35,9 @@ class Dashboard extends React.Component {
             <NavBar />
             <h1 style={{ textAlign: 'center', color: 'black' }}>Welcome Admin!!!</h1>
             <ProductionHours />
-            <ECCard
+            {/* <ECard /> */}
+
+            <ECard
                 count={this.state.employees.length}
             />
             {/* <NoOfEmp/> */}

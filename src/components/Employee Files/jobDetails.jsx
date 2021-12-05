@@ -117,7 +117,7 @@ import {
                 {this.renderInput("from_upto", "Worked From - To",)}
             
                 <div className="text-center">
-                <Button style={{background: '#B965E0', marginTop: '450px', marginLeft: '700px',border: 'none'}} 
+                <Button style={{background: '#B965E0', marginTop: 'px', marginLeft: '0px',border: 'none'}} 
                 className="" color="primary" type="submit">
                   Update
                 </Button>

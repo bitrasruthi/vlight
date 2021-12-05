@@ -124,9 +124,9 @@ class EmpAttList extends Forms {
     const { totalCount, data: employess } = this.getPageData();
     return (
       <div style = {{height: '', position: "absolute", left: '0', width: '100%',}} 
-      className="header bg-gradient-success py-2 py-sm-3 ">
+      className="py-2 py-sm-3 ">
         <Sidebar />
-        <Col  lg="4" md="7" style={{marginLeft:"6rem", paddingTop: "px", position: 'absolute'}}>
+        <Col lg="8" md="7" style={{ marginLeft: "6rem", paddingTop: "px", position: 'absolute', }}>
 
           <EmpTable
             employess={employess}
@@ -157,7 +157,52 @@ class EmpAttList extends Forms {
             ""
           )}
           </Col>
-        
+          <Col lg="3" md="3" style={{ marginLeft: "76%", marginTop: "auto", position: "fixed", }}>
+          <Card className="card__wrap--inner bg-secondary shadow border-0">
+            {/* <h1
+              style={{
+                marginLeft: "60px",
+                paddingTop: "28px",
+              }}
+            >
+              Filter </h1> */}
+            <CardBody className="px-lg-2 py-sm-5">
+              <Form
+                role="form"
+                onSubmit={this.handleSubmit}
+                style={{
+                  padding: "0px 20px",
+                  textAlign: "",
+                  color: "",
+                }}
+              >
+                {this.renderInput("from_Date", "From Date", "date")}
+                {this.renderInput("to_Date", "To Date", "date")}
+
+                <div className="text-center">
+                  <div
+                  // style={{ background: "#172B4D", border: "none" }}
+                  // className="my-4"
+                  // color="primary"
+                  // type="submit"
+                  >
+                    {" "}
+                    {this.renderButton("Search")}{" "}
+                  </div>
+
+                  {/* <Button
+                    style={{ background: "#172B4D", border: "none" }}
+                    className="my-4"
+                    color="primary"
+                    type="submit"
+                  >
+                    search
+                  </Button> */}
+                </div>
+              </Form>
+            </CardBody>
+          </Card>
+        </Col>
       </div>
     );
   }
