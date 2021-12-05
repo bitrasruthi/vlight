@@ -124,7 +124,7 @@ class AttList extends Forms {
   onloadmore = async () => {
     const { i } = this.state
     try {
-      var skip = i * 30
+      var skip = i * 2
       this.setState({ i: i++ })
 
       await get_moreattlist(skip)
@@ -141,18 +141,18 @@ class AttList extends Forms {
     const { pageSize, currentPage, sortColumn } = this.state;
     const { totalCount, data: employess } = this.getPageData();
     return (
-      <div style = {{height: '', position: "absolute", left: '0', width: '100%', }} 
-      className=" py-2 py-sm-3 ">
+      <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
+        className=" py-2 py-sm-3 ">
         <ESidebar />
-        <Col  lg="8" md="7" style={{marginLeft:"6rem", paddingTop: "px", position: 'absolute', }}>
+        <Col lg="8" md="7" style={{ marginLeft: "6rem", paddingTop: "px", position: 'absolute', }}>
 
-        <EmpTable
-          employess={employess}
-          sortColumn={sortColumn}
-          onSort={this.handleSort}
-        />
+          <EmpTable
+            employess={employess}
+            sortColumn={sortColumn}
+            onSort={this.handleSort}
+          />
         </Col>
-        
+
         <Button variant="contained" onClick={this.onloadmore} style={{
           zIndex: '1001'
         }}>
@@ -175,8 +175,8 @@ class AttList extends Forms {
         ) : (
           ""
         )}
-      
-        <Col lg="3" md="3" style={{marginLeft: "76%",marginTop: "auto",position: "fixed",}}>
+
+        <Col lg="3" md="3" style={{ marginLeft: "76%", marginTop: "auto", position: "fixed", }}>
           <Card className="card__wrap--inner bg-secondary shadow border-0">
             {/* <h1
               style={{

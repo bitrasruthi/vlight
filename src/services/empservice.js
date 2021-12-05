@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 
 const apiEndPoint = "http://cghrportal.herokuapp.com/api/employee/login";
 
-const apiEndPointatt = "http://cghrportal.herokuapp.com/api/employee";
+const apiEndPointatt = "http://cghrportal.herokuapp.com/api/employee/getattendance";
 
 const apiEndPointchange =
   "http://cghrportal.herokuapp.com/api/employee/changepassword";

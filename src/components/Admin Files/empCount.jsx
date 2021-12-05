@@ -36,9 +36,9 @@ class ECCard extends EmpWorkingStas {
                                     tag="h5"
                                     className="text-uppercase text-muted mb-0"
                                 >
-                                    Total Production Hours
+                                    Employess Count
                                 </CardTitle>
-                                <span className="h2 font-weight-bold mb-0">{this.props.ss}</span>
+                                <span className="h2 font-weight-bold mb-0">{this.props.count}</span>
                             </div>
 
                         </Row>

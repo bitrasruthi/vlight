@@ -2,7 +2,7 @@ import http from "./httpService";
 import jwtDecode from "jwt-decode";
 
 
-const apiEndPointPro = "http://cghrportal.herokuapp.com/api/employee/profile";
+const apiEndPointPro = "http://cghrportal.herokuapp.com/api/employee/add/profile";
 const apiEndPointProGet = "http://cghrportal.herokuapp.com/api/employee/details";
 
 const tokenkey = "token";
