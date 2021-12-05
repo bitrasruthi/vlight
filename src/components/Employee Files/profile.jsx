@@ -27,7 +27,7 @@ import {
   class Profile extends Forms{
       state={
           data: {FirstName: '', MiddleName: '', LastName: '', Address:'', City: '', 
-          Country: '', Pincode:'', AboutMe: '', EducationDetails:'', role:''},
+          Country: '', Pincode:'', AboutMe: '', role:''},
       employees: [],
       pageSize: 4,
       id:[],
@@ -45,7 +45,6 @@ import {
         Country: Joi.string().required(),
         Pincode: Joi.string().required(),
         AboutMe: Joi.string().required(),
-        EducationDetails: Joi.string().required(),
       };
 
       handlePageChange = (page) => {
@@ -93,18 +92,18 @@ import {
     }
   
 
-    async componentDidMount() {
-        // this.doSubmit();
-        // const tt = getEmployees();
-        // console.log(tt);
+    // async componentDidMount() {
+    //     // this.doSubmit();
+    //     // const tt = getEmployees();
+    //     // console.log(tt);
        
-          const {data:profile} = await getProDetails();
-          let pp = profile[0].profile;
-          console.log(pp);
-          this.setState({ data: this.mapToViewModel(pp) });
-         if(pp===[]){this.doSubmit();}
+    //       const {data:profile} = await getProDetails();
+    //       let pp = profile[0].profile;
+    //       console.log(pp);
+    //       this.setState({ data: this.mapToViewModel(pp) });
+    //      if(pp===[]){this.doSubmit();}
        
-      }
+    //   }
 
     mapToViewModel(pro) {
         return {
@@ -116,21 +115,21 @@ import {
           Address: pro.Address,
           Pincode:pro.Pincode,
           AboutMe: pro.AboutMe,
-          EducationDetails: pro.EducationDetails
         };
       }    
     
       render() { 
     return (
       <>
-     
-      
+        
         <UserHeader />
         {/* Page content */}
         <Container className="mt--7" fluid>
-          <Row>
-            <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
-              <Card className="card-profile shadow">
+        <div style = {{height: '', position: "absolute", left: '0', width: '100%', }} 
+      className=" py-4 py-sm-3 ">
+          <Row style={{marginTop: '220px', marginLeft: '3rem'}}>
+            <Col  className="order-xl-2 mb-5 mb-xl-0" xl="4">
+              <Card style={{marginRight: '-270px'}} className="card-profile shadow">
                 <Row className="justify-content-center">
                   <Col className="order-lg-2" lg="3">
                     <div className="card-profile-image">
@@ -169,7 +168,7 @@ import {
                     </Button>
                   </div>
                 </CardHeader> */}
-                <CardBody  className="mt-4 pt-md-4">
+                <CardBody  className="mt-4 pt-lg-4">
                   {/* <Row>
                     <div className="col">
                       <div className="card-profile-stats d-flex justify-content-center mt-md-5">
@@ -195,7 +194,7 @@ import {
                     </h3>
                     <div className="h5 font-weight-300">
                       <i className="ni location_pin mr-2" />
-                      {this.state.data.City}, {this.state.data.Country}
+                      {this.state.data.City} {this.state.data.Country}
                     </div>
                    
                     <div>
@@ -203,11 +202,7 @@ import {
                       {this.state.data.EducationDetails}
                     </div>
                     <hr className="my-4" />
-                    <p>
-                      Ryan — the name taken by Melbourne-raised, Brooklyn-based
-                      Nick Murphy — writes, performs and records all of his own
-                      music.
-                    </p>
+                   
                     {/* <a href="#pablo" onClick={(e) => e.preventDefault()}>
                       Show more
                     </a> */}
@@ -215,7 +210,109 @@ import {
                 </CardBody>
               </Card>
             </Col>
-            <Col className="order-xl-1" xl="8">
+
+          <Col style={{marginLeft: '550px', marginTop:'-705px'}}  className="order-xl-2 mb-5 mb-xl-0" xl="4">
+              <Card style={{marginRight: '-270px'}} className="card-profile shadow">
+              <CardHeader className="bg-white border-0">
+                  <Row className="align-items-center">
+                    <Col xs="8">
+                      <h3 className="mb--3">Education </h3>
+                    </Col>
+                    <Col className="text-right" xs="4">
+                      <Button
+                        color="primary"
+                        href="/edudetails"
+                        // onClick={(e) => e.preventDefault()}
+                        size="sm"
+                      >
+                        Update
+                      </Button>
+                    </Col>
+                  </Row>
+                </CardHeader>
+                <Row className="justify-content-center">
+                  <Col className="order-lg-2" lg="3">
+                    <div className="card-profile-image">
+                      
+                    </div>
+                  </Col>
+                </Row>
+                
+                <CardBody style={{background: '#F7FAFC', marginBottom:'50px'}} className="mt-4 pt-lg-4">
+                  <div style={{marginTop: '100px'}} className="text-center">
+                    <h3>
+                    {this.state.data.FirstName}{this.state.data.MiddleName} {this.state.data.LastName}
+                      {/* <span className="font-weight-light">, 27</span> */}
+                    </h3>
+                    <div className="h5 font-weight-300">
+                      <i className="ni location_pin mr-2" />
+                      {this.state.data.City} {this.state.data.Country}
+                    </div>
+                   
+                    <div>
+                      <i className="ni education_hat mr-2" />
+                      {this.state.data.EducationDetails}
+                    </div>
+                   
+                    {/* <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                      Show more
+                    </a> */}
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+            <Col style={{marginLeft: '550px', marginTop:'-343px'}}  className="order-xl-2 mb-5 mb-xl-0" xl="4">
+              <Card style={{marginRight: '-270px'}} className="card-profile shadow">
+              <CardHeader className="bg-white border-0">
+                  <Row className="align-items-center">
+                    <Col xs="8">
+                      <h3 className="mb--3">Experience</h3>
+                    </Col>
+                    <Col className="text-right" xs="4">
+                      <Button
+                        color="primary"
+                        href="/jobdetails"
+                        // onClick={(e) => e.preventDefault()}
+                        size="sm"
+                      >
+                        Update
+                      </Button>
+                    </Col>
+                  </Row>
+                </CardHeader>
+                <Row className="justify-content-center">
+                  <Col className="order-lg-2" lg="3">
+                    <div className="card-profile-image">
+                      
+                    </div>
+                  </Col>
+                </Row>
+                
+                <CardBody style={{background: '#F7FAFC', marginBottom:'50px'}} className="mt-4 pt-lg-4">
+                  <div style={{marginTop: '100px'}} className="text-center">
+                    <h3>
+                    {this.state.data.FirstName}{this.state.data.MiddleName} {this.state.data.LastName}
+                      {/* <span className="font-weight-light">, 27</span> */}
+                    </h3>
+                    <div className="h5 font-weight-300">
+                      <i className="ni location_pin mr-2" />
+                      {this.state.data.City} {this.state.data.Country}
+                    </div>
+                   
+                    <div>
+                      <i className="ni education_hat mr-2" />
+                      {this.state.data.EducationDetails}
+                    </div>
+                   
+                    {/* <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                      Show more
+                    </a> */}
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+            
+            <Col className="order-xl-1" xl="5">
               <Card className="bg-secondary shadow">
                 <CardHeader className="bg-white border-0">
                   <Row className="align-items-center">
@@ -234,7 +331,7 @@ import {
                     </Col>
                   </Row>
                 </CardHeader>
-                <CardBody>
+                <CardBody >
                 <Form  role="form"
                 onSubmit={this.handleSubmit}
                 style={{
@@ -249,7 +346,6 @@ import {
                 {this.renderInput("Country", "Country",)}
                 {this.renderInput("Pincode", "Pincode",)}
                 {this.renderInput("AboutMe", "About me",)}
-                {this.renderInput("EducationDetails", "Education Details",)}
                 <div className="text-center">
                 <Button style={{background: '#B965E0', border: 'none'}} 
                 className="my-4" color="primary" type="submit">
@@ -261,6 +357,7 @@ import {
               </Card>
             </Col>
           </Row>
+          </div>
         </Container>
       </>
     );

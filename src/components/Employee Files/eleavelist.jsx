@@ -92,12 +92,15 @@ class ELeavsList extends React.Component {
     const { pageSize, currentPage, sortColumn } = this.state;
     const { totalCount, data: leaves } = this.getPageData();
     return (
-      <div>
+      <div style = {{height: '', position: "absolute", left: '0', width: '100%',}} 
+      className="header bg-gradient-success py-2 py-sm-3 ">
+        <Col  lg="8" md="7" style={{marginLeft:"6rem", paddingTop: "px", position: 'absolute'}}>
         <ELeavsTable
           leaves={leaves}
           sortColumn={sortColumn}
           onSort={this.handleSort}
         />
+        </Col>
         {this.state.isLoading ? (
           <div
             style={{
@@ -125,12 +128,7 @@ class ELeavsList extends React.Component {
         ) : (
           ""
         )}
-        <Paginations
-          itemsCount={totalCount}
-          pageSize={pageSize}
-          currentPage={currentPage}
-          onPageChange={this.handlePageChange}
-        />
+      
       </div>
     );
   }

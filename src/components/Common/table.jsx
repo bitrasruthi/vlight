@@ -23,14 +23,10 @@ class Table extends React.Component {
   render() {
     const { columns, sortColumn, onSort, data } = this.props;
     return (
-      <div >
-        {/* <div
-          class="col-md-2 col-md-offset-2 centered"
-          style={{ textAlign: "center", paddingLeft: "250px",  }}
-        > */}
-        {/* <div  className="row justify-content-center"> */}
-        <div style={{ textAlign: 'center', marginLeft: '130px' }} className="col-auto">
-          <table style={{ marginTop: '50px', }} className=" table table-responsive">
+      
+        <div style = {{height: '', position: "absolute", left: '0', width: '100%', }} 
+      className=" py-2 py-sm-3 ">
+                  <table style={{ marginTop: 'px', marginLeft: '330px', textAlign: 'center'}} className=" table table-responsive">
             <TableHeader
               columns={columns}
               sortColumn={sortColumn}
@@ -41,7 +37,6 @@ class Table extends React.Component {
           </table>
 
         </div>
-      </div>
       // </div>
     );
   }

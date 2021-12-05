@@ -112,12 +112,6 @@ class LeaveList extends React.Component {
           ""
         )}
 
-        <Paginations
-          itemsCount={totalCount}
-          pageSize={pageSize}
-          currentPage={currentPage}
-          onPageChange={this.handlePageChange}
-        />
       </div>
     );
   }

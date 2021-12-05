@@ -136,14 +136,18 @@ class AttList extends Forms {
     const { pageSize, currentPage, sortColumn } = this.state;
     const { totalCount, data: employess } = this.getPageData();
     return (
-      <div style={{ paddingBottom: "70%" }}>
+      <div style = {{height: '', position: "absolute", left: '0', width: '100%', }} 
+      className=" py-2 py-sm-3 ">
         <ESidebar />
+        <Col  lg="8" md="7" style={{marginLeft:"6rem", paddingTop: "px", position: 'absolute', }}>
 
         <EmpTable
           employess={employess}
           sortColumn={sortColumn}
           onSort={this.handleSort}
         />
+        </Col>
+        
         <Button variant="contained" onClick={this.onloadmore} style={{
           zIndex: '1001'
         }}>
@@ -166,22 +170,8 @@ class AttList extends Forms {
         ) : (
           ""
         )}
-
-        {/* <Paginations
-          itemsCount={totalCount}
-          pageSize={pageSize}
-          currentPage={currentPage}
-          onPageChange={this.handlePageChange}
-        /> */}
-        <Col
-          lg="3"
-          md="3"
-          style={{
-            marginLeft: "76%",
-            marginTop: "-160px",
-            position: "sticky",
-          }}
-        >
+      
+        <Col lg="3" md="3" style={{marginLeft: "76%",marginTop: "auto",position: "fixed",}}>
           <Card className="card__wrap--inner bg-secondary shadow border-0">
             {/* <h1
               style={{

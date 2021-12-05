@@ -82,9 +82,15 @@ class AddNew extends Forms {
     render() { 
         return <div>
             <Sidebar/>
-            <NavBar/>
-            <Col lg="5" md="7" style={{marginLeft:"30%", paddingTop: "115px", position: 'absolute'}}>
+            {/* <NavBar/> */}
+            <Col lg="6" md="7" style={{marginLeft:"25%", paddingTop: "auto", position: 'absolute'}}>
         <Card className="bg-secondary shadow border-0" >
+        <CardHeader className="bg-white border-0">
+                    <Col style={{marginLeft: '200px', paddingBottom: '10px'}} xs="8">
+                      <h3  className="mb--3">Add New Employee</h3>
+                    </Col>
+                    
+                </CardHeader>
           <CardBody className="px-lg-3 py-sm-5">
             <Form role="form" onSubmit={this.handleSubmit}>
                   

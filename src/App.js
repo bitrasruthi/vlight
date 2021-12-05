@@ -34,6 +34,8 @@ import ChangePassword from './components/Employee Files/changePassword';
 import EmpWorkingStas from './components/Admin Files/empWorkingStats';
 import ProtectedRoute from "components/Common/protectedRoute";
 import EmpProtectedRoute from "components/Common/empprotectedRoute";
+import EduDetails from './components/Employee Files/eduDetails';
+import JobDetails from './components/Employee Files/jobDetails';
 
 class App extends React.Component {
   render() {
@@ -54,6 +56,8 @@ class App extends React.Component {
                 <Route path="/logout" component={Logout} />
                 <Route path="/changepassword" component={ChangePassword} />
                 <Route path="/empstats" component={EmpWorkingStas} />
+                <Route path="/edudetails" component={EduDetails} />
+                <Route path="/jobdetails" component={JobDetails} />
 
                 <Route path="/navbar" component={NavBar} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} />

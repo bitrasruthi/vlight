@@ -51,7 +51,7 @@ class EmpWorkingStas extends Forms {
           const { data:prod, pHours} = this.state;
           const pp = await calProdHours(prod);
           const ss = pp.data.data;
-          toast.info(`${ss}`);
+          // toast.info(`${ss}`);
             // return ss;
            
         await this.setState({pHours: ss})

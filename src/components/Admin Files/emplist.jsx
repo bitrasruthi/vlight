@@ -101,8 +101,8 @@ class Employees extends React.Component {
     const { totalCount, data } = this.getPagedData();
 
     return (
-      <div className="row">
-        {/* <table >
+      <div style = {{height: '', position: "absolute", left: '0', width: '100%', }} 
+      className=" py-2 py-sm-3 ">        {/* <table >
           <TableHeader/>
                   {this.state.isLoading ? <Loader type="Bars" 
                                                   timeout={1000}  />
