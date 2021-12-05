@@ -4,9 +4,11 @@ const attReducer = (state = null, { type, payload }) => {
   switch (type) {
     case GET_ATTENDANCE_LIST:
       return payload;
+
     case GET_MOREATTENDANCE_LIST:
-      state.push(payload)
-      
+      payload.forEach(element => {
+        state.push(element)
+      });
       return state;
     default:
       return state;

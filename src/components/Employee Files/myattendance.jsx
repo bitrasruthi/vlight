@@ -45,7 +45,7 @@ class AttList extends Forms {
     skip: 0,
     i: 0,
     isLoading: true,
-    pageSize: 4,
+    pageSize: 10,
     errors: [],
     currentPage: 1,
     sortColumn: { path: "", order: "" },
@@ -106,7 +106,7 @@ class AttList extends Forms {
   async componentDidMount() {
     if (!this.props.getattlist) {
       await get_attlist(this.state.skip);
-      await this.setState({ i: this.state.i++ })
+      await this.setState({ i: this.state.i + 1 })
     }
 
     const dd = await this.props.getattlist;
@@ -123,9 +123,10 @@ class AttList extends Forms {
 
   onloadmore = async () => {
     const { i } = this.state
+
     try {
       var skip = i * 2
-      this.setState({ i: i++ })
+      await this.setState({ i: this.state.i + 1 })
 
       await get_moreattlist(skip)
       const dd = await this.props.getattlist;

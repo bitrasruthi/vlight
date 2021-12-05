@@ -3,13 +3,15 @@ import EmpTable from "../Employee Files/attTable";
 import Pagination from "../Common/pagination";
 import paginate from "../Common/paginate";
 import _ from "lodash";
-import get_empattlist from "../../reduxstore/actions/adminattAction";
+import get_empattlist, { get_moreempattlist } from "../../reduxstore/actions/adminattAction";
 import emp from "../../services/empservice";
 import { connect } from "react-redux";
 import Paginations from "./../Common/pagination";
 import Joi from "joi-browser";
 import Sidebar from "components/Sidebar/Sidebar";
 import ReactLoading from "react-loading";
+import { toast } from "react-toastify";
+
 
 import Forms from "components/Common/form";
 
@@ -41,6 +43,8 @@ class EmpAttList extends Forms {
     data: { to_Date: "", from_Date: "" },
     employess: [],
     pageSize: 10,
+    skip: 0,
+    i: 0,
     id: [],
     isLoading: true,
     errors: [],
@@ -99,20 +103,31 @@ class EmpAttList extends Forms {
   async componentDidMount() {
     await this.setState({ id: this.props.match.params.id })
     if (!this.props.getattlist) {
-      await get_empattlist(this.state.id);
+      await get_empattlist(this.state.id, this.state.skip);
+      await this.setState({ i: this.state.i + 1 })
+
     }
 
     const dd = await this.props.getademplist;
     await this.setState({ employess: dd });
     await this.setState({ isLoading: false });
-
-    // const jwt = await emp.getCurrentUser();
-    // const id = jwt.EmployeeId;
-    // const dd = await emp.getAttendance(id);
-    // this.setState({
-    //   employess: dd.data,
-    // });
   }
+  onloadmore = async () => {
+    const { i } = this.state
+
+    try {
+      var skip = i * 2
+      await this.setState({ i: this.state.i + 1 })
+
+      await get_moreempattlist(this.state.id, skip)
+      const dd = await this.props.getademplist;
+      this.setState({ employess: dd })
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data.data);
+      }
+    }
+  };
 
   constructor() {
     super();
@@ -133,8 +148,13 @@ class EmpAttList extends Forms {
             sortColumn={sortColumn}
             onSort={this.handleSort}
           />
-          </Col>
-          <Col>
+          <Button variant="contained" onClick={this.onloadmore} style={{
+            zIndex: '1001'
+          }}>
+            Load more
+          </Button>
+        </Col>
+        <Col>
           {this.state.employess.length ? '' : <p> No Data</p>}
 
           {this.state.isLoading ? (

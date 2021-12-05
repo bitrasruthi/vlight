@@ -41,7 +41,7 @@ export async function changepassword(data) {
 }
 
 export function getAttendance(empid ,skip1) {
-  console.log(skip1)
+  
   return http.post(atturl(empid) ,{skip:skip1} );
 }
 

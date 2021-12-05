@@ -57,6 +57,7 @@ class App extends React.Component {
                 <Route path="/changepassword" component={ChangePassword} />
                 <Route path="/empstats" component={EmpWorkingStas} />
                 <Route path="/edudetails" component={EduDetails} />
+                
                 <Route path="/jobdetails" component={JobDetails} />
 
                 <Route path="/navbar" component={NavBar} />

@@ -4,16 +4,21 @@ import _ from "lodash";
 import { connect } from "react-redux";
 import LeaveTable from "./leavetable";
 import Sidebar from "../Sidebar/Sidebar";
-import get_leavelist from "../../reduxstore/actions/leaveAction";
+import get_leavelist, { get_moreleavelist } from "../../reduxstore/actions/leaveAction";
 import Paginations from "./../Common/pagination";
 import ReactLoading from "react-loading";
+import { toast } from "react-toastify";
+import {
+  Button,
 
+} from "reactstrap";
 class LeaveList extends React.Component {
   state = {
     leaves: [],
-
+    skip: 0,
+    i: 0,
     currentPage: 1,
-    pageSize: 4,
+    pageSize: 10,
     searchQuery: "",
     sortColumn: { path: "Leave", order: "asc" },
     isLoading: true,
@@ -28,7 +33,8 @@ class LeaveList extends React.Component {
 
   async componentDidMount() {
     if (!this.props.getleavelist) {
-      await get_leavelist();
+      await get_leavelist(this.state.skip);
+      await this.setState({ i: this.state.i + 1 })
     }
     // const {data:movies} = await getMovies();
     const dd = await this.props.getleavelist;
@@ -38,6 +44,22 @@ class LeaveList extends React.Component {
 
   }
 
+  onloadmore = async () => {
+    const { i } = this.state
+
+    try {
+      var skip = i * 2
+      await this.setState({ i: this.state.i + 1 })
+
+      await get_moreleavelist(skip)
+      const dd = await this.props.getleavelist;
+      this.setState({ leaves: dd })
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data.data);
+      }
+    }
+  };
   handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
@@ -92,6 +114,11 @@ class LeaveList extends React.Component {
           sortColumn={sortColumn}
           onSort={this.handleSort}
         />
+        <Button variant="contained" onClick={this.onloadmore} style={{
+          zIndex: '1001'
+        }}>
+          Load more
+        </Button>
         {this.state.isLoading ? (
           <div
             style={{

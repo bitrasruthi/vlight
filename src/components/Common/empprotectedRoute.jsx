@@ -7,7 +7,7 @@ const EmpProtectedRoute = ({ path, component: Component, render, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        if (auth.getCurrentUser().AdminId)
+        if (auth.getCurrentUser().isAdmin)
           return (
             <Redirect
               to={{

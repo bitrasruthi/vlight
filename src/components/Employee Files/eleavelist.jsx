@@ -3,11 +3,13 @@ import paginate from "../Common/paginate";
 import Pagination from "../Common/pagination";
 import _ from "lodash";
 import { connect } from "react-redux";
-import get_empleavelist from "../../reduxstore/actions/empleaveTable";
+import get_empleavelist, { get_moreempleavelist } from "../../reduxstore/actions/empleaveTable";
 
 import ELeavsTable from "./eleavetable";
 import Paginations from "./../Common/pagination";
 import ReactLoading from "react-loading";
+import { toast } from "react-toastify";
+
 import {
   Button,
   Card,
@@ -42,6 +44,8 @@ import {
 class ELeavsList extends React.Component {
   state = {
     leaves: [],
+    skip: 0,
+    i: 0,
     pageSize: 10,
     currentPage: 1,
     isLoading: true,
@@ -80,26 +84,49 @@ class ELeavsList extends React.Component {
 
   async componentDidMount() {
     if (!this.props.getempleavelist) {
-      await get_empleavelist();
+      await get_empleavelist(this.state.skip);
+      await this.setState({ i: this.state.i + 1 })
+
     }
     const dd = await this.props.getempleavelist;
     await this.setState({ leaves: dd });
+    console.log(this.state)
     this.setState({ isLoading: false });
 
   }
+  onloadmore = async () => {
+    const { i } = this.state
+    try {
+      var skip = i * 2
+      await this.setState({ i: this.state.i + 1 })
+      await get_moreempleavelist(skip)
+      const dd = await this.props.getempleavelist;
+
+      this.setState({ leaves: dd })
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data.data);
+      }
+    }
+  };
 
   render() {
     const { pageSize, currentPage, sortColumn } = this.state;
     const { totalCount, data: leaves } = this.getPageData();
     return (
-      <div style = {{height: '', position: "absolute", left: '0', width: '100%',}} 
-      className="header bg-gradient-success py-2 py-sm-3 ">
-        <Col  lg="8" md="7" style={{marginLeft:"6rem", paddingTop: "px", position: 'absolute'}}>
-        <ELeavsTable
-          leaves={leaves}
-          sortColumn={sortColumn}
-          onSort={this.handleSort}
-        />
+      <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
+        className="header bg-gradient-success py-2 py-sm-3 ">
+        <Col lg="8" md="7" style={{ marginLeft: "6rem", paddingTop: "px", position: 'absolute' }}>
+          <ELeavsTable
+            leaves={leaves}
+            sortColumn={sortColumn}
+            onSort={this.handleSort}
+          />
+          <Button variant="contained" onClick={this.onloadmore} style={{
+            zIndex: '1001'
+          }}>
+            Load more
+          </Button>
         </Col>
         {this.state.isLoading ? (
           <div
@@ -110,14 +137,7 @@ class ELeavsList extends React.Component {
               height: "100vh",
             }}
           >
-            <Button variant="contained" onClick={this.onloadmore} style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100vh",
-            }}>
-              Approve
-            </Button>
+
             <ReactLoading
               type="bars"
               color="#aaaa"
@@ -128,7 +148,7 @@ class ELeavsList extends React.Component {
         ) : (
           ""
         )}
-      
+
       </div>
     );
   }

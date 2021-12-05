@@ -26,10 +26,11 @@ export async function leavestatus(data) {
   return await http.post(apiEndPointAdminsta, data);
 }
 
-export function getLeaves() {
-  return http.get(apiEndPointAdmin);
+export function getLeaves(skip1) {
+  
+  return http.post(apiEndPointAdmin,{skip:skip1});
 }
 
-export function getempLeaves() {
-  return http.post(apiEndPointEmpleaves);
+export function getempLeaves(skip1) {
+  return http.post(apiEndPointEmpleaves,{skip:skip1});
 }
