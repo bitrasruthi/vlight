@@ -5,10 +5,11 @@ const leaveReducer = (state = null, { type, payload }) => {
     case GET_LEAVE_LIST:
       return payload;
     case GET_MORELEAVE_LIST:
-      payload.forEach(element => {
+      payload.data.forEach(element => {
         state.push(element)
-      });
-      
+      }); 
+      state.skip = payload.skip
+      console.log(state)
       return state;
     default:
       return state;

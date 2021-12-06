@@ -17,6 +17,7 @@ class LeaveList extends React.Component {
     leaves: [],
     skip: 0,
     i: 0,
+    loadstatus: false,
     currentPage: 1,
     pageSize: 10,
     searchQuery: "",
@@ -38,8 +39,9 @@ class LeaveList extends React.Component {
     }
     // const {data:movies} = await getMovies();
     const dd = await this.props.getleavelist;
-    // console.log(dd);
-    await this.setState({ leaves: dd });
+    console.log(dd)
+    await this.setState({ leaves: dd, i: dd.skip || 1 })
+    console.log(this.state)
     this.setState({ isLoading: false });
 
   }
@@ -58,6 +60,11 @@ class LeaveList extends React.Component {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
       }
+      if (ex.response && ex.response.status === 400) {
+
+        this.setState({ loadstatus: true, i: this.state.i - 1 })
+      }
+
     }
   };
   handlePageChange = (page) => {
@@ -114,7 +121,7 @@ class LeaveList extends React.Component {
           sortColumn={sortColumn}
           onSort={this.handleSort}
         />
-        <Button variant="contained" onClick={this.onloadmore} style={{
+        <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
           zIndex: '1001'
         }}>
           Load more
