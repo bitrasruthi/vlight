@@ -28,8 +28,8 @@ class ECard extends EmpWorkingStas {
 
     render() { 
         return <div>
-             <Col style={{marginLeft: '700px', marginTop: 'auto', marginBottom: '100px'}}lg="6" xl="4">
-                <Card style={{marginTop: '-120px', paddingBottom: '20px', paddingTop: '18px', paddingRight: '-30px'}} className="card-stats mb-6 mb-0">
+             <Col style={{marginLeft: '500px',marginTop: '100px',  }}lg="6" xl="4">
+                <Card style={{marginTop: 'auto',  marginRight: '0px', paddingBottom: '20px', paddingTop: '18px', paddingRight: '0px'}} className="card-stats mb-6 mb-0">
                   <CardBody>
                     <Row>
                       <div className="col">
@@ -39,11 +39,11 @@ class ECard extends EmpWorkingStas {
                         >
                           Total Employees
                         </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">{this.props.count}</span>
+                        <span style={{paddingLeft: '40px'}}  className="h2 font-weight-bold mb-0">{this.props.count}</span>
                       </div>
-                      <Col className="col-auto">
-                        <div  className="icon icon-shape bg-warning text-white rounded-circle shadow">
-                          <i style={{paddingLeft: '-30px'}} className="fas fa-chart-pie" />
+                      <Col  className="col">
+                        <div style={{marginLeft: '0px'}}  className="icon icon-shape bg-warning text-white rounded-circle shadow">
+                          <i  className="fas fa-chart-pie" />
                         </div>
                       </Col>
                     </Row>

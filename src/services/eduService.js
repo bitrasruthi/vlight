@@ -2,11 +2,15 @@ import http from "./httpService";
 import jwtDecode from "jwt-decode";
 
 
-// const apiEndPointPro = "http://cghrportal.herokuapp.com/api/employee/profile";
+const apiEndPointEduUpdate = "http://cghrportal.herokuapp.com/api/employee/updateEducationalDetails";
 const apiEndPointEdu = "http://cghrportal.herokuapp.com/api/employee/add/EducationalDetails";
 
 const tokenkey = "token";
 
+
+function atturl(name) {
+  return `${apiEndPointEduUpdate}/${name}`;
+}
 
 export function getJwt() {
   return localStorage.getItem(tokenkey);
@@ -23,15 +27,16 @@ export function registerEduDetails(user) {
   });
 }
 
-export async function getEduDetails(data) {
-    const { data: ser } = await http.post(apiEndPointEdu, data);
-    return ser;
+export async function updateEduDetails(data) {
+ return await http.post(atturl(data.qualification));
+
+    // return ser;
   }
   
   
 
   const pro = {
-      getEduDetails,
+      updateEduDetails,
       getJwt,
       registerEduDetails
   }

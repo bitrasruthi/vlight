@@ -115,7 +115,7 @@ class ELeavsList extends React.Component {
     const { totalCount, data: leaves } = this.getPageData();
     return (
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
-        className="header bg-gradient-success py-2 py-sm-3 ">
+        className=" py-2 py-sm-3 ">
         <Col lg="8" md="7" style={{ marginLeft: "6rem", paddingTop: "px", position: 'absolute' }}>
           <ELeavsTable
             leaves={leaves}
@@ -123,7 +123,7 @@ class ELeavsList extends React.Component {
             onSort={this.handleSort}
           />
           <Button variant="contained" onClick={this.onloadmore} style={{
-            zIndex: '1001'
+            zIndex: '1001', marginLeft: '180px'
           }}>
             Load more
           </Button>

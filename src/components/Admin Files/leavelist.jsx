@@ -9,7 +9,7 @@ import Paginations from "./../Common/pagination";
 import ReactLoading from "react-loading";
 import { toast } from "react-toastify";
 import {
-  Button,
+  Button, Col
 
 } from "reactstrap";
 class LeaveList extends React.Component {
@@ -114,8 +114,12 @@ class LeaveList extends React.Component {
     const { totalCount, data } = this.getPagedData();
 
     return (
-      <div className="row">
-        <Sidebar />
+
+      <div style = {{height: '', position: "absolute", left: '0', width: '100%',}} 
+      className="py-2 py-sm-3 ">
+      <Sidebar />
+      <Col lg="8" md="7" style={{ marginLeft: "6rem", paddingTop: "px", position: 'absolute', }}>
+
         <LeaveTable
           leaves={data}
           sortColumn={sortColumn}
@@ -145,7 +149,7 @@ class LeaveList extends React.Component {
         ) : (
           ""
         )}
-
+    </Col>
       </div>
     );
   }

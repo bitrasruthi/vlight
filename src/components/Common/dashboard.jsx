@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
             <Sidebar />
             <NavBar />
             <h1 style={{ textAlign: 'center', color: 'black' }}>Welcome Admin!!!</h1>
-            <ProductionHours />
+            {/* <ProductionHours /> */}
             {/* <ECard /> */}
 
             <ECard

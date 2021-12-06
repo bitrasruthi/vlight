@@ -9,7 +9,7 @@ import Joi from 'joi-browser';
 import Forms from 'components/Common/form';
 import get_employeelist  from 'reduxstore/actions/employeeAction';
 import { getEmployees } from './../../services/userService';
-import { getEduDetails } from 'services/eduService';
+import { updateEduDetails } from 'services/eduService';
 import { registerEduDetails } from 'services/eduService';
 
 import {
@@ -74,14 +74,26 @@ import ESidebar from 'components/Sidebar/eSidebar';
       doSubmit = async () => {
         try {
           const { data } = this.state;
-         await registerEduDetails(data);
+          console.log(data.qualification);
+          
+                     if(data === null && data.qualification === ""){
+                       await registerEduDetails(data);
+                     }
+          
+           else if(data.qualification === 'ssc'|| 'ug' || 'pg' || 'degree' ){
+           await updateEduDetails(data)
+           this.setState(data.qualification);}
+        //  const tt = await this.setState({data: pp.data});
         //   console.log(tt);
-          toast.success("Education details Updated Successfully");
-          setTimeout(() => {
-            window.location = state ? state.from.pathname : "/profile";
-          }, 2000);
-          const { state } = this.props.location;
-        //   await getEduDetails();
+          
+          
+        // //   console.log(tt);
+        //   toast.success("Education details Updated Successfully");
+          // setTimeout(() => {
+          //   window.location = state ? state.from.pathname : "/profile";
+          // }, 2000);
+          // const { state } = this.props.location;
+          
         } catch (ex) {
           if (ex.response && ex.response.status === 400) {
             const errors = { ...this.state.errors };
