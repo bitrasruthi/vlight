@@ -27,6 +27,7 @@ import {
     Row,
     Col,
   } from "reactstrap";
+import JobCard from './jobCard';
   // core components
 
   class JobDetails extends Forms{
@@ -51,50 +52,41 @@ import {
       doSubmit = async () => {
         try {
           const { data } = this.state;
-          const tt = await registerJobDetails(data);
+          await registerJobDetails(data);
           toast.success("Job details Updated Successful");
           setTimeout(() => {
             window.location = state ? state.from.pathname : "/profile";
           }, 2000);
           const { state } = this.props.location;
-          await getJobDetails();
+        //   await getJobDetails();
         } catch (ex) {
           if (ex.response && ex.response.status === 400) {
             const errors = { ...this.state.errors };
-            errors.qualification = ex.response.data.data;
+            errors.company = ex.response.data.data;
             this.setState({ errors });
           }
         }
     }
   
-
-    // async componentDidMount() {
-    //     // this.doSubmit();
-    //     // const tt = getEmployees();
-    //     // console.log(tt);
-       
-    //       const {data:profile} = await getEduDetails();
-    //       let pp = profile[0].profile;
+    //   async componentDidMount() {
+    //       const {data:jobExperiences} = await getJobDetails();
+    //       let pp = jobExperiences;
     //       console.log(pp);
-    //       this.setState({ data: this.mapToViewModel(pp) });
-    //      if(pp===[]){this.doSubmit();}
-       
+    //     //   this.setState({ data: this.mapToViewModel(pp) });
+    //     //  if(pp===[]){this.doSubmit();}
+    
     //   }
 
     mapToViewModel(pro) {
         return {
-          FirstName: pro.FirstName,
-          MiddleName: pro.MiddleName,
-          LastName: pro.LastName,
-          Country: pro.Country,
-          City: pro.City,
-          Address: pro.Address,
-          Pincode:pro.Pincode,
-          AboutMe: pro.AboutMe,
-          EducationDetails: pro.EducationDetails
+          companyName: pro.companyName,
+          Experience: pro.Experience,
+          Role: pro.Role,
+          from_upto: pro.from_upto,
+         
         };
       }    
-    
+
       render() { 
     return (
       <>
@@ -126,6 +118,8 @@ import {
                 </CardBody>
               </Card>
             </Col>
+            <JobCard/>
+            
            
             </Row>
         </div>

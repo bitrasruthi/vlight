@@ -153,9 +153,9 @@ class AttList extends Forms {
             onSort={this.handleSort}
           />
         </Col>
-
+      <Col>
         <Button variant="contained" onClick={this.onloadmore} style={{
-          zIndex: '1001'
+          zIndex: '1001', marginLeft: '270px'
         }}>
           Load more
         </Button>
@@ -176,7 +176,7 @@ class AttList extends Forms {
         ) : (
           ""
         )}
-
+</Col>
         <Col lg="3" md="3" style={{ marginLeft: "76%", marginTop: "auto", position: "fixed", }}>
           <Card className="card__wrap--inner bg-secondary shadow border-0">
             {/* <h1

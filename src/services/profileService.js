@@ -25,7 +25,11 @@ export function profileRegister(user) {
     Country: user.Country,
     Pincode: user.Pincode,
     AboutMe: user.AboutMe,
-    EducationDetails: user.EducationDetails,
+    fatherName: user.fatherName,
+    motherName: user.motherName,
+    emergencyNumber: user.emergencyNumber,
+    emergencyAddress: user.emergencyAddress,
+    last_updated_on: user.last_updated_on,
   });
 }
 

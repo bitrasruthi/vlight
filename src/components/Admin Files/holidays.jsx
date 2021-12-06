@@ -109,9 +109,12 @@ class Holidays extends Forms {
     const { totalCount, data: holidays } = this.getPageData();
     return (
       <div>
+         <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
+        className=" py-2 py-sm-3 ">
         <Sidebar />
-        <div style={{ textAlign: "center" }}>Holiday List</div>
-        <Col lg="7" md="7">
+        <Col lg="8" md="7" style={{ marginLeft: "6rem", paddingTop: "px", position: 'absolute', }}>
+
+        
           <HoliTable
             holidays={holidays}
             sortColumn={sortColumn}
@@ -144,7 +147,7 @@ class Holidays extends Forms {
           currentPage={currentPage}
           onPageChange={this.handlePageChange}
         /> */}
-        <Col lg="3" md="5" style={{ marginLeft: "50%", position: 'fixed', paddingTop: "-128px" }}>
+        <Col lg="3" md="3" style={{ marginLeft: "66%", marginTop: "auto", position: "fixed", }}>
           <Card className="bg-secondary shadow border-0" >
             <CardBody className="px-lg-3 py-sm-5">
               <Form role="form" onSubmit={this.handleSubmit}>
@@ -160,7 +163,7 @@ class Holidays extends Forms {
             </CardBody>
           </Card>
         </Col>
-
+        </div>
       </div>
     );
   }

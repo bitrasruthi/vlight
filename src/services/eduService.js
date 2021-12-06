@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 
 
 // const apiEndPointPro = "http://cghrportal.herokuapp.com/api/employee/profile";
-const apiEndPointEdu = "http://cghrportal.herokuapp.com/api/employee/EducationalDetails";
+const apiEndPointEdu = "http://cghrportal.herokuapp.com/api/employee/add/EducationalDetails";
 
 const tokenkey = "token";
 

@@ -79,8 +79,14 @@ class LeaveForm extends Forms {
       <div>
         <ESidebar />
         <h2> Leave Form </h2> <br />
-        <Col lg="5" md="7" style={{marginLeft:"30%", paddingTop: "28px"}}>
+        <Col lg="6" md="7" style={{marginLeft:"25%", paddingTop: "auto", position: 'absolute'}}>
         <Card className="bg-secondary shadow border-0" >
+        <CardHeader className="bg-white border-0">
+                    <Col style={{marginLeft: '220px', paddingBottom: '10px'}} xs="8">
+                      <h3  className="mb--3">Leave Form</h3>
+                    </Col>
+                    
+                </CardHeader>
           <CardBody className="px-lg-3 py-sm-5">
           <form onSubmit={this.handleSubmit}>
             {this.renderInput("from_Date", "From Date", "date")}
