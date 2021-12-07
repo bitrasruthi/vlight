@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { render } from 'react-dom';
 import { useModal } from 'react-hooks-use-modal';
 import { Button } from 'reactstrap';
+
 const PopUp = () => {
   const [Modal, open, close, isOpen] = useModal('root', {
     preventScroll: true,
