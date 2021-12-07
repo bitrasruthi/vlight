@@ -76,13 +76,13 @@ import EduCard from './eduCard';
       doSubmit = async () => {
         try {
           const { data } = this.state;
-          console.log(data.qualification);
+          const pp = (data.qualification);
           
                     //  if(data === null && data.qualification === ""){
                     //    await registerEduDetails(data);
                     //  }
-          
-          if(data.qualification === 'ssc'|| 'ug' || 'pg' || 'degree' ){
+                    if(pp===[]){this.doSubmit();}
+       else if(pp === 'ssc'|| 'ug' || 'pg' || 'degree'  ){
              console.log(data);
            await updateEduDetails(data)
            }

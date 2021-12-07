@@ -29,7 +29,7 @@ class WEProcard extends EmpWorkingStas {
 
     render() {
         return <div>
-            <Col style={{ marginLeft: '530px', marginTop: '30px' }} lg="6" xl="4">
+            <Col style={{ marginLeft: '420px', marginTop: '30px' }} lg="6" xl="4">
                 <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
                         <Row>

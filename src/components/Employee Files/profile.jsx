@@ -51,7 +51,7 @@ import EduCard from './eduCard';
         fatherName: Joi.string().required(),
         motherName: Joi.string().required(),
         emergencyAddress: Joi.string().required(),
-        emergencyNumber: Joi.string().required(),
+        emergencyNumber: Joi.number().required(),
         last_updated_on: Joi.string().required(),
 
       };

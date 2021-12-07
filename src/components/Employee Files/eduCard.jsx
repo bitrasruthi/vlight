@@ -16,6 +16,7 @@ class EduCard extends React.Component {
   async componentDidMount() {
     
     const {data:profile} = await getProDetails();
+    if(profile.length>0){
     let pp = profile[0].EducationalDetails[0];
     let tt = profile[0].EducationalDetails[1];
     let yy = profile[0].EducationalDetails[2];
@@ -30,7 +31,10 @@ class EduCard extends React.Component {
     passedoutYear:yy.passedoutYear, percentage: yy.percentage } });
     this.setState({pg: {qualification:kk.qualification, institute:kk.institute, 
     passedoutYear:kk.passedoutYear, percentage: kk.percentage } });     
-    
+    }
+    else {
+      
+    }
     }
 
 handleBack(){

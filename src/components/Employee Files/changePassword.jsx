@@ -27,7 +27,7 @@ class ChangePassword extends Forms {
     try {
       const { data } = this.state;
       await emp.changepassword(data);
-      toast.success("Login Successful");
+      toast.success("Password Updated");
       setTimeout(() => {
         window.location = state ? state.from.pathname : "/elogin";
       }, 2000);

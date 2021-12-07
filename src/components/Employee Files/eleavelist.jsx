@@ -94,7 +94,7 @@ class ELeavsList extends React.Component {
 
 
       const dd = await this.props.getempleavelist;
-      await this.setState({ leaves: dd, i: dd.skip || 1 });
+      await this.setState({ leaves: dd.data, i: dd.skip || 1 });
 
       this.setState({ isLoading: false });
     }
