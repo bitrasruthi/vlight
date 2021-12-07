@@ -44,6 +44,8 @@ import {
 class ELeavsList extends React.Component {
   state = {
     leaves: [],
+    limit: 2,
+    loadstatus: false,
     skip: 0,
     i: 0,
     pageSize: 10,
@@ -83,15 +85,25 @@ class ELeavsList extends React.Component {
   };
 
   async componentDidMount() {
-    if (!this.props.getempleavelist) {
-      await get_empleavelist(this.state.skip);
-      await this.setState({ i: this.state.i + 1 })
+    try {
+      if (!this.props.getempleavelist) {
+        await get_empleavelist(this.state.skip);
+        await this.setState({ i: this.state.i + 1 })
 
+      }
+
+
+      const dd = await this.props.getempleavelist;
+      await this.setState({ leaves: dd, i: dd.skip || 1 });
+
+      this.setState({ isLoading: false });
     }
-    const dd = await this.props.getempleavelist;
-    await this.setState({ leaves: dd });
-    console.log(this.state)
-    this.setState({ isLoading: false });
+    catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        this.setState({ isLoading: false });
+        toast("no data")
+      }
+    }
 
   }
   onloadmore = async () => {
@@ -106,6 +118,9 @@ class ELeavsList extends React.Component {
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
+      }
+      if (ex.response && ex.response.status === 400) {
+        this.setState({ loadstatus: true, i: this.state.i - 1 })
       }
     }
   };
@@ -122,7 +137,7 @@ class ELeavsList extends React.Component {
             sortColumn={sortColumn}
             onSort={this.handleSort}
           />
-          <Button variant="contained" onClick={this.onloadmore} style={{
+          <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
             zIndex: '1001', marginLeft: '180px'
           }}>
             Load more

@@ -6,10 +6,12 @@ const empleaveReducer = (state = null, { type, payload }) => {
       return payload;
 
     case GET_MOREEMPLEAVE_LIST:
-      
-      payload.forEach(element => {
+  
+      payload.data.forEach(element => {
         state.push(element)
-      });
+      }); 
+      state.skip = payload.skip
+      console.log(state)
       return state;
     default:
       return state;

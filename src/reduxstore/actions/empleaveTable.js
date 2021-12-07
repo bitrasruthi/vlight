@@ -18,7 +18,7 @@ async function get_empleavelist(skip) {
   const data = await getempLeaves(skip);
   store.dispatch({
     type: GET_MOREEMPLEAVE_LIST,
-    payload: data.data,
+    payload: { data:data, skip:data.skip || skip}
   });
 }
 

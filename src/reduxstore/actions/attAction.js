@@ -26,7 +26,7 @@ async function get_attlist(skip1) {
     
   store.dispatch({
     type: GET_MOREATTENDANCE_LIST,
-    payload: data.data.data,
+    payload: { data:data.data.data, skip:data.skip || skip1}
   });
 }
 

@@ -15,9 +15,10 @@ import {
 class LeaveList extends React.Component {
   state = {
     leaves: [],
-    skip: 0,
-    i: 0,
+    limit: 2,
     loadstatus: false,
+    i: 0,
+    skip: 0,
     currentPage: 1,
     pageSize: 10,
     searchQuery: "",
@@ -33,35 +34,47 @@ class LeaveList extends React.Component {
   }
 
   async componentDidMount() {
-    if (!this.props.getleavelist) {
-      await get_leavelist(this.state.skip);
-      await this.setState({ i: this.state.i + 1 })
-    }
-    // const {data:movies} = await getMovies();
-    const dd = await this.props.getleavelist;
-    console.log(dd)
-    await this.setState({ leaves: dd, i: dd.skip || 1 })
-    console.log(this.state)
-    this.setState({ isLoading: false });
+    try {
 
+      if (!this.props.getleavelist) {
+        await get_leavelist(this.state.skip);
+        await this.setState({ i: this.state.i + 1 })
+      }
+      // const {data:movies} = await getMovies();
+      const dd = await this.props.getleavelist;
+      console.log(dd)
+      await this.setState({ leaves: dd, i: dd.skip || 1 })
+
+      this.setState({ isLoading: false });
+    }
+    catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        this.setState({ isLoading: false });
+        toast("no data")
+      }
+    }
   }
 
   onloadmore = async () => {
-    const { i } = this.state
+    const { i, limit } = this.state
 
     try {
-      var skip = i * 2
+      var skip = i * limit
       await this.setState({ i: this.state.i + 1 })
 
       await get_moreleavelist(skip)
       const dd = await this.props.getleavelist;
-      this.setState({ leaves: dd })
+      await this.setState({ leaves: dd })
+
+      // if (!dd.length < limit) {
+      //   this.setState({ loadstatus: true })
+
+      // }
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
       }
       if (ex.response && ex.response.status === 400) {
-
         this.setState({ loadstatus: true, i: this.state.i - 1 })
       }
 

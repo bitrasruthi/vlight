@@ -36,7 +36,6 @@ import ProtectedRoute from "components/Common/protectedRoute";
 import EmpProtectedRoute from "components/Common/empprotectedRoute";
 import EduDetails from './components/Employee Files/eduDetails';
 import JobDetails from './components/Employee Files/jobDetails';
-
 class App extends React.Component {
   render() {
     return (

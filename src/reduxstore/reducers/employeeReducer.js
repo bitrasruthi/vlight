@@ -6,9 +6,11 @@ const attReducer = (state = null, { type, payload }) => {
       return payload;
 
     case GET_MOREATTENDANCE_LIST:
-      payload.forEach(element => {
+      payload.data.forEach(element => {
         state.push(element)
-      });
+      }); 
+      state.skip = payload.skip
+      console.log(state)
       return state;
     default:
       return state;

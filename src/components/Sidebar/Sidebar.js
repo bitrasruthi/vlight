@@ -98,7 +98,7 @@ const Sidebar = (props) => {
   };
   // toggles collapse between opened and closed (true/false)
   const toggleCollapse = () => {
-    setCollapseOpen((data) => !data);
+    setCollapseOpen((data) => !data); 
   };
   // closes the collapse
   const closeCollapse = () => {

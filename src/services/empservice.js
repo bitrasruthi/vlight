@@ -56,7 +56,9 @@ export function loginWithJwt(jwt) {
 }
 
 export function logout(empid) {
+
   localStorage.removeItem(tokenKey);
+  
   return http.post(logurl(empid));
 }
 

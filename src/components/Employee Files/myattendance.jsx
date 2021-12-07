@@ -42,9 +42,11 @@ class AttList extends Forms {
   state = {
     data: { to_Date: "", from_Date: "" },
     employess: [],
+    limit: 2,
     skip: 0,
     i: 0,
     isLoading: true,
+    loadstatus: false,
     pageSize: 10,
     errors: [],
     currentPage: 1,
@@ -110,7 +112,7 @@ class AttList extends Forms {
     }
 
     const dd = await this.props.getattlist;
-    await this.setState({ employess: dd });
+    await this.setState({ employess: dd, i: dd.skip || 1 });
     await this.setState({ isLoading: false });
 
     // const jwt = await emp.getCurrentUser();
@@ -135,6 +137,9 @@ class AttList extends Forms {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
       }
+      if (ex.response && ex.response.status === 400) {
+        this.setState({ loadstatus: true, i: this.state.i - 1 })
+      }
     }
   };
 
@@ -153,30 +158,30 @@ class AttList extends Forms {
             onSort={this.handleSort}
           />
         </Col>
-      <Col>
-        <Button variant="contained" onClick={this.onloadmore} style={{
-          zIndex: '1001', marginLeft: '270px'
-        }}>
-          Load more
-        </Button>
-        {this.state.employess.length ? <p> No Data</p> : ''}
-        {this.state.isLoading ? (
-          <div
-            style={{
-              zIndex: '1001'
-            }}
-          >
-            <ReactLoading
-              type="bars"
-              color="#aaaa"
-              height={"10%"}
-              width={"10%"}
-            />
-          </div>
-        ) : (
-          ""
-        )}
-</Col>
+        <Col>
+          <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
+            zIndex: '1001', marginLeft: '270px'
+          }}>
+            Load more
+          </Button>
+          {this.state.employess.length ? <p> No Data</p> : ''}
+          {this.state.isLoading ? (
+            <div
+              style={{
+                zIndex: '1001'
+              }}
+            >
+              <ReactLoading
+                type="bars"
+                color="#aaaa"
+                height={"10%"}
+                width={"10%"}
+              />
+            </div>
+          ) : (
+            ""
+          )}
+        </Col>
         <Col lg="3" md="3" style={{ marginLeft: "76%", marginTop: "auto", position: "fixed", }}>
           <Card className="card__wrap--inner bg-secondary shadow border-0">
             {/* <h1
