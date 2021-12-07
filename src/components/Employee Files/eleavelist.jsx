@@ -1,42 +1,14 @@
 import React from "react";
-import paginate from "../Common/paginate";
-import Pagination from "../Common/pagination";
 import _ from "lodash";
 import { connect } from "react-redux";
 import get_empleavelist, { get_moreempleavelist } from "../../reduxstore/actions/empleaveTable";
 
 import ELeavsTable from "./eleavetable";
-import Paginations from "./../Common/pagination";
 import ReactLoading from "react-loading";
 import { toast } from "react-toastify";
 
 import {
   Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  Collapse,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Media,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Progress,
-  Table,
-  Container,
-  Row,
   Col,
 } from "reactstrap";
 
@@ -48,8 +20,6 @@ class ELeavsList extends React.Component {
     loadstatus: false,
     skip: 0,
     i: 0,
-    pageSize: 10,
-    currentPage: 1,
     isLoading: true,
     sortColumn: { path: "Date", order: "asc" },
   };
@@ -68,21 +38,7 @@ class ELeavsList extends React.Component {
   };
 
 
-  getPageData = () => {
-    const {
-      pageSize,
-      currentPage,
-      leaves: allleaves,
 
-      sortColumn,
-    } = this.state;
-
-    let filtered = allleaves;
-
-    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
-    const leaves = paginate(sorted, currentPage, pageSize);
-    return { totalCount: filtered.length, data: leaves };
-  };
 
   async componentDidMount() {
     try {
@@ -126,8 +82,7 @@ class ELeavsList extends React.Component {
   };
 
   render() {
-    const { pageSize, currentPage, sortColumn } = this.state;
-    const { totalCount, data: leaves } = this.getPageData();
+    const { sortColumn, leaves } = this.state;
     return (
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">

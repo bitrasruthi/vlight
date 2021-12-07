@@ -1,16 +1,12 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
-// import 'font-awesome/css/font-awesome.min.css';
-import paginate from "../Common/paginate";
-import Pagination from "../Common/pagination";
+
 import _ from "lodash";
 import { deleteEmp } from "../../services/authService";
 import { connect } from "react-redux";
 import get_employeelist from "../../reduxstore/actions/employeeAction";
 import EmployeeTable from "./emplisttable";
 import Sidebar from "../Sidebar/Sidebar";
-import NavBar from "components/Common/navbar";
-import Paginations from "./../Common/pagination";
+
 import { toast } from "react-toastify";
 import ReactLoading from "react-loading";
 
@@ -20,8 +16,8 @@ class Employees extends React.Component {
   state = {
     employees: [],
     isLoading: true,
-    currentPage: 1,
-    pageSize: 10,
+
+
     searchQuery: "",
     sortColumn: { path: "EmployeeName", order: "asc" },
     isLoading: true,
@@ -58,7 +54,7 @@ class Employees extends React.Component {
 
     try {
       await deleteEmp(emp.EmployeeId);
-      // get_movielist();
+
       // setTimeout(async () => {}, 1000);
       this.setState({ employees: empl });
     } catch (ex) {
@@ -69,45 +65,19 @@ class Employees extends React.Component {
   };
 
 
-  getPagedData = () => {
-    const {
-      pageSize,
-      currentPage,
-      searchQuery,
-      sortColumn,
-      employees: allEmployees,
-    } = this.state;
-
-    let filtered = allEmployees;
-    if (searchQuery)
-      filtered = allEmployees.filter((m) =>
-        m.title.toString().toLowerCase().startsWith(searchQuery.toLowerCase())
-      );
-    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
-    const employees = paginate(sorted, currentPage, pageSize);
-    return { totalCount: filtered.length, data: employees };
-  };
-
   render() {
-    const { length: count } = this.state.employees;
     const {
-      pageSize,
-      currentPage,
+
       sortColumn,
-      employees: allEmployees,
+      employees: data
     } = this.state;
 
     // if(count === 0)return <p>No movies available in the selected list</p>;
-    const { totalCount, data } = this.getPagedData();
+
 
     return (
-      <div style = {{height: '', position: "absolute", left: '0', width: '100%', }} 
-      className=" py-2 py-sm-3 ">        {/* <table >
-          <TableHeader/>
-                  {this.state.isLoading ? <Loader type="Bars" 
-                                                  timeout={1000}  />
-              : <TableBody/>}
-     </table> */}
+      <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
+        className=" py-2 py-sm-3 ">
         <Sidebar />
         <EmployeeTable
           employees={data}

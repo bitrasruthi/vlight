@@ -18,22 +18,8 @@ import ReactLoading from "react-loading";
 import {
   Button,
   Card,
-  CardHeader,
   CardBody,
-  FormGroup,
   Form,
-  UncontrolledCollapse,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Row,
   Col,
 } from "reactstrap";
 
@@ -47,9 +33,7 @@ class AttList extends Forms {
     i: 0,
     isLoading: true,
     loadstatus: false,
-    pageSize: 10,
     errors: [],
-    currentPage: 1,
     sortColumn: { path: "", order: "" },
   };
   constructor() {
@@ -89,21 +73,7 @@ class AttList extends Forms {
     }
   };
 
-  getPageData = () => {
-    const {
-      pageSize,
-      currentPage,
-      employess: allemployess,
 
-      sortColumn,
-    } = this.state;
-
-    let filtered = allemployess;
-
-    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
-    const employess = paginate(sorted, currentPage, pageSize);
-    return { totalCount: filtered.length, data: employess };
-  };
 
   async componentDidMount() {
     if (!this.props.getattlist) {
@@ -144,8 +114,7 @@ class AttList extends Forms {
   };
 
   render() {
-    const { pageSize, currentPage, sortColumn } = this.state;
-    const { totalCount, data: employess } = this.getPageData();
+    const { sortColumn, employess } = this.state;
     return (
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
