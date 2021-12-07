@@ -30,50 +30,50 @@ class EDashboard extends React.Component {
         whrs: ''
     }
 
-    async componentDidMount() {
-        const id = emp.getCurrentUser()
-        var date = new Date();
-        var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-        var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-        var frdate = firstDay.getDate()
-        frdate = ("0" + frdate).slice(-2);
-        var ladate = lastDay.getDate()
-        ladate = ("0" + ladate).slice(-2);
-        var month = firstDay.getMonth() + 1
-        var year = lastDay.getFullYear()
-        var t = year + '-' + month + '-' + frdate;
-        var t2 = year + '-' + month + '-' + ladate;
-        await this.setState({ data: { EmployeeId: id.EmployeeId, from_Date: t, to_Date: t2 } })
+    // async componentDidMount() {
+    //     const id = emp.getCurrentUser()
+    //     var date = new Date();
+    //     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    //     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    //     var frdate = firstDay.getDate()
+    //     frdate = ("0" + frdate).slice(-2);
+    //     var ladate = lastDay.getDate()
+    //     ladate = ("0" + ladate).slice(-2);
+    //     var month = firstDay.getMonth() + 1
+    //     var year = lastDay.getFullYear()
+    //     var t = year + '-' + month + '-' + frdate;
+    //     var t2 = year + '-' + month + '-' + ladate;
+    //     await this.setState({ data: { EmployeeId: id.EmployeeId, from_Date: t, to_Date: t2 } })
 
-        var first = date.getDate() - date.getDay(); // First day is the day of the month - the day of the week
-        var last = first + 6; // last day is the first day + 6
+    //     var first = date.getDate() - date.getDay(); // First day is the day of the month - the day of the week
+    //     var last = first + 6; // last day is the first day + 6
 
-        var firstDayofWeek = new Date(date.setDate(first));
-        var lastdayOfWeek = new Date(date.setDate(last));
-
-
-        var wfrdate = firstDayofWeek.getDate()
-        wfrdate = ("0" + wfrdate).slice(-2);
-        var wladate = lastdayOfWeek.getDate()
-        wladate = ("0" + wladate).slice(-2);
-        var wmonth = firstDayofWeek.getMonth() + 1
-        var wyear = firstDayofWeek.getFullYear()
-        var w = wyear + '-' + wmonth + '-' + wfrdate;
-        var w2 = wyear + '-' + wmonth + '-' + wladate;
-        await this.setState({ wdata: { EmployeeId: id.EmployeeId, from_Date: w, to_Date: w2 } })
+    //     var firstDayofWeek = new Date(date.setDate(first));
+    //     var lastdayOfWeek = new Date(date.setDate(last));
 
 
-        try {
+    //     var wfrdate = firstDayofWeek.getDate()
+    //     wfrdate = ("0" + wfrdate).slice(-2);
+    //     var wladate = lastdayOfWeek.getDate()
+    //     wladate = ("0" + wladate).slice(-2);
+    //     var wmonth = firstDayofWeek.getMonth() + 1
+    //     var wyear = firstDayofWeek.getFullYear()
+    //     var w = wyear + '-' + wmonth + '-' + wfrdate;
+    //     var w2 = wyear + '-' + wmonth + '-' + wladate;
+    //     await this.setState({ wdata: { EmployeeId: id.EmployeeId, from_Date: w, to_Date: w2 } })
 
-            const pp = await calProdHours(this.state.data);
-            const epp = await calProdHours(this.state.wdata);
 
-            this.setState({ hrs: pp.data.data, whrs: epp.data.data })
-        }
-        catch (er) {
-            toast.error('somthing worng')
-        }
-    }
+    //     try {
+
+    //         const pp = await calProdHours(this.state.data);
+    //         const epp = await calProdHours(this.state.wdata);
+
+    //         this.setState({ hrs: pp.data.data, whrs: epp.data.data })
+    //     }
+    //     catch (er) {
+    //         toast.error('somthing worng')
+    //     }
+    // }
     render() {
         return <div>
             <ESidebar />

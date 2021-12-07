@@ -25,6 +25,7 @@ import {
     Col,
   } from "reactstrap";
 import ESidebar from 'components/Sidebar/eSidebar';
+import EduCard from './eduCard';
   // core components
 
   class EduDetails extends Forms{
@@ -36,6 +37,7 @@ import ESidebar from 'components/Sidebar/eSidebar';
     errors: [],
     currentPage: 1,
     sortColumn: { path: "FirstName", order: "asc" },
+    options: [" select", "ssc", "degree", 'pg', 'ug'],
       }
 
       schema = {
@@ -76,23 +78,24 @@ import ESidebar from 'components/Sidebar/eSidebar';
           const { data } = this.state;
           console.log(data.qualification);
           
-                     if(data === null && data.qualification === ""){
-                       await registerEduDetails(data);
-                     }
+                    //  if(data === null && data.qualification === ""){
+                    //    await registerEduDetails(data);
+                    //  }
           
-           else if(data.qualification === 'ssc'|| 'ug' || 'pg' || 'degree' ){
+          if(data.qualification === 'ssc'|| 'ug' || 'pg' || 'degree' ){
+             console.log(data);
            await updateEduDetails(data)
-           this.setState(data.qualification);}
+           }
         //  const tt = await this.setState({data: pp.data});
         //   console.log(tt);
           
           
         // //   console.log(tt);
-        //   toast.success("Education details Updated Successfully");
-          // setTimeout(() => {
-          //   window.location = state ? state.from.pathname : "/profile";
-          // }, 2000);
-          // const { state } = this.props.location;
+          toast.success("Education details Updated Successfully");
+          setTimeout(() => {
+            window.location = state ? state.from.pathname : "/profile";
+          }, 2000);
+          const { state } = this.props.location;
           
         } catch (ex) {
           if (ex.response && ex.response.status === 400) {
@@ -116,6 +119,7 @@ import ESidebar from 'components/Sidebar/eSidebar';
    
     
       render() { 
+        const {options} = this.state
     return (
       <>
     <div style = {{height: '', position: "absolute", left: '0', width: '100%', }} 
@@ -127,7 +131,7 @@ import ESidebar from 'components/Sidebar/eSidebar';
                 <CardBody>
                 <Form  role="form" onSubmit={this.handleSubmit}>
                
-                {this.renderInput("qualification", "Qualification", )}
+                {this.renderDropdown("qualification", "Qualification", options)}
                 {this.renderInput("institute", "Institute",)}
                 {this.renderInput("passedoutYear", "Year of Pass",)}
                 {this.renderInput("percentage", "Percentage",)}
@@ -142,7 +146,7 @@ import ESidebar from 'components/Sidebar/eSidebar';
                 </CardBody>
               </Card>
             </Col>
-          
+           
             </Row>
         </div>
       </>

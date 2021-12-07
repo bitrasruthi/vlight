@@ -10,14 +10,14 @@ class UserHeader extends React.Component {
     data: {FirstName: '', MiddleName: '', LastName: '', Address:'', City: '', 
     Country: '', Pincode:'', AboutMe: '', },}
 
-//   async componentDidMount() {
+  async componentDidMount() {
     
-//     const {data:profile} = await getProDetails();
-//     let pp = profile[0].profile;
-//    console.log(pp);
+    const {data:profile} = await getProDetails();
+    let pp = profile[0].profile;
+   console.log(pp);
  
-//   this.setState({ data: {FirstName:pp.FirstName, AboutMe:pp.AboutMe } });
-// }
+  this.setState({ data: {FirstName:pp.FirstName, AboutMe:pp.AboutMe } });
+}
 
 handleBack(){
   window.location = '/edashboard'

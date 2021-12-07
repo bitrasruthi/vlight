@@ -115,10 +115,10 @@ class LeaveList extends React.Component {
 
     return (
 
-      <div style = {{height: '', position: "absolute", left: '0', width: '100%',}} 
-      className="py-2 py-sm-3 ">
+      <div style = {{height: '', position: "absolute", left: '0', width: '100%', }} 
+      className=" py-2 py-sm-3 "> 
       <Sidebar />
-      <Col lg="8" md="7" style={{ marginLeft: "6rem", paddingTop: "px", position: 'absolute', }}>
+      <Col lg="9" md="7" style={{ marginLeft: "4rem", paddingTop: "px", position: 'absolute', }}>
 
         <LeaveTable
           leaves={data}
@@ -126,7 +126,7 @@ class LeaveList extends React.Component {
           onSort={this.handleSort}
         />
         <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
-          zIndex: '1001'
+          zIndex: '1001', marginLeft: '180px'
         }}>
           Load more
         </Button>

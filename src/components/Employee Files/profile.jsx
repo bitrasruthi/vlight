@@ -23,6 +23,7 @@ import {
     Col,
   } from "reactstrap";
 import JobCard from './jobCard';
+import EduCard from './eduCard';
   // core components
 
   class Profile extends Forms{
@@ -186,8 +187,8 @@ import JobCard from './jobCard';
               </Card>
             </Col>
 
-          <Col style={{marginLeft: '550px', marginTop:'-705px'}}  className="order-xl-2 mb-5 mb-xl-0" xl="4">
-              <Card style={{marginRight: '-2px'}} className="card-profile shadow">
+          <Col style={{marginLeft: '550px', marginTop:'-105px', paddingRight: '-300px'}}  className="order-xl-2 mb--6 mb-xl-0" xl="6">
+              <Card style={{marginRight: '-50px', marginTop: '-1060px'}} className="card-profile shadow">
               <CardHeader className="bg-white border-0">
                   <Row className="align-items-center">
                     <Col xs="8">
@@ -206,15 +207,16 @@ import JobCard from './jobCard';
                   </Row>
                 </CardHeader>
                 <Row className="justify-content-center">
-                  <Col className="order-lg-2" lg="3">
+                  <Col className="order-lg-7" lg="7">
                     <div className="card-profile-image">
                       
                     </div>
                   </Col>
                 </Row>
                 
-                <CardBody style={{background: '#F7FAFC', marginBottom:'50px'}} className="mt-4 pt-lg-4">
-                    
+                <CardBody style={{background: '#F7FAFC', marginBottom:'50px', }} className="mt-4 pt-lg-7">
+                  <p style={{marginBottom: '300px'}}></p>
+                      <EduCard/>
                 </CardBody>
               </Card>
             </Col>
