@@ -37,6 +37,7 @@ import EmpProtectedRoute from "components/Common/empprotectedRoute";
 import EduDetails from './components/Employee Files/eduDetails';
 import JobDetails from './components/Employee Files/jobDetails';
 import PopUp from './components/Admin Files/popUp';
+import PopupMess from './components/Admin Files/popupmess';
 class App extends React.Component {
   render() {
     return (
@@ -57,7 +58,7 @@ class App extends React.Component {
                 <Route path="/changepassword" component={ChangePassword} />
                 <Route path="/empstats" component={EmpWorkingStas} />
                 <Route path="/edudetails" component={EduDetails} />
-                <Route path="/popup" component={PopUp} />
+                <Route path="/popup" component={PopupMess} />
                 
                 <Route path="/jobdetails" component={JobDetails} />
 

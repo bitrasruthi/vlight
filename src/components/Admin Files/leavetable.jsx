@@ -22,6 +22,8 @@ class LeaveTable extends React.Component {
     { path: "status", label: "Status" },
   ];
 
+  
+
   render() {
     const { leaves, onSort, sortColumn } = this.props;
 
