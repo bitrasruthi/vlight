@@ -7,16 +7,19 @@ const EmpProtectedRoute = ({ path, component: Component, render, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        if (!auth.getCurrentUser().EmployeeId)
+        const jwt = auth.getCurrentUser()
+
+        if (auth.getCurrentUser() && jwt.EmployeeId)
           return (
-            <Redirect
-              to={{
-                pathname: "/login",
-                state: { from: props.location },
-              }}
-            />
+            Component ? <Component {...props} /> : render(props)
+
           );
-        return Component ? <Component {...props} /> : render(props);
+        return (<Redirect
+          to={{
+            pathname: "/elogin",
+            state: { from: props.location },
+          }}
+        />)
       }}
     />
   );
