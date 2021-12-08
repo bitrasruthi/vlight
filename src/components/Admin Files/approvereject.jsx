@@ -34,11 +34,41 @@ import {
     Row,
     Col,
   } from "reactstrap";
+import LeaveList from "./leavelist";
 
 class ApproveReject extends Forms {
   state = {
     leave: {},
     toggle: false,
+  };
+
+  onReject = async () => {
+    try {
+      var leave = { ...this.state.leave };
+      leave.status = "Rejected";
+      await this.setState({ leave });
+      console.log(leave);
+      await leavestatus({ _id: leave._id, status: leave.status });
+      // window.location = "/leavelist";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data.data);
+      }
+    }
+  };
+  onApprove = async () => {
+    try {
+      var leave = { ...this.state.leave };
+      leave.status = "Approved";
+      await this.setState({ leave });
+      // console.log(leave._id);
+      await leavestatus({ _id: leave._id, status: leave.status });
+      // window.location = "/leavelist";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data.data);
+      }
+    }
   };
 
   async componentDidMount() {
@@ -54,35 +84,7 @@ class ApproveReject extends Forms {
     console.log(this.state);
   }
 
-  onReject = async () => {
-    try {
-      var leave = { ...this.state.leave };
-      leave.status = "Rejected";
-      await this.setState({ leave });
-      console.log(leave);
-      await leavestatus({ _id: leave._id, status: leave.status });
-      window.location = "/leavelist";
-    } catch (ex) {
-      if (ex.response && ex.response.status === 404) {
-        toast.error(ex.response.data.data);
-      }
-    }
-  };
-  onApprove = async () => {
-    try {
-      var leave = { ...this.state.leave };
-      leave.status = "Approved";
-      await this.setState({ leave });
-      // console.log(leave._id);
-      await leavestatus({ _id: leave._id, status: leave.status });
-      window.location = "/leavelist";
-    } catch (ex) {
-      if (ex.response && ex.response.status === 404) {
-        toast.error(ex.response.data.data);
-      }
-    }
-  };
-
+ 
   render() {
     const { leave } = this.state;
     return (
@@ -97,12 +99,29 @@ class ApproveReject extends Forms {
         <p> from subject :- {leave.subject} </p>
         <p> from Reason :- {leave.reason} </p>
         <p> from Leave Type :- {leave.leave_type} </p> */}
+        <div className='popup' style={{paddingRight: '-900px', 
+        position: "fixed",
+        width: "100%",
+        height: "100%",
+        top: "0",
+        left:" 0",
+        right: "0",
+        bottom: "0",
+        margin: "auto",
+        zIndex: '1001',
+        backgroundColor: "rgba(0,0,0, 0.5)"}}>
+          <div style={{background: 'transparent', marginLeft: '800px', paddingRight: '0px',
+        position: "absolute",
+        textAlign: 'center',
+        margin: "auto"}} className='popup_inner'>
         <Button variant="contained" onClick={this.onApprove}>
           Approve
         </Button>
         <Button variant="contained" onClick={this.onReject}>
           Reject
         </Button>
+        </div>
+      </div>
       </div>
     );
   }

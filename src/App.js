@@ -38,6 +38,7 @@ import EduDetails from './components/Employee Files/eduDetails';
 import JobDetails from './components/Employee Files/jobDetails';
 import PopUp from './components/Admin Files/popUp';
 import PopupMess from './components/Admin Files/popupmess';
+import Chartee from './variables/charts';
 class App extends React.Component {
   render() {
     return (
@@ -65,12 +66,14 @@ class App extends React.Component {
                 <Route path="/navbar" component={NavBar} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} />
                 <EmpProtectedRoute path="/edashboard" component={EDashboard} />
+
                 <Route path="/countdown" component={Countdown} />
+                {/* <Route path="/chart" component={Chartee} /> */}
                 <EmpProtectedRoute path="/timecard" component={TimeCard} />
                 <EmpProtectedRoute path="/attlist" component={AttList} />
                 <EmpProtectedRoute path="/leaveform" component={LeaveForm} />
                 <EmpProtectedRoute path="/eleavelist" component={ELeaveList} />
-                <ProtectedRoute path="/leaveapproval/:id" component={ApproveReject} />
+                <ProtectedRoute path="/leavelist/:id" component={LeaveList} />
                 <ProtectedRoute path="/empattlist/:id" component={EmpAttList} />
                 <ProtectedRoute path="/holidays" component={Holidays} />
                 <ProtectedRoute path="/officehours" component={OfficeHours} />
