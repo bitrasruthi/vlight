@@ -39,6 +39,7 @@ import JobDetails from './components/Employee Files/jobDetails';
 import PopUp from './components/Admin Files/popUp';
 import PopupMess from './components/Admin Files/popupmess';
 import EmpRestPassword from "components/Admin Files/empresetpassword";
+import DeleteEmp from './components/Admin Files/deleteEmp';
 class App extends React.Component {
   render() {
     return (
@@ -60,7 +61,8 @@ class App extends React.Component {
                 <Route path="/empstats" component={EmpWorkingStas} />
                 <Route path="/empreset" component={EmpRestPassword} />
                 <Route path="/edudetails" component={EduDetails} />
-                <Route path="/popup" component={PopupMess} />
+                <Route path="/popup" component={PopUp} />
+                <Route path="/deleteemp/:id" component={DeleteEmp} />
             
                 <Route path="/jobdetails" component={JobDetails} />
 
@@ -73,7 +75,7 @@ class App extends React.Component {
                 <EmpProtectedRoute path="/attlist" component={AttList} />
                 <EmpProtectedRoute path="/leaveform" component={LeaveForm} />
                 <EmpProtectedRoute path="/eleavelist" component={ELeaveList} />
-                <ProtectedRoute path="/leavelist/:id" component={LeaveList} />
+                <ProtectedRoute path="/leaveapproval/:id" component={ApproveReject} />
                 <ProtectedRoute path="/empattlist/:id" component={EmpAttList} />
                 <ProtectedRoute path="/holidays" component={Holidays} />
                 <ProtectedRoute path="/officehours" component={OfficeHours} />

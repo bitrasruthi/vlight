@@ -5,6 +5,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import Forms from "../Common/form";
 import  {leavestatus}  from "../../services/leaveService";
 import { toast } from "react-toastify";
+import { deleteEmp } from "services/authService";
 import {
     Button,
     Card,
@@ -35,10 +36,11 @@ import {
     Col,
   } from "reactstrap";
 import LeaveList from "./leavelist";
+import get_employeelist from 'reduxstore/actions/employeeAction';
 
-class ApproveReject extends Forms {
+class DeleteEmp extends Forms {
   state = {
-    leave: {},
+    employees: [],
     showPopup: true
   };
   togglePopup() {
@@ -46,49 +48,31 @@ class ApproveReject extends Forms {
       showPopup: !this.state.showPopup
     });
   }
-  onReject = async () => {
-    try {
-      var leave = { ...this.state.leave };
-      leave.status = "Rejected";
-      await this.setState({ leave });
-      toast.success('Leave Rejected')
 
-      console.log(leave);
-      await leavestatus({ _id: leave._id, status: leave.status });
-      // window.location = "/leavelist";
+  handleDelete = async (emp) => {
+    console.log(this.props.match.params.id)
+    const originalemployees = this.state.employees;
+    const empl = originalemployees.filter((m) => m._id !== emp._id);
+    try {
+      await deleteEmp(this.props.match.params.id);
+
+      // setTimeout(async () => {}, 1000);
+      this.setState({ employees: empl });
     } catch (ex) {
-      if (ex.response && ex.response.status === 404) {
-        toast.error(ex.response.data.data);
-      }
+      if (ex.response && ex.response.status === 400)
+        toast("This Employee already been deleted");
+      this.setState({ employees: originalemployees });
     }
   };
-  onApprove = async () => {
-    try {
-      var leave = { ...this.state.leave };
-      leave.status = "Approved";
-      await this.setState({ leave });
-      toast.success('Leave Approved')
-      // console.log(leave._id);
-      await leavestatus({ _id: leave._id, status: leave.status });
-      // window.location = "/leavelist";
-    } catch (ex) {
-      if (ex.response && ex.response.status === 404) {
-        toast.error(ex.response.data.data);
-      }
-    }
-  };
-
+  
   async componentDidMount() {
-    if (!this.props.getleavelist) {
-      await get_leavelist();
+    if (!this.props.getemployeelist) {
+      await get_employeelist();
     }
-    // const {data:movies} = await getMovies();
-    const leavelist = await this.props.getleavelist;
-    let leaveid = this.props.match.params.id;
-    let leave = leavelist.find((obj) => obj._id === leaveid);
-
-    await this.setState({ leave });
-    console.log(leave);
+    const dd = await this.props.getemployeelist;
+    console.log(dd);
+    await this.setState({ employees: dd });
+    // await this.setState({ isLoading: false });
   }
 
  
@@ -122,25 +106,25 @@ class ApproveReject extends Forms {
         position: "absolute",
         textAlign: 'center',
         margin: "auto"}} className='popup_inner'>
-          <div style={{borderRadius: '30px', height: "300px",zIndex: 1001, 
+          <div style={{borderRadius: '30px', height: "130px",zIndex: 1001, 
           marginLeft: '450px',marginTop: '150px' ,width: "400px", background: 'white'}}>
             <div style={{marginTop:'' }}>
-            <h5 style={{fontSize: '20px', paddingTop: '5px'}}>Employee Id: {this.state.leave.EmployeeId}</h5>
-            <h5 style={{fontSize: '20px'}}>Employee Name: {this.state.leave.EmployeeName}</h5>
-            <h5 style={{fontSize: '20px'}}>From Date: {this.state.leave.from_Date}</h5>
+            {/* {/* <h5 style={{fontSize: '20px', paddingTop: '5px'}}>Employee Id: {this.state.employees.EmployeeId}</h5> */}
+            <h5 style={{fontSize: '20px',}}>Are you sure? You want to delete this employee?</h5>
+            {/* <h5 style={{fontSize: '20px'}}>From Date: {this.state.leave.from_Date}</h5>
             <h5 style={{fontSize: '20px'}}>To Date: {this.state.leave.to_Date}</h5>
             <h5 style={{fontSize: '20px'}}>Subject: {this.state.leave.subject}</h5>
-            <h5 style={{fontSize: '20px'}}>Reason: {this.state.leave.reason}</h5>
+            <h5 style={{fontSize: '20px'}}>Reason: {this.state.leave.reason}</h5> */} 
             </div>
-        {this.state.showPopup ? <Button  style={{marginLeft: '400px',boxShadow: 'none' , background: 'transparent', border: 'none',marginTop: '-500px'}}
-         href='/leavelist'>
+        {this.state.showPopup ? <Button  style={{marginLeft: '400px',boxShadow: 'none' , background: 'transparent', border: 'none',marginTop: '-200px'}}
+         href='/emplist'>
         <i style={{fontSize: '20px'}} class="far fa-times-circle"></i></Button>
          : null}
-        <Button style={{marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', border: 'none'}} variant="contained" onClick={this.onApprove}>
-          Approve
+        <Button style={{marginLeft: '0px', marginTop: '10px', background: '#2DCE8A', border: 'none'}} variant="contained" onClick={this.handleDelete}>
+          Delete
         </Button>
-        <Button style={{marginLeft: '', marginTop: '0px', background: '#f58078', border: 'none'}} variant="contained" onClick={this.onReject}>
-          Reject
+        <Button style={{marginLeft: '', marginTop: '10px', background: '#f58078', border: 'none'}} variant="contained" href='/emplist'>
+          Cancel
         </Button>
         <div>
       </div>
@@ -156,9 +140,10 @@ class ApproveReject extends Forms {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    getleavelist: state.getleavelist,
+    return {
+      getemployeelist: state.getemployeelist,
+    };
   };
-};
-
-export default connect(mapStateToProps)(ApproveReject);
+  
+  export default connect(mapStateToProps)(DeleteEmp);
+  
