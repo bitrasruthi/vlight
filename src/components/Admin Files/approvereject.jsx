@@ -125,12 +125,12 @@ class ApproveReject extends Forms {
           <div style={{borderRadius: '30px', height: "300px",zIndex: 1001, 
           marginLeft: '450px',marginTop: '150px' ,width: "400px", background: 'white'}}>
             <div style={{marginTop:'' }}>
-            <h5 style={{fontSize: '20px', paddingTop: '5px'}}>Employee Id: {this.state.leave.EmployeeId}</h5>
-            <h5 style={{fontSize: '20px'}}>Employee Name: {this.state.leave.EmployeeName}</h5>
-            <h5 style={{fontSize: '20px'}}>From Date: {this.state.leave.from_Date}</h5>
-            <h5 style={{fontSize: '20px'}}>To Date: {this.state.leave.to_Date}</h5>
-            <h5 style={{fontSize: '20px'}}>Subject: {this.state.leave.subject}</h5>
-            <h5 style={{fontSize: '20px'}}>Reason: {this.state.leave.reason}</h5>
+            <p style={{fontSize: '20px', paddingTop: '5px'}}><span style={{fontWeight: 'bold',}}> Employee Id:</span> {this.state.leave.EmployeeId}</p>
+            <p style={{fontSize: '20px'}}><span style={{fontWeight: 'bold',}}>Employee Name: </span>{this.state.leave.EmployeeName}</p>
+            <p style={{fontSize: '20px'}}><span style={{fontWeight: 'bold',}}>From Date: </span>{this.state.leave.from_Date}</p>
+            <p style={{fontSize: '20px'}}><span style={{fontWeight: 'bold',}}>To Date: </span>{this.state.leave.to_Date} </p>
+            <p style={{fontSize: '20px'}}><span style={{fontWeight: 'bold',}}>Subject: </span>{this.state.leave.subject}</p>
+            <p style={{fontSize: '20px'}}><span style={{fontWeight: 'bold',}}>Reason: </span>{this.state.leave.reason}</p>
             </div>
         {this.state.showPopup ? <Button  style={{marginLeft: '400px',boxShadow: 'none' , background: 'transparent', border: 'none',marginTop: '-500px'}}
          href='/leavelist'>

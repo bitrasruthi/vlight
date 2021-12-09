@@ -51,7 +51,7 @@ class LeaveForm extends Forms {
       
       toast.success(dd.data);
       setTimeout(() => {
-        window.location = state ? state.from.pathname : "/leavsList";
+        window.location = state ? state.from.pathname : "/leaveList";
       }, 2000);
 
       const { state } = this.props.location;

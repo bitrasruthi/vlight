@@ -19,11 +19,7 @@ class LeaveTable extends React.Component {
       label: "Employee Id",
       content: (emp) => (
         
-        <Link to={`/leaveapproval/${emp._id}`}>{emp.EmployeeId}</Link>
-        
-        
-
-     
+        <Link to={`/leaveapproval/${emp._id}`}>{emp.EmployeeId}</Link>     
       ),
     },
     { path: "EmployeeName", label: "Name" },
@@ -42,7 +38,7 @@ class LeaveTable extends React.Component {
   }
   
   render() {
-    const { leaves, onSort, sortColumn } = this.props;
+    const { leaves, onSort, sortColumn, onload, disabled } = this.props;
 
     return (
       <div>
@@ -52,6 +48,8 @@ class LeaveTable extends React.Component {
         data={leaves}
         sortColumn={sortColumn}
         onSort={onSort}
+        onload={onload}
+        disabled={disabled}
         // LoadingComponent={Spinner}
       />
       </div>

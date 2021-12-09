@@ -26,7 +26,7 @@ class ELeavsTable extends React.Component {
   }
 
   render() {
-    const { leaves, sortColumn, onSort } = this.props;
+    const { leaves, sortColumn, onSort, onload, disabled } = this.props;
     return (
       <div>
         <ESidebar />
@@ -35,6 +35,8 @@ class ELeavsTable extends React.Component {
           data={leaves}
           sortColumn={sortColumn}
           onSort={onSort}
+          onload={onload}
+          disabled={disabled}
         />
       </div>
     );

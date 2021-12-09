@@ -10,8 +10,9 @@ import ReactLoading from "react-loading";
 import { toast } from "react-toastify";
 import {
   Button, Col
-
+  
 } from "reactstrap";
+import TableBody from './../Common/tableBody';
 class LeaveList extends React.Component {
   state = {
     leaves: [],
@@ -24,6 +25,7 @@ class LeaveList extends React.Component {
     searchQuery: "",
     sortColumn: { path: "Leave", order: "asc" },
     isLoading: true,
+    Button
   };
 
   constructor(props) {
@@ -55,9 +57,8 @@ class LeaveList extends React.Component {
     }
   }
 
-  onloadmore = async () => {
+  onloadmore = async() =>{
     const { i, limit } = this.state
-
     try {
       var skip = i * limit
       await this.setState({ i: this.state.i + 1 })
@@ -65,11 +66,6 @@ class LeaveList extends React.Component {
       await get_moreleavelist(skip)
       const dd = await this.props.getleavelist;
       await this.setState({ leaves: dd })
-
-      // if (!dd.length < limit) {
-      //   this.setState({ loadstatus: true })
-
-      // }
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
@@ -137,12 +133,15 @@ class LeaveList extends React.Component {
           leaves={data}
           sortColumn={sortColumn}
           onSort={this.handleSort}
-        />
-        <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
+          onload={this.onloadmore}
+          disabled={this.state.loadstatus}
+          />
+          {/* {this.renderLoadButton('More')} */}
+        {/* <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
           zIndex: '1001', marginLeft: '180px'
         }}>
-          Load more
-        </Button>
+        Load more
+      </Button> */}
         {this.state.isLoading ? (
           <div
             style={{
@@ -154,7 +153,7 @@ class LeaveList extends React.Component {
           >
             <ReactLoading
               type="bars"
-              color="#aaaa"
+              color="black"
               height={"10%"}
               width={"10%"}
             />

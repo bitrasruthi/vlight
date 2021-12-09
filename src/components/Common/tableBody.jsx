@@ -1,11 +1,19 @@
 import React from "react";
 import _ from "lodash";
 // import ReactLoading from "react-loading";
+import { Button } from 'reactstrap';
+import LeaveList from './../Admin Files/leavelist';
+import onloadmore from '../Admin Files/leavelist';
+
 
 class TableBody extends React.Component {
   state = {
     isLoading: true,
   };
+
+ 
+
+
   renderCell = (item, column) => {
     if (column.content) return column.content(item);
     return _.get(item, column.path);
@@ -24,8 +32,19 @@ class TableBody extends React.Component {
     this.setState({ isLoading: false });
   }
 
+  renderLoadButton(label) {
+    // const notify = () => toast("Login Successful");
+    return (
+      <Button variant="contained" disabled={this.state.loadstatus} onClick={this.handleload} style={{
+        zIndex: '1001', marginLeft: '180px'
+      }}>
+        {label}
+      </Button>
+    );
+  }
+
   render() {
-    const { data, columns } = this.props;
+    const { data, columns, onload, disabled } = this.props;
     return (
       <tbody style={{zIndex: "1001"}}>
         {data.map((item) => (
@@ -34,9 +53,16 @@ class TableBody extends React.Component {
               <td  style={{textAlign: 'center', fontSize: '15px'}} key={this.createkey(item, column)}>
                 {this.renderCell(item, column)}
               </td>
+              
             ))}
           </tr>
         ))}
+        <Button variant="contained" disabled={disabled}  onClick={onload} style={{
+        zIndex: '1001', marginLeft: '0px'
+      }}>
+        More
+      </Button>
+
       </tbody>
     );
   }

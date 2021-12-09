@@ -128,11 +128,11 @@ class AttList extends Forms {
           />
         </Col>
         <Col>
-          <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
+          {/* <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
             zIndex: '1001', marginLeft: '270px'
           }}>
             Load more
-          </Button>
+          </Button> */}
           {this.state.employess.length ? <p> No Data</p> : ''}
           {this.state.isLoading ? (
             <div

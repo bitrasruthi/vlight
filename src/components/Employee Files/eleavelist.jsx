@@ -91,12 +91,10 @@ class ELeavsList extends React.Component {
             leaves={leaves}
             sortColumn={sortColumn}
             onSort={this.handleSort}
+            onload={this.onloadmore}
+            disabled={this.state.loadstatus}
           />
-          <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
-            zIndex: '1001', marginLeft: '180px'
-          }}>
-            Load more
-          </Button>
+         
         </Col>
         {this.state.isLoading ? (
           <div
