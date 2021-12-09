@@ -83,12 +83,11 @@ class DeleteEmp extends Forms {
   
   doSubmit = async (emp) => {
       const {data: temp} = this.state
-      const tt = temp;
-      console.log(tt);
+    
       // const originalemployees = this.state.employees;
       // const empl = originalemployees.filter((m) => m.id !== emp._id);
       try {
-     const pp = await terminateEmp(temp.EmployeeId);
+     const pp = await terminateEmp(temp);
     await this.setState({ data: pp});
     console.log(pp);
  
@@ -145,7 +144,7 @@ class DeleteEmp extends Forms {
         textAlign: 'center',
         margin: "auto"}} className='popup_inner'>
           <div style={{borderRadius: '30px', height: "430px",zIndex: 1001, 
-          marginLeft: '450px',marginTop: '150px' ,width: "400px", background: 'white'}}>
+          marginLeft: '450px',marginTop: '50px' ,width: "400px", background: 'white'}}>
             <div style={{marginTop:'' }}>
             {/* {/* <h5 style={{fontSize: '20px', paddingTop: '5px'}}>Employee Id: {this.state.employees.EmployeeId}</h5> */}
             <h5 style={{fontSize: '20px',}}>Are you sure? You want to delete this employee? If Yes, please enter following</h5>
