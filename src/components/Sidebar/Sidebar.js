@@ -47,6 +47,7 @@ import EmpList from './../Admin Files/emplist';
 import LeaveList from './../Admin Files/leavelist';
 import Settings from './../Common/settings';
 import EmpWorkingStas from './../Admin Files/empWorkingStats';
+import EmpRestPassword from "components/Admin Files/empresetpassword";
 
 
 
@@ -82,6 +83,13 @@ const Sidebar = (props) => {
       icon: "ni ni-bullet-list-67 text-info",
       component:LeaveList,
       layout: "/leavelist",
+    },
+    {
+      path: "/empreset",
+      name: "Employee reset Password",
+      icon: "ni ni-chart-bar-32 text-green",
+      component:EmpRestPassword,
+      layout: "/empreset",
     },
     {
       path: "/empstats",

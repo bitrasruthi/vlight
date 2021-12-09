@@ -13,6 +13,8 @@ const apiEndPointlogout = "http://cghrportal.herokuapp.com/api/employee/logout";
 const getAttendanceser =
   "http://cghrportal.herokuapp.com/api/admin/attendancestats";
 
+  const emresetpassword = 'http://cghrportal.herokuapp.com/api/admin/resetpassword'
+
 const tokenKey = "token";
 
 // http.setJwt(getJwt());
@@ -48,6 +50,10 @@ export function getAttendance(empid ,skip1) {
 
 export async function getAttendanceserc(data) {
   const { data: ser } = await http.post(getAttendanceser, data);
+  return ser;
+}
+export async function  empresetpass(data) {
+  const { data: ser } = await http.post(emresetpassword,data);
   return ser;
 }
 
