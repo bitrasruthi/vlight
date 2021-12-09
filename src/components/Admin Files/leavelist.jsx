@@ -73,7 +73,6 @@ class LeaveList extends React.Component {
       if (ex.response && ex.response.status === 400) {
         this.setState({ loadstatus: true, i: this.state.i - 1 })
       }
-
     }
   };
   handlePageChange = (page) => {

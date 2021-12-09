@@ -142,11 +142,11 @@ class EmpAttList extends Forms {
             sortColumn={sortColumn}
             onSort={this.handleSort}
           />
-          <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
+          {/* <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
             zIndex: '1001'
           }}>
             Load more
-          </Button>
+          </Button> */}
         </Col>
         <Col>
           {this.state.employess.length ? '' : <p> No Data</p>}

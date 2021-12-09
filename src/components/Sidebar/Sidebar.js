@@ -48,6 +48,7 @@ import LeaveList from './../Admin Files/leavelist';
 import Settings from './../Common/settings';
 import EmpWorkingStas from './../Admin Files/empWorkingStats';
 import EmpRestPassword from "components/Admin Files/empresetpassword";
+import TerminateEmp from './../Admin Files/terminateEmp';
 
 
 
@@ -87,16 +88,23 @@ const Sidebar = (props) => {
     {
       path: "/empreset",
       name: "Employee reset Password",
-      icon: "ni ni-chart-bar-32 text-green",
+      icon: "fa fa-key text-pink",
       component:EmpRestPassword,
       layout: "/empreset",
     },
     {
       path: "/empstats",
       name: "Employee Working Stats",
-      icon: "ni ni-chart-bar-32 text-green",
+      icon: "ni ni-chart-bar-32 text-purple",
       component:EmpWorkingStas,
       layout: "/empstats",
+    },
+    {
+      path: "/terminateemp",
+      name: "Terminate Employee",
+      icon: "fas fa-user-slash text-red",
+      component:TerminateEmp,
+      layout: "/terminateemp",
     },
   ];
   const [collapseOpen, setCollapseOpen] = useState();

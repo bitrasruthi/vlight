@@ -40,6 +40,7 @@ import PopUp from './components/Admin Files/popUp';
 import PopupMess from './components/Admin Files/popupmess';
 import EmpRestPassword from "components/Admin Files/empresetpassword";
 import DeleteEmp from './components/Admin Files/deleteEmp';
+import TerminateEmp from './components/Admin Files/terminateEmp';
 class App extends React.Component {
   render() {
     return (
@@ -65,6 +66,7 @@ class App extends React.Component {
                 <Route path="/deleteemp/:id" component={DeleteEmp} />
             
                 <Route path="/jobdetails" component={JobDetails} />
+                <Route path="/terminateemp" component={TerminateEmp} />
 
                 <Route path="/navbar" component={NavBar} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} />
