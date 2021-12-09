@@ -22,12 +22,7 @@ class EmployeeTable extends React.Component {
       key: " Delete",
       label:'Actions',
       content: (emp) => (
-        <button
-          className="btn btn-danger btn-sm"
-          onClick={() => this.props.onDelete(emp)}
-        >
-          Delete
-        </button>
+        <button className="btn btn-danger btn-sm" ><Link style={{color: 'white'}} to={`/deleteemp/${emp.EmployeeId}`}> Delete</Link></button>
       ),
     }
   ];

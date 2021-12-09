@@ -15,9 +15,6 @@ import ReactLoading from "react-loading";
 class Employees extends React.Component {
   state = {
     employees: [],
-    isLoading: true,
-
-
     searchQuery: "",
     sortColumn: { path: "EmployeeName", order: "asc" },
     isLoading: true,
@@ -47,22 +44,7 @@ class Employees extends React.Component {
 
   handleSort = (sortColumn) => this.setState({ sortColumn });
 
-  handleDelete = async (emp) => {
-    console.log(emp)
-    const originalemployees = this.state.employees;
-    const empl = originalemployees.filter((m) => m._id !== emp._id);
-
-    try {
-      await deleteEmp(emp.EmployeeId);
-
-      // setTimeout(async () => {}, 1000);
-      this.setState({ employees: empl });
-    } catch (ex) {
-      if (ex.response && ex.response.status === 404)
-        toast("This Emp already been deleted");
-      this.setState({ employees: originalemployees });
-    }
-  };
+ 
 
 
   render() {
@@ -83,7 +65,7 @@ class Employees extends React.Component {
           employees={data}
           sortColumn={sortColumn}
           onSort={this.handleSort}
-          onDelete={this.handleDelete}
+          // onDelete={this.handleDelete}
         />
         {this.state.isLoading ? (
           <div
