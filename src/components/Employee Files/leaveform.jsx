@@ -8,26 +8,26 @@ import { applyLeave } from "services/leaveService";
 
 import Forms from "../Common/form";
 import {
-    Button,
-    Card,
-    CardHeader,
-    CardBody,
-    FormGroup,
-    Form,
-    UncontrolledCollapse,
-    NavbarBrand,
-    Navbar,
-    NavItem,
-    NavLink,
-    Nav,
-    Container,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
-    Row,
-    Col,
-  } from "reactstrap";
+  Button,
+  Card,
+  CardHeader,
+  CardBody,
+  FormGroup,
+  Form,
+  UncontrolledCollapse,
+  NavbarBrand,
+  Navbar,
+  NavItem,
+  NavLink,
+  Nav,
+  Container,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Row,
+  Col,
+} from "reactstrap";
 
 class LeaveForm extends Forms {
   state = {
@@ -48,7 +48,7 @@ class LeaveForm extends Forms {
     try {
       const { data } = this.state;
       const dd = await applyLeave(data);
-      
+
       toast.success(dd.data);
       setTimeout(() => {
         window.location = state ? state.from.pathname : "/leaveList";
@@ -79,29 +79,29 @@ class LeaveForm extends Forms {
       <div>
         <ESidebar />
         <h2> Leave Form </h2> <br />
-        <Col lg="6" md="7" style={{marginLeft:"25%", paddingTop: "auto", position: 'absolute'}}>
-        <Card className="bg-secondary shadow border-0" >
-        <CardHeader className="bg-white border-0">
-                    <Col style={{marginLeft: '220px', paddingBottom: '10px'}} xs="8">
-                      <h3  className="mb--3">Leave Form</h3>
-                    </Col>
-                    
-                </CardHeader>
-          <CardBody className="px-lg-3 py-sm-5">
-          <form onSubmit={this.handleSubmit}>
-            {this.renderInput("from_Date", "From Date", "date")}
-            {this.renderInput("to_Date", "To Date", "date")}
-            {this.renderInput("subject", "Subject")}
-            {this.renderInput("reason", "Reason")}
-            {this.renderDropdown("leave_type", "Leave Type", options)}
-            {this.renderDropdown("To", "To", To)}
+        <Col lg="6" md="7" style={{ marginLeft: "25%", paddingTop: "auto", position: 'absolute' }}>
+          <Card className="bg-secondary shadow border-0" >
+            <CardHeader className="bg-white border-0">
+              <Col style={{ marginLeft: '220px', paddingBottom: '10px' }} xs="8">
+                <h3 className="mb--3">Leave Form</h3>
+              </Col>
 
-            {this.renderButton("Submit")}
-          </form>
-          </CardBody>
+            </CardHeader>
+            <CardBody className="px-lg-3 py-sm-5">
+              <form onSubmit={this.handleSubmit}>
+                {this.renderInput("from_Date", "From Date", "date")}
+                {this.renderInput("to_Date", "To Date", "date")}
+                {this.renderInput("subject", "Subject")}
+                {this.renderInput("reason", "Reason")}
+                {this.renderDropdown("leave_type", "Leave Type", options)}
+                {this.renderDropdown("To", "To", To)}
+
+                {this.renderButton("Submit")}
+              </form>
+            </CardBody>
           </Card>
-          </Col>
-        </div>
+        </Col>
+      </div>
     );
   }
 }

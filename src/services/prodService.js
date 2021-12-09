@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 
 
 const apiEndPointProd = "http://cghrportal.herokuapp.com/api/admin/productionhours";
-
+const empprohrs = "http://cghrportal.herokuapp.com/api/employee/productionhours/week&month";
 const tokenkey = "token";
 
 export function getJwt() {
@@ -21,6 +21,10 @@ export function calProdHours(user) {
 
 export function getCal() {
     return http.get(apiEndPointProd);
+
+}
+export function getemppro() {
+    return http.post(empprohrs);
 
 }
 

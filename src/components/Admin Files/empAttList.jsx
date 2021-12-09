@@ -43,8 +43,10 @@ class EmpAttList extends Forms {
     data: { to_Date: "", from_Date: "" },
     employess: [],
     pageSize: 10,
+    limit: 2,
     skip: 0,
     i: 0,
+    loadstatus: false,
     id: [],
     isLoading: true,
     errors: [],
@@ -82,21 +84,9 @@ class EmpAttList extends Forms {
     }
   };
 
-  getPageData = () => {
-    const {
-      pageSize,
-      currentPage,
-      employess: allemployess,
 
-      sortColumn,
-    } = this.state;
 
-    let filtered = allemployess;
 
-    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
-    const employess = paginate(sorted, currentPage, pageSize);
-    return { totalCount: filtered.length, data: employess };
-  };
 
 
 
@@ -112,6 +102,7 @@ class EmpAttList extends Forms {
     await this.setState({ employess: dd });
     await this.setState({ isLoading: false });
   }
+
   onloadmore = async () => {
     const { i } = this.state
 
@@ -126,6 +117,9 @@ class EmpAttList extends Forms {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
       }
+      if (ex.response && ex.response.status === 400) {
+        this.setState({ loadstatus: true, i: this.state.i - 1 })
+      }
     }
   };
 
@@ -135,11 +129,11 @@ class EmpAttList extends Forms {
   }
 
   render() {
-    const { pageSize, currentPage, sortColumn } = this.state;
-    const { totalCount, data: employess } = this.getPageData();
+    const { sortColumn, employess } = this.state;
+
     return (
-      <div style = {{height: '', position: "absolute", left: '0', width: '100%',}} 
-      className="py-2 py-sm-3 ">
+      <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
+        className="py-2 py-sm-3 ">
         <Sidebar />
         <Col lg="8" md="7" style={{ marginLeft: "6rem", paddingTop: "px", position: 'absolute', }}>
 
@@ -148,7 +142,7 @@ class EmpAttList extends Forms {
             sortColumn={sortColumn}
             onSort={this.handleSort}
           />
-          <Button variant="contained" onClick={this.onloadmore} style={{
+          <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
             zIndex: '1001'
           }}>
             Load more
@@ -176,8 +170,8 @@ class EmpAttList extends Forms {
           ) : (
             ""
           )}
-          </Col>
-          <Col lg="3" md="3" style={{ marginLeft: "76%", marginTop: "auto", position: "fixed", }}>
+        </Col>
+        <Col lg="3" md="3" style={{ marginLeft: "76%", marginTop: "auto", position: "fixed", }}>
           <Card className="card__wrap--inner bg-secondary shadow border-0">
             {/* <h1
               style={{
