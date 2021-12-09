@@ -1,18 +1,15 @@
 import React from "react";
-import paginate from "../Common/paginate";
 import _ from "lodash";
 import { connect } from "react-redux";
 import LeaveTable from "./leavetable";
 import Sidebar from "../Sidebar/Sidebar";
 import get_leavelist, { get_moreleavelist } from "../../reduxstore/actions/leaveAction";
-import Paginations from "./../Common/pagination";
 import ReactLoading from "react-loading";
 import { toast } from "react-toastify";
 import {
   Button, Col
-  
+
 } from "reactstrap";
-import TableBody from './../Common/tableBody';
 class LeaveList extends React.Component {
   state = {
     leaves: [],
@@ -57,7 +54,7 @@ class LeaveList extends React.Component {
     }
   }
 
-  onloadmore = async() =>{
+  onloadmore = async () => {
     const { i, limit } = this.state
     try {
       var skip = i * limit
@@ -81,22 +78,7 @@ class LeaveList extends React.Component {
 
   handleSort = (sortColumn) => this.setState({ sortColumn });
 
-  getPagedData = () => {
-    const {
-      pageSize,
-      currentPage,
-      searchQuery,
-      sortColumn,
-      leaves: allLeaves,
-    } = this.state;
 
-    let filtered = allLeaves;
-    //   if(searchQuery)
-    //       filtered =allLeaves.filter(m=>m.title.toString().toLowerCase().startsWith(searchQuery.toLowerCase()));
-    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
-    const leaves = paginate(sorted, currentPage, pageSize);
-    return { totalCount: filtered.length, data: leaves };
-  };
 
   approveLeave = {
     key: "approve",
@@ -115,52 +97,50 @@ class LeaveList extends React.Component {
   };
 
   render() {
-    const { length: count } = this.state.leaves;
-    const { pageSize, currentPage, sortColumn, leaves: allLeaves } = this.state;
+    const { sortColumn, leaves: data } = this.state;
 
     // if(count === 0)return <p>No movies available in the selected list</p>;
-    const { totalCount, data } = this.getPagedData();
 
     return (
 
-      <div style = {{height: '', position: "absolute", left: '0', width: '100%', }} 
-      className=" py-2 py-sm-3 "> 
-      <Sidebar />
-      <Col lg="9" md="7" style={{ marginLeft: "4rem", paddingTop: "px", position: 'absolute', }}>
+      <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
+        className=" py-2 py-sm-3 ">
+        <Sidebar />
+        <Col lg="9" md="7" style={{ marginLeft: "4rem", paddingTop: "px", position: 'absolute', }}>
 
-        <LeaveTable
-          leaves={data}
-          sortColumn={sortColumn}
-          onSort={this.handleSort}
-          onload={this.onloadmore}
-          disabled={this.state.loadstatus}
+          <LeaveTable
+            leaves={data}
+            sortColumn={sortColumn}
+            onSort={this.handleSort}
+            onload={this.onloadmore}
+            disabled={this.state.loadstatus}
           />
           {/* {this.renderLoadButton('More')} */}
-        {/* <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
+          {/* <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
           zIndex: '1001', marginLeft: '180px'
         }}>
         Load more
       </Button> */}
-        {this.state.isLoading ? (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              // alignItems: "center",
-              height: "100vh",
-            }}
-          >
-            <ReactLoading
-              type="bars"
-              color="black"
-              height={"10%"}
-              width={"10%"}
-            />
-          </div>
-        ) : (
-          ""
-        )}
-    </Col>
+          {this.state.isLoading ? (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                // alignItems: "center",
+                height: "100vh",
+              }}
+            >
+              <ReactLoading
+                type="bars"
+                color="black"
+                height={"10%"}
+                width={"10%"}
+              />
+            </div>
+          ) : (
+            ""
+          )}
+        </Col>
       </div>
     );
   }

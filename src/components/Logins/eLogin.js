@@ -1,19 +1,14 @@
 import React from "react";
-import auth from "../../services/authService";
 import Joi from "joi-browser";
 import { toast } from "react-toastify";
-import { Switch, Redirect } from "react-router-dom";
 import empauth from "../../services/empservice";
-import routes from "routes.js";
 import { Link } from "react-router-dom";
 import Forms from "./../Common/form";
 
 import {
   Button,
   Card,
-  CardHeader,
   CardBody,
-  FormGroup,
   Form,
   UncontrolledCollapse,
   NavbarBrand,
@@ -22,10 +17,6 @@ import {
   NavLink,
   Nav,
   Container,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Row,
   Col,
 } from "reactstrap";

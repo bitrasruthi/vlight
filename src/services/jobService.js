@@ -1,5 +1,4 @@
 import http from "./httpService";
-import jwtDecode from "jwt-decode";
 
 
 // const apiEndPointPro = "http://cghrportal.herokuapp.com/api/employee/profile";

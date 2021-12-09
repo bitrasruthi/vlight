@@ -6,54 +6,24 @@ import { PropTypes } from "prop-types";
 
 // reactstrap components
 import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
   Collapse,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Media,
   NavbarBrand,
   Navbar,
   NavItem,
   NavLink,
   Nav,
-  Progress,
-  Table,
   Container,
   Row,
   Col,
 } from "reactstrap";
 import Index from "views/Index.js";
-import Maps from "views/examples/Maps.js";
-import Register from "views/examples/Register.js";
-import Login from "../Logins/Login";
-import Tables from "views/examples/Tables.js";
-import Icons from "views/examples/Icons.js";
-import AddNew from './../Admin Files/addNewEmp';
-import Logout from './../Logins/logout';
-import EmpList from './../Admin Files/emplist';
-import TimeCard from "components/Employee Files/timecard";
+
 import AttList from './../Employee Files/myattendance';
 import LeaveForm from './../Employee Files/leaveform';
 import ELeavsList from './../Employee Files/eleavelist';
-import Countdown from './../Logins/countdown';
 import Profile from './../Employee Files/profile';
 import ChangePassword from './../Employee Files/changePassword';
 
-
-
-var ps;
 
 const ESidebar = (props) => {
   var routes = [
@@ -104,9 +74,9 @@ const ESidebar = (props) => {
   ];
   const [collapseOpen, setCollapseOpen] = useState();
   // verifies if routeName is the one active (in browser input)
-  const activeRoute = (routeName) => {
-    return props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
-  };
+  // const activeRoute = (routeName) => {
+  //   return props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
+  // };
   // toggles collapse between opened and closed (true/false)
   const toggleCollapse = () => {
     setCollapseOpen((data) => !data);
@@ -134,7 +104,7 @@ const ESidebar = (props) => {
     });
   };
 
-  const { bgColor,  logo } = props;
+  const {  logo } = props;
   let navbarBrandProps;
   if (logo && logo.innerLink) {
     navbarBrandProps = {

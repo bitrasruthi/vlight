@@ -1,12 +1,8 @@
 import React from "react";
 import EmpTable from "../Employee Files/attTable";
-import Pagination from "../Common/pagination";
-import paginate from "../Common/paginate";
-import _ from "lodash";
 import get_empattlist, { get_moreempattlist } from "../../reduxstore/actions/adminattAction";
 import emp from "../../services/empservice";
 import { connect } from "react-redux";
-import Paginations from "./../Common/pagination";
 import Joi from "joi-browser";
 import Sidebar from "components/Sidebar/Sidebar";
 import ReactLoading from "react-loading";
@@ -18,22 +14,9 @@ import Forms from "components/Common/form";
 import {
   Button,
   Card,
-  CardHeader,
   CardBody,
-  FormGroup,
   Form,
-  UncontrolledCollapse,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Row,
+
   Col,
 } from "reactstrap";
 
@@ -69,7 +52,7 @@ class EmpAttList extends Forms {
 
   doSubmit = async () => {
     try {
-      const { data, employess, id } = this.state;
+      const { data, id } = this.state;
       var ss = { ...data, EmployeeId: id };
       await this.setState({ data: ss });
       const atts = await emp.getAttendanceserc(this.state.data);

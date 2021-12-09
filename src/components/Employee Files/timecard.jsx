@@ -2,34 +2,17 @@ import React from "react";
 import Joi from "joi-browser";
 import { toast } from "react-toastify";
 import { checkIn } from "../../services/inService";
-import { getEmployees } from "../../services/userService";
 import { checkOut } from "../../services/outService";
 import Forms from "../../components/Common/form";
-import ESidebar from "../../components/Sidebar/eSidebar";
-import ENavBar from "components/Common/enavbar";
 import { gettime } from '../../services/settings'
 
 
 import {
   Button,
   Card,
-  CardHeader,
   CardBody,
-  FormGroup,
-  Form,
-  UncontrolledCollapse,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
+
   Row,
-  Col,
 } from "reactstrap";
 
 class TimeCard extends Forms {
@@ -73,8 +56,10 @@ class TimeCard extends Forms {
   };
 
   doOut = async () => {
-    var today = new Date(),
-      time = today.getHours() + ":" + today.getMinutes();
+    var today = new Date();
+    var myNumber = today.getMinutes();
+    var formattedNumber = ("0" + myNumber).slice(-2);
+    var time = today.getHours() + ":" + formattedNumber;
 
     try {
       await this.setState({ outTime: time });

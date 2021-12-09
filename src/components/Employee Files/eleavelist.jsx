@@ -8,7 +8,6 @@ import ReactLoading from "react-loading";
 import { toast } from "react-toastify";
 
 import {
-  Button,
   Col,
 } from "reactstrap";
 
@@ -93,7 +92,7 @@ class ELeavsList extends React.Component {
             onload={this.onloadmore}
             disabled={this.state.loadstatus}
           />
-         
+
         </Col>
         {this.state.isLoading ? (
           <div

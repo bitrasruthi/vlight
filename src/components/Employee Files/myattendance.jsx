@@ -1,22 +1,16 @@
 import React from "react";
 import EmpTable from "./attTable";
-import Pagination from "../Common/pagination";
-import paginate from "../Common/paginate";
-import _ from "lodash";
 import get_attlist, { get_moreattlist } from "../../reduxstore/actions/attAction";
 import emp from "../../services/empservice";
 import { connect } from "react-redux";
-import Paginations from "./../Common/pagination";
 import Joi from "joi-browser";
 import ESidebar from "../Sidebar/eSidebar";
 import { toast } from "react-toastify";
-
 import Forms from "components/Common/form";
 import ReactLoading from "react-loading";
 
 
 import {
-  Button,
   Card,
   CardBody,
   Form,

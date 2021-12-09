@@ -7,22 +7,17 @@ import { profileRegister } from '../../services/profileService';
 import paginate from "../Common/paginate";
 import Joi from 'joi-browser';
 import Forms from 'components/Common/form';
-import get_employeelist from 'reduxstore/actions/employeeAction';
-import { getEmployees } from './../../services/userService';
 
 import {
   Button,
   Card,
   CardHeader,
   CardBody,
-  FormGroup,
   Form,
-  Input,
   Container,
   Row,
   Col,
 } from "reactstrap";
-import JobCard from './jobCard';
 import EduCard from './eduCard';
 // core components
 

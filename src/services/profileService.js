@@ -1,14 +1,13 @@
 import http from "./httpService";
-import jwtDecode from "jwt-decode";
 
 
 const apiEndPointPro = "http://cghrportal.herokuapp.com/api/employee/add/profile";
 const apiEndPointProGet = "http://cghrportal.herokuapp.com/api/employee/details";
 
 const tokenkey = "token";
-function atturl(id) {
-    return `${apiEndPointProGet}/${id}`;
-  }
+// function atturl(id) {
+//     return `${apiEndPointProGet}/${id}`;
+//   }
 
 export function getJwt() {
   return localStorage.getItem(tokenkey);

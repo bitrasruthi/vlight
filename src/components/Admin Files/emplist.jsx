@@ -1,7 +1,6 @@
 import React from "react";
 
 import _ from "lodash";
-import { deleteEmp } from "../../services/authService";
 import { connect } from "react-redux";
 import get_employeelist from "../../reduxstore/actions/employeeAction";
 import EmployeeTable from "./emplisttable";
@@ -44,7 +43,7 @@ class Employees extends React.Component {
 
   handleSort = (sortColumn) => this.setState({ sortColumn });
 
- 
+
 
 
   render() {
@@ -65,7 +64,7 @@ class Employees extends React.Component {
           employees={data}
           sortColumn={sortColumn}
           onSort={this.handleSort}
-          // onDelete={this.handleDelete}
+        // onDelete={this.handleDelete}
         />
         {this.state.isLoading ? (
           <div

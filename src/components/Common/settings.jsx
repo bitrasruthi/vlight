@@ -6,17 +6,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import {
-  UncontrolledCollapse,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+
 
 export default class Settings extends React.Component {
   constructor(props) {

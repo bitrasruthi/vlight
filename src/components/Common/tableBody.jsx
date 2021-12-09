@@ -2,8 +2,6 @@ import React from "react";
 import _ from "lodash";
 // import ReactLoading from "react-loading";
 import { Button } from 'reactstrap';
-import LeaveList from './../Admin Files/leavelist';
-import onloadmore from '../Admin Files/leavelist';
 
 
 class TableBody extends React.Component {
@@ -11,7 +9,7 @@ class TableBody extends React.Component {
     isLoading: true,
   };
 
- 
+
 
 
   renderCell = (item, column) => {
@@ -46,22 +44,22 @@ class TableBody extends React.Component {
   render() {
     const { data, columns, onload, disabled } = this.props;
     return (
-      <tbody style={{zIndex: "1001"}}>
+      <tbody style={{ zIndex: "1001" }}>
         {data.map((item) => (
           <tr key={item._id}>
             {columns.map((column) => (
-              <td  style={{textAlign: 'center', fontSize: '15px'}} key={this.createkey(item, column)}>
+              <td style={{ textAlign: 'center', fontSize: '15px' }} key={this.createkey(item, column)}>
                 {this.renderCell(item, column)}
               </td>
-              
+
             ))}
           </tr>
         ))}
-        <Button variant="contained" disabled={disabled}  onClick={onload} style={{
-        zIndex: '1001', marginLeft: '0px'
-      }}>
-        More
-      </Button>
+        <Button variant="contained" disabled={disabled} onClick={onload} style={{
+          zIndex: '1001', marginLeft: '0px'
+        }}>
+          More
+        </Button>
 
       </tbody>
     );

@@ -1,25 +1,10 @@
 import React from 'react';
 import EmpWorkingStas from './empWorkingStats';
-import get_employeelist from 'reduxstore/actions/employeeAction';
 import {
-  Button,
   Card,
-  CardHeader,
   CardBody,
   CardTitle,
-  FormGroup,
-  Form,
-  UncontrolledCollapse,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
+
   Row,
   Col,
 } from "reactstrap";

@@ -1,5 +1,4 @@
 import http from "./httpService";
-import jwtDecode from "jwt-decode";
 
 
 const apiEndPointEduUpdate = "http://cghrportal.herokuapp.com/api/employee/updateEducationalDetails";

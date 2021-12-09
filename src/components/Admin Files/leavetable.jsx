@@ -1,13 +1,11 @@
 import React from "react";
 import Table from "../Common/table";
-import { Link, Redirect } from "react-router-dom";
-import Popup from "./popUp";
+import { Link } from "react-router-dom";
 // import { Spinner } from '../spinner';
-import { Col, Button } from 'reactstrap';
 
 class LeaveTable extends React.Component {
-  state = {showPopup: false}
-   
+  state = { showPopup: false }
+
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup
@@ -18,8 +16,8 @@ class LeaveTable extends React.Component {
       path: "EmployeeId",
       label: "Employee Id",
       content: (emp) => (
-        
-        <Link to={`/leaveapproval/${emp._id}`}>{emp.EmployeeId}</Link>     
+
+        <Link to={`/leaveapproval/${emp._id}`}>{emp.EmployeeId}</Link>
       ),
     },
     { path: "EmployeeName", label: "Name" },
@@ -36,22 +34,22 @@ class LeaveTable extends React.Component {
   componentDidMount() {
     console.log(this.state);
   }
-  
+
   render() {
     const { leaves, onSort, sortColumn, onload, disabled } = this.props;
 
     return (
       <div>
-        
-      <Table
-        columns={this.columns}
-        data={leaves}
-        sortColumn={sortColumn}
-        onSort={onSort}
-        onload={onload}
-        disabled={disabled}
+
+        <Table
+          columns={this.columns}
+          data={leaves}
+          sortColumn={sortColumn}
+          onSort={onSort}
+          onload={onload}
+          disabled={disabled}
         // LoadingComponent={Spinner}
-      />
+        />
       </div>
     );
   }

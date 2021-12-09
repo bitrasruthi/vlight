@@ -1,5 +1,4 @@
 import http from "./httpService";
-import jwtDecode from "jwt-decode";
 
 
 const apiEndPointProd = "http://cghrportal.herokuapp.com/api/admin/productionhours";

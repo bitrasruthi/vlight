@@ -1,24 +1,12 @@
 import React from 'react';
 import {
-    Button,
-    Card,
-    CardHeader,
-    CardBody,
+ 
     FormGroup,
-    Form,
-    UncontrolledCollapse,
-    NavbarBrand,
-    Navbar,
-    NavItem,
-    NavLink,
-    Nav,
-    Container,
-    Input,
+   
     InputGroupAddon,
     InputGroupText,
     InputGroup,
-    Row,
-    Col,
+  
   } from "reactstrap";
 const Inputs = ({name, error, label, ...rest}) => {
     return ( 

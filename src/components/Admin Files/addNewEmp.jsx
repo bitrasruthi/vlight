@@ -1,8 +1,6 @@
-import Dashboard from 'components/Common/dashboard';
 import Sidebar from 'components/Sidebar/Sidebar';
 import React from 'react'
-import NavBar from './../Common/navbar';
-import { getEmployees, register } from "../../services/userService";
+import { register } from "../../services/userService";
 import get_employeelist from 'reduxstore/actions/employeeAction';
 import Joi from 'joi-browser';
 import { toast } from "react-toastify";
@@ -12,20 +10,7 @@ import {
   Card,
   CardHeader,
   CardBody,
-  FormGroup,
   Form,
-  UncontrolledCollapse,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Row,
   Col,
 } from "reactstrap";
 

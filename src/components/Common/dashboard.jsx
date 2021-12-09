@@ -1,10 +1,6 @@
-import NoOfEmp from 'components/Admin Files/noofemp';
-import Footer from 'components/Footers/AdminFooter';
 import Sidebar from 'components/Sidebar/Sidebar';
 import React from 'react'
 import NavBar from './navbar';
-import ProductionHours from './productionHours';
-import ECCard from 'components/Admin Files/empCount';
 import get_employeelist, { get_hrslist } from "../../reduxstore/actions/employeeAction";
 import { toast } from "react-toastify";
 import { connect } from "react-redux";

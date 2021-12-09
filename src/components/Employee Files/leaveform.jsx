@@ -8,24 +8,9 @@ import { applyLeave } from "services/leaveService";
 
 import Forms from "../Common/form";
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
-  FormGroup,
-  Form,
-  UncontrolledCollapse,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Row,
   Col,
 } from "reactstrap";
 

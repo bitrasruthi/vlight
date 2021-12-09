@@ -3,28 +3,13 @@ import React from 'react';
 
 
 import {
-  Button,
   Card,
-  CardHeader,
   CardBody,
   CardTitle,
-  FormGroup,
-  Form,
-  UncontrolledCollapse,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
+
   Row,
   Col,
 } from "reactstrap";
-import EmpWorkingStas from './empWorkingStats';
 
 class PCard extends React.Component {
 

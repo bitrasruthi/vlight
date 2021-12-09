@@ -1,8 +1,7 @@
-import ESidebar from 'components/Sidebar/eSidebar';
 import React from 'react';
 import { getProDetails } from 'services/profileService';
 
-import { Button, Container, Row, Col } from "reactstrap";
+import { Container, Col } from "reactstrap";
 
 
 class EduCard extends React.Component {

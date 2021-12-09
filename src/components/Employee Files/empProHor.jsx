@@ -3,24 +3,10 @@ import EmpWorkingStas from 'components/Admin Files/empWorkingStats';
 import { calProdHours } from '../../services/prodService'
 
 import {
-    Button,
     Card,
-    CardHeader,
     CardBody,
     CardTitle,
-    FormGroup,
-    Form,
-    UncontrolledCollapse,
-    NavbarBrand,
-    Navbar,
-    NavItem,
-    NavLink,
-    Nav,
-    Container,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
+
     Row,
     Col,
 } from "reactstrap";
