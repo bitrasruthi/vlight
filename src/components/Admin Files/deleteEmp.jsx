@@ -151,6 +151,7 @@ class DeleteEmp extends Forms {
           </CardHeader>
           <CardBody className="px-lg-3 py-sm-5">
             <Form role="form" style={{textAlign: 'left'}} onSubmit={this.handleSubmit}>                  
+                  {this.renderInput("EmployeeId", "Employee Id",)}
                   {this.renderInput("Reason", "Reason",)}
                   {this.renderInput("AgreementDone", "Agreement Period Completed?", )}
 

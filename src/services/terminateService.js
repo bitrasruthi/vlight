@@ -23,16 +23,17 @@ export function terminateEmp(user) {
   });
 }
 
-// export async function getProDetails(data) {
-//     const { data: ser } = await http.post(apiEndPointProGet, data);
-//     return ser;
-//   }
+export  function getTerminateEmpDetails() {
+   return http.get(apiEndPointTerminate);
+    
+  }
   
   
 
   const pro = {
       terminateEmp,
       getJwt,
+      getTerminateEmpDetails
   }
 
   export default pro;

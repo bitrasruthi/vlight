@@ -37,13 +37,11 @@ class Employees extends React.Component {
       await get_employeelist(this.state.skip);
       await this.setState({ i: this.state.i + 1 })
     }
+  
     // const {data:movies} = await getMovies();
     const dd = await this.props.getemployeelist.data;
-
     await this.setState({ employees: dd, i: dd.skip || 1 });
     await this.setState({ isLoading: false });
-
-
   }
 
   handleSort = (sortColumn) => this.setState({ sortColumn });

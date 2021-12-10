@@ -57,7 +57,7 @@ class EProcard extends EmpWorkingStas {
                         >
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">
-                        {this.props.hrs}
+                        {this.props.whrs}
                         </span>
                       </div>
                       <Col className="col-auto">

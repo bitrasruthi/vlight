@@ -25,10 +25,10 @@ class ECard extends EmpWorkingStas {
                           tag="h5"
                           className="text-uppercase text-muted mb-0"
                         >
-                          Traffic
+                          Total Employees
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">
-                          350,897
+                        {this.props.count}
                         </span>
                       </div>
                       <Col className="col-auto">
