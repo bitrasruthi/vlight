@@ -1,12 +1,11 @@
 import Sidebar from 'components/Sidebar/Sidebar';
 import React from 'react'
 import NavBar from './navbar';
-import get_employeelist, { get_hrslist } from "../../reduxstore/actions/employeeAction";
 import { toast } from "react-toastify";
 import { connect } from "react-redux";
 import ECard from './../Admin Files/empCount';
 import PCard from 'components/Admin Files/prodHoursCard';
-
+import { getProHrs } from '../../services/userService'
 
 
 class Dashboard extends React.Component {
@@ -19,19 +18,19 @@ class Dashboard extends React.Component {
 
     async componentDidMount() {
         try {
+            const dd = getProHrs()
 
-            if (!this.props.getemployeelist) {
-                await get_employeelist(0);
-                await get_hrslist();
-            }
-
-            const dd = await this.props.getemployeelist;
-
+            console.log(dd)
             await this.setState({ employees: dd, lastMonthHours: dd.hrs.data.lastMonthHours, lastWeekHours: dd.hrs.data.lastWeekHours });
             console.log(this.state.employees)
         }
         catch (ex) {
-            toast('somthing wrong please refresh the page')
+            if (ex.response && ex.response.status === 400) {
+                const errors = { ...this.state.errors };
+                errors.to_Date = ex.response.data.data;
+                this.setState({ errors });
+                toast('somthing wrong please refresh the page')
+            }
         }
     }
 
@@ -46,7 +45,7 @@ class Dashboard extends React.Component {
 
             <ECard
                 title={'Total Employees '}
-                count={employees.count}
+                count={this.state}
             />
             {/* <PCard
                 title={'Monthly Hrs '}

@@ -46,7 +46,9 @@ export function getEmployees(skip) {
   return http.post(apiEndPointGet,{skip:skip});
 }
 export function getProHrs() {
-  return http.post(prohtslink);
+  const {data} = http.post(prohtslink);
+  console.log(data)
+  return data;
 }
 
 
