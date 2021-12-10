@@ -23,12 +23,12 @@ class NavBar extends React.Component {
         return <div>
             <Sidebar/>
             <div style = {{height: '', position: "absolute", left: '0', width: '100%',}} 
-            className="header bg-gradient-success py-2 py-sm-3 ">
+            className="header bg-gradient-success py-2 py-sm-9 ">
 
             <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
         <Container fluid>
          
-        <Form className="navbar-search navbar-search-dark form-inline mr-auto d-none d-md-flex ml-lg-auto">
+        <Form style={{marginTop: '-250px'}} className="navbar-search navbar-search-dark form-inline mr-auto d-none d-md-flex ml-lg-auto">
             <FormGroup className="mb-0">
               <InputGroup className="input-group-alternative">
                 <InputGroupAddon addonType="prepend">
@@ -41,7 +41,7 @@ class NavBar extends React.Component {
             </FormGroup>
           </Form>
           <Nav className="align-items-center d-md">
-          <UncontrolledDropdown nav>
+          <UncontrolledDropdown style={{marginTop: '-250px'}} nav>
             <DropdownToggle nav className="nav-link-icon" style={{marginLeft: '350px'}}>
               <i className="ni ni-bell-55" />
             </DropdownToggle>

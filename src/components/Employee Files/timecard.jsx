@@ -98,12 +98,9 @@ class TimeCard extends Forms {
   render() {
     return (
       <div>
-        <div
-          className="container"
-          style={{ paddingLeft: "400px", paddingRight: "300px", paddingTop: "200px" }}
-        >
+        <div className="container" style={{ paddingLeft: "400px", paddingRight: "300px", marginLeft: '-210px',paddingTop: "200px" }}>
           <Card
-            style={{ marginTop: "px" }}
+            style={{ marginTop: "-80px", }}
             className="bg-secondary shadow border-0"
           >
             <CardBody className="px-lg-7 py-lg-1">

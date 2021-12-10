@@ -48,14 +48,14 @@ class Dashboard extends React.Component {
                 title={'Total Employees '}
                 count={employees.length}
             />
-            <PCard
+            {/* <PCard
                 title={'Monthly Hrs '}
                 hrs={lastMonthHours}
             />
             <PCard
                 title={'Week Hrs '}
                 hrs={lastWeekHours}
-            />
+            /> */}
 
 
             {/* <NoOfEmp/> */}

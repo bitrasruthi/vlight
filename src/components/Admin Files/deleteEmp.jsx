@@ -83,9 +83,6 @@ class DeleteEmp extends Forms {
   
   doSubmit = async (emp) => {
       const {data: temp} = this.state
-    
-      // const originalemployees = this.state.employees;
-      // const empl = originalemployees.filter((m) => m.id !== emp._id);
       try {
      const pp = await terminateEmp(temp);
     await this.setState({ data: pp});
@@ -97,9 +94,9 @@ class DeleteEmp extends Forms {
         errors.EmployeeId = ex.response.data.data;
         this.setState({ errors });
       }
-    
   }
   };
+
 
 
   async componentDidMount() {
@@ -143,29 +140,35 @@ class DeleteEmp extends Forms {
         position: "absolute",
         textAlign: 'center',
         margin: "auto"}} className='popup_inner'>
-          <div style={{borderRadius: '30px', height: "430px",zIndex: 1001, 
-          marginLeft: '450px',marginTop: '50px' ,width: "400px", background: 'white'}}>
+          <div style={{borderRadius: '30px', height: "300px",zIndex: 1001, 
+          marginLeft: '450px',marginTop: '50px' ,width: "600px", background: 'white'}}>
             <div style={{marginTop:'' }}>
             {/* {/* <h5 style={{fontSize: '20px', paddingTop: '5px'}}>Employee Id: {this.state.employees.EmployeeId}</h5> */}
-            <h5 style={{fontSize: '20px',}}>Are you sure? You want to delete this employee? If Yes, please enter following</h5>
-            <Form role="form" onSubmit={this.handleSubmit}>                  
-                  {this.renderInput("EmployeeId", "Employee ID")}
+            <Card className="bg-secondary shadow border-0" style={{height: '530px'}} >
+          <CardHeader className="bg-white border-0">
+            <h3  >Are you sure, you want to delete this employee? <br/> If Yes, please enter following</h3>
+            
+          </CardHeader>
+          <CardBody className="px-lg-3 py-sm-5">
+            <Form role="form" style={{textAlign: 'left'}} onSubmit={this.handleSubmit}>                  
                   {this.renderInput("Reason", "Reason",)}
                   {this.renderInput("AgreementDone", "Agreement Period Completed?", )}
 
-        <Button style={{marginLeft: '0px', marginTop: '10px', background: '#2DCE8A', border: 'none'}} 
+        <Button style={{marginLeft: '100px', marginTop: '10px', background: '#2DCE8A', border: 'none', }} 
         type="submit" variant="contained">
           Terminate
+        </Button >
+        <Button style={{marginLeft: '150px', marginTop: '10px', background: '#f58078', border: 'none'}} variant="contained" href='/emplist'>
+          Cancel
         </Button>
-                  </Form>
-            </div>
-        {this.state.showPopup ? <Button  style={{marginLeft: '400px',boxShadow: 'none' , background: 'transparent', border: 'none',marginTop: '-200px'}}
+        {this.state.showPopup ? <Button  style={{marginLeft: '540px',  boxShadow: 'none' , background: 'transparent', border: 'none',marginTop: '-985px'}}
          href='/emplist'>
         <i style={{fontSize: '20px'}} class="far fa-times-circle"></i></Button>
          : null}
-        <Button style={{marginLeft: '', marginTop: '10px', background: '#f58078', border: 'none'}} variant="contained" href='/emplist'>
-          Cancel
-        </Button>
+                  </Form>
+                  </CardBody>
+                  </Card>
+            </div>
         <div>
       </div>
          </div>
