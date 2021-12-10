@@ -119,6 +119,8 @@ class AttList extends Forms {
             employess={employess}
             sortColumn={sortColumn}
             onSort={this.handleSort}
+            onload={this.onloadmore}
+            disabled={this.state.loadstatus}
           />
         </Col>
         <Col>

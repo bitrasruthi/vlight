@@ -21,14 +21,14 @@ class Dashboard extends React.Component {
         try {
 
             if (!this.props.getemployeelist) {
-                await get_employeelist();
+                await get_employeelist(0);
                 await get_hrslist();
             }
 
             const dd = await this.props.getemployeelist;
-            console.log(dd.hrs.data);
-            await this.setState({ employees: dd, lastMonthHours: dd.hrs.data.lastMonthHours, lastWeekHours: dd.hrs.data.lastWeekHours });
 
+            await this.setState({ employees: dd, lastMonthHours: dd.hrs.data.lastMonthHours, lastWeekHours: dd.hrs.data.lastWeekHours });
+            console.log(this.state.employees)
         }
         catch (ex) {
             toast('somthing wrong please refresh the page')
@@ -46,7 +46,7 @@ class Dashboard extends React.Component {
 
             <ECard
                 title={'Total Employees '}
-                count={employees.length}
+                count={employees.count}
             />
             <PCard
                 title={'Monthly Hrs '}

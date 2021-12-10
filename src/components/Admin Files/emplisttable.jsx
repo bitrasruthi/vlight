@@ -18,17 +18,17 @@ class EmployeeTable extends React.Component {
     { path: "Phone", label: "Phone" },
     { path: "Role", label: "Role" },
     { path: "NetSalary", label: "NetSalary" },
-     {
+    {
       key: " Delete",
-      label:'Actions',
+      label: 'Actions',
       content: (emp) => (
-        <button className="btn btn-danger btn-sm" ><Link style={{color: 'white'}} to={`/deleteemp/${emp.EmployeeId}`}> Delete</Link></button>
+        <button className="btn btn-danger btn-sm" ><Link style={{ color: 'white' }} to={`/deleteemp/${emp.EmployeeId}`}> Delete</Link></button>
       ),
     }
   ];
 
   render() {
-    const { employees, onSort, sortColumn } = this.props;
+    const { employees, onSort, sortColumn, onload, disabled } = this.props;
 
     return (
       <Table
@@ -36,7 +36,9 @@ class EmployeeTable extends React.Component {
         data={employees}
         sortColumn={sortColumn}
         onSort={onSort}
-        // LoadingComponent={Spinner}
+        onload={onload}
+        disabled={disabled}
+      // LoadingComponent={Spinner}
       />
     );
   }

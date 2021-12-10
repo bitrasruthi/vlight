@@ -3,7 +3,7 @@ import http from "./httpService";
 const apiEndPointPost = "http://cghrportal.herokuapp.com/api/admin/addemployee";
 const apiEndPointGet = "http://cghrportal.herokuapp.com/api/admin/getall";
 const apiEndPointReg = "/admin/registerhr"
-const prohtslink  = 'http://cghrportal.herokuapp.com/api/employee/productionhours/week&month'
+const prohtslink  = 'http://cghrportal.herokuapp.com/api/admin/productionhours/week&month'
 
 const tokenkey = "token";
 
@@ -42,8 +42,8 @@ export function registerAdmin(user) {
 }
 
 
-export function getEmployees() {
-  return http.get(apiEndPointGet);
+export function getEmployees(skip) {
+  return http.post(apiEndPointGet,{skip:skip});
 }
 export function getProHrs() {
   return http.post(prohtslink);
