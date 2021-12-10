@@ -45,9 +45,8 @@ export function registerAdmin(user) {
 export function getEmployees(skip) {
   return http.post(apiEndPointGet,{skip:skip});
 }
-export function getProHrs() {
-  const {data} = http.post(prohtslink);
-  console.log(data)
+export async function getProHrs() {
+  const {data} =  await http.post(prohtslink);
   return data;
 }
 

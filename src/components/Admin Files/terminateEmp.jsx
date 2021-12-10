@@ -1,90 +1,77 @@
 import Sidebar from 'components/Sidebar/Sidebar';
 import React from 'react';
-import  Joi from 'joi-browser';
+import Joi from 'joi-browser';
 import { toast } from "react-toastify";
 import Forms from 'components/Common/form';
 import { connect } from "react-redux";
+import get_termlist from '../../reduxstore/actions/terminateAction'
 
-import {
-    Button,
-    Card,
-    CardHeader,
-    CardBody,
-    CardTitle,
-    FormGroup,
-    Form,
-    UncontrolledCollapse,
-    NavbarBrand,
-    Navbar,
-    NavItem,
-    NavLink,
-    Nav,
-    Container,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
-    Row,
-    Col,
-  } from "reactstrap";
-import { terminateEmp } from 'services/terminateService';
+
 import TerminateEmpTable from './terminateEmpTable';
-import {getTerminateEmpDetails} from 'services/terminateService';
 
 
 class TerminateEmp extends Forms {
-    state = {
-        // data: {
-        //   EmployeeId: "",
-        //  Reason: '',
-        //  AgreementDone: '',
-        // },
-        errors: [],
-        employees: []
-      };
-    
-    //   schema = {
-    //     EmployeeId: Joi.string().required(),
-    //     Reason: Joi.string().required(),
-    //     AgreementDone: Joi.string().required(),
-    //   };
+  state = {
+    data: {
+      EmployeeId: "",
+      Reason: '',
+      AgreementDone: '',
+    },
+    errors: [],
+    employees: [],
+    sortColumn: { path: "", order: "" },
 
-    // async componentDidMount() {
-    //     if (!this.props.getemployeelist) {
-    //       await get_employeelist(this.state.skip);
-    //       await this.setState({ i: this.state.i + 1 })
-    //     }
-      
-    //     // const {data:movies} = await getMovies();
-    //     const dd = await this.props.getemployeelist.data;
-    //     await this.setState({ employees: dd, i: dd.skip || 1 });
-    //     await this.setState({ isLoading: false });
-    //   }
+  };
 
-    render() { 
-        const {sortColumn, employees: data} = this.state;
+  schema = {
+    EmployeeId: Joi.string().required(),
+    Reason: Joi.string().required(),
+    AgreementDone: Joi.string().required(),
+  };
 
-
-        return <div  style = {{height: '', position: "absolute", left: '0', width: '100%',}} 
-        className=" py-5 py-sm-1 ">
-            <Sidebar/>
-            <TerminateEmpTable
-          employees={data}
-          sortColumn={sortColumn}
-          onSort={this.handleSort}
-        // onDelete={this.handleDelete}
-        />
-          
-                   </div>;
+  async componentDidMount() {
+    if (!this.props.getterminatedlist) {
+      await get_termlist();
+      await this.setState({ i: this.state.i + 1 })
     }
+
+    // const {data:movies} = await getMovies();
+    const dd = await this.props.getterminatedlist.data;
+    console.log(dd)
+    await this.setState({ employees: dd, i: dd.skip || 1 });
+    await this.setState({ isLoading: false });
+  }
+
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page });
+  };
+
+  handleSort = (sortColumn) => {
+    this.setState({ sortColumn });
+  };
+  render() {
+    const { sortColumn, employees: data } = this.state;
+
+
+    return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
+      className=" py-5 py-sm-1 ">
+      <Sidebar />
+      <TerminateEmpTable
+        employees={data}
+        sortColumn={sortColumn}
+        onSort={this.handleSort}
+
+      />
+
+    </div>;
+  }
 }
- 
+
 // export default TerminateEmp;
 const mapStateToProps = (state) => {
-    return {
-      getterminatedlist: state.getterminatedlist,
-    };
+  return {
+    getterminatedlist: state.getterminatedlist,
   };
-  
-  export default connect(mapStateToProps)(TerminateEmp);
-  
+};
+
+export default connect(mapStateToProps)(TerminateEmp);

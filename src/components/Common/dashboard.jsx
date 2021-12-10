@@ -18,10 +18,10 @@ class Dashboard extends React.Component {
 
     async componentDidMount() {
         try {
-            const dd = getProHrs()
+            const dd = await getProHrs()
 
             console.log(dd)
-            await this.setState({ employees: dd, lastMonthHours: dd.hrs.data.lastMonthHours, lastWeekHours: dd.hrs.data.lastWeekHours });
+            // await this.setState({ employees: dd, lastMonthHours: dd.hrs.data.lastMonthHours, lastWeekHours: dd.hrs.data.lastWeekHours });
             console.log(this.state.employees)
         }
         catch (ex) {
@@ -45,7 +45,7 @@ class Dashboard extends React.Component {
 
             <ECard
                 title={'Total Employees '}
-                count={this.state}
+
             />
             {/* <PCard
                 title={'Monthly Hrs '}
