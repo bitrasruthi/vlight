@@ -34,8 +34,8 @@ class EDashboard extends React.Component {
             <ENavBar />
             <TimeCard />
             <EProcard
-                hrs={this.state.lastMonthHours}
-                whrs={this.state.lastWeekHours}
+                hrs={this.state.lastMonthHours || '...'}
+                whrs={this.state.lastWeekHours || '...'}
             />
             
         </div>;

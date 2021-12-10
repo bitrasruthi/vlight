@@ -13,16 +13,18 @@ class Dashboard extends React.Component {
     state = {
         employees: [],
         lastMonthHours: '',
-        lastWeekHours: ''
+        lastWeekHours: '',
+        count: ''
     }
 
     async componentDidMount() {
         try {
-            const dd = await getProHrs()
-
-            console.log(dd)
-            // await this.setState({ employees: dd, lastMonthHours: dd.hrs.data.lastMonthHours, lastWeekHours: dd.hrs.data.lastWeekHours });
-            console.log(this.state.employees)
+            const {data: dd} = this.state;
+            const tt = await getProHrs(dd);
+            console.log(tt.count);
+            await this.setState({ 
+                lastMonthHours: tt.total.totalLastMonthHours, lastWeekHours: tt.total.totalLastWeekHours, count: tt.count });
+            // console.log(this.state.employees)
         }
         catch (ex) {
             if (ex.response && ex.response.status === 400) {
@@ -45,7 +47,9 @@ class Dashboard extends React.Component {
 
             <ECard
                 title={'Total Employees '}
-
+                count={this.state.count || 'loading...'}
+                totalmonthhours={this.state.lastMonthHours|| 'loading...'}
+                totalweekhours={this.state.lastWeekHours || 'loading...'}
             />
             {/* <PCard
                 title={'Monthly Hrs '}
