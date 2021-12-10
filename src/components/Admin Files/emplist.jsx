@@ -17,6 +17,10 @@ class Employees extends React.Component {
     searchQuery: "",
     sortColumn: { path: "EmployeeName", order: "asc" },
     isLoading: true,
+    loadstatus: false,
+    limit: 2,
+    skip: 0,
+    i: 0,
   };
 
   constructor(props) {
@@ -30,12 +34,13 @@ class Employees extends React.Component {
 
   async componentDidMount() {
     if (!this.props.getemployeelist) {
-      await get_employeelist();
+      await get_employeelist(this.state.skip);
+      await this.setState({ i: this.state.i + 1 })
     }
     // const {data:movies} = await getMovies();
-    const dd = await this.props.getemployeelist;
-    // console.log(dd);
-    await this.setState({ employees: dd });
+    const dd = await this.props.getemployeelist.data;
+
+    await this.setState({ employees: dd, i: dd.skip || 1 });
     await this.setState({ isLoading: false });
 
 
@@ -43,6 +48,25 @@ class Employees extends React.Component {
 
   handleSort = (sortColumn) => this.setState({ sortColumn });
 
+  onloadmore = async () => {
+    const { i } = this.state
+
+    try {
+      var skip = i * 2
+      await this.setState({ i: this.state.i + 1 })
+
+      await get_employeelist(skip)
+      const dd = await this.props.getemployeelist.data;
+      this.setState({ employees: dd })
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data.data);
+      }
+      if (ex.response && ex.response.status === 400) {
+        this.setState({ loadstatus: true, i: this.state.i - 1 })
+      }
+    }
+  };
 
 
 
@@ -64,6 +88,8 @@ class Employees extends React.Component {
           employees={data}
           sortColumn={sortColumn}
           onSort={this.handleSort}
+          onload={this.onloadmore}
+          disabled={this.state.loadstatus}
         // onDelete={this.handleDelete}
         />
         {this.state.isLoading ? (

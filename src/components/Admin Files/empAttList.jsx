@@ -74,16 +74,21 @@ class EmpAttList extends Forms {
 
 
   async componentDidMount() {
-    await this.setState({ id: this.props.match.params.id })
-    if (!this.props.getattlist) {
-      await get_empattlist(this.state.id, this.state.skip);
-      await this.setState({ i: this.state.i + 1 })
+    try {
+      await this.setState({ id: this.props.match.params.id })
+      if (!this.props.getattlist) {
+        await get_empattlist(this.state.id, this.state.skip);
+        await this.setState({ i: this.state.i + 1 })
 
+      }
+
+      const dd = await this.props.getademplist;
+      await this.setState({ employess: dd });
+      await this.setState({ isLoading: false });
     }
-
-    const dd = await this.props.getademplist;
-    await this.setState({ employess: dd });
-    await this.setState({ isLoading: false });
+    catch (er) {
+      toast('no data')
+    }
   }
 
   onloadmore = async () => {
@@ -113,7 +118,6 @@ class EmpAttList extends Forms {
 
   render() {
     const { sortColumn, employess } = this.state;
-
     return (
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className="py-2 py-sm-3 ">
@@ -124,6 +128,8 @@ class EmpAttList extends Forms {
             employess={employess}
             sortColumn={sortColumn}
             onSort={this.handleSort}
+            onload={this.onloadmore}
+            disabled={this.state.loadstatus}
           />
           {/* <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
             zIndex: '1001'
