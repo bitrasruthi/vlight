@@ -40,9 +40,7 @@ class AttList extends Forms {
     to_Date: Joi.string().required(),
   };
 
-  handlePageChange = (page) => {
-    this.setState({ currentPage: page });
-  };
+
 
   handleSort = (sortColumn) => {
     this.setState({ sortColumn });

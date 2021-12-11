@@ -6,6 +6,8 @@ import empleaveReducer from "./../empleaveReducer";
 import admemployeeReducer from "./adminattRecuder";
 import hoildaysReducer from "./hoildaysReducer";
 import terminatedReducer from "./terminatedReducer";
+import hrsReducer from "./hrsReducer";
+
 
 export default function allReducers() {
   return combineReducers({
@@ -15,6 +17,7 @@ export default function allReducers() {
     getempleavelist: empleaveReducer,
     getademplist: admemployeeReducer,
     gethoildayslist:hoildaysReducer,
-    getterminatedlist: terminatedReducer
+    getterminatedlist: terminatedReducer,
+    getthrslist: hrsReducer
   });
 }

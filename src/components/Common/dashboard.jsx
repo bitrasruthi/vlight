@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import ECard from './../Admin Files/empCount';
 import PCard from 'components/Admin Files/prodHoursCard';
 import { getProHrs } from '../../services/userService'
-
+import get_hrslist from '../../reduxstore/actions/hrsAction'
 
 class Dashboard extends React.Component {
 
@@ -19,12 +19,16 @@ class Dashboard extends React.Component {
 
     async componentDidMount() {
         try {
-            const {data: dd} = this.state;
-            const tt = await getProHrs(dd);
-            console.log(tt.count);
-            await this.setState({ 
-                lastMonthHours: tt.total.totalLastMonthHours, lastWeekHours: tt.total.totalLastWeekHours, count: tt.count });
-            // console.log(this.state.employees)
+            if (!this.props.getthrslist) {
+                await get_hrslist();
+
+            }
+
+            const tt = await this.props.getthrslist;
+            console.log(tt);
+            await this.setState({
+                lastMonthHours: tt.total.totalLastMonthHours, lastWeekHours: tt.total.totalLastWeekHours, count: tt.count,
+            });
         }
         catch (ex) {
             if (ex.response && ex.response.status === 400) {
@@ -48,7 +52,7 @@ class Dashboard extends React.Component {
             <ECard
                 title={'Total Employees '}
                 count={this.state.count || 'loading...'}
-                totalmonthhours={this.state.lastMonthHours|| 'loading...'}
+                totalmonthhours={this.state.lastMonthHours || 'loading...'}
                 totalweekhours={this.state.lastWeekHours || 'loading...'}
             />
             {/* <PCard
@@ -69,7 +73,7 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        getemployeelist: state.getemployeelist,
+        getthrslist: state.getthrslist,
     };
 };
 

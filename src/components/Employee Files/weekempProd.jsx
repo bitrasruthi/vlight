@@ -11,7 +11,7 @@ import {
     Col,
 } from "reactstrap";
 
-class WEProcard extends EmpWorkingStas {
+class WEProcard extends React.Component {
 
     render() {
         return <div>

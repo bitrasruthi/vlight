@@ -1,8 +1,13 @@
 import Sidebar from 'components/Sidebar/Sidebar';
 import React from 'react';
 import Joi from 'joi-browser';
-import { toast } from "react-toastify";
+
 import Forms from 'components/Common/form';
+import { toast } from "react-toastify";
+import { connect } from "react-redux";
+import get_hrslist from '../../reduxstore/actions/hrsAction'
+import Hrstable from './empwortable';
+
 import {
   Button,
   Card,
@@ -22,8 +27,11 @@ class EmpWorkingStas extends Forms {
       from_Date: '',
       to_Date: '',
     },
+    employees: [],
     errors: [],
     pHours: '',
+    sortColumn: { path: "", order: "" },
+
   };
 
   schema = {
@@ -31,8 +39,28 @@ class EmpWorkingStas extends Forms {
     from_Date: Joi.string().required(),
     to_Date: Joi.string().required(),
   };
+  async componentDidMount() {
+    try {
+      if (!this.props.getthrslist) {
+        await get_hrslist();
+      }
+      const tt = await this.props.getthrslist;
+      const values = Object.values(tt.finaldata)
+      await this.setState({ employees: values });
 
-
+    }
+    catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.to_Date = ex.response.data.data;
+        this.setState({ errors });
+        toast('somthing wrong please refresh the page')
+      }
+    }
+  }
+  handleSort = (sortColumn) => {
+    this.setState({ sortColumn });
+  };
   doSubmit = async () => {
     try {
       const { data: prod } = this.state;
@@ -60,10 +88,19 @@ class EmpWorkingStas extends Forms {
   };
 
   render() {
+    const { sortColumn, employees } = this.state
     return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
       className="header bg-gradient-success py-5 py-sm-1 ">
       <Sidebar />
-      <Col lg="5" md="7" style={{ marginLeft: "35%", paddingTop: "180px", position: 'absolute' }}>
+      <Hrstable
+        employees={employees}
+        sortColumn={sortColumn}
+        onSort={this.handleSort}
+
+
+      />
+
+      {/* <Col lg="5" md="7" style={{ marginLeft: "35%", paddingTop: "180px", position: 'absolute' }}>
         <Card className="bg-secondary shadow border-0" >
           <CardBody className="px-lg-3 py-sm-5">
             <Form role="form" onSubmit={this.handleSubmit}>
@@ -101,9 +138,15 @@ class EmpWorkingStas extends Forms {
             </Row>
           </CardBody>
         </Card>
-      </Col>
+      </Col> */}
     </div>;
   }
 }
 
-export default EmpWorkingStas;
+const mapStateToProps = (state) => {
+  return {
+    getthrslist: state.getthrslist,
+  };
+};
+
+export default connect(mapStateToProps)(EmpWorkingStas);
