@@ -77,7 +77,7 @@ const Sidebar = (props) => {
     },
     {
       path: "/terminateemp",
-      name: "Terminate Employee",
+      name: "Terminated List",
       icon: "fas fa-user-slash text-red",
       component:TerminateEmp,
       layout: "/terminateemp",

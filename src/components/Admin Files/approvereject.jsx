@@ -7,8 +7,14 @@ import { leavestatus } from "../../services/leaveService";
 import { toast } from "react-toastify";
 import {
   Button,
-
+  Row,
+  Card,
+  CardHeader,
+  CardBody,
+  Form,
+  Col,
 } from "reactstrap";
+
 
 class ApproveReject extends Forms {
   state = {
@@ -101,28 +107,92 @@ class ApproveReject extends Forms {
           }} className='popup_inner'>
             <div style={{
               borderRadius: '30px', height: "300px", zIndex: 1001,
-              marginLeft: '450px', marginTop: '150px', width: "400px", background: 'white'
+              marginLeft: '380px', marginTop: '100px', width: "600px", background: 'white'
             }}>
-              <div style={{ marginTop: '' }}>
-                <p style={{ fontSize: '20px', paddingTop: '5px' }}><span style={{ fontWeight: 'bold', }}> Employee Id:</span> {this.state.leave.EmployeeId}</p>
-                <p style={{ fontSize: '20px' }}><span style={{ fontWeight: 'bold', }}>Employee Name: </span>{this.state.leave.EmployeeName}</p>
-                <p style={{ fontSize: '20px' }}><span style={{ fontWeight: 'bold', }}>From Date: </span>{this.state.leave.from_Date}</p>
-                <p style={{ fontSize: '20px' }}><span style={{ fontWeight: 'bold', }}>To Date: </span>{this.state.leave.to_Date} </p>
-                <p style={{ fontSize: '20px' }}><span style={{ fontWeight: 'bold', }}>Subject: </span>{this.state.leave.subject}</p>
-                <p style={{ fontSize: '20px' }}><span style={{ fontWeight: 'bold', }}>Reason: </span>{this.state.leave.reason}</p>
-              </div>
-              {this.state.showPopup ? <Button style={{ marginLeft: '400px', boxShadow: 'none', background: 'transparent', border: 'none', marginTop: '-500px' }}
-                href='/leavelist'>
-                <i style={{ fontSize: '20px' }} class="far fa-times-circle"></i></Button>
-                : null}
+               {/* <Col lg="6" md="7" style={{ marginLeft: "25%", paddingTop: "auto", position: 'absolute' }}> */}
+        <Card className="bg-secondary shadow border-0" >
+          <CardHeader className="bg-gradient-success border-0">
+            <Col style={{ marginLeft: '100px', paddingBottom: '10px' }} xs="8">
+              <h3 className="mb--3">Leave Details</h3>
+            </Col>
+
+          </CardHeader>
+          <CardBody  className="px-lg-3 py-sm-5">
+            <div style={{marginLeft: '20px'}} >
+          <div class="row">
+  <div class="column">
+              <h3 style={{ fontWeight: '', }}> Employee Id:</h3>
+  </div>
+  <div class="column">
+
+              <span style={{  paddingTop: '5px' }}> {this.state.leave.EmployeeId}</span>
+  </div>
+  <div style={{marginLeft: '80px'}} class="column">
+              <span style={{ fontWeight: 'bold', }}>Employee Name: </span>              
+  </div>
+  <div  class="column">
+                <span style={{ fontSize: '' }}>{this.state.leave.EmployeeName}</span>
+
+  </div>
+  </div>
+  <br />
+  <div class="row">
+  <div class="column">
+             
+              <span style={{ fontWeight: 'bold', }}>From Date: </span>
+  </div>
+  <div class="column">
+                <span style={{ fontSize: '' }}>{this.state.leave.from_Date}</span>
+
+  </div>
+  <div style={{marginLeft: '60px'}} class="column">
+              <span style={{ fontWeight: 'bold', }}>To Date: </span>
+  </div>
+  <div class="column">
+
+                <span style={{ fontSize: '' }}>{this.state.leave.to_Date} </span>
+  </div>
+</div>
+<br />
+<div class="row">
+<div class="column">
+            <span style={{ fontWeight: 'bold', }}>Subject: </span>
+  </div>
+  <div class="column">
+                <span style={{ fontSize: '' }}>{this.state.leave.subject}</span>
+
+  </div>
+
+  </div>
+  <br />
+  <div class="row">
+<div class="column">
+            <span style={{ fontWeight: 'bold', }}>Reason: </span>
+  </div>
+  <div class="column">
+            <span style={{ fontSize: '' }}> {this.state.leave.reason}</span>
+
+  </div>
+  </div>
+</div>
+  <br />
+<div style={{marginTop: '20px'}}  >
+            
               <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', border: 'none' }} variant="contained" onClick={this.onApprove}>
                 Approve
               </Button>
-              <Button style={{ marginLeft: '', marginTop: '0px', background: '#f58078', border: 'none' }} variant="contained" onClick={this.onReject}>
+              <Button style={{ marginLeft: '', marginTop: '0px', background: '#2DCECA', border: 'none' }} variant="contained" onClick={this.onReject}>
                 Reject
               </Button>
-              <div>
               </div>
+                </CardBody>
+          </Card>
+          {/* </Col> */}
+              {this.state.showPopup ? <Button style={{ marginLeft: '550px', boxShadow: 'none', background: 'transparent', border: 'none', marginTop: '-820px' }}
+                href='/leavelist'>
+                <i style={{ fontSize: '20px' }} class="far fa-times-circle"></i></Button>
+                : null}
+              
             </div>
           </div>
         </div>
