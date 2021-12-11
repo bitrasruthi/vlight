@@ -1,20 +1,25 @@
-import { GET_ATTENDANCE_LIST,GET_MOREATTENDANCE_LIST } from "../actions/attAction";
+import { GET_EMPLOYEE_LIST ,GET_PROHRS_LIST,GET_MOREEMPLOYEE_LIST} from "../actions/employeeAction";
 
-const attReducer = (state = null, { type, payload }) => {
+const employeeReducer = (state = null, { type, payload }) => {
   switch (type) {
-    case GET_ATTENDANCE_LIST:
+    case GET_EMPLOYEE_LIST:
+      console.log(payload)
       return payload;
+    
+      case GET_MOREEMPLOYEE_LIST: 
 
-    case GET_MOREATTENDANCE_LIST:
-      payload.data.forEach(element => {
-        state.push(element)
+        const gg = payload.data.data
+        console.log('sai',gg)
+      gg.forEach(element => {
+        state.data.push(element)
       }); 
       state.skip = payload.skip
       console.log(state)
       return state;
+
     default:
       return state;
   }
 };
 
-export default attReducer;
+export default employeeReducer;

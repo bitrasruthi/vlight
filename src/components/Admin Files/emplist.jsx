@@ -2,7 +2,7 @@ import React from "react";
 
 import _ from "lodash";
 import { connect } from "react-redux";
-import get_employeelist from "../../reduxstore/actions/employeeAction";
+import get_employeelist, { get_moreemployeelist } from "../../reduxstore/actions/employeeAction";
 import EmployeeTable from "./emplisttable";
 import Sidebar from "../Sidebar/Sidebar";
 
@@ -15,7 +15,7 @@ class Employees extends React.Component {
   state = {
     employees: [],
     searchQuery: "",
-    sortColumn: { path: "EmployeeName", order: "asc" },
+    sortColumn: {},
     isLoading: true,
     loadstatus: false,
     limit: 2,
@@ -37,9 +37,10 @@ class Employees extends React.Component {
       await get_employeelist(this.state.skip);
       await this.setState({ i: this.state.i + 1 })
     }
-  
+
     // const {data:movies} = await getMovies();
     const dd = await this.props.getemployeelist.data;
+    console.log(dd)
     await this.setState({ employees: dd, i: dd.skip || 1 });
     await this.setState({ isLoading: false });
   }
@@ -53,9 +54,10 @@ class Employees extends React.Component {
       var skip = i * 2
       await this.setState({ i: this.state.i + 1 })
 
-      await get_employeelist(skip)
+      await get_moreemployeelist(skip)
       const dd = await this.props.getemployeelist.data;
-      this.setState({ employees: dd })
+      console.log(dd)
+      await this.setState({ employees: dd })
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);

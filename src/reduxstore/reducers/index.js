@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import employeeReducer from "./attReducer";
-import attReducer from "./employeeReducer";
+import employeeReducer from "./employeeReducer";
+import attReducer from "./attReducerr";
 import leaveReducer from "./leaveReducer";
 import empleaveReducer from "./../empleaveReducer";
 import admemployeeReducer from "./adminattRecuder";
