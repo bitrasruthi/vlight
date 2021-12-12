@@ -11,8 +11,8 @@ const Dropdown = ({
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
-      <div className="input-group mb-3">
-        <select
+      <div  className="input-group mb-3">
+        <select  style={{border: ''}} 
           className="form-select"
           id={name}
           onChange={(id) => onChange({ name, id })}

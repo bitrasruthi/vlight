@@ -8,6 +8,7 @@ import Sidebar from "../Sidebar/Sidebar";
 
 import { toast } from "react-toastify";
 import ReactLoading from "react-loading";
+import { Col } from "reactstrap";
 
 
 
@@ -84,6 +85,8 @@ class Employees extends React.Component {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <Sidebar />
+        
+
         <EmployeeTable
           employees={data}
           sortColumn={sortColumn}
@@ -92,6 +95,7 @@ class Employees extends React.Component {
           disabled={this.state.loadstatus}
         // onDelete={this.handleDelete}
         />
+        {/* </Col> */}
         {this.state.isLoading ? (
           <div
             style={{

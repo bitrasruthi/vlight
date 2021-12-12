@@ -181,7 +181,7 @@ const ESidebar = (props) => {
           {/* Navigation */}
           <Nav navbar>{createLinks(routes)}</Nav>
           {/* Divider */}
-          <hr style={{paddingTop: '50px'}} className="my-3"/>
+          {/* <hr style={{paddingTop: '50px'}} className="my-3"/> */}
           <Nav className="mb-md-3" navbar>
             <NavItem>
               <NavLink href="/logout">

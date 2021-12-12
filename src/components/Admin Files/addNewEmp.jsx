@@ -92,7 +92,7 @@ class AddNew extends Forms {
               {this.renderInput("AgreementYears", "Agreement Years", 'number')}
 
               <div className="text-center">
-                <Button style={{ background: '#2DCECB', border: 'none' }} className="my-4" color="primary" type="submit">
+                <Button style={{ background: '#2DCECB', color: 'black',border: 'none' }} className="my-4" color="primary" type="submit">
                   Add
                 </Button>
               </div>

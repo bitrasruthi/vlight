@@ -35,7 +35,7 @@ class ApproveReject extends Forms {
 
       console.log(leave);
       await leavestatus({ _id: leave._id, status: leave.status });
-      // window.location = "/leavelist";
+      window.location = "/leavelist";
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
@@ -50,7 +50,7 @@ class ApproveReject extends Forms {
       // toast.success('Leave Approved')
       // console.log(leave._id);
       await leavestatus({ _id: leave._id, status: leave.status });
-      // window.location = "/leavelist";
+      window.location = "/leavelist";
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);

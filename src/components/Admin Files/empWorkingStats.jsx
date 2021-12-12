@@ -93,13 +93,14 @@ class EmpWorkingStas extends Forms {
     return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
       className=" py-5 py-sm-1 ">
       <Sidebar />
+      <Col lg="8" md="7" style={{ marginLeft: "5rem", paddingTop: "px", position: 'absolute', }}>
+
       <Hrstable
         employees={employees}
         sortColumn={sortColumn}
         onSort={this.handleSort}
-
-
       />
+      </Col>
 
 <Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
           <Card className="card__wrap--inner bg-secondary shadow border-0">

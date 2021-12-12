@@ -122,9 +122,9 @@ class EmpAttList extends Forms {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className="py-2 py-sm-3 ">
         <Sidebar />
-        <Col lg="8" md="7" style={{ marginLeft: "6rem", paddingTop: "px", position: 'absolute', }}>
+        <Col lg="8" md="7" style={{ marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 
-          <EmpTable
+          <EmpTable 
             employess={employess}
             sortColumn={sortColumn}
             onSort={this.handleSort}
@@ -160,7 +160,7 @@ class EmpAttList extends Forms {
             ""
           )}
         </Col>
-        <Col lg="3" md="3" style={{ marginLeft: "76%", marginTop: "auto", position: "fixed", }}>
+        <Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
           <Card className="card__wrap--inner bg-secondary shadow border-0">
             {/* <h1
               style={{
@@ -190,7 +190,10 @@ class EmpAttList extends Forms {
                   // type="submit"
                   >
                     {" "}
-                    {this.renderButton("Search")}{" "}
+                    {/* {this.renderButton("Search")}{" "} */}
+                    <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', border: 'none' }} variant="contained" onClick={this.onApprove}>
+                Search
+              </Button>
                   </div>
 
                   {/* <Button

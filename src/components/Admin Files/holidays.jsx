@@ -10,7 +10,7 @@ import { postholidays } from '../../services/settings'
 import ReactLoading from "react-loading";
 
 import {
-
+Button,
   Card,
   CardBody,
   Form,
@@ -78,7 +78,7 @@ class Holidays extends Forms {
         <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
           className=" py-2 py-sm-3 ">
           <Sidebar />
-          <Col lg="8" md="7" style={{ marginLeft: "6rem", paddingTop: "px", position: 'absolute', }}>
+          <Col lg="8" md="7" style={{ marginLeft: "12rem", paddingTop: "px", position: 'absolute', }}>
 
 
             <HoliTable
@@ -108,8 +108,8 @@ class Holidays extends Forms {
             )}
           </Col>
 
-          <Col lg="3" md="3" style={{ marginLeft: "66%", marginTop: "auto", position: "fixed", }}>
-            <Card className="bg-secondary shadow border-0" >
+          <Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
+          <Card className="card__wrap--inner bg-secondary shadow border-0">
               <CardBody className="px-lg-3 py-sm-5">
                 <Form role="form" onSubmit={this.handleSubmit}>
 
@@ -118,7 +118,10 @@ class Holidays extends Forms {
 
 
                   <div className="text-center">
-                    {this.renderButton("Add Hoilday")}
+                    {/* {this.renderButton("Add Hoilday")} */}
+                    <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', color: 'white',border: 'none' }} variant="contained" onClick={this.onApprove}>
+                Add Holiday
+              </Button>
                   </div>
                 </Form>
               </CardBody>

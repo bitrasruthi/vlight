@@ -192,7 +192,6 @@ const Sidebar = (props) => {
           {/* Navigation */}
           <Nav navbar>{createLinks(routes)}</Nav>
           {/* Divider */}
-          <hr style={{paddingTop: '50px'}} className="my"/>
           <Nav className="mb" navbar>
             <NavItem>
               <NavLink href="#">

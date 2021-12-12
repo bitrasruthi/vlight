@@ -106,7 +106,7 @@ class LeaveList extends React.Component {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <Sidebar />
-        <Col lg="9" md="7" style={{ marginLeft: "4rem", paddingTop: "px", position: 'absolute', }}>
+        <Col lg="9" md="7" style={{ marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 
           <LeaveTable
             leaves={data}

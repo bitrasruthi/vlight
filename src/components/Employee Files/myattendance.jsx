@@ -11,6 +11,7 @@ import ReactLoading from "react-loading";
 
 
 import {
+  Button,
   Card,
   CardBody,
   Form,
@@ -111,7 +112,7 @@ class AttList extends Forms {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <ESidebar />
-        <Col lg="8" md="7" style={{ marginLeft: "6rem", paddingTop: "px", position: 'absolute', }}>
+        <Col lg="8" md="7" style={{ marginLeft: "1rem", paddingTop: "px", position: 'absolute', }}>
 
           <EmpTable
             employess={employess}
@@ -131,7 +132,10 @@ class AttList extends Forms {
           {this.state.isLoading ? (
             <div
               style={{
-                zIndex: '1001'
+                display: "flex",
+                justifyContent: "center",
+                // alignItems: "center",
+                height: "10vh",
               }}
             >
               <ReactLoading
@@ -175,7 +179,10 @@ class AttList extends Forms {
                   // type="submit"
                   >
                     {" "}
-                    {this.renderButton("Search")}{" "}
+                    {/* {this.renderButton("Search")}{" "} */}
+                    <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#B665E0', color: 'white',border: 'none' }} variant="contained" onClick={this.onApprove}>
+                Search
+              </Button>
                   </div>
 
                   {/* <Button

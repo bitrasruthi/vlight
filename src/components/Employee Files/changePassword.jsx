@@ -4,7 +4,7 @@ import ESidebar from "../Sidebar/eSidebar";
 import emp from "../../services/empservice";
 import { toast } from "react-toastify";
 import Forms from './../Common/form';
-import {Card, Col, CardBody} from 'reactstrap'
+import {Card, Col, CardHeader, Button, CardBody} from 'reactstrap'
 import ENavBar  from 'components/Common/enavbar';
 
 class ChangePassword extends Forms {
@@ -46,15 +46,27 @@ class ChangePassword extends Forms {
     return (
       <div>
           <ESidebar/>
-          <ENavBar/>
-        <Col lg="5" md="7" style={{marginLeft:"30%", paddingTop: "115px", position: 'absolute'}}>
-        <Card className="bg-secondary shadow border-0" >
+          {/* <ENavBar/> */}
+        <Col lg="5" md="7" style={{marginLeft:"30%", paddingTop: "px", position: 'absolute'}}>
+        <Card className=" shadow border-0" >
+        <CardHeader className="bg-gradient-purple border-0">
+              <Col style={{ marginLeft: '160px', paddingBottom: '10px' }} xs="8">
+                <h3 className="mb--3">Change Password</h3>
+              </Col>
+
+            </CardHeader>
           <CardBody className="px-lg-3 py-sm-5">
           <form onSubmit={this.handleSubmit}>
               {this.renderInput("oldPassword", "Old Password")}
               {this.renderInput("newPassword", "New Password")}
               {this.renderInput("conformPassword", "Confirm Password")}
-              {this.renderButton("Submit")}
+              {/* {this.renderButton("Submit")} */}
+              <div style={{textAlign: 'center'}}>
+              <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#B665E0', color: 'white',border: 'none' }} variant="contained" onClick={this.onApprove}>
+                Submit
+              </Button>
+
+              </div>
             </form>
             </CardBody>
             </Card>

@@ -4,6 +4,7 @@ import Joi from 'joi-browser';
 import { toast } from "react-toastify";
 import Forms from 'components/Common/form';
 import { connect } from "react-redux";
+import {Col} from 'reactstrap'
 import get_termlist from '../../reduxstore/actions/terminateAction'
 
 
@@ -56,12 +57,15 @@ class TerminateEmp extends Forms {
     return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
       className=" py-5 py-sm-1 ">
       <Sidebar />
+      <Col lg="9" md="7" style={{ marginLeft: "16rem", paddingTop: "px", position: 'absolute', }}>
+
       <TerminateEmpTable
         employees={data}
         sortColumn={sortColumn}
         onSort={this.handleSort}
 
       />
+      </Col>
 
     </div>;
   }

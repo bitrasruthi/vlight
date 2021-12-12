@@ -86,6 +86,7 @@ class DeleteEmp extends Forms {
       try {
      const pp = await terminateEmp(temp);
     await this.setState({ data: pp});
+    toast.success('Employee Terminated Successfully')
     console.log(pp);
  
     } catch (ex) {
@@ -156,10 +157,10 @@ class DeleteEmp extends Forms {
                   {this.renderInput("AgreementDone", "Agreement Period Completed?", )}
                   <div style={{marginTop: '20px', marginLeft: '170px'}}  >
             
-            <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', border: 'none' }} variant="contained" onClick={this.onApprove}>
+            <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', border: 'none' }} variant="contained" onClick={this.handleSubmit}>
               Terminate
             </Button>
-            <Button style={{ marginLeft: '', marginTop: '0px', background: '#2DCECA', border: 'none' }} variant="contained" onClick={this.onReject}>
+            <Button style={{ marginLeft: '', marginTop: '0px', background: '#2DCECA', border: 'none' }} href='/emplist' variant="contained" >
               Cancel
             </Button>
             </div>
