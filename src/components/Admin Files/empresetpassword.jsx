@@ -51,9 +51,9 @@ class EmpRestPassword extends Forms {
     render() {
         return <div>
             <Sidebar />
-            <Col lg="6" md="7" style={{ marginLeft: "25%", paddingTop: "auto", position: 'absolute' }}>                <Card className="bg-secondary shadow border-0" >
+            <Col lg="4" md="7" style={{ marginLeft: "30%", paddingTop: "auto", position: 'absolute' }}>                <Card className="bg-secondary shadow border-0" >
                 <CardHeader className="bg-gradient-success border-0">
-            <Col style={{ marginLeft: '200px', paddingBottom: '10px' }} xs="8">
+            <Col style={{ marginLeft: '80px', paddingBottom: '10px' }} xs="8">
               <h3 className="mb--3">Reset Employee Password</h3>
             </Col>
 

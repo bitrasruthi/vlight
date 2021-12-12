@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
     render() {
         const { employees, lastWeekHours, lastMonthHours } = this.state
         return <div>
-            <Sidebar />
+            {/* <Sidebar /> */}
             <NavBar />
             <h1 style={{ textAlign: 'center', color: 'black' }}>Welcome Admin!!!</h1>
             {/* <ProductionHours /> */}

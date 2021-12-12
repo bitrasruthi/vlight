@@ -31,7 +31,7 @@ class ApproveReject extends Forms {
       var leave = { ...this.state.leave };
       leave.status = "Rejected";
       await this.setState({ leave });
-      toast.success('Leave Rejected')
+      // toast.success('Leave Rejected')
 
       console.log(leave);
       await leavestatus({ _id: leave._id, status: leave.status });
@@ -47,7 +47,7 @@ class ApproveReject extends Forms {
       var leave = { ...this.state.leave };
       leave.status = "Approved";
       await this.setState({ leave });
-      toast.success('Leave Approved')
+      // toast.success('Leave Approved')
       // console.log(leave._id);
       await leavestatus({ _id: leave._id, status: leave.status });
       // window.location = "/leavelist";

@@ -13,6 +13,7 @@ import {
   Card,
   CardBody,
   CardTitle,
+  CardHeader,
   Form,
 
   Row,
@@ -90,7 +91,7 @@ class EmpWorkingStas extends Forms {
   render() {
     const { sortColumn, employees } = this.state
     return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
-      className="header bg-gradient-success py-5 py-sm-1 ">
+      className=" py-5 py-sm-1 ">
       <Sidebar />
       <Hrstable
         employees={employees}
@@ -100,8 +101,8 @@ class EmpWorkingStas extends Forms {
 
       />
 
-      {/* <Col lg="5" md="7" style={{ marginLeft: "35%", paddingTop: "180px", position: 'absolute' }}>
-        <Card className="bg-secondary shadow border-0" >
+<Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
+          <Card className="card__wrap--inner bg-secondary shadow border-0">
           <CardBody className="px-lg-3 py-sm-5">
             <Form role="form" onSubmit={this.handleSubmit}>
 
@@ -115,30 +116,17 @@ class EmpWorkingStas extends Forms {
                 </Button>
               </div>
             </Form>
-          </CardBody>
+          </CardBody >
+                  
+
+          <CardHeader className="bg-gradient-success border-0">
+          <span style={{marginLeft: '120px'}} className="h2 font-weight-bold mb-0 ">{this.state.pHours}
+                  </span>
+</CardHeader>
+
         </Card>
       </Col>
-      <Col style={{ marginLeft: '530px', marginTop: '30px' }} lg="6" xl="4">
-        <Card className="card-stats mb-4 mb-xl-0">
-          <CardBody>
-            <Row>
-              <div style={{ textAlign: 'center' }} className="col">
-                <CardTitle
-                  style={{ textAlign: 'center' }}
-                  tag="h5"
-                  className="text-uppercase text-muted mb-0"
-                >
-                  Total Production Hours
-                </CardTitle>
-                <div>
-                  <span className="h2 font-weight-bold mb-0">{this.state.pHours}</span>
-                </div>
-              </div>
-
-            </Row>
-          </CardBody>
-        </Card>
-      </Col> */}
+  
     </div>;
   }
 }
