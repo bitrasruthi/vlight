@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": "https://protected-sands-68722.herokuapp.com/api",
     "paths": {
       "*": ["src/*"]
     }

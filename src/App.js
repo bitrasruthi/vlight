@@ -79,7 +79,7 @@ class App extends React.Component {
                 <Route path="/profile" component={Profile} />
 
                 <Route path="/" component={Login} />
-                <Redirect from="/" exact to="/home" />
+                {/* <Redirect from="/" exact to="/home" /> */}
                 <Redirect to="/not-found" />
 
                 {/* <Route path="/admin" render={(props) => <AdminLayout {...props} />} /> */}
