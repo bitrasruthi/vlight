@@ -16,8 +16,8 @@
     "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
-    "heroku-postbuild": "npm run build"},
-
+    "heroku-postbuild": "npm run build"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -59,7 +59,8 @@
     "reactjs-popup": "^2.0.5",
     "reactstrap": "8.9.0",
     "recharts": "^2.1.6",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.1",
+    "serve": "^13.0.2"
   },
   "devDependencies": {
     "gulp": "4.0.2",
