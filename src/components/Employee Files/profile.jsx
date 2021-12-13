@@ -162,8 +162,8 @@ class Profile extends Forms {
                   <CardBody className="mt-4 pt-lg-4">
 
                     <div style={{ marginTop: '100px' }} className="text-center">
-                      <h3>
-                        {this.state.data.FirstName}{this.state.data.MiddleName} {this.state.data.LastName}
+                      <h3 style={{textTransform: 'uppercase'}}>
+                        {this.state.data.FirstName} {this.state.data.MiddleName} {this.state.data.LastName}
                         {/* <span className="font-weight-light">, 27</span> */}
                       </h3>
                       <div className="h5 font-weight-300">
