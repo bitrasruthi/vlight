@@ -26,7 +26,7 @@ class Profile extends Forms {
     data: {
       FirstName: '', MiddleName: '', LastName: '', Address: '', City: '',
       Country: '', Pincode: '', AboutMe: '', role: '', fatherName: '', motherName: '',
-      emergencyNumber: '', emergencyAddress: '', last_updated_on: '',
+      emergencyNumber: '', emergencyAddress: '',
     },
     employees: [],
     pageSize: 4,
@@ -49,7 +49,7 @@ class Profile extends Forms {
     motherName: Joi.string().required(),
     emergencyAddress: Joi.string().required(),
     emergencyNumber: Joi.number().required(),
-    last_updated_on: Joi.string().required(),
+    // last_updated_on: Joi.string().required(),
 
   };
 
@@ -125,7 +125,7 @@ class Profile extends Forms {
       motherName: pro.motherName,
       emergencyAddress: pro.emergencyAddress,
       emergencyNumber: pro.emergencyNumber,
-      last_updated_on: pro.last_updated_on,
+      // last_updated_on: pro.last_updated_on,
     };
   }
 
@@ -186,33 +186,21 @@ class Profile extends Forms {
               </Col>
 
               <Col style={{ marginLeft: '550px', marginTop: '-105px', paddingRight: '-300px' }} className="order-xl-2 mb--6 mb-xl-0" xl="6">
-                <Card style={{ marginRight: '-50px', marginTop: '-1060px' }} className="card-profile shadow">
-                  <CardHeader className="bg-white border-0">
-                    <Row className="align-items-center">
-                      <Col xs="8">
-                        <h3 className="mb--3">Education </h3>
-                      </Col>
-                      <Col className="text-right" xs="4">
-                        <Button
+                <Card style={{ marginRight: '-50px', marginTop: '-960px' }} className="card-profile shadow">
+                <CardHeader className="bg-gradient-purple border-0">
+                        <h3 className="">Education </h3>
+                      {/* <Col className="text-right" xs="4">
+                        {/* <Button
                           color="primary"
                           href="/edudetails"
                           // onClick={(e) => e.preventDefault()}
                           size="sm"
                         >
                           Update
-                        </Button>
-                      </Col>
-                    </Row>
+                        </Button> */}
+                      {/* </Col> */}
                   </CardHeader>
-                  <Row className="justify-content-center">
-                    <Col className="order-lg-7" lg="7">
-                      <div className="card-profile-image">
-
-                      </div>
-                    </Col>
-                  </Row>
-
-                  <CardBody style={{ background: '#F7FAFC', marginBottom: '50px', }} className="mt-4 pt-lg-7">
+                  <CardBody style={{ background: '#F7FAFC', marginBottom: '50px', }} className="mt pt-lg-7">
                     <p style={{ marginBottom: '300px' }}></p>
                     <EduCard />
                   </CardBody>
@@ -259,7 +247,7 @@ class Profile extends Forms {
                       {this.renderInput("motherName", "Mother Name",)}
                       {this.renderInput("emergencyAddress", "Emergency Address",)}
                       {this.renderInput("emergencyNumber", "Emergency Number",)}
-                      {this.renderInput("last_updated_on", "Last Updated On",)}
+                      {/* {this.renderInput("last_updated_on", "Last Updated On",)} */}
                       <div className="text-center">
                         <Button style={{ background: '#B965E0', border: 'none' }}
                           className="my-4" color="primary" type="submit">
