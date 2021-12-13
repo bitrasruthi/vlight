@@ -135,7 +135,7 @@ const ESidebar = (props) => {
         </button> */}
         {/* Brand */}
         
-          <NavbarBrand to="/dashboard" tag={Link}>
+          <NavbarBrand to="/edashboard" tag={Link}>
           <img 
             alt="..."
             src={

@@ -44,7 +44,7 @@ class LeaveForm extends Forms {
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
-        errors.from_Date = ex.response.data.data;
+        errors.from_Date = ex.response.data;
         this.setState({ errors });
       }
     }

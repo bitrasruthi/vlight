@@ -34,6 +34,7 @@ class Employees extends React.Component {
   };
 
   async componentDidMount() {
+    try{
     if (!this.props.getemployeelist) {
       await get_employeelist(this.state.skip);
       await this.setState({ i: this.state.i + 1 })
@@ -45,6 +46,14 @@ class Employees extends React.Component {
     await this.setState({ employees: dd.data, i: dd.skip || 1 });
     await this.setState({ isLoading: false });
   }
+  catch (ex) {
+    if (ex.response && ex.response.status === 400) {
+      this.setState({ isLoading: false });
+      toast("no data")
+    }
+  }
+}
+
 
   handleSort = (sortColumn) => this.setState({ sortColumn });
 

@@ -56,7 +56,7 @@ class TableBody extends React.Component {
           </tr>
         ))}
         <Button variant="contained" disabled={disabled} onClick={onload} style={{
-          zIndex: '1001', marginLeft: '0px'
+          zIndex: '1001', marginLeft: 'auto', 
         }}>
           More
         </Button>

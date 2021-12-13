@@ -69,6 +69,7 @@ class AttList extends Forms {
 
 
   async componentDidMount() {
+    try{
     if (!this.props.getattlist) {
       await get_attlist(this.state.skip);
       await this.setState({ i: this.state.i + 1 })
@@ -77,7 +78,13 @@ class AttList extends Forms {
     const dd = await this.props.getattlist;
     await this.setState({ employess: dd, i: dd.skip || 1 });
     await this.setState({ isLoading: false });
-
+  }
+  catch (ex) {
+    if (ex.response && ex.response.status === 400) {
+      this.setState({ isLoading: false });
+      toast("no data")
+    }
+  }
     // const jwt = await emp.getCurrentUser();
     // const id = jwt.EmployeeId;
     // const dd = await emp.getAttendance(id);

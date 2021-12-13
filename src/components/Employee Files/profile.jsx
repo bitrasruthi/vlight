@@ -38,7 +38,7 @@ class Profile extends Forms {
 
   schema = {
     FirstName: Joi.string().required(),
-    MiddleName: Joi.string().required(),
+    MiddleName: Joi.string(),
     LastName: Joi.string().required(),
     Address: Joi.string().required(),
     City: Joi.string().required(),

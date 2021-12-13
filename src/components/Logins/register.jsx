@@ -28,7 +28,7 @@ class Register extends Forms {
   state = { data: { Name: '', Password: '', Email: '', organisation: '' }, errors: {} };
   schema = {
     Name: Joi.string().required().min(5), Password: Joi.string().min(5).required(),
-    Email: Joi.string().required(), organisation: Joi.string().required()
+    Email: Joi.string().required(), organisation: Joi.string().required().min(5)
   };
 
   doSubmit = async () => {
@@ -59,7 +59,7 @@ class Register extends Forms {
   render() {
     return (
 
-      <div style = {{height: '100%', position: "absolute", left: '0', width: '100%',overflow: 'hidden'}} className="header bg-gradient-success py-7 py-lg-3 ">
+      <div style = {{height: '130%', position: "absolute", left: '0', width: '100%',overflow: 'hidden'}} className="header bg-gradient-success py-7 py-lg-3 ">
       <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
           <Container className="px-4">
             <NavbarBrand to="/" tag={Link}>

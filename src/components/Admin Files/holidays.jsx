@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import get_hoildays from "../../reduxstore/actions/hoildaysActions";
 import { postholidays } from '../../services/settings'
 import ReactLoading from "react-loading";
+import {toast} from 'react-toastify'
 
 import {
 Button,
@@ -44,24 +45,33 @@ class Holidays extends Forms {
   }
 
   async componentDidMount() {
+
+  try{
     if (!this.props.gethoildayslist) {
       await get_hoildays();
-    }
-
+    
+  }
     const dd = await this.props.gethoildayslist[0].holidays;
-
+    // const ff = dd[0].holidays;
     await this.setState({ holidays: dd });
     await this.setState({ isLoading: false });
-
+  }
+  catch (ex) {
+    if (ex.response && ex.response.status === 400) {
+      this.setState({ isLoading: false });
+      toast("Please Add Holidays")
+    }
+  }
   }
 
   doSubmit = async () => {
-    const { data } = this.state
+    const { data, holidays } = this.state
     try {
       await postholidays(data)
-      var holidays = { ...this.state.holidays, data }
-      await this.setState({ holidays })
-      await this.setState({ data: { date: '', festival: '' } });
+      var ff = { ...this.state.holidays, data }
+      holidays.push(ff.data)
+      await this.setState({ holidays, data: { date: '', festival: '' } })
+
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
