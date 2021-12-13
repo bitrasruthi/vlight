@@ -51,7 +51,7 @@ class Holidays extends Forms {
     const dd = await this.props.gethoildayslist[0].holidays;
 
     await this.setState({ holidays: dd });
-    this.setState({ isLoading: false });
+    await this.setState({ isLoading: false });
 
   }
 

@@ -42,8 +42,10 @@ class OfficeHours extends Forms {
             const sett = await save(data)
             const dd = sett.data.data
 
+
             await this.setState({ data: { established: '', type: '', inTime: '', outTime: '' } });
             this.setState({ inTime: dd.inTime, outTime: dd.outTime })
+            toast('Office Hours Changed')
 
 
         } catch (ex) {
@@ -81,7 +83,7 @@ class OfficeHours extends Forms {
                             <div className="text-center">
                                 {/* {this.renderButton("Save")} */}
                                 <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCEC8', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>
-                Search
+                Submit
               </Button>
                             </div>
                         </Form>

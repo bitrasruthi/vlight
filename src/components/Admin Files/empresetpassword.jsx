@@ -35,7 +35,7 @@ class EmpRestPassword extends Forms {
         try {
             console.log(this.state.data)
             await empresetpass(this.state.data)
-            toast('password Reset')
+            toast('Password Reset Success')
             console.log(this.state)
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
