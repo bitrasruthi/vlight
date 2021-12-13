@@ -40,9 +40,9 @@ class Employees extends React.Component {
     }
 
     // const {data:movies} = await getMovies();
-    const dd = await this.props.getemployeelist.data;
+    const dd = await this.props.getemployeelist;
     console.log(dd)
-    await this.setState({ employees: dd, i: dd.skip || 1 });
+    await this.setState({ employees: dd.data, i: dd.skip || 1 });
     await this.setState({ isLoading: false });
   }
 
