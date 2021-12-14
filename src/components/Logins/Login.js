@@ -38,7 +38,7 @@ class Login extends Forms {
         toast.success("Login Successful");
       }
       setTimeout(() => {
-        window.location = state ? state.from.pathname : "/dashboard";
+        window.location = state ? state.from.pathname : "/home";
       }, 2000);
       const { state } = this.props.location;
     } catch (ex) {
@@ -137,7 +137,7 @@ class Login extends Forms {
             </div>
           </Container>
           
-      <Col lg="5" md="7" style={{marginLeft:"30%", }}>
+      <Col lg="5" md="7" style={{marginLeft:"30%", marginTop: '20px'}}>
         <Card className="bg-secondary shadow border-0">
           <CardBody className="px-lg-5 py-lg-5">
             <div className="text-center text-muted mb-4">
@@ -157,7 +157,7 @@ class Login extends Forms {
               </div>
             </Form>
           <Row className="mt-3">
-          <Col xs="6">
+          {/* <Col xs="6">
             <a
               className="text-success"
               href="#pablo"
@@ -165,15 +165,15 @@ class Login extends Forms {
               >
               <small>Forgot password?</small>
             </a>
-          </Col>
-          <Col className="text-right" xs="6">
+          </Col> */}
+          {/* <Col className="text-right" xs="6">
             <a
               className="text-success"
               href="/register"
               >
               <small>Create new account</small>
             </a>
-          </Col>
+          </Col> */}
         </Row>
               </CardBody>
         </Card>

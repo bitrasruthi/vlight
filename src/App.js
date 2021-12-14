@@ -35,6 +35,7 @@ import PopUp from './components/Admin Files/popUp';
 import EmpRestPassword from "components/Admin Files/empresetpassword";
 import DeleteEmp from './components/Admin Files/deleteEmp';
 import TerminateEmp from './components/Admin Files/terminateEmp';
+import Home from "components/Admin Files/home";
 class App extends React.Component {
   render() {
     return (
@@ -55,6 +56,7 @@ class App extends React.Component {
                 <Route path="/changepassword" component={ChangePassword} />
                 <Route path="/empstats" component={EmpWorkingStas} />
                 <Route path="/empreset" component={EmpRestPassword} />
+                <Route path="/home" component={Home} />
                 {/* <Route path="/edudetails" component={EduDetails} /> */}
                 <Route path="/popup" component={PopUp} />
                 <Route path="/deleteemp/:id" component={DeleteEmp} />

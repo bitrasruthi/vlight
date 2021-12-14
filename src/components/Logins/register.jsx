@@ -103,7 +103,7 @@ class Register extends Forms {
                 </NavLink>
               </NavItem> */}
 
-                <NavItem >
+                {/* <NavItem >
                   <NavLink
                     className="nav-link-icon"
                     to="/elogin"
@@ -111,14 +111,14 @@ class Register extends Forms {
                   >
                     <i className="ni ni-circle-08" />
                     <span style={{ color: '#172B4D' }} className="nav-link-inner--text">Employee</span>
-                  </NavLink>
-                </NavItem>
+                  </NavLink> 
+                </NavItem>*/}
                 <NavItem >
                   <NavLink className="nav-link-icon" to="/login" tag={Link}>
                     <i className="ni ni-key-25" />
                     <span style={{ color: '#172B4D' }} className="nav-link-inner--text">Admin</span>
                   </NavLink>
-                </NavItem>
+                </NavItem> 
                 {/* <NavItem >
                 <NavLink
                   className="nav-link-icon"
@@ -162,7 +162,7 @@ class Register extends Forms {
                   </Button>
                 </div>
               </Form>
-              <Row className="mt-3">
+              {/* <Row className="mt-3">
                 <Col xs="6">
                   <a
                     className="text-success"
@@ -181,7 +181,7 @@ class Register extends Forms {
                     <small>Create new account</small>
                   </a>
                 </Col>
-              </Row>
+              </Row> */}
             </CardBody>
           </Card>
 
