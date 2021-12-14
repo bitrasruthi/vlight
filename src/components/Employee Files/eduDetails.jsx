@@ -22,7 +22,7 @@ import EduCard from './eduCard';
 
 class EduDetails extends Forms {
   state = {
-    data: { qualification: '', institute: "", passedoutYear: '', percentage: '' },
+    data: {  institute: "", passedoutYear: '', percentage: '' },
     employees: [],
     pageSize: 4,
     id: [],
@@ -33,10 +33,10 @@ class EduDetails extends Forms {
   }
 
   schema = {
-    qualification: Joi.string().required(),
+    // qualification: Joi.string(),
     institute: Joi.string().required(),
-    passedoutYear: Joi.string().required(),
-    percentage: Joi.string().required(),
+    passedoutYear: Joi.number().required(),
+    percentage: Joi.number().required(),
 
   };
 
@@ -69,14 +69,18 @@ class EduDetails extends Forms {
     try {
       const { data } = this.state;
       const pp = (data.qualification);
+          // console.log(this.props.match.params.id)
 
+      await this.setState({data: {qualification: pp}})
+      console.log(pp);
+      
       //  if(data === null && data.qualification === ""){
-      //    await registerEduDetails(data);
-      //  }
-      if (pp === []) { this.doSubmit(); }
-      else if (pp === 'ssc' || 'degree' || 'ug' || 'pg') {
-        console.log(data);
-        await updateEduDetails(data)
+        //    await registerEduDetails(data);
+        //  }
+        if (pp === []) { this.doSubmit(); }
+        else if (pp === 'ssc' || 'degree' || 'ug' || 'pg') {
+          console.log(pp);
+          await updateEduDetails(data)
       }
       //  const tt = await this.setState({data: pp.data});
       //   console.log(tt);
@@ -84,29 +88,31 @@ class EduDetails extends Forms {
 
       // //   console.log(tt);
       toast.success("Education details Updated Successfully");
-      setTimeout(() => {
-        window.location = state ? state.from.pathname : "/profile";
-      }, 2000);
-      const { state } = this.props.location;
+      // setTimeout(() => {
+      //   window.location = state ? state.from.pathname : "/profile";
+      // }, 2000);
+      // const { state } = this.props.location;
 
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
-        errors.qualification = ex.response.data;
+        errors.institute = ex.response.data;
         this.setState({ errors });
       }
     }
   }
 
 
-  //      async componentDidMount() {
-
-  //     const {data:EducationalDetails} = await getEduDetails();
-  //    console.log(EducationalDetails);
-
-  //   this.setState({data: {qualification:EducationalDetails.qualification, institute:EducationalDetails.institute, 
-  //     passedoutYear:EducationalDetails.passedoutYear, percentage: EducationalDetails.percentage } });
-  // }
+       async componentDidMount() {
+      
+          const { data } = this.state;
+          const pp = (data);
+              console.log(this.state)
+    
+          await this.setState({data: {qualification: pp}})
+          console.log(pp);
+          
+  }
 
 
 
@@ -144,8 +150,9 @@ class EduDetails extends Forms {
         
                 <CardBody  className=" px-lg-3 py-sm-2 ">
                   <Form role="form" onSubmit={this.handleSubmit}>
-                    
-                    {this.renderDropdown("qualification", "Qualification", options)}
+                  {/* {this.renderInput('qualification', 'Qualification', this.state.data.qualification )} */}
+
+                    {/* {this.renderDropdown("qualification", "Qualification", options)} */}
                     {this.renderInput("institute", "Institute",)}
                     {this.renderInput("passedoutYear", "Year of Pass",)}
                     {this.renderInput("percentage", "Percentage",)}

@@ -83,7 +83,7 @@ class EduCard extends React.Component {
 
             <Col lg="6" md="3" style={{ marginLeft: "rem", marginTop: '-600px', paddingTop: "px", position: 'absolute', }}>
               <h3> SSC
-              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} href="/edudetails"><i  class="fas fa-edit"></i></Button>
+              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} href="/edudetails/ssc"><i  class="fas fa-edit"></i></Button>
               </h3>
               <p>Institute: {this.state.data.institute}</p>
               <p>Year of Pass: {this.state.data.passedoutYear}</p>
@@ -91,7 +91,7 @@ class EduCard extends React.Component {
             </Col>
             <Col lg="6" md="3" style={{ marginLeft: "22rem", marginTop: '-600px', paddingTop: "px", position: 'absolute', }}>
               <h3 > Intermediate
-              <Button style={{marginTop:'-50px', marginLeft: '200px', boxShadow: 'none'}} href="/edudetails"><i  class="fas fa-edit"></i></Button>
+              <Button style={{marginTop:'-50px', marginLeft: '200px', boxShadow: 'none'}} href="/edudetails/degree"><i  class="fas fa-edit"></i></Button>
               </h3>
               <p>Institute: {this.state.degree.institute}</p>
               <p>Year of Pass: {this.state.degree.passedoutYear}</p>
@@ -100,7 +100,7 @@ class EduCard extends React.Component {
             </Col>
             <Col lg="6" md="3" style={{ marginLeft: "rem", marginTop: '-200px', paddingTop: "px", position: 'absolute', }}>
               <h3 > Graduation
-              <Button style={{marginTop:'-50px', marginLeft: '230px', boxShadow: 'none'}} href="/edudetails"><i  class="fas fa-edit"></i></Button>
+              <Button style={{marginTop:'-50px', marginLeft: '230px', boxShadow: 'none'}} href="/edudetails/ug"><i  class="fas fa-edit"></i></Button>
               </h3>
               <p>Institute: {this.state.ug.institute}</p>
               <p>Year of Pass: {this.state.ug.passedoutYear}</p>
@@ -110,7 +110,7 @@ class EduCard extends React.Component {
             <Col lg="6" md="3" style={{ marginLeft: "22rem", marginTop: '-200px', paddingTop: "px", position: 'absolute', }}>
 
               <h3 > Post Graduation
-              <Button style={{marginTop:'-50px', marginLeft: '200px', boxShadow: 'none'}} href="/edudetails"><i  class="fas fa-edit"></i></Button>
+              <Button style={{marginTop:'-50px', marginLeft: '200px', boxShadow: 'none'}} href="/edudetails/pg"><i  class="fas fa-edit"></i></Button>
 
               </h3>
               <p>Institute: {this.state.pg.institute}</p>

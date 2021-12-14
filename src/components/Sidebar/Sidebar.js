@@ -63,14 +63,14 @@ const Sidebar = (props) => {
     },
     {
       path: "/empreset",
-      name: "Employee reset Password",
+      name: "Reset Password",
       icon: "fa fa-key text-pink",
       component:EmpRestPassword,
       layout: "/empreset",
     },
     {
       path: "/empstats",
-      name: "Employee Working Stats",
+      name: "Working Stats",
       icon: "ni ni-chart-bar-32 text-purple",
       component:EmpWorkingStas,
       layout: "/empstats",

@@ -59,7 +59,7 @@ class AddNew extends Forms {
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
-        errors.EmployeeName = ex.response.data.data;
+        errors.AgreementYears = ex.response.data.data;
         this.setState({ errors });
       }
     }
@@ -92,7 +92,7 @@ class AddNew extends Forms {
               {this.renderInput("AgreementYears", "Agreement Years", 'number')}
 
               <div className="text-center">
-                <Button style={{ background: '#2DCECB', color: 'black',border: 'none' }} className="my-4" color="primary" type="submit">
+                <Button style={{ background: '#2DCECB', color: 'black', border: 'none' }} className="my-4" color="primary" type="submit">
                   Add
                 </Button>
               </div>

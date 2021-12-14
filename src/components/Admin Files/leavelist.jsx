@@ -20,7 +20,7 @@ class LeaveList extends React.Component {
     currentPage: 1,
     pageSize: 10,
     searchQuery: "",
-    sortColumn: { path: "Leave", order: "asc" },
+    sortColumn: { path: "", order: "asc" },
     isLoading: true,
     Button
   };

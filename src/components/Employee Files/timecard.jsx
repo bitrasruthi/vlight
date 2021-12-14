@@ -49,7 +49,7 @@ class TimeCard extends Forms {
       if (ex.response && ex.response.status === 401) {
         const errors = { ...this.state.errors };
         errors.inTime = ex.response.inTime;
-        toast.warn("contact Admin");
+        toast.warn("Contact Admin");
         this.setState({ errors });
       }
     }
