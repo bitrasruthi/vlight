@@ -67,19 +67,20 @@ class EduDetails extends Forms {
 
   doSubmit = async () => {
     try {
-      const { data } = this.state;
+      const qua = this.props.match.params.id
+
+      const data = {...this.state.data, qualification: qua}
+      console.log(qua);
       const pp = (data.qualification);
           // console.log(this.props.match.params.id)
 
       await this.setState({data: {qualification: pp}})
-      console.log(pp);
       
       //  if(data === null && data.qualification === ""){
         //    await registerEduDetails(data);
         //  }
         if (pp === []) { this.doSubmit(); }
         else if (pp === 'ssc' || 'degree' || 'ug' || 'pg') {
-          console.log(pp);
           await updateEduDetails(data)
       }
       //  const tt = await this.setState({data: pp.data});
@@ -88,10 +89,10 @@ class EduDetails extends Forms {
 
       // //   console.log(tt);
       toast.success("Education details Updated Successfully");
-      // setTimeout(() => {
-      //   window.location = state ? state.from.pathname : "/profile";
-      // }, 2000);
-      // const { state } = this.props.location;
+      setTimeout(() => {
+        window.location = state ? state.from.pathname : "/profile";
+      }, 2000);
+      const { state } = this.props.location;
 
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -101,19 +102,6 @@ class EduDetails extends Forms {
       }
     }
   }
-
-
-       async componentDidMount() {
-      
-          const { data } = this.state;
-          const pp = (data);
-              console.log(this.state)
-    
-          await this.setState({data: {qualification: pp}})
-          console.log(pp);
-          
-  }
-
 
 
   render() {

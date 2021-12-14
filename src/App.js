@@ -55,7 +55,7 @@ class App extends React.Component {
                 <Route path="/changepassword" component={ChangePassword} />
                 <Route path="/empstats" component={EmpWorkingStas} />
                 <Route path="/empreset" component={EmpRestPassword} />
-                <Route path="/edudetails" component={EduDetails} />
+                {/* <Route path="/edudetails" component={EduDetails} /> */}
                 <Route path="/popup" component={PopUp} />
                 <Route path="/deleteemp/:id" component={DeleteEmp} />
             
@@ -77,10 +77,7 @@ class App extends React.Component {
                 <ProtectedRoute path="/officehours" component={OfficeHours} />
                 <Route path="/empoptions" component={EmpOptions} />
                 <Route path="/profile" component={Profile} />
-                <Route path="/edudetails/ssc" component={EduDetails} />
-                <Route path="/edudetails/degree" component={EduDetails} />
-                <Route path="/edudetails/ug" component={EduDetails} />
-                <Route path="/edudetails/pg" component={EduDetails} />
+                <Route path="/edudetails/:id" component={EduDetails} />
 
                 <Route path="/" component={Login} />
                 {/* <Redirect from="/" exact to="/home" /> */}

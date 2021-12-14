@@ -81,7 +81,6 @@ class DeleteEmp extends Forms {
   // };
 
   doSubmit = async (emp) => {
-    const { data } = this.state
     try {
       const id = this.props.match.params.id
       const data = { ...this.state.data, EmployeeId: id }

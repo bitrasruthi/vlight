@@ -28,7 +28,7 @@ class Register extends Forms {
   state = { data: { Name: '', Password: '', Email: '', organisation: '' }, errors: {} };
   schema = {
     Name: Joi.string().required().min(5), Password: Joi.string().min(5).required(),
-    Email: Joi.string().required(), organisation: Joi.string().required().min(5)
+    Email: Joi.string().required().email(), organisation: Joi.string().required().min(5)
   };
 
   doSubmit = async () => {

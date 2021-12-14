@@ -24,7 +24,7 @@ import {
 class ELogin extends Forms {
   state = { data: { Email: "", Password: "" }, errors: {} };
   schema = {
-    Email: Joi.string().required(),
+    Email: Joi.string().required().email(),
     Password: Joi.string().required(),
   };
 
