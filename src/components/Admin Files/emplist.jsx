@@ -34,16 +34,24 @@ class Employees extends React.Component {
   };
 
   async componentDidMount() {
-    if (!this.props.getemployeelist) {
-      await get_employeelist(this.state.skip);
-      await this.setState({ i: this.state.i + 1 })
-    }
+    try {
 
-    // const {data:movies} = await getMovies();
-    const dd = await this.props.getemployeelist;
-    console.log(dd)
-    await this.setState({ employees: dd.data, i: dd.skip || 1 });
-    await this.setState({ isLoading: false });
+      if (!this.props.getemployeelist) {
+        await get_employeelist(this.state.skip);
+        await this.setState({ i: this.state.i + 1 })
+      }
+
+      // const {data:movies} = await getMovies();
+      const dd = await this.props.getemployeelist;
+      console.log(dd)
+      await this.setState({ employees: dd.data, i: dd.skip || 1 });
+      await this.setState({ isLoading: false });
+    }
+    catch (ex) {
+      toast('no data');
+      await this.setState({ isLoading: false });
+
+    }
   }
 
   handleSort = (sortColumn) => this.setState({ sortColumn });
@@ -85,7 +93,7 @@ class Employees extends React.Component {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <Sidebar />
-        
+
 
         <EmployeeTable
           employees={data}
