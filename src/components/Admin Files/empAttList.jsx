@@ -87,7 +87,8 @@ class EmpAttList extends Forms {
       await this.setState({ isLoading: false });
     }
     catch (er) {
-      toast('no data')
+      this.setState({ isLoading: false });
+      toast("no data")
     }
   }
 
