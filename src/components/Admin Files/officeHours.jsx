@@ -5,9 +5,9 @@ import { toast } from "react-toastify";
 import { save, gettime } from '../../services/settings'
 import Forms from 'components/Common/form';
 import {
-Button,
+    Button,
     Card,
-CardHeader,
+    CardHeader,
     CardBody,
     Form,
     Row,
@@ -42,10 +42,8 @@ class OfficeHours extends Forms {
             const sett = await save(data)
             const dd = sett.data.data
 
-
             await this.setState({ data: { established: '', type: '', inTime: '', outTime: '' } });
             this.setState({ inTime: dd.inTime, outTime: dd.outTime })
-            toast('Office Hours Changed')
 
 
         } catch (ex) {
@@ -66,11 +64,11 @@ class OfficeHours extends Forms {
             <Col lg="6" md="7" style={{ marginLeft: "30%", paddingTop: "28px" }}>
                 <Card className="bg-secondary shadow border-0" >
                     <CardHeader className="bg-gradient-success">
-        <Row>
+                        <Row>
 
-            <h3 style={{  marginLeft: '80px'  }}>In Time: {this.state.inTime} </h3>
-            <h3 style={{  marginLeft: '100px' }}>Out Time: {this.state.outTime} </h3>
-        </Row>
+                            <h3 style={{ marginLeft: '80px' }}>In Time: {this.state.inTime} </h3>
+                            <h3 style={{ marginLeft: '100px' }}>Out Time: {this.state.outTime} </h3>
+                        </Row>
                     </CardHeader>
                     <CardBody className="px-lg-3 py-sm-5">
                         <Form role="form" onSubmit={this.handleSubmit}>
@@ -83,8 +81,8 @@ class OfficeHours extends Forms {
                             <div className="text-center">
                                 {/* {this.renderButton("Save")} */}
                                 <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCEC8', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>
-                Submit
-              </Button>
+                                    Search
+                                </Button>
                             </div>
                         </Form>
                     </CardBody>

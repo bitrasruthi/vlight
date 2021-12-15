@@ -37,18 +37,17 @@ class Profile extends Forms {
   }
 
   schema = {
-    FirstName: Joi.string().required(),
+    FirstName: Joi.string().min(3).required(),
     MiddleName: Joi.string(),
-    LastName: Joi.string().required(),
-    Address: Joi.string().required(),
-    City: Joi.string().required(),
-    Country: Joi.string().required(),
-    Pincode: Joi.string().required(),
-    AboutMe: Joi.string().required(),
-    fatherName: Joi.string().required(),
-    motherName: Joi.string().required(),
-    emergencyAddress: Joi.string().required(),
-    emergencyNumber: Joi.number().required(),
+    LastName: Joi.string().min(3).required(),
+    fatherName: Joi.string().min(3).required(),
+    motherName: Joi.string().min(3).required(),
+    emergencyNumber: Joi.number().minlength(10).required(),
+    Address: Joi.string().min(3).required(),
+    City: Joi.string().min(3).required(),
+    Pincode: Joi.number().minlength(6).required(),
+    emergencyAddress: Joi.string().min(3).required(),
+    AboutMe: Joi.string().min(3).required(),
     // last_updated_on: Joi.string().required(),
 
   };
@@ -162,7 +161,7 @@ class Profile extends Forms {
                   <CardBody className="mt-4 pt-lg-4">
 
                     <div style={{ marginTop: '100px' }} className="text-center">
-                      <h3 style={{textTransform: 'uppercase'}}>
+                      <h3 style={{ textTransform: 'uppercase' }}>
                         {this.state.data.FirstName} {this.state.data.MiddleName} {this.state.data.LastName}
                         {/* <span className="font-weight-light">, 27</span> */}
                       </h3>
@@ -187,9 +186,9 @@ class Profile extends Forms {
 
               <Col style={{ marginLeft: '550px', marginTop: '-105px', paddingRight: '-300px' }} className="order-xl-2 mb--6 mb-xl-0" xl="6">
                 <Card style={{ marginRight: '-50px', marginTop: '-960px' }} className="card-profile shadow">
-                <CardHeader className="bg-gradient-purple border-0">
-                        <h3 className="">Education </h3>
-                      {/* <Col className="text-right" xs="4">
+                  <CardHeader className="bg-gradient-purple border-0">
+                    <h3 className="">Education </h3>
+                    {/* <Col className="text-right" xs="4">
                         {/* <Button
                           color="primary"
                           href="/edudetails"
@@ -198,7 +197,7 @@ class Profile extends Forms {
                         >
                           Update
                         </Button> */}
-                      {/* </Col> */}
+                    {/* </Col> */}
                   </CardHeader>
                   <CardBody style={{ background: '#F7FAFC', marginBottom: '50px', }} className="mt pt-lg-7">
                     <p style={{ marginBottom: '300px' }}></p>

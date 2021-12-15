@@ -34,11 +34,22 @@ class AddNew extends Forms {
   };
 
   schema = {
-    EmployeeName: Joi.string().min(5).required(),
+    EmployeeName: Joi.string()
+      .regex(/^[a-z]+$/)
+      .min(3)
+      .max(50)
+      .required(),
     EmployeeId: Joi.string().required(),
-    Phone: Joi.number().required(),
+    Phone: Joi.string()
+      .length(10)
+      .regex(/^[6-9]{1}[0-9]{9}$/)
+      .required(),
     Email: Joi.string().email().required(),
-    Role: Joi.string().required(),
+    Role: Joi.string()
+      .regex(/^[a-z]+$/)
+      .min(3)
+      .max(50)
+      .required(),
     DateOfBirth: Joi.string().required(),
     NetSalary: Joi.number().required(),
     AgreementYears: Joi.number().required(),
