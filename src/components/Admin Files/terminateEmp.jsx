@@ -4,8 +4,8 @@ import Joi from 'joi-browser';
 import { toast } from "react-toastify";
 import Forms from 'components/Common/form';
 import { connect } from "react-redux";
-import { Col } from 'reactstrap'
-import get_termlist, { get_moretermlist } from '../../reduxstore/actions/terminateAction'
+import {Col} from 'reactstrap'
+import get_termlist from '../../reduxstore/actions/terminateAction'
 
 
 import TerminateEmpTable from './terminateEmpTable';
@@ -19,11 +19,6 @@ class TerminateEmp extends Forms {
       AgreementDone: '',
     },
     errors: [],
-    limit: 2,
-    skip: 0,
-    i: 0,
-    loadstatus: false,
-
     employees: [],
     sortColumn: { path: "", order: "" },
 
@@ -36,32 +31,17 @@ class TerminateEmp extends Forms {
   };
 
   async componentDidMount() {
-<<<<<<< HEAD
     if (!this.props.getterminatedlist) {
       const dd = await get_termlist();
       console.log(dd);
       await this.setState({ i: this.state.i + 1 })
-=======
-    try {
-
-      if (!this.props.getterminatedlist) {
-        await get_termlist(this.state.skip);
-        await this.setState({ i: this.state.i + 1 })
-      }
-
-      // const {data:movies} = await getMovies();
-      const dd = await this.props.getterminatedlist.data;
-      console.log(dd)
-      await this.setState({ employees: dd, i: dd.skip || 1 });
-      await this.setState({ isLoading: false });
     }
-    catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        this.setState({ isLoading: false });
-        toast("no data")
-      }
->>>>>>> 67a0d9737486f7ce1e54ff6c8289a98476d4ef23
-    }
+
+    // const {data:movies} = await getMovies();
+    const dd = await this.props.getterminatedlist.data;
+    console.log(dd)
+    await this.setState({ employees: dd, i: dd.skip || 1 });
+    await this.setState({ isLoading: false });
   }
 
   handlePageChange = (page) => {
@@ -70,28 +50,6 @@ class TerminateEmp extends Forms {
 
   handleSort = (sortColumn) => {
     this.setState({ sortColumn });
-  };
-
-
-  onloadmore = async () => {
-    const { i } = this.state
-
-    try {
-      var skip = i * 2
-      await this.setState({ i: this.state.i + 1 })
-
-      await get_moretermlist(skip)
-      const dd = await this.props.getterminatedlist.data;
-      console.log(dd.data)
-      this.setState({ employess: dd })
-    } catch (ex) {
-      if (ex.response && ex.response.status === 404) {
-        toast.error(ex.response.data.data);
-      }
-      if (ex.response && ex.response.status === 400) {
-        this.setState({ loadstatus: true, i: this.state.i - 1 })
-      }
-    }
   };
   render() {
     const { sortColumn, employees: data } = this.state;
@@ -102,13 +60,12 @@ class TerminateEmp extends Forms {
       <Sidebar />
       <Col lg="9" md="7" style={{ marginLeft: "12rem", paddingTop: "px", position: 'absolute', }}>
 
-        <TerminateEmpTable
-          employees={data}
-          sortColumn={sortColumn}
-          onSort={this.handleSort}
-          onload={this.onloadmore}
-          disabled={this.state.loadstatus}
-        />
+      <TerminateEmpTable
+        employees={data}
+        sortColumn={sortColumn}
+        onSort={this.handleSort}
+
+      />
       </Col>
 
     </div>;
