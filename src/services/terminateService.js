@@ -2,7 +2,8 @@ import http from "./httpService";
 import jwtDecode from "jwt-decode";
 
 
-const apiEndPointTerminate = "http://cghrportal.herokuapp.com/api/admin/employeetermination";
+const apiEndPointTerminate = "http://cghrportal.herokuapp.com/api/admin/getemployeetermination";
+const apiEndPointTerminate1 = "http://cghrportal.herokuapp.com/api/admin/employeetermination";
 
 const tokenkey = "token";
 // function atturl(id) {
@@ -15,7 +16,7 @@ export function getJwt() {
 http.setJwt(getJwt());
 
 export function terminateEmp(user) {
-  return http.post(apiEndPointTerminate, {
+  return http.post(apiEndPointTerminate1, {
     EmployeeId: user.EmployeeId,
     Reason: user.Reason,
     AgreementDone: user.AgreementDone,
@@ -23,8 +24,8 @@ export function terminateEmp(user) {
   });
 }
 
-export  function getTerminateEmpDetails() {
-   return http.get(apiEndPointTerminate);
+export  function getTerminateEmpDetails(skip) {
+   return http.post(apiEndPointTerminate,{skip:skip});
     
   }
   
