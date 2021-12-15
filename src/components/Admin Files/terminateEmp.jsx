@@ -32,7 +32,8 @@ class TerminateEmp extends Forms {
 
   async componentDidMount() {
     if (!this.props.getterminatedlist) {
-      await get_termlist();
+      const dd = await get_termlist();
+      console.log(dd);
       await this.setState({ i: this.state.i + 1 })
     }
 
@@ -57,7 +58,7 @@ class TerminateEmp extends Forms {
     return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
       className=" py-5 py-sm-1 ">
       <Sidebar />
-      <Col lg="9" md="7" style={{ marginLeft: "16rem", paddingTop: "px", position: 'absolute', }}>
+      <Col lg="9" md="7" style={{ marginLeft: "12rem", paddingTop: "px", position: 'absolute', }}>
 
       <TerminateEmpTable
         employees={data}
