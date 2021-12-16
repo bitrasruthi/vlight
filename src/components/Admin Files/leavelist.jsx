@@ -17,12 +17,10 @@ class LeaveList extends React.Component {
     loadstatus: false,
     i: 0,
     skip: 0,
-    currentPage: 1,
-    pageSize: 10,
     searchQuery: "",
-    sortColumn: { path: "", order: "asc" },
+    sortColumn: { path: "", order: "" },
     isLoading: true,
-    Button
+
   };
 
   constructor(props) {
@@ -57,18 +55,25 @@ class LeaveList extends React.Component {
   onloadmore = async () => {
     const { i, limit } = this.state
     try {
+      this.setState({ loadstatus: true })
       var skip = i * limit
       await this.setState({ i: this.state.i + 1 })
 
       await get_moreleavelist(skip)
       const dd = await this.props.getleavelist;
       await this.setState({ leaves: dd })
+      await this.setState({ loadstatus: false });
+
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
+        this.setState({ loadstatus: true })
+
       }
       if (ex.response && ex.response.status === 400) {
         this.setState({ loadstatus: true, i: this.state.i - 1 })
+        this.setState({ loadstatus: true })
+
       }
     }
   };

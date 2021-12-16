@@ -12,10 +12,11 @@ const terminatedReducer = (state = null, { type, payload }) => {
       return state;
 
       case GET_MORETERMINATED_LIST:
-        
-        payload.forEach(element => {
+        console.log(payload)
+        payload.data.forEach(element => {
           state.data.push(element)
         }); 
+
         state.skip = payload.skip
         console.log(state)
         return state;

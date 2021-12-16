@@ -22,13 +22,15 @@ import {
 } from "reactstrap";
 
 class ELogin extends Forms {
-  state = { data: { Email: "", Password: "" }, errors: {} };
+  state = { data: { Email: "", Password: "" }, errors: {},loadstatus:false };
   schema = {
     Email: Joi.string().required().email(),
     Password: Joi.string().required(),
   };
 
   doSubmit = async () => {
+    await this.setState({ loadstatus: true })
+
     try {
       const { data } = this.state;
       const jwt = await empauth.login(data.Email, data.Password);
@@ -47,8 +49,10 @@ class ELogin extends Forms {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         errors.Email = ex.response.data.data;
-
-        this.setState({ errors });
+        await this.setState({ errors });
+        setTimeout( async () => {
+          await this.setState({ loadstatus: false })     
+          }, 2000);
       }
     }
   };
@@ -163,6 +167,7 @@ class ELogin extends Forms {
 
                   <div className="text-center">
                     <Button
+                    disabled={this.state.loadstatus}
                       style={{ background: "#172B4D", border: "none" }}
                       className="my-4"
                       color="primary"

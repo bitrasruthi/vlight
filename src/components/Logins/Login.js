@@ -22,18 +22,18 @@ import {
 } from "reactstrap";
 
 class Login extends Forms {
-  state = {  data: {Email: "", Password: ""} , errors: {} };
+  state = {  data: {Email: "", Password: ""} , errors: {} , loadstatus:false };
   schema = {
     Email: Joi.string().required().email(),
-    Password: Joi.string().required(),
+    Password: Joi.string().min(5).required(),
   };
    
   doSubmit = async () => {
-    
+    await this.setState({ loadstatus: true })
     try {
       const { data } = this.state;
        await auth.login(data.Email, data.Password);
-      // this.props.history.push('/');
+      this.props.history.push('/');
       if (data) {
         toast.success("Login Successful");
       }
@@ -45,7 +45,10 @@ class Login extends Forms {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         errors.Email = ex.response.data.data;
-        this.setState({ errors });
+         await this.setState({ errors });
+        setTimeout( async () => {
+        await this.setState({ loadstatus: false })     
+        }, 2000);
       }
     }
   };
@@ -151,7 +154,7 @@ class Login extends Forms {
                   {this.renderInput("Password", "Password", "Password")}
                 
               <div className="text-center">
-                <Button style={{background: '#172B4D', border: 'none'}} className="my-4" color="primary" type="submit">
+                <Button disabled={this.state.loadstatus} style={{background: '#172B4D', border: 'none'}} className="my-4" color="primary" type="submit">
                   Sign in
                 </Button>
               </div>

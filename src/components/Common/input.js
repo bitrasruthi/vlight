@@ -8,7 +8,9 @@ import {
     InputGroup,
   
   } from "reactstrap";
-const Inputs = ({name, error, label, ...rest}) => {
+const Inputs = ({name, error, label, max,min, ...rest}) => {
+  console.log({...rest})
+  
     return ( 
         <div className="form-group">
                     <label htmlFor={name}>{label}</label>
@@ -19,6 +21,7 @@ const Inputs = ({name, error, label, ...rest}) => {
                     </InputGroupText>
                   </InputGroupAddon>
                   <input  {...rest}
+                           max={max}
                             id={name} 
                             name={name} 
                             className="form-control" />

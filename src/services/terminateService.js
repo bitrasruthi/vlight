@@ -2,8 +2,8 @@ import http from "./httpService";
 import jwtDecode from "jwt-decode";
 
 
-const apiEndPointTerminate = "http://cghrportal.herokuapp.com/api/admin/getemployeetermination";
-const apiEndPointTerminate1 = "http://cghrportal.herokuapp.com/api/admin/employeetermination";
+const apiEndPointTerminate = "http://cghrportal.herokuapp.com/api/admin/get/getemployeetermination";
+const apiEndPointTerminate1 = "http://cghrportal.herokuapp.com/api/admin/post/employeetermination";
 
 const tokenkey = "token";
 // function atturl(id) {

@@ -1,8 +1,8 @@
 import http from "./httpService";
 import jwtDecode from "jwt-decode";
 
-const apiEndPoint = "http://cghrportal.herokuapp.com/api/admin/login";
-const apiEndPointdelete = 'http://cghrportal.herokuapp.com/api/admin/removeemployee'
+const apiEndPoint = "http://cghrportal.herokuapp.com/api/admin/post/login";
+const apiEndPointdelete = 'http://cghrportal.herokuapp.com/api/admin/post/removeemployee'
 const tokenKey = "token";
 
 // http.setJwt(getJwt());

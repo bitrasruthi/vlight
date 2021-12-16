@@ -29,13 +29,18 @@ class AddNew extends Forms {
       NetSalary: "",
       AgreementYears: "",
     },
+    loadstatus: false,
     errors: [],
     roles: [],
+    maxdate: '',
+    mindate: '',
   };
 
+
+
   schema = {
+
     EmployeeName: Joi.string()
-      .regex(/^[a-z]+$/)
       .min(3)
       .max(50)
       .required(),
@@ -46,7 +51,6 @@ class AddNew extends Forms {
       .required(),
     Email: Joi.string().email().required(),
     Role: Joi.string()
-      .regex(/^[a-z]+$/)
       .min(3)
       .max(50)
       .required(),
@@ -55,12 +59,33 @@ class AddNew extends Forms {
     AgreementYears: Joi.number().required(),
   };
 
+  async componentDidMount() {
+    let date = new Date();
+    let d1 = new Date(date.getFullYear() - 18, date.getMonth(), date.getDate());
+
+    var dd = d1.getDate();
+    var mm = d1.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var yyyy = d1.getFullYear();
+    if (dd < 10) {
+      dd = '0' + dd
+    }
+    if (mm < 10) {
+      mm = '0' + mm
+    }
+
+    var min = yyyy + '-' + mm + '-' + dd;
+    await this.setState({ maxdate: min })
+    console.log(this.state)
+  }
+
   doSubmit = async () => {
+
+    const { EmployeeName } = this.state.data
+    await this.setState({ loadstatus: true })
     try {
       const { data } = this.state;
-      console.log(data)
-      const pp = await register(data);
-      console.log(pp);
+      var newItem = Object.assign(data, { EmployeeName: data.EmployeeName.toLowerCase(), Role: data.Role.toLowerCase() });
+      await register(newItem);
       toast.success("Employee Added");
       setTimeout(() => {
         window.location = state ? state.from.pathname : "/dashboard";
@@ -68,10 +93,15 @@ class AddNew extends Forms {
       const { state } = this.props.location;
       await get_employeelist();
     } catch (ex) {
+      await this.setState({ loadstatus: true })
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         errors.AgreementYears = ex.response.data.data;
-        this.setState({ errors });
+        await this.setState({ errors });
+        setTimeout(async () => {
+          await this.setState({ loadstatus: false })
+        }, 2000);
+
       }
     }
 
@@ -79,6 +109,8 @@ class AddNew extends Forms {
   };
 
   render() {
+
+    const { loadstatus, maxdate, mindate } = this.state
     return <div>
       <Sidebar />
       {/* <NavBar/> */}
@@ -98,12 +130,14 @@ class AddNew extends Forms {
               {this.renderInput("Phone", "Phone")}
               {this.renderInput("Email", "Email ID")}
               {this.renderInput("Role", "Designation")}
-              {this.renderInput("DateOfBirth", "Date Of Birth", "date")}
+              {this.renderInput("DateOfBirth", "Date Of Birth", "date", { maxdate },)}
               {this.renderInput("NetSalary", "Net Salary")}
               {this.renderInput("AgreementYears", "Agreement Years", 'number')}
+              <input type='date' max={maxdate}
+                className="form-control" />
+              <div className="text-center" >
 
-              <div className="text-center">
-                <Button style={{ background: '#2DCECB', color: 'black', border: 'none' }} className="my-4" color="primary" type="submit">
+                <Button disabled={loadstatus} style={{ background: '#2DCECB', color: 'black', border: 'none' }} className="my-4" color="primary" type="submit">
                   Add
                 </Button>
               </div>

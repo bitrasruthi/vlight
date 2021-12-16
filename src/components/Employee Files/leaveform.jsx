@@ -25,12 +25,14 @@ class LeaveForm extends Forms {
       leave_type: "",
       To: "",
     },
+    loadstatus: false,
     errors: [],
     options: [" select", "Casual Leave", "Sick Leave"],
     To: ["select", "Admin"],
   };
 
   doSubmit = async () => {
+    this.setState({ loadstatus: true })
     try {
       const { data } = this.state;
       const dd = await applyLeave(data);
@@ -39,7 +41,7 @@ class LeaveForm extends Forms {
       setTimeout(() => {
         window.location = state ? state.from.pathname : "/eleavelist";
       }, 2000);
-
+      await this.setState({ loadstatus: true })
       const { state } = this.props.location;
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -84,13 +86,13 @@ class LeaveForm extends Forms {
 
                 {/* {this.renderButton("Submit")}
                  */}
-                 <div style={{textAlign: 'center'}}>
-                  <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#B665E0', color: 'white',border: 'none' }} variant="contained" onClick={this.onApprove}>
-                Submit
-              </Button>
+                <div style={{ textAlign: 'center' }}>
+                  <Button disabled={this.validate()} style={{ marginLeft: '0px', marginTop: '0px', background: '#B665E0', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>
+                    Submit
+                  </Button>
 
-                 </div>
-                
+                </div>
+
               </form>
             </CardBody>
           </Card>

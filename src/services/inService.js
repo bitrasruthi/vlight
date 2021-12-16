@@ -2,7 +2,7 @@ import http from './httpService';
 
 
 
-const apiEndPoint = '/employee/inTime';
+const apiEndPoint = '/employee/post/inTime';
 
 function atturl(id) {
   return `${apiEndPoint}/${id}`;

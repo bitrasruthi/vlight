@@ -1,7 +1,8 @@
 import http from "./httpService";
 
-const apiEndPoint = "http://cghrportal.herokuapp.com/api/admin/holidays";
-const apiEndPointsave = "http://cghrportal.herokuapp.com/api/admin/settings";
+const apiEndPoint = "http://cghrportal.herokuapp.com/api/admin/post/holidays";
+const apiEndPointget = "http://cghrportal.herokuapp.com/api/admin/get/holidays";
+const apiEndPointsave = "http://cghrportal.herokuapp.com/api/admin/get/settings";
 
 // function atturl(id) {
 //   return `${apiEndPoint}/${id}`;
@@ -17,7 +18,7 @@ export async function gettime() {
 }
 
 export  async function getholidays() {
-  return await http.get(apiEndPoint);
+  return await http.get(apiEndPointget);
 }
 export async  function postholidays(data) {
   const { data: sett}  = await http.post(apiEndPoint,{ holidays : [data]});

@@ -53,8 +53,8 @@ class Forms extends React.Component {
   };
 
   handleChange = ({ currentTarget: input }) => {
-    const errors = { ...this.state.errors };
 
+    const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;
     else delete errors[input.name];
@@ -72,7 +72,8 @@ class Forms extends React.Component {
     );
   }
 
-  renderInput(name, label, type = "text") {
+  renderInput(name, label, type = "text", max = '', min) {
+    console.log(max)
     const { data, errors } = this.state;
     return (
       <Input
@@ -81,10 +82,13 @@ class Forms extends React.Component {
         onChange={this.handleChange}
         value={data[name]}
         label={label}
+        max={max}
+        min={min}
         error={errors[name]}
       />
     );
   }
+
   renderDropdown(name, label, options) {
     const { data, errors } = this.state;
 

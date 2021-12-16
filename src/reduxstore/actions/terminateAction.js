@@ -18,7 +18,7 @@ export async function get_moretermlist(skip) {
 
     store.dispatch({
         type: GET_MORETERMINATED_LIST,
-        payload: data.data.data
+        payload: { data:data.data.data, skip:data.skip || skip}
     });
 }
 

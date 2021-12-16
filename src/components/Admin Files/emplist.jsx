@@ -34,25 +34,25 @@ class Employees extends React.Component {
   };
 
   async componentDidMount() {
-    try{
-    if (!this.props.getemployeelist) {
-      await get_employeelist(this.state.skip);
-      await this.setState({ i: this.state.i + 1 })
-    }
+    try {
+      if (!this.props.getemployeelist) {
+        await get_employeelist(this.state.skip);
+        await this.setState({ i: this.state.i + 1 })
+      }
 
-    // const {data:movies} = await getMovies();
-    const dd = await this.props.getemployeelist;
-    console.log(dd)
-    await this.setState({ employees: dd.data, i: dd.skip || 1 });
-    await this.setState({ isLoading: false });
-  }
-  catch (ex) {
-    if (ex.response && ex.response.status === 400) {
-      this.setState({ isLoading: false });
-      toast("no data")
+      // const {data:movies} = await getMovies();
+      const dd = await this.props.getemployeelist;
+      console.log(dd)
+      await this.setState({ employees: dd.data, i: dd.skip || 1 });
+      await this.setState({ isLoading: false });
+    }
+    catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        this.setState({ isLoading: false });
+        toast("no data")
+      }
     }
   }
-}
 
 
   handleSort = (sortColumn) => this.setState({ sortColumn });
@@ -61,19 +61,24 @@ class Employees extends React.Component {
     const { i } = this.state
 
     try {
+      await this.setState({ loadstatus: true });
       var skip = i * 2
       await this.setState({ i: this.state.i + 1 })
 
       await get_moreemployeelist(skip)
       const dd = await this.props.getemployeelist.data;
-      console.log(dd)
       await this.setState({ employees: dd })
+      await this.setState({ loadstatus: false });
+
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
+        await this.setState({ loadstatus: false });
       }
       if (ex.response && ex.response.status === 400) {
         this.setState({ loadstatus: true, i: this.state.i - 1 })
+        await this.setState({ isLoading: false });
+
       }
     }
   };
@@ -94,7 +99,7 @@ class Employees extends React.Component {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <Sidebar />
-        
+
 
         <EmployeeTable
           employees={data}

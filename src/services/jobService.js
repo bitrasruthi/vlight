@@ -2,7 +2,7 @@ import http from "./httpService";
 
 
 // const apiEndPointPro = "http://cghrportal.herokuapp.com/api/employee/profile";
-const apiEndPointJob = "http://cghrportal.herokuapp.com/api/employee/add/jobExperiences";
+const apiEndPointJob = "http://cghrportal.herokuapp.com/api/employee/post/add/jobExperiences";
 
 const tokenkey = "token";
 

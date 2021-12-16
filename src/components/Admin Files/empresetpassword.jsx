@@ -22,6 +22,7 @@ class EmpRestPassword extends Forms {
             EmployeeId: "",
 
         },
+        loadstatus: false,
         errors: [],
 
     };
@@ -33,15 +34,18 @@ class EmpRestPassword extends Forms {
 
     doSubmit = async () => {
         try {
+            await this.setState({ loadstatus: true })
             console.log(this.state.data)
             await empresetpass(this.state.data)
             toast('Password Reset Success')
-            console.log(this.state)
+
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
                 const errors = { ...this.state.errors };
                 errors.EmployeeId = ex.response.data.data;
-                this.setState({ errors });
+                await this.setState({ errors });
+                await this.setState({ loadstatus: true })
+
             }
         }
 
@@ -53,26 +57,26 @@ class EmpRestPassword extends Forms {
             <Sidebar />
             <Col lg="4" md="7" style={{ marginLeft: "30%", paddingTop: "auto", position: 'absolute' }}>                <Card className="bg-secondary shadow border-0" >
                 <CardHeader className="bg-gradient-success border-0">
-            <Col style={{ marginLeft: '80px', paddingBottom: '10px' }} xs="8">
-              <h3 className="mb--3">Reset Employee Password</h3>
+                    <Col style={{ marginLeft: '80px', paddingBottom: '10px' }} xs="8">
+                        <h3 className="mb--3">Reset Employee Password</h3>
+                    </Col>
+
+                </CardHeader>
+                <CardBody className="px-lg-3 py-sm-5">
+                    <Form role="form" onSubmit={this.handleSubmit}>
+
+                        {this.renderInput("EmployeeId", "Employee ID")}
+
+                        <div className="text-center">
+                            <Button disabled={this.state.loadstatus} style={{ background: '#2DCECB', border: 'none' }} className="my-4" color="primary" type="submit">
+                                Reset Password
+                            </Button>
+                        </div>
+                    </Form>
+                </CardBody>
+            </Card>
             </Col>
 
-          </CardHeader>
-                    <CardBody className="px-lg-3 py-sm-5">
-                        <Form role="form" onSubmit={this.handleSubmit}>
-
-                            {this.renderInput("EmployeeId", "Employee ID")}
-
-                            <div className="text-center">
-                                <Button style={{ background: '#2DCECB', border: 'none' }} className="my-4" color="primary" type="submit">
-                                    Reset Password
-                                </Button>
-                            </div>
-                        </Form>
-                    </CardBody>
-                </Card>
-            </Col>
-           
         </div>;
     }
 }

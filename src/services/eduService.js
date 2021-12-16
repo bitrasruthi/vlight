@@ -1,8 +1,8 @@
 import http from "./httpService";
 
 
-const apiEndPointEduUpdate = "http://cghrportal.herokuapp.com/api/employee/updateEducationalDetails";
-const apiEndPointEdu = "http://cghrportal.herokuapp.com/api/employee/add/EducationalDetails";
+const apiEndPointEduUpdate = "http://cghrportal.herokuapp.com/api/employee/post/updateEducationalDetails";
+const apiEndPointEdu = "http://cghrportal.herokuapp.com/api/employee/add/post/EducationalDetails";
 
 const tokenkey = "token";
 

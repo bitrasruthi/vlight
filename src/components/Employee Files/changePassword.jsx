@@ -4,8 +4,8 @@ import ESidebar from "../Sidebar/eSidebar";
 import emp from "../../services/empservice";
 import { toast } from "react-toastify";
 import Forms from './../Common/form';
-import {Card, Col, CardHeader, Button, CardBody} from 'reactstrap'
-import ENavBar  from 'components/Common/enavbar';
+import { Card, Col, CardHeader, Button, CardBody } from 'reactstrap'
+import ENavBar from 'components/Common/enavbar';
 
 class ChangePassword extends Forms {
   state = {
@@ -14,6 +14,7 @@ class ChangePassword extends Forms {
       newPassword: "",
       conformPassword: "",
     },
+    loadstatus: false,
     errors: [],
   };
 
@@ -24,6 +25,7 @@ class ChangePassword extends Forms {
   };
 
   doSubmit = async () => {
+    this.setState({ loadstatus: true })
     try {
       const { data } = this.state;
       await emp.changepassword(data);
@@ -32,12 +34,15 @@ class ChangePassword extends Forms {
         window.location = state ? state.from.pathname : "/elogin";
       }, 2000);
       const { state } = this.props.location;
-      await emp.logout();
+      // await emp.logout();
+      this.setState({ loadstatus: false })
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         errors.oldPassword = ex.response.data.data;
         this.setState({ errors });
+        this.setState({ loadstatus: true })
+
       }
     }
   };
@@ -45,32 +50,32 @@ class ChangePassword extends Forms {
   render() {
     return (
       <div>
-          <ESidebar/>
-          {/* <ENavBar/> */}
-        <Col lg="5" md="7" style={{marginLeft:"30%", paddingTop: "px", position: 'absolute'}}>
-        <Card className=" shadow border-0" >
-        <CardHeader className="bg-gradient-purple border-0">
+        <ESidebar />
+        {/* <ENavBar/> */}
+        <Col lg="5" md="7" style={{ marginLeft: "30%", paddingTop: "px", position: 'absolute' }}>
+          <Card className=" shadow border-0" >
+            <CardHeader className="bg-gradient-purple border-0">
               <Col style={{ marginLeft: '160px', paddingBottom: '10px' }} xs="8">
                 <h3 className="mb--3">Change Password</h3>
               </Col>
 
             </CardHeader>
-          <CardBody className="px-lg-3 py-sm-5">
-          <form onSubmit={this.handleSubmit}>
-              {this.renderInput("oldPassword", "Old Password")}
-              {this.renderInput("newPassword", "New Password")}
-              {this.renderInput("conformPassword", "Confirm Password")}
-              {/* {this.renderButton("Submit")} */}
-              <div style={{textAlign: 'center'}}>
-              <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#B665E0', color: 'white',border: 'none' }} variant="contained" onClick={this.onApprove}>
-                Submit
-              </Button>
+            <CardBody className="px-lg-3 py-sm-5">
+              <form onSubmit={this.handleSubmit}>
+                {this.renderInput("oldPassword", "Old Password")}
+                {this.renderInput("newPassword", "New Password")}
+                {this.renderInput("conformPassword", "Confirm Password")}
+                {/* {this.renderButton("Submit")} */}
+                <div style={{ textAlign: 'center' }}>
+                  <Button disabled={this.validate()} style={{ marginLeft: '0px', marginTop: '0px', background: '#B665E0', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>
+                    Submit
+                  </Button>
 
-              </div>
-            </form>
+                </div>
+              </form>
             </CardBody>
-            </Card>
-            </Col>
+          </Card>
+        </Col>
       </div>
     );
   }

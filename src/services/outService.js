@@ -2,7 +2,7 @@ import http from './httpService';
 
 
 
-const apiEndPoint = '/employee/outTime';
+const apiEndPoint = '/employee/post/outTime';
 
 
 export function checkOut(user) {

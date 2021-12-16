@@ -95,15 +95,15 @@ class EmpWorkingStas extends Forms {
       <Sidebar />
       <Col lg="8" md="7" style={{ marginLeft: "5rem", paddingTop: "px", position: 'absolute', }}>
 
-      <Hrstable
-        employees={employees}
-        sortColumn={sortColumn}
-        onSort={this.handleSort}
-      />
+        <Hrstable
+          employees={employees}
+          sortColumn={sortColumn}
+          onSort={this.handleSort}
+        />
       </Col>
 
-<Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
-          <Card className="card__wrap--inner bg-secondary shadow border-0">
+      <Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
+        <Card className="card__wrap--inner bg-secondary shadow border-0">
           <CardBody className="px-lg-3 py-sm-5">
             <Form role="form" onSubmit={this.handleSubmit}>
 
@@ -112,22 +112,22 @@ class EmpWorkingStas extends Forms {
               {this.renderInput("to_Date", "To Date", 'date')}
 
               <div className="text-center">
-                <Button style={{ background: '#2DCECB', border: 'none' }} className="my-4" color="primary" type="submit">
+                <Button disabled={this.validate()} style={{ background: '#2DCECB', border: 'none' }} className="my-4" color="primary" type="submit">
                   Get Production Hours
                 </Button>
               </div>
             </Form>
           </CardBody >
-                  
+
 
           <CardHeader className="bg-gradient-success border-0">
-          <span style={{marginLeft: '120px'}} className="h2 font-weight-bold mb-0 ">{this.state.pHours}
-                  </span>
-</CardHeader>
+            <span style={{ marginLeft: '120px' }} className="h2 font-weight-bold mb-0 ">{this.state.pHours}
+            </span>
+          </CardHeader>
 
         </Card>
       </Col>
-  
+
     </div>;
   }
 }
