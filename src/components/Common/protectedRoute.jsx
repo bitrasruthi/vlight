@@ -9,7 +9,7 @@ const ProtectedRoute = ({ path, component: Component, render, ...rest }) => {
       render={(props) => {
         const jwt = auth.getCurrentUser()
 
-        if (auth.getCurrentUser() && jwt.isAdmin)
+        if (auth.getCurrentUser() && jwt.isAdmin )
           return (
             Component ? <Component {...props} /> : render(props)
 

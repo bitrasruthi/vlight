@@ -6,6 +6,8 @@ import Sidebar from "../Sidebar/Sidebar";
 import get_leavelist, { get_moreleavelist } from "../../reduxstore/actions/leaveAction";
 import ReactLoading from "react-loading";
 import { toast } from "react-toastify";
+import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
 import {
   Button, Col
 
@@ -20,15 +22,11 @@ class LeaveList extends React.Component {
     searchQuery: "",
     sortColumn: { path: "", order: "" },
     isLoading: true,
-
+    openModal : false,
+    Button
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state.isLoading = true;
-
-  }
+  
 
   async componentDidMount() {
     try {

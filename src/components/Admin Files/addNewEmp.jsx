@@ -43,7 +43,9 @@ class AddNew extends Forms {
     EmployeeName: Joi.string()
       .min(3)
       .max(50)
-      .required(),
+      .required().label(
+         `"a" should be a type of 'text dsjfkldjsfkjdklfjdksfjsdklj'`,
+      ),
     EmployeeId: Joi.string().required(),
     Phone: Joi.string()
       .length(10)

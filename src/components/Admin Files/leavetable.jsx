@@ -1,10 +1,19 @@
 import React from "react";
 import Table from "../Common/table";
 import { Link } from "react-router-dom";
+import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
 // import { Spinner } from '../spinner';
 
 class LeaveTable extends React.Component {
-  state = { showPopup: false }
+  state = { showPopup: false,
+    openModal : false
+   }
+
+   onClickLink = e =>{
+    e.preventDefault()
+    this.setState({openModal : true})
+}
 
   togglePopup() {
     this.setState({
@@ -17,7 +26,7 @@ class LeaveTable extends React.Component {
       label: "Employee Id",
       content: (emp) => (
 
-        <Link to={`/leaveapproval/${emp._id}`}>{emp.EmployeeId}</Link>
+        <Link to={this.onClickLink}>{emp.EmployeeId}</Link>
       ),
     },
     { path: "EmployeeName", label: "Name" },
