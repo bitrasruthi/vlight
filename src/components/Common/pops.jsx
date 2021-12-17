@@ -1,32 +1,23 @@
-import React, { Component } from 'react'
-import { Modal } from 'react-responsive-modal';
-import 'react-responsive-modal/styles.css';
+import React, { Component } from 'react';
+import '../../layouts/App.css';
 
 class Pops extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+      BackgroundColor: "BLACK"};
+  };
 
-    state={
-        openModal : false
-    }
-
-    onClickButton = e =>{
-        e.preventDefault()
-        this.setState({openModal : true})
-    }
-
-    onCloseModal = ()=>{
-        this.setState({openModal : false})
-    }
-
-    render() {
-        return (
-            <div>
-                <button onClick={this.onClickButton}>Click Me</button>
-                <Modal open={this.state.openModal} onClose={this.onCloseModal}>
-                    <h1>You Did it!</h1>
-                </Modal>   
-            </div>
-        )
-    }  
+render(){
+    return (
+      <div className='app'>
+        <button className={this.state.BackgroundColor === "BLACK" ? "Black" : "nothing"}
+        onClick={() => {this.setState({BackgroundColor: "WHITE"})}}>CHANGE TO BLACK</button>
+        <button className={this.state.BackgroundColor === "WHITE" ? "White" : "nothing"}
+        onClick={() => {this.setState({BackgroundColor: "BLACK"})}}>CHANGE TO WHITE</button>
+      </div>
+    );
+  }
 }
 
 export default Pops;

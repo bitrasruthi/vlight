@@ -37,6 +37,8 @@ import DeleteEmp from './components/Admin Files/deleteEmp';
 import TerminateEmp from './components/Admin Files/terminateEmp';
 import Home from "components/Admin Files/home";
 import Pops from './components/Common/pops';
+import LeaveTable from './components/Admin Files/leavetable';
+import ModalRoute from 'react-router-modal'
 class App extends React.Component {
   render() {
     return (
@@ -76,7 +78,7 @@ class App extends React.Component {
                 <EmpProtectedRoute path="/attlist" component={AttList} />
                 <EmpProtectedRoute path="/leaveform" component={LeaveForm} />
                 <EmpProtectedRoute path="/eleavelist" component={ELeaveList} />
-                <ProtectedRoute path="/leaveapproval/:id" component={ApproveReject} />
+                <ModalRoute path="/leavelist/:id"  component={ApproveReject} />
                 <ProtectedRoute path="/empattlist/:id" component={EmpAttList} />
                 <ProtectedRoute path="/holidays" component={Holidays} />
                 <ProtectedRoute path="/officehours" component={OfficeHours} />

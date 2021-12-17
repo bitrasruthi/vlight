@@ -3,7 +3,7 @@ import http from "./httpService";
 const apiEndPointEmp = "http://cghrportal.herokuapp.com/api/employee/post/applyleave";
 const apiEndPointEmpleaves = "http://cghrportal.herokuapp.com/api/employee/get/getleaves";
 const apiEndPointAdmin = "http://cghrportal.herokuapp.com/api/admin/get/allleaves";
-const apiEndPointAdminsta = "http://cghrportal.herokuapp.com/api/admin/get/leavestatus";
+const apiEndPointAdminsta = "http://cghrportal.herokuapp.com/api/admin/post/leavestatus";
 
 // export function checkOut(user) {
 //     return http.post(apiEndPoint, {outTime: user});
@@ -23,7 +23,10 @@ export async function applyLeave(data) {
 }
 
 export async function leavestatus(data) {
-  return await http.post(apiEndPointAdminsta, data);
+  return await http.post(apiEndPointAdminsta, {
+    _id: data._id,
+    status: data.status
+  });
 }
 
 export function getLeaves(skip1) {

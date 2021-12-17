@@ -2,32 +2,47 @@ import React from "react";
 import Table from "../Common/table";
 import { Link } from "react-router-dom";
 import { Modal } from 'react-responsive-modal';
+import get_leavelist from "../../reduxstore/actions/leaveAction";
 import 'react-responsive-modal/styles.css';
+import { Button } from "reactstrap";
+import { connect } from "react-redux";
 // import { Spinner } from '../spinner';
+import { leavestatus } from "../../services/leaveService";
+import { toast } from "react-toastify";
+import ApproveReject from './approvereject';
+
+import 'react-router-modal/css/react-router-modal.css';
+
 
 class LeaveTable extends React.Component {
   state = { showPopup: false,
-    openModal : false
+    leave:{},
+    openModal : false,
+    leaveid: '',
+    BackgroundColor: "BLACK"
    }
 
-   onClickLink = e =>{
-    e.preventDefault()
+   onClickButton = e =>{
+    // e.preventDefault()
     this.setState({openModal : true})
+    console.log(e._id);
+    this.setState({leaveid: e._id})
+    // const dd = this.props.match.params.id 
+    // console.log(this);
 }
-
-  togglePopup() {
-    this.setState({
-      showPopup: !this.state.showPopup
-    });
-  }
+  onCloseModal = ()=>{
+    this.setState({openModal : false})
+}
   columns = [
     {
       path: "EmployeeId",
       label: "Employee Id",
-      content: (emp) => (
+      // content: (emp) => (
 
-        <Link to={this.onClickLink}>{emp.EmployeeId}</Link>
-      ),
+      //   <Link to={`/leavelist/${emp.EmployeeId}`}>{emp.EmployeeId}
+      //   {/* <Button onClick={this.onClickButton}></Button> */}
+      //   </Link>
+      // ),
     },
     { path: "EmployeeName", label: "Name" },
 
@@ -36,13 +51,49 @@ class LeaveTable extends React.Component {
     { path: "subject", label: "Subject" },
     { path: "reason", label: "Reason" },
     { path: "leave_type", label: "Type of Leave" },
-    { path: "status", label: "Status" },
+    {
+      key: "Apprej",
+      label: 'Approve/Reject',
+      content: (emp) => (
+        <button className="btn btn-danger btn-sm" onClick={()=> this.onClickButton (emp)}>
+          <Link style={{ color: 'white' }} to={`/leavelist/${emp._id}`}> Action
+          </Link></button> 
+        ),
+      },
+      { path: "status", label: "Status" },
   ];
 
+  onApprove = async () => {
+    try {
+      var leave = { ...this.state.leave };
+      
+      const app = <p tyle={{color: 'green'}}>Approved</p>
+      // console.log(app.props.children);
+      leave.status = app.props.children;
+      await this.setState({ leave });
+      // toast.success('Leave Approved')
+      // console.log(leave._id);
+      await leavestatus({ _id: leave._id, status: leave.status });
+      window.location = "/leavelist";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data.data);
+      }
+    }
+  };
 
-  componentDidMount() {
-    console.log(this.state);
+
+  async componentDidMount() {
+    const dd = await this.props.getleavelist;
+    // let leaveid = this.state.match.params.id
+    console.log(dd);
+    // let leave = leavelist.find((obj) => obj._id === leaveid);
+
+    // await this.setState({ leave });
+    // console.log(leave);
   }
+
+
 
   render() {
     const { leaves, onSort, sortColumn, onload, disabled } = this.props;
@@ -59,9 +110,22 @@ class LeaveTable extends React.Component {
           disabled={disabled}
         // LoadingComponent={Spinner}
         />
+
+  <Modal open={this.state.openModal} onClose={this.onCloseModal}>
+      <ApproveReject 
+      leaveid={this.state.leaveid}/>
+     
+  </Modal>
       </div>
     );
   }
 }
 
-export default LeaveTable;
+// export default LeaveTable;
+const mapStateToProps = (state) => {
+  return {
+    getleavelist: state.getleavelist,
+  };
+};
+
+export default connect(mapStateToProps)(LeaveTable);
