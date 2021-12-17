@@ -78,7 +78,7 @@ class App extends React.Component {
                 <EmpProtectedRoute path="/attlist" component={AttList} />
                 <EmpProtectedRoute path="/leaveform" component={LeaveForm} />
                 <EmpProtectedRoute path="/eleavelist" component={ELeaveList} />
-                <ModalRoute path="/leavelist/:id"  component={ApproveReject} />
+                <Route path="/leavelist/:id"  component={ApproveReject} />
                 <ProtectedRoute path="/empattlist/:id" component={EmpAttList} />
                 <ProtectedRoute path="/holidays" component={Holidays} />
                 <ProtectedRoute path="/officehours" component={OfficeHours} />
