@@ -72,8 +72,7 @@ class Forms extends React.Component {
     );
   }
 
-  renderInput(name, label, type = "text", max = '', min) {
-    console.log(max)
+  renderInput(name, label, type = "text", max, min) {
     const { data, errors } = this.state;
     return (
       <Input

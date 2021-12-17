@@ -30,15 +30,21 @@ class TableBody extends React.Component {
     this.setState({ isLoading: false });
   }
 
-  renderLoadButton(label) {
+  renderLoadButton(disabled, onload) {
+
     // const notify = () => toast("Login Successful");
-    return (
-      <Button variant="contained" disabled={this.state.loadstatus} onClick={this.handleload} style={{
-        zIndex: '1001', marginLeft: '180px'
-      }}>
-        {label}
-      </Button>
-    );
+    if (!disabled) {
+      return (
+        <Button variant="contained" onClick={onload} style={{
+          zIndex: '1001', marginLeft: 'auto',
+        }}>
+          more
+        </Button>
+
+      );
+    }
+
+    return null;
   }
 
   render() {
@@ -55,11 +61,12 @@ class TableBody extends React.Component {
             ))}
           </tr>
         ))}
-        <Button variant="contained" disabled={disabled} onClick={onload} style={{
-          zIndex: '1001', marginLeft: 'auto', 
+        {this.renderLoadButton(disabled, onload)}
+        {/* <Button variant="contained" disabled={disabled} onClick={onload} style={{
+          zIndex: '1001', marginLeft: 'auto',
         }}>
           More
-        </Button>
+        </Button> */}
 
       </tbody>
     );

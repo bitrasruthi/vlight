@@ -3,13 +3,14 @@ import http from "./httpService";
 const apiEndPoint = "http://cghrportal.herokuapp.com/api/admin/post/holidays";
 const apiEndPointget = "http://cghrportal.herokuapp.com/api/admin/get/holidays";
 const apiEndPointsave = "http://cghrportal.herokuapp.com/api/admin/get/settings";
+const apiEndPointsave1 = "http://cghrportal.herokuapp.com/api/admin/post/settings";
 
 // function atturl(id) {
 //   return `${apiEndPoint}/${id}`;
 // }
 
 export async function save(data) {
-  return await http.post(apiEndPointsave, data);
+  return await http.post(apiEndPointsave1, data);
 }
 
 export async function gettime() {

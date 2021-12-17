@@ -1,7 +1,7 @@
 import http from "./httpService";
 
 const apiEndPointEmp = "http://cghrportal.herokuapp.com/api/employee/post/applyleave";
-const apiEndPointEmpleaves = "http://cghrportal.herokuapp.com/api/employee/getleaves";
+const apiEndPointEmpleaves = "http://cghrportal.herokuapp.com/api/employee/get/getleaves";
 const apiEndPointAdmin = "http://cghrportal.herokuapp.com/api/admin/get/allleaves";
 const apiEndPointAdminsta = "http://cghrportal.herokuapp.com/api/admin/get/leavestatus";
 

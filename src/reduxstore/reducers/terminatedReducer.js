@@ -1,4 +1,4 @@
-import { GET_TERMINATED_LIST,GET_MORETERMINATED_LIST } from "../actions/terminateAction";
+import { GET_TERMINATED_LIST,GET_MORETERMINATED_LIST,SAVE_SKIP_LIST } from "../actions/terminateAction";
 
 const terminatedReducer = (state = null, { type, payload }) => {
   switch (type) {
@@ -17,6 +17,10 @@ const terminatedReducer = (state = null, { type, payload }) => {
           state.data.push(element)
         }); 
 
+        state.skip = payload.skip
+        console.log(state)
+        return state;
+      case SAVE_SKIP_LIST:
         state.skip = payload.skip
         console.log(state)
         return state;

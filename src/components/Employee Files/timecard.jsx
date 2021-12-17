@@ -16,7 +16,7 @@ import {
 } from "reactstrap";
 
 class TimeCard extends Forms {
-  state = { inTime: "", outTime: "", timelimit: '' };
+  state = { inTime: "", outTime: "", timelimit: '', disabled: false };
   schema = {
     inTime: Joi.string(),
     outTime: Joi.string(),
@@ -24,6 +24,7 @@ class TimeCard extends Forms {
   };
 
   doIn = async () => {
+    await this.setState({ disabled: true })
     var today = new Date()
     var myNumber = today.getMinutes();
     var formattedNumber = ("0" + myNumber).slice(-2);
@@ -36,7 +37,6 @@ class TimeCard extends Forms {
       if (res.data) toast.error(res.data)
 
       toast.success("Work Started!!!");
-
       const { state } = this.props.location;
     } catch (ex) {
       console.log(ex)
@@ -44,18 +44,22 @@ class TimeCard extends Forms {
         const errors = { ...this.state.errors };
         errors.inTime = ex.response.inTime;
         toast.warn("Already Checked In!!!");
+        await this.setState({ disabled: true })
         this.setState({ errors });
       }
       if (ex.response && ex.response.status === 401) {
         const errors = { ...this.state.errors };
         errors.inTime = ex.response.inTime;
         toast.warn("Contact Admin");
+        await this.setState({ disable: true })
         this.setState({ errors });
       }
     }
   };
 
   doOut = async () => {
+    await this.setState({ disabled: true })
+
     var today = new Date();
     var myNumber = today.getMinutes();
     var formattedNumber = ("0" + myNumber).slice(-2);
@@ -74,7 +78,7 @@ class TimeCard extends Forms {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         errors.outTime = ex.response.outTime;
-        toast.warn("Already Checked Out!!!");
+        toast.warn(ex.response.data.data);
         this.setState({ errors });
       }
     }
@@ -98,7 +102,7 @@ class TimeCard extends Forms {
   render() {
     return (
       <div>
-        <div className="container" style={{ paddingLeft: "400px", paddingRight: "300px", marginLeft: '-210px',paddingTop: "200px" }}>
+        <div className="container" style={{ paddingLeft: "400px", paddingRight: "300px", marginLeft: '-210px', paddingTop: "200px" }}>
           <Card
             style={{ marginTop: "-80px", }}
             className="bg-secondary shadow border-0"
@@ -116,6 +120,7 @@ class TimeCard extends Forms {
                 <Button
                   style={{ background: "#B965E0", border: "none" }}
                   onClick={this.doIn}
+                  disabled={this.state.disabled}
                   className="  my-4"
                   color="primary"
                   type="submit"
@@ -125,6 +130,7 @@ class TimeCard extends Forms {
                 <Button
                   style={{ background: "#B965E0", border: "none" }}
                   onClick={this.doOut}
+                  disabled={this.state.disabled}
                   className=" my-4"
                   color="primary"
                   type="submit"

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import Forms from 'components/Common/form';
 import { connect } from "react-redux";
 import { Col } from 'reactstrap'
-import get_termlist, { get_moretermlist } from '../../reduxstore/actions/terminateAction'
+import get_termlist, { get_moretermlist, saveskip } from '../../reduxstore/actions/terminateAction'
 
 
 import TerminateEmpTable from './terminateEmpTable';
@@ -44,9 +44,9 @@ class TerminateEmp extends Forms {
       }
 
       // const {data:movies} = await getMovies();
-      const dd = await this.props.getterminatedlist.data;
+      const dd = await this.props.getterminatedlist;
       console.log(dd)
-      await this.setState({ employees: dd, i: dd.skip || 1 });
+      await this.setState({ employees: dd.data, i: dd.skip || 1 });
       await this.setState({ isLoading: false });
     }
     catch (ex) {
@@ -67,26 +67,29 @@ class TerminateEmp extends Forms {
 
 
   onloadmore = async () => {
-    const { i } = this.state
+    const { i, limit, employees } = this.state
 
     try {
       await this.setState({ loadstatus: true });
-      var skip = i * 2
+      var skip = i * limit
       await this.setState({ i: this.state.i + 1 })
-
-      await get_moretermlist(skip)
+      console.log(i)
+      await get_moretermlist(skip, i)
       const dd = await this.props.getterminatedlist.data;
+      if (dd.length === employees.length) {
 
+      }
       await this.setState({ employess: dd })
       await this.setState({ loadstatus: false });
 
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
+        await saveskip(this.state.i)
         toast.error(ex.response.data.data);
         await this.setState({ loadstatus: true })
       }
       if (ex.response && ex.response.status === 400) {
-        this.setState({ loadstatus: true, i: this.state.i - 1 })
+        await saveskip(this.state.i)
         await this.setState({ loadstatus: true })
       }
     }

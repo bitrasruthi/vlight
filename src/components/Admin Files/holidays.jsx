@@ -8,10 +8,10 @@ import { connect } from "react-redux";
 import get_hoildays from "../../reduxstore/actions/hoildaysActions";
 import { postholidays } from '../../services/settings'
 import ReactLoading from "react-loading";
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 
 import {
-Button,
+  Button,
   Card,
   CardBody,
   Form,
@@ -22,6 +22,7 @@ class Holidays extends Forms {
   state = {
     data: { date: '', festival: '' },
     isLoading: true,
+    loadmore: true,
     holidays: [],
     errors: [],
     sortColumn: { path: "Date", order: "asc" },
@@ -46,22 +47,22 @@ class Holidays extends Forms {
 
   async componentDidMount() {
 
-  try{
-    if (!this.props.gethoildayslist) {
-      await get_hoildays();
-    
-  }
-    const dd = await this.props.gethoildayslist[0].holidays;
-    // const ff = dd[0].holidays;
-    await this.setState({ holidays: dd });
-    await this.setState({ isLoading: false });
-  }
-  catch (ex) {
-    if (ex.response && ex.response.status === 400) {
-      this.setState({ isLoading: false });
-      toast("Please Add Holidays")
+    try {
+      if (!this.props.gethoildayslist) {
+        await get_hoildays();
+
+      }
+      const dd = await this.props.gethoildayslist[0].holidays;
+      // const ff = dd[0].holidays;
+      await this.setState({ holidays: dd });
+      await this.setState({ isLoading: false });
     }
-  }
+    catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        this.setState({ isLoading: false });
+        toast("Please Add Holidays")
+      }
+    }
   }
 
   doSubmit = async () => {
@@ -95,6 +96,7 @@ class Holidays extends Forms {
               holidays={holidays}
               sortColumn={sortColumn}
               onSort={this.handleSort}
+              disabled={this.state.loadmore}
             />
 
             {this.state.isLoading ? (
@@ -119,7 +121,7 @@ class Holidays extends Forms {
           </Col>
 
           <Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
-          <Card className="card__wrap--inner bg-secondary shadow border-0">
+            <Card className="card__wrap--inner bg-secondary shadow border-0">
               <CardBody className="px-lg-3 py-sm-5">
                 <Form role="form" onSubmit={this.handleSubmit}>
 
@@ -129,9 +131,9 @@ class Holidays extends Forms {
 
                   <div className="text-center">
                     {/* {this.renderButton("Add Hoilday")} */}
-                    <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', color: 'white',border: 'none' }} variant="contained" onClick={this.onApprove}>
-                Add Holiday
-              </Button>
+                    <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>
+                      Add Holiday
+                    </Button>
                   </div>
                 </Form>
               </CardBody>

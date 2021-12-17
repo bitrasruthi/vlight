@@ -132,13 +132,10 @@ class AddNew extends Forms {
               {this.renderInput("Phone", "Phone")}
               {this.renderInput("Email", "Email ID")}
               {this.renderInput("Role", "Designation")}
-              {this.renderInput("DateOfBirth", "Date Of Birth", "date", { maxdate },)}
+              {this.renderInput("DateOfBirth", "Date Of Birth", "date", maxdate,)}
               {this.renderInput("NetSalary", "Net Salary")}
-              {this.renderInput("AgreementYears", "Agreement Years", 'number')}
-              <input type='date' max={maxdate}
-                className="form-control" />
+              {this.renderInput("AgreementYears", "Agreement Years", 'number', '3', '0')}
               <div className="text-center" >
-
                 <Button disabled={loadstatus} style={{ background: '#2DCECB', color: 'black', border: 'none' }} className="my-4" color="primary" type="submit">
                   Add
                 </Button>

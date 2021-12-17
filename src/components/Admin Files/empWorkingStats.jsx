@@ -28,6 +28,8 @@ class EmpWorkingStas extends Forms {
       from_Date: '',
       to_Date: '',
     },
+    loadstatus: false,
+    loadmore: true,
     employees: [],
     errors: [],
     pHours: '',
@@ -63,6 +65,7 @@ class EmpWorkingStas extends Forms {
     this.setState({ sortColumn });
   };
   doSubmit = async () => {
+    this.setState({ loadstatus: true })
     try {
       const { data: prod } = this.state;
       const pp = await calProdHours(prod);
@@ -72,16 +75,17 @@ class EmpWorkingStas extends Forms {
 
       await this.setState({ pHours: ss })
       console.log(this.state.pHours);
-      //   setTimeout(() => {
-      //     window.location = state ? state.from.pathname : "/dashboard";
-      //   }, 2000);
+      setTimeout(() => {
+        this.setState({ loadstatus: false })
+      }, 2000);
       // const { state } = this.props.location;
       //   await get_employeelist();
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         errors.EmployeeName = ex.response.data.data;
-        this.setState({ errors });
+        await this.setState({ errors });
+        await this.setState({ loadstatus: true })
       }
     }
 
@@ -99,6 +103,7 @@ class EmpWorkingStas extends Forms {
           employees={employees}
           sortColumn={sortColumn}
           onSort={this.handleSort}
+          disabled={this.state.loadmore}
         />
       </Col>
 
@@ -112,7 +117,7 @@ class EmpWorkingStas extends Forms {
               {this.renderInput("to_Date", "To Date", 'date')}
 
               <div className="text-center">
-                <Button disabled={this.validate()} style={{ background: '#2DCECB', border: 'none' }} className="my-4" color="primary" type="submit">
+                <Button disabled={this.state.loadstatus} style={{ background: '#2DCECB', border: 'none' }} className="my-4" color="primary" type="submit">
                   Get Production Hours
                 </Button>
               </div>

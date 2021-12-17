@@ -54,20 +54,20 @@ class App extends React.Component {
                 <ProtectedRoute path="/emplist" component={EmpList} />
                 <ProtectedRoute path="/leavelist" component={LeaveList} />
                 <Route path="/logout" component={Logout} />
-                <Route path="/changepassword" component={ChangePassword} />
-                <Route path="/empstats" component={EmpWorkingStas} />
-                <Route path="/empreset" component={EmpRestPassword} />
-                <Route path="/home" component={Home} />
+                <EmpProtectedRoute path="/changepassword" component={ChangePassword} />
+                <ProtectedRoute path="/empstats" component={EmpWorkingStas} />
+                <ProtectedRoute path="/empreset" component={EmpRestPassword} />
+                <ProtectedRoute path="/home" component={Home} />
                 <Route path="/pops" component={Pops} />
                 {/* <Route path="/iptrack" component={IpTrack} /> */}
                 {/* <Route path="/edudetails" component={EduDetails} /> */}
                 <Route path="/popup" component={PopUp} />
-                <Route path="/deleteemp/:id" component={DeleteEmp} />
+                <ProtectedRoute path="/deleteemp/:id" component={DeleteEmp} />
             
                 <Route path="/jobdetails" component={JobDetails} />
-                <Route path="/terminateemp" component={TerminateEmp} />
+                <ProtectedRoute path="/terminateemp" component={TerminateEmp} />
 
-                <Route path="/navbar" component={NavBar} />
+                <ProtectedRoute path="/navbar" component={NavBar} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} />
                 <EmpProtectedRoute path="/edashboard" component={EDashboard} />
 
@@ -81,9 +81,8 @@ class App extends React.Component {
                 <ProtectedRoute path="/holidays" component={Holidays} />
                 <ProtectedRoute path="/officehours" component={OfficeHours} />
                 <Route path="/empoptions" component={EmpOptions} />
-                <Route path="/profile" component={Profile} />
-                <Route path="/edudetails/:id" component={EduDetails} />
-
+                <EmpProtectedRoute path="/profile" component={Profile} />
+                <EmpProtectedRoute path="/edudetails/:id" component={EduDetails} />
                 <Route path="/" component={Login} />
                 {/* <Redirect from="/" exact to="/home" /> */}
                 <Redirect to="/not-found" />

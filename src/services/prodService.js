@@ -2,7 +2,7 @@ import http from "./httpService";
 
 
 const apiEndPointProd = "http://cghrportal.herokuapp.com/api/admin/post/productionhours";
-const empprohrs = "http://cghrportal.herokuapp.com/api/employee/post/productionhours/week&month";
+const empprohrs = "http://cghrportal.herokuapp.com/api/employee/get/productionhours/week&month";
 const tokenkey = "token";
 
 export function getJwt() {

@@ -20,7 +20,7 @@ class HoliTable extends React.Component {
   }
 
   render() {
-    const { holidays, sortColumn, onSort } = this.props;
+    const { holidays, sortColumn, onSort, disabled } = this.props;
     return (
       <div>
         <Table
@@ -28,6 +28,7 @@ class HoliTable extends React.Component {
           data={holidays}
           sortColumn={sortColumn}
           onSort={onSort}
+          disabled={disabled}
         />
       </div>
     );

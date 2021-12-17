@@ -1,15 +1,24 @@
 import axios from "axios";
 import logger from "./logService";
 import { toast } from "react-toastify";
+import { logout} from '../services/authService'
+
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 axios.interceptors.response.use(null, (error) => {
+  console.log(error.response.status)
   const expectedError =
     error.response &&
     error.response.status >= 400 &&
     error.response.status < 500;
-
+    const twologin = error.response.status
+ 
+  if (twologin) {
+    logger.log(error);
+     logout()
+    toast.error("already Login in another device");
+  }
   if (!expectedError) {
     logger.log(error);
     toast.error("An unexpected error occurrred.");
