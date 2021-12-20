@@ -3,7 +3,7 @@ import http from "./httpService";
 const apiEndPoint = "http://cghrportal.herokuapp.com/api/admin/post/holidays";
 const apiEndPointget = "http://cghrportal.herokuapp.com/api/admin/get/holidays";
 const apiEndPointsave = "http://cghrportal.herokuapp.com/api/admin/get/companytimings";
-const apiEndPointsave1 = "http://cghrportal.herokuapp.com/api/admin/post/settings";
+const apiEndPointsave1 = "http://cghrportal.herokuapp.com/api/admin/post/companytimings";
 
 // function atturl(id) {
 //   return `${apiEndPoint}/${id}`;
