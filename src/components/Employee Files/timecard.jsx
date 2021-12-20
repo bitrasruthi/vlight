@@ -92,10 +92,13 @@ class TimeCard extends Forms {
     }
   };
   async componentDidMount() {
+    await this.setState({ disabled: true })
     const time = await gettime()
     const present = { ...time.data[0] }
 
     await this.setState({ timelimit: present.inTime })
+    await this.setState({ disabled: false })
+
   }
 
 

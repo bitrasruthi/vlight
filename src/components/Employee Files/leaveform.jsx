@@ -28,13 +28,15 @@ class LeaveForm extends Forms {
       leave_type: "",
       To: "",
     },
+    maxdate: '',
+    mindate: '',
     loadstatus: false,
     errors: [],
     options: [{ select: '' }, { CasualLeave: 'Casual Leave' }, { Sickleave: 'Sick Leave' }],
     To: [{ select: '' }, { Admin: 'Admin' }],
   };
 
-  handleChange(event) {    this.setState({value: event.target.options});  }
+  handleChange(event) { this.setState({ value: event.target.options }); }
 
   doSubmit = async () => {
     this.setState({ loadstatus: true })
@@ -56,6 +58,8 @@ class LeaveForm extends Forms {
       }
     }
   };
+
+
 
   schema = {
     from_Date: Joi.date().required(),
@@ -83,29 +87,29 @@ class LeaveForm extends Forms {
             <CardBody style={{}} className="px-lg-3 py-sm-5">
               <Form role="form" onSubmit={this.handleSubmit}>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px', zIndex: 1001}}>
-                {this.renderInput("from_Date", "From Date", "date")}
-              </Col>
-
-              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
-                {this.renderInput("to_Date", "To Date", "date")}
+                <Col sm={{ size: 6 }} style={{ marginLeft: '3px', marginTop: '-0px', zIndex: 1001 }}>
+                  {this.renderInput("from_Date", "From Date", "date")}
                 </Col>
 
-                <Col sm={{ size: 8 }} style={{marginLeft: 'px', marginTop: '-0px'}}className='mr-sm-2'>            
-                {this.renderDropdown("leave_type", "Leave Type", options)}
+                <Col sm={{ size: 6 }} style={{ marginLeft: '300px', marginTop: '-100px' }} className='mr-sm-2'>
+                  {this.renderInput("to_Date", "To Date", "date")}
                 </Col>
 
-                <Col sm={{ size: 26 }} style={{marginLeft: '310px', marginTop: '-200px'}}className='mr-sm-2'>
-                {this.renderDropdown("To", "To", To)}
+                <Col sm={{ size: 8 }} style={{ marginLeft: 'px', marginTop: '-0px' }} className='mr-sm-2'>
+                  {this.renderDropdown("leave_type", "Leave Type", options)}
                 </Col>
-                <Col sm={{ size: 12 }} style={{marginLeft: '3px', marginTop: '-0px'}}className='mr-sm-2'>            
-                {this.renderInput("subject", "Subject:")}
-                </Col>
-                <Col sm={{ size: 12 }} style={{height: '',marginLeft: '3px', marginTop: '-0px'}}className='mr-sm-2'>            
-                {this.renderInput("reason", "Reason")}
-               </Col>
 
-               
+                <Col sm={{ size: 26 }} style={{ marginLeft: '310px', marginTop: '-200px' }} className='mr-sm-2'>
+                  {this.renderDropdown("To", "To", To)}
+                </Col>
+                <Col sm={{ size: 12 }} style={{ marginLeft: '3px', marginTop: '-0px' }} className='mr-sm-2'>
+                  {this.renderInput("subject", "Subject:")}
+                </Col>
+                <Col sm={{ size: 12 }} style={{ height: '', marginLeft: '3px', marginTop: '-0px' }} className='mr-sm-2'>
+                  {this.renderInput("reason", "Reason")}
+                </Col>
+
+
 
                 {/* {this.renderButton("Submit")}
                  */}

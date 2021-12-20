@@ -28,18 +28,29 @@ class Orgprofile extends Forms {
         companyMailId: Joi.string().required(),
         companyContactNumber: Joi.string().required(),
     };
+    async populateDetail(data) {
+        if (!data.companyMailId) return;
+        this.setState({ data: this.mapToViewModel(data) });
 
+    }
     async componentDidMount() {
         try {
             const { data } = await getcomdet()
             const res = data[0]
-            if (res) {
-                this.setState({ data: res })
-            }
+            await this.populateDetail(res);
         }
         catch (ex) {
             toast('error')
         }
+    }
+    mapToViewModel(data) {
+        return {
+            established: data.established,
+            type: data.type,
+            companyIdCode: data.companyIdCode,
+            companyMailId: data.companyMailId,
+            companyContactNumber: data.companyContactNumber,
+        };
     }
 
 

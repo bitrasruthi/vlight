@@ -10,14 +10,17 @@ axios.interceptors.response.use(null, (error) => {
   
   const expectedError =
     error.response &&
-    error.response.status <= 405 &&
+    error.response.status <= 400 &&
     error.response.status < 500;
+  
+    const loginerro =
+    error.response &&
+    error.response.status === 401
    
-     if(error.response.status === 401) { 
+     if(!loginerro) { 
       logger.log(error);
       logout()
      toast.error("already Login in another device");
-    
      }
     
    if (!expectedError) {
