@@ -21,7 +21,7 @@ import ESidebar from 'components/Sidebar/eSidebar';
 import EduCard from './eduCard';
 // core components
 
-class EduDetailsDegree extends Forms {
+class EduDetails extends Forms {
   state = {
     data: {  institute: "", passedoutYear: '', percentage: '' },
     employees: [],
@@ -30,6 +30,7 @@ class EduDetailsDegree extends Forms {
     errors: [],
     currentPage: 1,
     sortColumn: { path: "FirstName", order: "asc" },
+    options: [" select", "ssc", "degree", 'pg', 'ug'],
   }
 
   schema = {
@@ -40,45 +41,76 @@ class EduDetailsDegree extends Forms {
 
   };
 
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page });
+  };
+
+  handleSort = (sortColumn) => {
+    this.setState({ sortColumn });
+  };
+
+  getPageData = () => {
+    const {
+      pageSize,
+      currentPage,
+      employess: allemployess,
+
+      sortColumn,
+    } = this.state;
+
+    let filtered = allemployess;
+
+    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
+    const employess = paginate(sorted, currentPage, pageSize);
+    return { totalCount: filtered.length, data: employess };
+  };
+
 
   componentDidMount() {
-    console.log(this.props);
     const data = {...this.state.data, qualification: 'degree'}
     console.log(data.qualification);
   }
   
 
+
   doSubmit = async () => {
-    if(this.props.degree === 'degree'){
     try {
       const data = {...this.state.data, qualification: 'degree'}
       console.log(data);
       const pp = (data.institute);
       await this.setState({data: {qualification: data.qualification}})
         if (pp === []) {  await registerEduDetails(data.institute, data.passedoutYear, data.percentage) }
-        else if (pp.qualification === 'degree') {
+        else if (pp.qualification === 'ssc' || 'degree' || 'ug' || 'pg') {
           await updateEduDetails(data)
+          
       }
+      //  const tt = await this.setState({data: pp.data});
+      //   console.log(tt);
+
+
+      // //   console.log(tt);
       toast.success("Education details Updated Successfully");
       setTimeout(() => {
         window.location =  "/profile";
       }, 2000);
 
-    } catch (ex) {
+    } 
+    catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         errors.institute = ex.response.data;
         this.setState({ errors });
       }
     }
+  
   }
-}
 
 
   render() {
-    const { options } = this.state
+    
     return (
       <>
+     
       <div style={{marginTop: '0px', height:'430px', width:'420px',marginRight: "-0px" }}  >
         <Col lg="9" md="9" style={{ marginLeft: '30px',
         height:'400px', width:'650px',marginRight: "-0px", paddingTop: "auto", position: 'absolute',marginTop: '20px', }}>
@@ -89,7 +121,7 @@ class EduDetailsDegree extends Forms {
             </Col>
           </CardHeader>
           <CardBody style={{textAlign: 'center'}} className="px-lg-3 py-sm-5">
-          <Form role="form" onSubmit={this.handleSubmit}>
+          <Form role="form"  onSubmit={this.handleSubmit}>
                   {/* {this.renderInput('qualification', 'Qualification', this.state.data.qualification )} */}
 
                     {/* {this.renderDropdown("qualification", "Qualification", options)} */}
@@ -114,9 +146,10 @@ class EduDetailsDegree extends Forms {
           </Card>
           </Col>
               </div>
+  
         <div>
       </div>
-       
+  
           
         {/* </div> */}
       </>
@@ -124,4 +157,4 @@ class EduDetailsDegree extends Forms {
   };
 }
 
-export default EduDetailsDegree;
+export default EduDetails;

@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 
 class EduCard extends React.Component {
   state = {
-    openModal: false,
+    openModal: null,
     data: { qualification: '', institute: '', passedoutYear: '', percentage: '',},
     degree: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
     ug: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
@@ -25,35 +25,15 @@ class EduCard extends React.Component {
   }
 
   onClickButton = e =>{
-    e.preventDefault()
-    this.setState({openModal : true})
-    console.log(this.state.edu[0]);
-    console.log(this.state.data);
+    // e.preventDefault()
+    this.setState({openModal : e})
 
 }
-onClickButton2 = e =>{
-  // e.preventDefault()
-  this.setState({openModal : true})
-  console.log(e);
-}
-onClickButton3 = e =>{
-  // e.preventDefault()
-  this.setState({openModal : true})
-  console.log(e);
-}
-onClickButton4 = e =>{
-  // e.preventDefault()
-  this.setState({openModal : true})
-  console.log(e);
-}
+
+
   onCloseModal = ()=>{
     this.setState({openModal : false})
 }
-
-
-
-
-
 
   async componentDidMount() {
     const { data: profile } = await getProDetails();
@@ -64,7 +44,7 @@ onClickButton4 = e =>{
       let yy = profile[0].EducationalDetails[2];
       let kk = profile[0].EducationalDetails[3];
       
-      console.log(this.props);
+
       if (pp) {
         this.setState({
           data: {
@@ -109,29 +89,9 @@ onClickButton4 = e =>{
     window.location = '/edashboard'
   }
 
-
-
   render() {
     return (
       <>
-      {this.state.edu[0] ?
-        (<Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetails 
-          ssc={'ssc'}/>
-        </Modal>) :  (<Modal open={this.state.openModal}  onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetailsDegree
-          degree={'degree'}/>
-        </Modal>)}
-  
-      
-        {/* <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetailsUg
-          ug={'ug'}/>
-        </Modal>
-        <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetailsPg
-          pg={'pg'}/>
-        </Modal> */}
         {/* <ESidebar/> */}
         
         <div style={{ height: '30%', position: "absolute", left: '0', width: '100%', }}
@@ -144,7 +104,7 @@ onClickButton4 = e =>{
               {/* <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} 
               onClick={()=> this.onClickButton (emp)}>
                 <i  class="fas fa-edit"/></i></Button> */}
-                <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} onClick={this.onClickButton}>
+                <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} onClick={()=>{this.onClickButton("ssc")}}>
           <Link style={{ color: 'black', zIndex: 1001 }} to="/profile/ssc"> <i  class="fas fa-edit"/>
           </Link></Button> 
 
@@ -155,7 +115,7 @@ onClickButton4 = e =>{
             </Col>
             <Col lg="6" md="3" style={{ marginLeft: "22rem", marginTop: '-600px', paddingTop: "px", position: 'absolute', }}>
               <h3 > Intermediate
-              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} onClick={this.onClickButton2}>
+              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} onClick={()=>{this.onClickButton("degree")}}>
           <Link style={{ color: 'black', zIndex: 1001 }} to="/profile/degree"> <i  class="fas fa-edit"/>
           </Link></Button> 
 
@@ -167,7 +127,7 @@ onClickButton4 = e =>{
             </Col>
             <Col lg="6" md="3" style={{ marginLeft: "rem", marginTop: '-200px', paddingTop: "px", position: 'absolute', }}>
               <h3 > Graduation
-              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} onClick={this.onClickButton3}>
+              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} onClick={()=>{this.onClickButton("ug")}}>
           <Link style={{ color: 'black', zIndex: 1001 }} to="/profile/ug"> <i  class="fas fa-edit"/>
           </Link></Button> 
               </h3>
@@ -179,7 +139,7 @@ onClickButton4 = e =>{
             <Col lg="6" md="3" style={{ marginLeft: "22rem", marginTop: '-200px', paddingTop: "px", position: 'absolute', }}>
 
               <h3 > Post Graduation
-              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} onClick={this.onClickButton4}>
+              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} onClick={()=>{this.onClickButton("pg")}}>
           <Link style={{ color: 'black', zIndex: 1001 }} to="/profile/pg"> <i  class="fas fa-edit"/>
           </Link></Button> 
 
@@ -194,7 +154,26 @@ onClickButton4 = e =>{
         </div>
 
       
-       
+        <Modal open={this.state.openModal === 'ssc'} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetails />
+        </Modal>
+        <Modal open={this.state.openModal === 'degree' }  onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsDegree/>
+        </Modal>
+        <Modal open={this.state.openModal === 'ug' }  onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsUg/>
+        </Modal>
+        <Modal open={this.state.openModal === 'pg' }  onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsPg/>
+        </Modal>
+        {/* <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsUg
+          ug={'ug'}/>
+        </Modal>
+        <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsPg
+          pg={'pg'}/>
+        </Modal> */}
         
       </>
     );
