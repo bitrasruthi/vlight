@@ -98,30 +98,7 @@ class EduDetails extends Forms {
       }
     }
   }
-  else if(this.props.degree === 'degree'){
-    try {
-      const data = {...this.state.data, qualification: 'degree'}
-      console.log(data);
-      const pp = (data.institute);
-      await this.setState({data: {qualification: data.qualification}})
-        if (pp === []) {  await registerEduDetails(data.institute, data.passedoutYear, data.percentage) }
-        else if (pp.qualification === 'ssc' || 'degree' || 'ug' || 'pg') {
-          await updateEduDetails(data)
-      }
-      toast.success("Education details Updated Successfully");
-      setTimeout(() => {
-        window.location =  "/profile";
-      }, 2000);
-    } 
-    
-    catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        const errors = { ...this.state.errors };
-        errors.institute = ex.response.data;
-        this.setState({ errors });
-      }
-    }
-  }
+ 
 }
 
 

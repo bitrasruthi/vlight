@@ -17,16 +17,18 @@ import { toast } from "react-toastify";
 class EduCard extends React.Component {
   state = {
     openModal: false,
-    data: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
+    data: { qualification: '', institute: '', passedoutYear: '', percentage: '',},
     degree: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
     ug: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
     pg: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
+    edu: ['ssc', 'degree', 'ug', 'pg']
   }
 
   onClickButton = e =>{
     e.preventDefault()
     this.setState({openModal : true})
-    console.log(this);
+    console.log(this.state.edu[0]);
+    console.log(this.state.data);
 
 }
 onClickButton2 = e =>{
@@ -62,7 +64,7 @@ onClickButton4 = e =>{
       let yy = profile[0].EducationalDetails[2];
       let kk = profile[0].EducationalDetails[3];
       
-      console.log(pp);
+      console.log(this.props);
       if (pp) {
         this.setState({
           data: {
@@ -107,9 +109,29 @@ onClickButton4 = e =>{
     window.location = '/edashboard'
   }
 
+
+
   render() {
     return (
       <>
+      {this.state.edu[0] ?
+        (<Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetails 
+          ssc={'ssc'}/>
+        </Modal>) :  (<Modal open={this.state.openModal}  onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsDegree
+          degree={'degree'}/>
+        </Modal>)}
+  
+      
+        {/* <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsUg
+          ug={'ug'}/>
+        </Modal>
+        <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsPg
+          pg={'pg'}/>
+        </Modal> */}
         {/* <ESidebar/> */}
         
         <div style={{ height: '30%', position: "absolute", left: '0', width: '100%', }}
@@ -170,23 +192,9 @@ onClickButton4 = e =>{
           </Container>
 
         </div>
-            
-        <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetails
-          degree={'degree'}/>
-        </Modal>
-        <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetails 
-          ssc={'ssc'}/>
-        </Modal>
-        {/* <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetailsUg
-          ug={'ug'}/>
-        </Modal>
-        <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetailsPg
-          pg={'pg'}/>
-        </Modal> */}
+
+      
+       
         
       </>
     );
