@@ -138,13 +138,13 @@ class Profile extends Forms {
           <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
             className=" py-4 py-sm-3 ">
             <Row style={{ marginTop: '220px', marginLeft: '3rem' }}>
-              <Col style={{marginLeft: '370px'}} className="order-xl-2 mb-5 mb-xl-0" xl="1">
+              <Col style={{ marginLeft: '370px' }} className="order-xl-2 mb-5 mb-xl-0" xl="1">
                 <Card style={{ marginRight: '-270px', marginLeft: '70px' }} className="card-profile shadow">
                   <Row className="justify-content-center">
                     <Col className="order-lg-2" lg="3">
                       <div className="card-profile-image">
                         <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                          <img style={{marginLeft: '0px'}}
+                          <img style={{ marginLeft: '0px' }}
                             alt="..."
                             className="rounded-circle"
                             src={
@@ -188,6 +188,7 @@ class Profile extends Forms {
                 <Card style={{ marginRight: '-50px', marginTop: '-960px' }} className="card-profile shadow">
                   <CardHeader className="bg-gradient-purple border-0">
                     <h3 className="">Education Details</h3>
+                    {/* conflicts test  */}
                     {/* <Col className="text-right" xs="4">
                         {/* <Button
                           color="primary"
@@ -208,15 +209,15 @@ class Profile extends Forms {
 
 
               <Col lg="6" md="7" style={{ marginLeft: "20%", paddingTop: "auto", position: 'absolute' }}>
-        <Card className="bg-secondary shadow border-0" >
-          <CardHeader className="bg-gradient-success border-0">
-            <Col style={{ marginLeft: '200px', paddingBottom: '10px' }} xs="8">
-              <h3 className="mb--3">Add New Employee</h3>
-            </Col>
+                <Card className="bg-secondary shadow border-0" >
+                  <CardHeader className="bg-gradient-success border-0">
+                    <Col style={{ marginLeft: '200px', paddingBottom: '10px' }} xs="8">
+                      <h3 className="mb--3">Add New Employee</h3>
+                    </Col>
 
-          </CardHeader>
-          <CardBody  className="px-lg-3 py-sm-5">
-            <Form role="form" onSubmit={this.handleSubmit}>
+                  </CardHeader>
+                  <CardBody className="px-lg-3 py-sm-5">
+                    <Form role="form" onSubmit={this.handleSubmit}>
                       {this.renderInput("FirstName", "First Name",)}
                       {this.renderInput("MiddleName", "Middle Name",)}
                       {this.renderInput("LastName", "Last Name",)}
