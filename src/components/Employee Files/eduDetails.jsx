@@ -67,13 +67,14 @@ class EduDetails extends Forms {
 
 
   componentDidMount() {
-    console.log(this.props);
     const data = {...this.state.data, qualification: 'ssc'}
     console.log(data.qualification);
   }
   
 
+
   doSubmit = async () => {
+    if(this.props.ssc === 'ssc'){
     try {
       // const qua = this.props.match.params.id
 
@@ -82,7 +83,7 @@ class EduDetails extends Forms {
       const pp = (data.institute);
           // console.log(this.props.match.params.id)
 
-      await this.setState({data: {qualification: pp}})
+      await this.setState({data: {qualification: data.qualification}})
       
       //  if(data === null && data.qualification === ""){
         //    await registerEduDetails(data);
@@ -101,7 +102,8 @@ class EduDetails extends Forms {
         window.location =  "/profile";
       }, 2000);
 
-    } catch (ex) {
+    } 
+    catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         errors.institute = ex.response.data;
@@ -109,12 +111,14 @@ class EduDetails extends Forms {
       }
     }
   }
+  }
 
 
   render() {
-    const { options } = this.state
+    
     return (
       <>
+     
       <div style={{marginTop: '0px', height:'430px', width:'420px',marginRight: "-0px" }}  >
         <Col lg="9" md="9" style={{ marginLeft: '30px',
         height:'400px', width:'650px',marginRight: "-0px", paddingTop: "auto", position: 'absolute',marginTop: '20px', }}>
@@ -150,9 +154,10 @@ class EduDetails extends Forms {
           </Card>
           </Col>
               </div>
+  
         <div>
       </div>
-       
+  
           
         {/* </div> */}
       </>
