@@ -1,4 +1,5 @@
 import React from "react";
+import { Label, Input, Col} from 'reactstrap'
 const Dropdown = ({
   name,
   error,
@@ -10,22 +11,25 @@ const Dropdown = ({
 }) => {
   return (
     <div className="form-group">
-      <label htmlFor={name}>{label}</label>
-      <div className="input-group mb-3">
-        <select style={{ border: '' }}
+      <Col sm={{ size: 6 }} style={{width:'620px', marginLeft: '-12px', marginTop: '-100px', zIndex: 1001}}className='mr-sm-2'>
+      <Label style={{marginTop: '100px', zIndex: 1001 }} htmlFor={name}>{label}</Label>
+
+        <Input type='select'  style={{width: '280px'}} 
           className="form-select"
           id={name}
           onChange={(id) => onChange({ name, id })}
           aria-label="Example select with button addon"
         >
+         
           {options.map((item) => (
+           
             <option value={Object.values(item)} key={item.value}>
               {" "}
-              {Object.keys(item)}{" "}
+                          {Object.keys(item)}{" "}
             </option>
           ))}
-        </select>
-      </div>
+        </Input>
+        </Col>
 
       {/* <div className="input-group mb-3">
         <label className="input-group-text" id={name}>

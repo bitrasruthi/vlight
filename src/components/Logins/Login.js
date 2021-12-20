@@ -58,6 +58,7 @@ class Login extends Forms {
     return (
      
   <div style = {{height: '100%', position: "absolute", left: '0', width: '100%',overflow: 'hidden'}} className="header bg-gradient-success py-7 py-lg-3 ">
+    
     <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
         <Container fluid className="px-4">
           <NavbarBrand to="/" tag={Link}>
@@ -107,13 +108,13 @@ class Login extends Forms {
                   tag={Link}
                 >
                   <i className="ni ni-circle-08" />
-                  <span style={{color: '#172B4D'}} className="nav-link-inner--text">Employee</span>
+                  <span style={{color: 'white'}} className="nav-link-inner--text">Employee</span>
                 </NavLink>
               </NavItem>
               <NavItem >
                 <NavLink className="nav-link-icon" to="/login" tag={Link}>
                   <i className="ni ni-key-25"/>
-                  <span style={{color: '#172B4D'}} className="nav-link-inner--text">Admin</span>
+                  <span style={{color: 'white'}} className="nav-link-inner--text">Admin</span>
                 </NavLink>
               </NavItem>
               {/* <NavItem >

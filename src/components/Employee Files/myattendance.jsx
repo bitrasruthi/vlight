@@ -125,7 +125,7 @@ class AttList extends Forms {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <ESidebar />
-        <Col lg="8" md="7" style={{ marginLeft: "1rem", paddingTop: "px", position: 'absolute', }}>
+        <Col lg="8" md="7" style={{ width: '624px',marginLeft: "1rem", paddingTop: "px", position: 'absolute', }}>
 
           <EmpTable
             employess={employess}
@@ -135,82 +135,7 @@ class AttList extends Forms {
             disabled={this.state.loadstatus}
           />
         </Col>
-        <Col>
-          {/* <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
-            zIndex: '1001', marginLeft: '270px'
-          }}>
-            Load more
-          </Button> */}
-          {this.state.employess.length ? <p> No Data</p> : ''}
-          {this.state.isLoading ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                // alignItems: "center",
-                height: "10vh",
-              }}
-            >
-              <ReactLoading
-                type="bars"
-                color="#aaaa"
-                height={"10%"}
-                width={"10%"}
-              />
-            </div>
-          ) : (
-            ""
-          )}
-        </Col>
-        <Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
-          <Card className="card__wrap--inner bg-secondary shadow border-0">
-            {/* <h1
-              style={{
-                marginLeft: "60px",
-                paddingTop: "28px",
-              }}
-            >
-              Filter </h1> */}
-            <CardBody className="px-lg-2 py-sm-5">
-              <Form
-                role="form"
-                onSubmit={this.handleSubmit}
-                style={{
-                  padding: "0px 20px",
-                  textAlign: "",
-                  color: "",
-                }}
-              >
-                {this.renderInput("from_Date", "From Date", "date")}
-                {this.renderInput("to_Date", "To Date", "date")}
-
-                <div className="text-center">
-                  <div
-                  // style={{ background: "#172B4D", border: "none" }}
-                  // className="my-4"
-                  // color="primary"
-                  // type="submit"
-                  >
-                    {" "}
-                    {/* {this.renderButton("Search")}{" "} */}
-                    <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#B665E0', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>
-                      Search
-                    </Button>
-                  </div>
-
-                  {/* <Button
-                    style={{ background: "#172B4D", border: "none" }}
-                    className="my-4"
-                    color="primary"
-                    type="submit"
-                  >
-                    search
-                  </Button> */}
-                </div>
-              </Form>
-            </CardBody>
-          </Card>
-        </Col>
+      
       </div>
     );
   }

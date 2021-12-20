@@ -84,7 +84,7 @@ class ELeavsList extends React.Component {
     return (
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
-        <Col lg="8" md="7" style={{ marginLeft: "8rem", paddingTop: "px", position: 'absolute' }}>
+        <Col lg="8" md="7" style={{width:'668px', marginLeft: "8rem", paddingTop: "px", position: 'absolute' }}>
           <ELeavsTable
             leaves={leaves}
             sortColumn={sortColumn}

@@ -97,7 +97,7 @@ class EmpWorkingStas extends Forms {
     return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
       className=" py-5 py-sm-1 ">
       <Sidebar />
-      <Col lg="8" md="7" style={{ marginLeft: "5rem", paddingTop: "px", position: 'absolute', }}>
+      <Col lg="9" md="7" style={{ width:'498px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 
         <Hrstable
           employees={employees}

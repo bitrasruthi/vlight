@@ -7,6 +7,7 @@ import ECard from './../Admin Files/empCount';
 import PCard from 'components/Admin Files/prodHoursCard';
 import { getProHrs } from '../../services/userService'
 import get_hrslist from '../../reduxstore/actions/hrsAction'
+import { Col } from 'reactstrap';
 
 class Dashboard extends React.Component {
 
@@ -42,19 +43,23 @@ class Dashboard extends React.Component {
 
     render() {
         const { employees, lastWeekHours, lastMonthHours } = this.state
-        return <div>
+        return <div >
             {/* <Sidebar /> */}
             <NavBar />
+            
             <h1 style={{ textAlign: 'center', color: 'black' }}>Welcome Admin!!!</h1>
             {/* <ProductionHours /> */}
             {/* <ECard /> */}
-
+            {/* <Col style={{paddingTop: '80px'}}> */}
+            <div style={{paddingTop: '80px'}}>
             <ECard
                 title={'Total Employees '}
                 count={this.state.count || 'loading...'}
                 totalmonthhours={this.state.lastMonthHours || 'loading...'}
                 totalweekhours={this.state.lastWeekHours || 'loading...'}
             />
+            </div>
+            {/* </Col> */}
             {/* <PCard
                 title={'Monthly Hrs '}
                 hrs={lastMonthHours}

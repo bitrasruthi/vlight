@@ -12,6 +12,7 @@ import {
   CardBody,
   Form,
   Col,
+  FormGroup,
 } from "reactstrap";
 
 
@@ -116,7 +117,7 @@ class AddNew extends Forms {
     return <div>
       <Sidebar />
       {/* <NavBar/> */}
-      <Col lg="6" md="7" style={{ marginLeft: "25%", paddingTop: "auto", position: 'absolute' }}>
+      <Col lg="6" md="7" style={{ marginLeft: "20%", paddingTop: "auto", position: 'absolute' }}>
         <Card className="bg-secondary shadow border-0" >
           <CardHeader className="bg-gradient-success border-0">
             <Col style={{ marginLeft: '200px', paddingBottom: '10px' }} xs="8">
@@ -124,22 +125,44 @@ class AddNew extends Forms {
             </Col>
 
           </CardHeader>
-          <CardBody className="px-lg-3 py-sm-5">
+          <CardBody  className="px-lg-3 py-sm-5">
             <Form role="form" onSubmit={this.handleSubmit}>
-
+            <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
               {this.renderInput("EmployeeId", "Employee ID")}
+              </Col>
+
+              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
               {this.renderInput("EmployeeName", "Employee Name")}
+              </Col>
+
+              <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
               {this.renderInput("Phone", "Phone")}
+              </Col>
+
+              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
               {this.renderInput("Email", "Email ID")}
+              </Col>
+              
+              <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
               {this.renderInput("Role", "Designation")}
+              </Col>
+
+              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
               {this.renderInput("DateOfBirth", "Date Of Birth", "date", maxdate,)}
+              </Col>
+
+              <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
               {this.renderInput("NetSalary", "Net Salary")}
+              </Col>
+
+              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
               {this.renderInput("AgreementYears", "Agreement Years", 'number', '3', '0')}
-              <div className="text-center" >
-                <Button disabled={loadstatus} style={{ background: '#2DCECB', color: 'black', border: 'none' }} className="my-4" color="primary" type="submit">
+              </Col>
+              <Col row style={{marginLeft: '250px', marginTop: '0px', marginBottom: '0px'}} >
+                <Button disabled={loadstatus} style={{ background: '#2DCECB', color: 'black', border: 'none' }} className="my-2" color="primary" type="submit">
                   Add
                 </Button>
-              </div>
+              </Col>
             </Form>
           </CardBody>
         </Card>

@@ -1,19 +1,62 @@
 import React from 'react';
 import { getProDetails } from 'services/profileService';
+import { Modal } from 'react-responsive-modal';
+import { Link } from 'react-router-dom';
+import { Container, Col, Button,  } from "reactstrap";
+import EduDetails from './eduDetails';
+import EduDetailsDegree from './eduDetailsDegree';
+import EduDetailsUg from './empDetailsUg';
+import EduDetailsPg from './empDetailsPg';
+import { updateEduDetails } from 'services/eduService';
+import { registerEduDetails } from 'services/eduService';
+import { toast } from "react-toastify";
 
-import { Container, Col, Button } from "reactstrap";
+
 
 
 class EduCard extends React.Component {
   state = {
+    openModal: false,
     data: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
     degree: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
     ug: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
-    pg: { qualification: '', institute: '', passedoutYear: '', percentage: '', }
+    pg: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
+   activeModal: '',
   }
 
-  async componentDidMount() {
+  onClickButton = e =>{
+    // e.preventDefault()
+    this.setState({ activeModal: e });
+    this.setState({openModal : true})
 
+    console.log(this);
+
+}
+onClickButton2 = e =>{
+  // e.preventDefault()
+  this.setState({openModal : true})
+  console.log(e);
+}
+onClickButton3 = e =>{
+  // e.preventDefault()
+  this.setState({openModal : true})
+  console.log(e);
+}
+onClickButton4 = e =>{
+  // e.preventDefault()
+  this.setState({openModal : true})
+  console.log(e);
+}
+  onCloseModal = ()=>{
+    this.setState({openModal : false})
+}
+
+
+
+
+
+
+  async componentDidMount() {
     const { data: profile } = await getProDetails();
     console.log(profile);
     if (profile.length > 0) {
@@ -30,12 +73,10 @@ class EduCard extends React.Component {
             passedoutYear: pp.passedoutYear, percentage: pp.percentage
           }
         });
-
       }
        if(tt) {
          console.log(tt);
         this.setState({
-
           degree: {
             qualification: tt.qualification, institute: tt.institute,
             passedoutYear: tt.passedoutYear, percentage: tt.percentage
@@ -73,17 +114,21 @@ class EduCard extends React.Component {
     return (
       <>
         {/* <ESidebar/> */}
+        
         <div style={{ height: '30%', position: "absolute", left: '0', width: '100%', }}
           className=" py-2 py-sm-3 ">
-
-
-
           {/* Header container */}
           <Container className="d-flex align-items-center" fluid>
 
             <Col lg="6" md="3" style={{ marginLeft: "rem", marginTop: '-600px', paddingTop: "px", position: 'absolute', }}>
               <h3> SSC
-              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} href="/edudetails/ssc"><i  class="fas fa-edit"></i></Button>
+              {/* <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} 
+              onClick={()=> this.onClickButton (emp)}>
+                <i  class="fas fa-edit"/></i></Button> */}
+                <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} data-modal="modal-one" onClick={this.onClickButton}>
+          <Link style={{ color: 'black', zIndex: 1001 }} to="/profile/ssc"> <i  class="fas fa-edit"/>
+          </Link></Button> 
+
               </h3>
               <p>Institute: {this.state.data.institute}</p>
               <p>Year of Pass: {this.state.data.passedoutYear}</p>
@@ -91,7 +136,10 @@ class EduCard extends React.Component {
             </Col>
             <Col lg="6" md="3" style={{ marginLeft: "22rem", marginTop: '-600px', paddingTop: "px", position: 'absolute', }}>
               <h3 > Intermediate
-              <Button style={{marginTop:'-50px', marginLeft: '200px', boxShadow: 'none'}} href="/edudetails/degree"><i  class="fas fa-edit"></i></Button>
+              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} onClick={this.onClickButton2}>
+          <Link style={{ color: 'black', zIndex: 1001 }} to="/profile/degree"> <i  class="fas fa-edit"/>
+          </Link></Button> 
+
               </h3>
               <p>Institute: {this.state.degree.institute}</p>
               <p>Year of Pass: {this.state.degree.passedoutYear}</p>
@@ -100,7 +148,9 @@ class EduCard extends React.Component {
             </Col>
             <Col lg="6" md="3" style={{ marginLeft: "rem", marginTop: '-200px', paddingTop: "px", position: 'absolute', }}>
               <h3 > Graduation
-              <Button style={{marginTop:'-50px', marginLeft: '230px', boxShadow: 'none'}} href="/edudetails/ug"><i  class="fas fa-edit"></i></Button>
+              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} onClick={this.onClickButton3}>
+          <Link style={{ color: 'black', zIndex: 1001 }} to="/profile/ug"> <i  class="fas fa-edit"/>
+          </Link></Button> 
               </h3>
               <p>Institute: {this.state.ug.institute}</p>
               <p>Year of Pass: {this.state.ug.passedoutYear}</p>
@@ -110,7 +160,9 @@ class EduCard extends React.Component {
             <Col lg="6" md="3" style={{ marginLeft: "22rem", marginTop: '-200px', paddingTop: "px", position: 'absolute', }}>
 
               <h3 > Post Graduation
-              <Button style={{marginTop:'-50px', marginLeft: '200px', boxShadow: 'none'}} href="/edudetails/pg"><i  class="fas fa-edit"></i></Button>
+              <Button style={{marginTop:'0px', marginLeft: '200px', boxShadow: 'none'}} onClick={this.onClickButton4}>
+          <Link style={{ color: 'black', zIndex: 1001 }} to="/profile/pg"> <i  class="fas fa-edit"/>
+          </Link></Button> 
 
               </h3>
               <p>Institute: {this.state.pg.institute}</p>
@@ -118,10 +170,22 @@ class EduCard extends React.Component {
               <p>Percentage: {this.state.pg.percentage}</p>
 
             </Col>
-
           </Container>
 
         </div>
+        <Modal open={this.state.activeModal === 'ssc'} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetails/>
+        </Modal>
+         <Modal open={this.state.openModal && this.state.activeModal === 'degree'} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsDegree/>
+        </Modal>
+       {/* <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsUg/>
+        </Modal>
+        <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsPg/>
+        </Modal> */}
+        
       </>
     );
   };

@@ -21,7 +21,7 @@ import ESidebar from 'components/Sidebar/eSidebar';
 import EduCard from './eduCard';
 // core components
 
-class EduDetails extends Forms {
+class EduDetailsUg extends Forms {
   state = {
     data: {  institute: "", passedoutYear: '', percentage: '' },
     employees: [],
@@ -68,38 +68,27 @@ class EduDetails extends Forms {
 
   componentDidMount() {
     console.log(this.props);
-    const data = {...this.state.data, qualification: 'ssc'}
+    const data = {...this.state.data, qualification: 'ug'}
     console.log(data.qualification);
   }
   
 
   doSubmit = async () => {
     try {
-      // const qua = this.props.match.params.id
-
-      const data = {...this.state.data, qualification: 'ssc'}
+      const data = {...this.state.data, qualification: 'ug'}
       console.log(data);
       const pp = (data.institute);
-          // console.log(this.props.match.params.id)
-
       await this.setState({data: {qualification: pp}})
-      
-      //  if(data === null && data.qualification === ""){
-        //    await registerEduDetails(data);
-        //  }
+
         if (pp === []) {  await registerEduDetails(data.institute, data.passedoutYear, data.percentage) }
-        else if (pp.qualification === 'ssc' || 'degree' || 'ug' || 'pg') {
+        else if (pp.qualification ===  'ug' ) {
           await updateEduDetails(data)
+          toast.success("Education details Updated Successfully");
+          setTimeout(() => {
+            window.location = state ? state.from.pathname : "/profile";
+          }, 2000);
+          const { state } = this.props.location;
       }
-      //  const tt = await this.setState({data: pp.data});
-      //   console.log(tt);
-
-
-      // //   console.log(tt);
-      toast.success("Education details Updated Successfully");
-      setTimeout(() => {
-        window.location =  "/profile";
-      }, 2000);
 
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -125,7 +114,7 @@ class EduDetails extends Forms {
             </Col>
           </CardHeader>
           <CardBody style={{textAlign: 'center'}} className="px-lg-3 py-sm-5">
-          <Form role="form"  onSubmit={this.handleSubmit}>
+          <Form role="form" onSubmit={this.doSubmit}>
                   {/* {this.renderInput('qualification', 'Qualification', this.state.data.qualification )} */}
 
                     {/* {this.renderDropdown("qualification", "Qualification", options)} */}
@@ -139,12 +128,11 @@ class EduDetails extends Forms {
 
                     <div className="text-center">
                       <Button style={{ background: '#8B65E0', marginTop: '0px', marginLeft: '0px', border: 'none', zIndex: 1001 }}
-                        className=""  color="primary" type="submit" >
+                        className=""  color="primary" type="submit" onClick={this.doSubmit}>
                         Update
                       </Button>
                      
                     </div>
-              
                   </Form>
               </CardBody>
           </Card>
@@ -160,4 +148,4 @@ class EduDetails extends Forms {
   };
 }
 
-export default EduDetails;
+export default EduDetailsUg;

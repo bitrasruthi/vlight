@@ -38,6 +38,10 @@ import TerminateEmp from './components/Admin Files/terminateEmp';
 import Home from "components/Admin Files/home";
 import Pops from './components/Common/pops';
 import LeaveTable from './components/Admin Files/leavetable';
+import EduCard from './components/Employee Files/eduCard';
+import eduDetailsDegree from "components/Employee Files/eduDetailsDegree";
+import EduCardDegree from './components/Employee Files/eduCardDegree';
+import EducationBlock from "components/Employee Files/educationBlock";
 class App extends React.Component {
   render() {
     return (
@@ -63,7 +67,7 @@ class App extends React.Component {
                 {/* <Route path="/iptrack" component={IpTrack} /> */}
                 {/* <Route path="/edudetails" component={EduDetails} /> */}
                 <Route path="/popup" component={PopUp} />
-                <ProtectedRoute path="/deleteemp/:id" component={DeleteEmp} />
+                <ProtectedRoute path="/emplist/:id" component={DeleteEmp} />
             
                 <Route path="/jobdetails" component={JobDetails} />
                 <ProtectedRoute path="/terminateemp" component={TerminateEmp} />
@@ -83,7 +87,10 @@ class App extends React.Component {
                 <ProtectedRoute path="/officehours" component={OfficeHours} />
                 <Route path="/empoptions" component={EmpOptions} />
                 <EmpProtectedRoute path="/profile" component={Profile} />
-                <EmpProtectedRoute path="/edudetails/:id" component={EduDetails} />
+                <EmpProtectedRoute path="/profile/:name" component={EducationBlock} />
+                
+                {/* <EmpProtectedRoute path="/profile/ssc" component={EduCard} />
+                <EmpProtectedRoute path="/profile/degree" component={EduCardDegree} /> */}
                 <Route path="/" component={Login} />
                 {/* <Redirect from="/" exact to="/home" /> */}
                 <Redirect to="/not-found" />

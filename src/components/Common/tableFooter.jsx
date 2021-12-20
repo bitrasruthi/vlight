@@ -6,7 +6,7 @@ import { Row } from 'reactstrap';
 import { Col } from 'reactstrap';
 
 
-class TableBody extends React.Component {
+class TableFooter extends React.Component {
   state = {
     isLoading: true,
   };
@@ -37,15 +37,13 @@ class TableBody extends React.Component {
     // const notify = () => toast("Login Successful");
     if (!disabled) {
       return (
-        <Row>
-         <div style={{marginLeft: '200px'}}>
-        <Button variant="contained" onClick={onload} style={{
-          zIndex: '1001', marginLeft: '0px',
+        
+        <Button className="bg-gradient-pink"  variant="contained" onClick={onload} style={{
+          zIndex: '', marginLeft: '0px', border: 'none'
         }}>
           more
         </Button>
-        </div>
-        </Row>
+        
 
       );
     }
@@ -54,31 +52,19 @@ class TableBody extends React.Component {
   }
 
   render() {
-    const { data, columns, onload, disabled } = this.props;
+    const { onload, disabled } = this.props;
     return (
       <>
-      <tbody style={{ zIndex: "1001" }}>
-        
-        {data.map((item) => (
-          <tr key={item._id}>
-            {columns.map((column) => (
-              <td style={{ textAlign: 'center', fontSize: '15px' }} key={this.createkey(item, column)}>
-                {this.renderCell(item, column)}
-              </td>
-            ))}
-          </tr>
-        ))}
-        {/* <Button variant="contained" disabled={disabled} onClick={onload} style={{
-          zIndex: '1001', marginLeft: 'auto',
-        }}>
-        More
-      </Button> */}
+      <tfoot className="table-responsive" >
 
-      </tbody>
+       {this.renderLoadButton(disabled, onload)}      
+       
+
+      </tfoot>
      
       </>
     );
   }
 }
 
-export default TableBody;
+export default TableFooter;

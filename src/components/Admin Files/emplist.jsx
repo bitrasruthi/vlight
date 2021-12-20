@@ -100,6 +100,7 @@ class Employees extends React.Component {
         className=" py-2 py-sm-3 ">
         <Sidebar />
 
+        <Col lg="8" md="7" style={{ width:'860px', marginLeft: "rem", paddingTop: "px", position: 'absolute' }}>
 
         <EmployeeTable
           employees={data}
@@ -109,6 +110,7 @@ class Employees extends React.Component {
           disabled={this.state.loadstatus}
         // onDelete={this.handleDelete}
         />
+        </Col>
         {/* </Col> */}
         {this.state.isLoading ? (
           <div

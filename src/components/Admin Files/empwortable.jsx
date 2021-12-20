@@ -4,7 +4,7 @@ import Table from "../Common/table";
 
 class Hrstable extends React.Component {
     columns = [
-        { path: "EmployeId", label: "Employe Id" },
+        { path: "EmployeId", label: "Employe Id", },
         { path: "lastMonthHours", label: "lastMonthHours" },
         { path: "lastWeekHours", label: "lastWeekHours" },
     ];

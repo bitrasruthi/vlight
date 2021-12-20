@@ -10,9 +10,12 @@ import Forms from "../Common/form";
 import {
   Button,
   Card,
+  Label,
   CardHeader,
+  Input,
   CardBody,
   Col,
+  Form,
 } from "reactstrap";
 
 class LeaveForm extends Forms {
@@ -30,6 +33,8 @@ class LeaveForm extends Forms {
     options: [{ select: '' }, { CasualLeave: 'Casual Leave' }, { Sickleave: 'Sick Leave' }],
     To: [{ select: '' }, { Admin: 'Admin' }],
   };
+
+  handleChange(event) {    this.setState({value: event.target.options});  }
 
   doSubmit = async () => {
     this.setState({ loadstatus: true })
@@ -75,14 +80,32 @@ class LeaveForm extends Forms {
               </Col>
 
             </CardHeader>
-            <CardBody className="px-lg-3 py-sm-5">
-              <form onSubmit={this.handleSubmit}>
+            <CardBody style={{}} className="px-lg-3 py-sm-5">
+              <Form role="form" onSubmit={this.handleSubmit}>
+
+              <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px', zIndex: 1001}}>
                 {this.renderInput("from_Date", "From Date", "date")}
+              </Col>
+
+              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
                 {this.renderInput("to_Date", "To Date", "date")}
-                {this.renderInput("subject", "Subject")}
-                {this.renderInput("reason", "Reason")}
+                </Col>
+
+                <Col sm={{ size: 8 }} style={{marginLeft: 'px', marginTop: '-0px'}}className='mr-sm-2'>            
                 {this.renderDropdown("leave_type", "Leave Type", options)}
+                </Col>
+
+                <Col sm={{ size: 26 }} style={{marginLeft: '310px', marginTop: '-200px'}}className='mr-sm-2'>
                 {this.renderDropdown("To", "To", To)}
+                </Col>
+                <Col sm={{ size: 12 }} style={{marginLeft: '3px', marginTop: '-0px'}}className='mr-sm-2'>            
+                {this.renderInput("subject", "Subject:")}
+                </Col>
+                <Col sm={{ size: 12 }} style={{height: '',marginLeft: '3px', marginTop: '-0px'}}className='mr-sm-2'>            
+                {this.renderInput("reason", "Reason")}
+               </Col>
+
+               
 
                 {/* {this.renderButton("Submit")}
                  */}
@@ -93,7 +116,7 @@ class LeaveForm extends Forms {
 
                 </div>
 
-              </form>
+              </Form>
             </CardBody>
           </Card>
         </Col>

@@ -20,7 +20,7 @@ class TableHeader extends React.Component {
 
   render() {
     return (
-      <thead className="bg-gradient-default">
+      <thead className="bg-gradient-pink">
         <tr>
           {this.props.columns.map((column) => (
             <th

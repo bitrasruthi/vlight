@@ -52,7 +52,7 @@ class ChangePassword extends Forms {
       <div>
         <ESidebar />
         {/* <ENavBar/> */}
-        <Col lg="5" md="7" style={{ marginLeft: "30%", paddingTop: "px", position: 'absolute' }}>
+        <Col lg="5" md="7" style={{ marginLeft: "25%", paddingTop: "px", position: 'absolute' }}>
           <Card className=" shadow border-0" >
             <CardHeader className="bg-gradient-purple border-0">
               <Col style={{ marginLeft: '160px', paddingBottom: '10px' }} xs="8">
@@ -61,7 +61,7 @@ class ChangePassword extends Forms {
 
             </CardHeader>
             <CardBody className="px-lg-3 py-sm-5">
-              <form onSubmit={this.handleSubmit}>
+              <form inline onSubmit={this.handleSubmit}>
                 {this.renderInput("oldPassword", "Old Password", 'password')}
                 {this.renderInput("newPassword", "New Password", 'password')}
                 {this.renderInput("conformPassword", "Confirm Password", 'password')}

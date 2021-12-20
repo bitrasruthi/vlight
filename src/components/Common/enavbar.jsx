@@ -22,7 +22,7 @@ class NavBar extends React.Component {
   render() {
     return <div>
       <ESidebar />
-      <div style = {{height: '400px', position: "absolute", left: '0', width: '100%',}} 
+      <div style = {{height: '625px', position: "absolute", left: '0', width: '100%',}} 
             className="header bg-gradient-purple py-2 py-sm-9 ">
 
             <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">

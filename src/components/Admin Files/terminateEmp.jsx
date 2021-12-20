@@ -101,7 +101,7 @@ class TerminateEmp extends Forms {
     return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
       className=" py-5 py-sm-1 ">
       <Sidebar />
-      <Col lg="9" md="7" style={{ marginLeft: "16rem", paddingTop: "px", position: 'absolute', }}>
+      <Col lg="6" md="7" style={{ width: '565px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 
         <TerminateEmpTable
           employees={data}

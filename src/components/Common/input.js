@@ -12,20 +12,17 @@ const Inputs = ({name, error, label, max,min, ...rest}) => {
   
     return ( 
         <div className="form-group">
-                    <label htmlFor={name}>{label}</label>
 <FormGroup>
-                <InputGroup className="input-group-alternative">
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                    </InputGroupText>
-                  </InputGroupAddon>
+                    <label htmlFor={name}>{label}</label>
+                {/* <InputGroup className="input-group-alternative"> */}
+                 
                   <input  {...rest}
                            max={max}
                            min={min}
                             id={name} 
                             name={name} 
                             className="form-control" />
-                </InputGroup>
+                {/* </InputGroup> */}
               </FormGroup>
                     {/* <input  {...rest}
                             id={name} 

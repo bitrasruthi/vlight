@@ -89,7 +89,7 @@ class Holidays extends Forms {
         <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
           className=" py-2 py-sm-3 ">
           <Sidebar />
-          <Col lg="8" md="7" style={{ marginLeft: "12rem", paddingTop: "px", position: 'absolute', }}>
+          <Col lg="3" md="7" style={{ width: '258px', marginLeft: "10rem", paddingTop: "px", position: 'absolute', }}>
 
 
             <HoliTable
@@ -131,7 +131,7 @@ class Holidays extends Forms {
 
                   <div className="text-center">
                     {/* {this.renderButton("Add Hoilday")} */}
-                    <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>
+                    <Button className="bg-gradient-pink" style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>
                       Add Holiday
                     </Button>
                   </div>

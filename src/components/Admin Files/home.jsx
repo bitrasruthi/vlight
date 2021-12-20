@@ -12,11 +12,11 @@ class Home extends React.Component {
           {/* <CardHeader className="bg-white border-0">
             <h3 style={{textAlign: 'center'}} >Please select one</h3>
           </CardHeader> */}
-                <CardBody style={{textAlign: 'center', marginTop:'50px'}} className=" px-lg-3 py-sm-2 ">
-                 <Button style={{height: '50px', borderRadius: '10%', border:'none', }} className="bg-gradient-success" href='/dashboard'>Dashboard
+                <CardBody style={{textAlign: 'center', marginTop:'30px'}} className=" px-lg-3 py-sm-2 ">
+                 <Button style={{height: '50px',  border:'none', }} className="bg-gradient-success" href='/dashboard'>Dashboard
                  <i class="fas fa-tachometer-alt"></i>
                  </Button><br />
-                 <Button style={{marginTop: '30px',height: '70px', borderRadius: '10%', border:'none', }} className="bg-gradient-success" href='/register'>
+                 <Button style={{marginTop: '30px',height: '70px',  border:'none', }} className="bg-gradient-success" href='/register'>
                      Add New <br /> Organization
                  <i class="fas fa-building"></i>
                                   </Button>
