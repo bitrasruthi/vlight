@@ -14,7 +14,7 @@ http.setJwt(getJwt());
 
 export function register(user) {
   return http.post(apiEndPointPost, {
-    EmployeeId: user.EmployeeId,
+    joiningDate: user.joiningDate,
     EmployeeName: user.EmployeeName,
     Email: user.Email,
     Phone: user.Phone,

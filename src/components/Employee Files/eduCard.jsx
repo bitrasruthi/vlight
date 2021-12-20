@@ -55,7 +55,7 @@ onClickButton4 = e =>{
 
   async componentDidMount() {
     const { data: profile } = await getProDetails();
-    console.log(profile);
+    console.log(profile[0].EducationalDetails);
     if (profile.length > 0) {
       let pp = profile[0].EducationalDetails[0];
       let tt = profile[0].EducationalDetails[1];
@@ -170,22 +170,23 @@ onClickButton4 = e =>{
           </Container>
 
         </div>
+            
+        <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetails
+          degree={'degree'}/>
+        </Modal>
         <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
           <EduDetails 
           ssc={'ssc'}/>
         </Modal>
-        <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetailsDegree
-          degree={'degree'}/>
-        </Modal>
-        <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
+        {/* <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
           <EduDetailsUg
           ug={'ug'}/>
         </Modal>
         <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
           <EduDetailsPg
           pg={'pg'}/>
-        </Modal>
+        </Modal> */}
         
       </>
     );

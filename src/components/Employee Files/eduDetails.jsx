@@ -76,33 +76,20 @@ class EduDetails extends Forms {
   doSubmit = async () => {
     if(this.props.ssc === 'ssc'){
     try {
-      // const qua = this.props.match.params.id
-
       const data = {...this.state.data, qualification: 'ssc'}
       console.log(data);
       const pp = (data.institute);
-          // console.log(this.props.match.params.id)
-
       await this.setState({data: {qualification: data.qualification}})
-      
-      //  if(data === null && data.qualification === ""){
-        //    await registerEduDetails(data);
-        //  }
         if (pp === []) {  await registerEduDetails(data.institute, data.passedoutYear, data.percentage) }
         else if (pp.qualification === 'ssc' || 'degree' || 'ug' || 'pg') {
           await updateEduDetails(data)
       }
-      //  const tt = await this.setState({data: pp.data});
-      //   console.log(tt);
-
-
-      // //   console.log(tt);
       toast.success("Education details Updated Successfully");
       setTimeout(() => {
         window.location =  "/profile";
       }, 2000);
-
     } 
+    
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -111,7 +98,31 @@ class EduDetails extends Forms {
       }
     }
   }
+  else if(this.props.degree === 'degree'){
+    try {
+      const data = {...this.state.data, qualification: 'degree'}
+      console.log(data);
+      const pp = (data.institute);
+      await this.setState({data: {qualification: data.qualification}})
+        if (pp === []) {  await registerEduDetails(data.institute, data.passedoutYear, data.percentage) }
+        else if (pp.qualification === 'ssc' || 'degree' || 'ug' || 'pg') {
+          await updateEduDetails(data)
+      }
+      toast.success("Education details Updated Successfully");
+      setTimeout(() => {
+        window.location =  "/profile";
+      }, 2000);
+    } 
+    
+    catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.institute = ex.response.data;
+        this.setState({ errors });
+      }
+    }
   }
+}
 
 
   render() {
