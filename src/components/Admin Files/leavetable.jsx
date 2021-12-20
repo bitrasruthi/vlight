@@ -63,6 +63,24 @@ class LeaveTable extends React.Component {
     { path: "status", label: "Status" },
   ];
 
+  onApprove = async () => {
+    try {
+      var leave = { ...this.state.leave };
+
+      const app = <p tyle={{ color: 'green' }}>Approved</p>
+      // console.log(app.props.children);
+      leave.status = app.props.children;
+      await this.setState({ leave });
+      // toast.success('Leave Approved')
+      // console.log(leave._id);
+      await leavestatus({ _id: leave._id, status: leave.status });
+      window.location = "/leavelist";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data.data);
+      }
+    }
+  };
 
 
   async componentDidMount() {

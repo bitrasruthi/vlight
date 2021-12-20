@@ -138,13 +138,13 @@ class Profile extends Forms {
           <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
             className=" py-4 py-sm-3 ">
             <Row style={{ marginTop: '220px', marginLeft: '3rem' }}>
-              <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
-                <Card style={{ marginRight: '-270px' }} className="card-profile shadow">
+              <Col style={{marginLeft: '370px'}} className="order-xl-2 mb-5 mb-xl-0" xl="1">
+                <Card style={{ marginRight: '-270px', marginLeft: '70px' }} className="card-profile shadow">
                   <Row className="justify-content-center">
                     <Col className="order-lg-2" lg="3">
                       <div className="card-profile-image">
                         <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                          <img
+                          <img style={{marginLeft: '0px'}}
                             alt="..."
                             className="rounded-circle"
                             src={
@@ -187,7 +187,7 @@ class Profile extends Forms {
               <Col style={{ marginLeft: '550px', marginTop: '-105px', paddingRight: '-300px' }} className="order-xl-2 mb--6 mb-xl-0" xl="6">
                 <Card style={{ marginRight: '-50px', marginTop: '-960px' }} className="card-profile shadow">
                   <CardHeader className="bg-gradient-purple border-0">
-                    <h3 className="">Education </h3>
+                    <h3 className="">Education Details</h3>
                     {/* <Col className="text-right" xs="4">
                         {/* <Button
                           color="primary"
@@ -207,33 +207,16 @@ class Profile extends Forms {
               </Col>
 
 
-              <Col className="order-xl-1" xl="5">
-                <Card className="bg-secondary shadow">
-                  <CardHeader className="bg-white border-0">
-                    <Row className="align-items-center">
-                      <Col xs="8">
-                        <h3 className="mb-0">My account</h3>
-                      </Col>
-                      <Col className="text-right" xs="4">
-                        {/* <Button
-                        color="primary"
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
-                        size="sm"
-                      >
-                        Settings
-                      </Button> */}
-                      </Col>
-                    </Row>
-                  </CardHeader>
-                  <CardBody  >
-                    <Form role="form"
-                      onSubmit={this.handleSubmit}
-                      style={{
-                        padding: "0px 20px",
-                        textAlign: "",
-                        color: "",
-                      }}>
+              <Col lg="6" md="7" style={{ marginLeft: "20%", paddingTop: "auto", position: 'absolute' }}>
+        <Card className="bg-secondary shadow border-0" >
+          <CardHeader className="bg-gradient-success border-0">
+            <Col style={{ marginLeft: '200px', paddingBottom: '10px' }} xs="8">
+              <h3 className="mb--3">Add New Employee</h3>
+            </Col>
+
+          </CardHeader>
+          <CardBody  className="px-lg-3 py-sm-5">
+            <Form role="form" onSubmit={this.handleSubmit}>
                       {this.renderInput("FirstName", "First Name",)}
                       {this.renderInput("MiddleName", "Middle Name",)}
                       {this.renderInput("LastName", "Last Name",)}
