@@ -46,11 +46,9 @@ class Register extends Forms {
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
-        const err = ex.response.data.includes('User')
-        err ? (errors.Name = ex.response.data) : (errors.Email = ex.response.data)
-        // errors.email = ex.response.data;
 
-        // toast.error('Email Already Exists');
+        errors.email = ex.response.data;
+
         this.setState({ errors });
       }
     }
@@ -59,8 +57,8 @@ class Register extends Forms {
   render() {
     return (
 
-      <div style = {{height: '130%', position: "absolute", left: '0', width: '100%',overflow: 'hidden'}} className="header bg-gradient-success py-7 py-lg-3 ">
-      <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
+      <div style={{ height: '130%', position: "absolute", left: '0', width: '100%', overflow: 'hidden' }} className="header bg-gradient-success py-7 py-lg-3 ">
+        <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
           <Container className="px-4">
             <NavbarBrand to="/" tag={Link}>
               <img
@@ -118,7 +116,7 @@ class Register extends Forms {
                     <i className="ni ni-key-25" />
                     <span style={{ color: '#172B4D' }} className="nav-link-inner--text">Admin</span>
                   </NavLink>
-                </NavItem> 
+                </NavItem>
                 {/* <NavItem >
                 <NavLink
                   className="nav-link-icon"

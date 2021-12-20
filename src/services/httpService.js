@@ -7,7 +7,7 @@ import { logout} from '../services/authService'
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 axios.interceptors.response.use(null, (error) => {
-  console.log(error.response.status)
+  
   const expectedError =
     error.response &&
     error.response.status <= 405 &&

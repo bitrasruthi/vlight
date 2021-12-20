@@ -22,7 +22,7 @@ class AddNew extends Forms {
   state = {
     data: {
       EmployeeName: "",
-      EmployeeId: "",
+      // EmployeeId: "",
       Phone: "",
       Email: "",
       Role: "",
@@ -47,7 +47,7 @@ class AddNew extends Forms {
       .required().label(
         `"a" should be a type of 'text '`,
       ),
-    EmployeeId: Joi.string().required(),
+    // EmployeeId: Joi.string(),
     Phone: Joi.string()
       .length(10)
       .regex(/^[6-9]{1}[0-9]{9}$/)
@@ -125,40 +125,40 @@ class AddNew extends Forms {
             </Col>
 
           </CardHeader>
-          <CardBody  className="px-lg-3 py-sm-5">
+          <CardBody className="px-lg-3 py-sm-5">
             <Form role="form" onSubmit={this.handleSubmit}>
-            <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
-              {this.renderInput("EmployeeId", "Employee ID")}
+              {/* <Col sm={{ size: 6 }} style={{ marginLeft: '3px', marginTop: '-0px' }}>
+                {this.renderInput("EmployeeId", "Employee ID")}
+              </Col> */}
+
+              <Col sm={{ size: 6 }} style={{ marginLeft: '300px', marginTop: '-100px' }} className='mr-sm-2'>
+                {this.renderInput("EmployeeName", "Employee Name")}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
-              {this.renderInput("EmployeeName", "Employee Name")}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '3px', marginTop: '-0px' }}>
+                {this.renderInput("Phone", "Phone")}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
-              {this.renderInput("Phone", "Phone")}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '300px', marginTop: '-100px' }} className='mr-sm-2'>
+                {this.renderInput("Email", "Email ID")}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
-              {this.renderInput("Email", "Email ID")}
-              </Col>
-              
-              <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
-              {this.renderInput("Role", "Designation")}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '3px', marginTop: '-0px' }}>
+                {this.renderInput("Role", "Designation")}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
-              {this.renderInput("DateOfBirth", "Date Of Birth", "date", maxdate,)}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '300px', marginTop: '-100px' }} className='mr-sm-2'>
+                {this.renderInput("DateOfBirth", "Date Of Birth", "date", maxdate,)}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
-              {this.renderInput("NetSalary", "Net Salary")}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '3px', marginTop: '-0px' }}>
+                {this.renderInput("NetSalary", "Net Salary")}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
-              {this.renderInput("AgreementYears", "Agreement Years", 'number', '3', '0')}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '300px', marginTop: '-100px' }} className='mr-sm-2'>
+                {this.renderInput("AgreementYears", "Agreement Years", 'number', '3', '0')}
               </Col>
-              <Col row style={{marginLeft: '250px', marginTop: '0px', marginBottom: '0px'}} >
+              <Col row style={{ marginLeft: '250px', marginTop: '0px', marginBottom: '0px' }} >
                 <Button disabled={loadstatus} style={{ background: '#2DCECB', color: 'black', border: 'none' }} className="my-2" color="primary" type="submit">
                   Add
                 </Button>
