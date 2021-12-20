@@ -21,7 +21,6 @@ class EduCard extends React.Component {
     degree: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
     ug: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
     pg: { qualification: '', institute: '', passedoutYear: '', percentage: '', },
-   
   }
 
   onClickButton = e =>{
@@ -63,7 +62,7 @@ onClickButton4 = e =>{
       let yy = profile[0].EducationalDetails[2];
       let kk = profile[0].EducationalDetails[3];
       
-      console.log(tt);
+      console.log(pp);
       if (pp) {
         this.setState({
           data: {
@@ -172,17 +171,21 @@ onClickButton4 = e =>{
 
         </div>
         <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetails/>
-        </Modal>
-        {/* <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetailsDegree/>
+          <EduDetails 
+          ssc={'ssc'}/>
         </Modal>
         <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetailsUg/>
+          <EduDetailsDegree
+          degree={'degree'}/>
         </Modal>
         <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
-          <EduDetailsPg/>
-        </Modal> */}
+          <EduDetailsUg
+          ug={'ug'}/>
+        </Modal>
+        <Modal open={this.state.openModal} onClose={(edu) =>{this.onCloseModal(edu)}}>
+          <EduDetailsPg
+          pg={'pg'}/>
+        </Modal>
         
       </>
     );

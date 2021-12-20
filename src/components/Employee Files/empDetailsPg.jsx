@@ -74,6 +74,8 @@ class EduDetailsPg extends Forms {
   
 
   doSubmit = async () => {
+    if(this.props.pg === 'pg'){
+
     try {
       const data = {...this.state.data, qualification: 'pg'}
       console.log(data);
@@ -98,7 +100,7 @@ class EduDetailsPg extends Forms {
       }
     }
   }
-
+  }
 
   render() {
     const { options } = this.state
@@ -114,7 +116,7 @@ class EduDetailsPg extends Forms {
             </Col>
           </CardHeader>
           <CardBody style={{textAlign: 'center'}} className="px-lg-3 py-sm-5">
-          <Form role="form" onSubmit={this.doSubmit}>
+          <Form role="form" onSubmit={this.handleSubmit}>
                   {/* {this.renderInput('qualification', 'Qualification', this.state.data.qualification )} */}
 
                     {/* {this.renderDropdown("qualification", "Qualification", options)} */}

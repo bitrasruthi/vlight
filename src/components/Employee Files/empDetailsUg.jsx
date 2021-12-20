@@ -74,6 +74,8 @@ class EduDetailsUg extends Forms {
   
 
   doSubmit = async () => {
+    if(this.props.ug === 'ug'){
+
     try {
       const data = {...this.state.data, qualification: 'ug'}
       console.log(data);
@@ -98,6 +100,7 @@ class EduDetailsUg extends Forms {
       }
     }
   }
+}
 
 
   render() {
@@ -114,7 +117,7 @@ class EduDetailsUg extends Forms {
             </Col>
           </CardHeader>
           <CardBody style={{textAlign: 'center'}} className="px-lg-3 py-sm-5">
-          <Form role="form" onSubmit={this.doSubmit}>
+          <Form role="form" onSubmit={this.handleSubmit}>
                   {/* {this.renderInput('qualification', 'Qualification', this.state.data.qualification )} */}
 
                     {/* {this.renderDropdown("qualification", "Qualification", options)} */}
@@ -128,7 +131,7 @@ class EduDetailsUg extends Forms {
 
                     <div className="text-center">
                       <Button style={{ background: '#8B65E0', marginTop: '0px', marginLeft: '0px', border: 'none', zIndex: 1001 }}
-                        className=""  color="primary" type="submit" onClick={this.doSubmit}>
+                        className=""  color="primary" type="submit" >
                         Update
                       </Button>
                      
