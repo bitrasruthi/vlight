@@ -22,6 +22,7 @@ class OfficeHours extends Forms {
         errors: []
     }
     schema = {
+
         inTime: Joi.string().required(),
         outTime: Joi.string().required(),
     };
@@ -29,7 +30,6 @@ class OfficeHours extends Forms {
     async componentDidMount() {
         const time = await gettime()
         const present = { ...time.data[0] }
-
         await this.setState({ inTime: present.inTime, outTime: present.outTime })
     }
 
@@ -70,6 +70,8 @@ class OfficeHours extends Forms {
                     </CardHeader>
                     <CardBody className="px-lg-3 py-sm-5">
                         <Form role="form" onSubmit={this.handleSubmit}>
+
+
                             {this.renderInput("inTime", "InTime", 'time')}
                             {this.renderInput("outTime", "outTime", 'time')}
 

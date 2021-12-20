@@ -21,6 +21,9 @@ const terminatedReducer = (state = null, { type, payload }) => {
         console.log(state)
         return state;
       case SAVE_SKIP_LIST:
+        if(state === null){ 
+          return state;
+        }
         state.skip = payload.skip
         console.log(state)
         return state;

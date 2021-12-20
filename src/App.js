@@ -42,6 +42,7 @@ import EduCard from './components/Employee Files/eduCard';
 import eduDetailsDegree from "components/Employee Files/eduDetailsDegree";
 import EduCardDegree from './components/Employee Files/eduCardDegree';
 import EducationBlock from "components/Employee Files/educationBlock";
+import Orgprofile from "components/Admin Files/orgProfile";
 class App extends React.Component {
   render() {
     return (
@@ -86,6 +87,7 @@ class App extends React.Component {
                 <ProtectedRoute path="/holidays" component={Holidays} />
                 <ProtectedRoute path="/officehours" component={OfficeHours} />
                 <Route path="/empoptions" component={EmpOptions} />
+                <Route path="/orgprofile" component={Orgprofile} />
                 <EmpProtectedRoute path="/profile" component={Profile} />
                 <EmpProtectedRoute path="/profile/:name" component={EducationBlock} />
                 

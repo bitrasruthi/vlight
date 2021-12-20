@@ -56,6 +56,12 @@ export default class Settings extends React.Component {
               Office Hours
             </Link>
           </DropdownItem>
+          <DropdownItem>
+            <Link style={{ color: "darkgray" }} to="/orgprofile">
+              {" "}
+              Org Pro
+            </Link>
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     );

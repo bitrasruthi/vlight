@@ -25,7 +25,7 @@ export async function get_moretermlist(skip1) {
 export async function saveskip(i) {
     store.dispatch({
         type: SAVE_SKIP_LIST,
-        payload: {skip:i}
+        payload: {skip:i }
     });
 }
 
