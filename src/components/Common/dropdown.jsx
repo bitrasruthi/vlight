@@ -11,17 +11,17 @@ const Dropdown = ({
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
-      <div  className="input-group mb-3">
-        <select  style={{border: ''}} 
+      <div className="input-group mb-3">
+        <select style={{ border: '' }}
           className="form-select"
           id={name}
           onChange={(id) => onChange({ name, id })}
           aria-label="Example select with button addon"
         >
           {options.map((item) => (
-            <option value={item} key={item}>
+            <option value={Object.values(item)} key={item.value}>
               {" "}
-              {item}{" "}
+              {Object.keys(item)}{" "}
             </option>
           ))}
         </select>

@@ -62,9 +62,9 @@ class ChangePassword extends Forms {
             </CardHeader>
             <CardBody className="px-lg-3 py-sm-5">
               <form onSubmit={this.handleSubmit}>
-                {this.renderInput("oldPassword", "Old Password")}
-                {this.renderInput("newPassword", "New Password")}
-                {this.renderInput("conformPassword", "Confirm Password")}
+                {this.renderInput("oldPassword", "Old Password", 'password')}
+                {this.renderInput("newPassword", "New Password", 'password')}
+                {this.renderInput("conformPassword", "Confirm Password", 'password')}
                 {/* {this.renderButton("Submit")} */}
                 <div style={{ textAlign: 'center' }}>
                   <Button disabled={this.validate()} style={{ marginLeft: '0px', marginTop: '0px', background: '#B665E0', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>

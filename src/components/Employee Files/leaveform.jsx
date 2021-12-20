@@ -27,8 +27,8 @@ class LeaveForm extends Forms {
     },
     loadstatus: false,
     errors: [],
-    options: [" select", "Casual Leave", "Sick Leave"],
-    To: ["select", "Admin"],
+    options: [{ select: '' }, { CasualLeave: 'Casual Leave' }, { Sickleave: 'Sick Leave' }],
+    To: [{ select: '' }, { Admin: 'Admin' }],
   };
 
   doSubmit = async () => {

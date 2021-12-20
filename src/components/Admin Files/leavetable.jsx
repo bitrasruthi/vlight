@@ -11,28 +11,28 @@ import { leavestatus } from "../../services/leaveService";
 import { toast } from "react-toastify";
 import ApproveReject from './approvereject';
 
-import 'react-router-modal/css/react-router-modal.css';
 
 
 class LeaveTable extends React.Component {
-  state = { showPopup: false,
-    leave:{},
-    openModal : false,
+  state = {
+    showPopup: false,
+    leave: {},
+    openModal: false,
     leaveid: '',
     BackgroundColor: "BLACK"
-   }
+  }
 
-   onClickButton = e =>{
+  onClickButton = e => {
     // e.preventDefault()
-    this.setState({openModal : true})
+    this.setState({ openModal: true })
     console.log(e._id);
-    this.setState({leaveid: e._id})
+    this.setState({ leaveid: e._id })
     // const dd = this.props.match.params.id 
     // console.log(this);
-}
-  onCloseModal = ()=>{
-    this.setState({openModal : false})
-}
+  }
+  onCloseModal = () => {
+    this.setState({ openModal: false })
+  }
   columns = [
     {
       path: "EmployeeId",
@@ -55,19 +55,19 @@ class LeaveTable extends React.Component {
       key: "Apprej",
       label: 'Approve/Reject',
       content: (emp) => (
-        <button className="btn btn-danger btn-sm" onClick={()=> this.onClickButton (emp)}>
+        <button className="btn btn-danger btn-sm" onClick={() => this.onClickButton(emp)}>
           <Link style={{ color: 'white' }} to={`/leavelist/${emp._id}`}> Action
-          </Link></button> 
-        ),
-      },
-      { path: "status", label: "Status" },
+          </Link></button>
+      ),
+    },
+    { path: "status", label: "Status" },
   ];
 
   onApprove = async () => {
     try {
       var leave = { ...this.state.leave };
-      
-      const app = <p tyle={{color: 'green'}}>Approved</p>
+
+      const app = <p tyle={{ color: 'green' }}>Approved</p>
       // console.log(app.props.children);
       leave.status = app.props.children;
       await this.setState({ leave });
@@ -111,11 +111,11 @@ class LeaveTable extends React.Component {
         // LoadingComponent={Spinner}
         />
 
-  <Modal open={this.state.openModal} onClose={this.onCloseModal}>
-      <ApproveReject 
-      leaveid={this.state.leaveid}/>
-     
-  </Modal>
+        <Modal open={this.state.openModal} onClose={this.onCloseModal}>
+          <ApproveReject
+            leaveid={this.state.leaveid} />
+
+        </Modal>
       </div>
     );
   }

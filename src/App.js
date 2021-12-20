@@ -38,7 +38,6 @@ import TerminateEmp from './components/Admin Files/terminateEmp';
 import Home from "components/Admin Files/home";
 import Pops from './components/Common/pops';
 import LeaveTable from './components/Admin Files/leavetable';
-import ModalRoute from 'react-router-modal'
 class App extends React.Component {
   render() {
     return (

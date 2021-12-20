@@ -163,7 +163,7 @@ class ELogin extends Forms {
                 </div>
                 <Form role="form" onSubmit={this.handleSubmit}>
                   {this.renderInput("Email", "Email ID")}
-                  {this.renderInput("Password", "Password", "Password")}
+                  {this.renderInput("Password", "Password", "password")}
 
                   <div className="text-center">
                     <Button

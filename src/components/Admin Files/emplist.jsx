@@ -72,7 +72,7 @@ class Employees extends React.Component {
 
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
-        toast.error(ex.response.data.data);
+        // toast.error(ex.response.data.data);
         await this.setState({ loadstatus: false });
       }
       if (ex.response && ex.response.status === 400) {
