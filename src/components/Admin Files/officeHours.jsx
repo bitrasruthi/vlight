@@ -78,7 +78,7 @@ class OfficeHours extends Forms {
                             <div className="text-center">
                                 {/* {this.renderButton("Save")} */}
                                 <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCEC8', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>
-                                    Search
+                                    Submit
                                 </Button>
                             </div>
                         </Form>

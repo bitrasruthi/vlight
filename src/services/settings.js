@@ -5,6 +5,7 @@ const apiEndPointget = "http://cghrportal.herokuapp.com/api/admin/get/holidays";
 const apiEndPointgetoff = "http://cghrportal.herokuapp.com/api/admin/get/companytimings";
 const apiEndPointsave1 = "http://cghrportal.herokuapp.com/api/admin/post/companytimings";
 const apiEndPointpostd = "http://cghrportal.herokuapp.com/api/admin/post/companydetails";
+const apiEndPointgetcomdet = "http://cghrportal.herokuapp.com/api/admin/get/companydetails";
 
 // function atturl(id) {
 //   return `${apiEndPoint}/${id}`;
@@ -21,6 +22,10 @@ export async function gettime() {
 
  export async function addcompdet(data1) {
   const { data} =  await http.post(apiEndPointpostd,data1);
+  return data;
+}
+ export async function getcomdet() {
+  const { data} =  await http.get(apiEndPointgetcomdet);
   return data;
 }
 

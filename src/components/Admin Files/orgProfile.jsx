@@ -2,7 +2,7 @@ import Sidebar from 'components/Sidebar/Sidebar';
 import React from 'react';
 import Joi from "joi-browser";
 import { toast } from "react-toastify";
-import { addcompdet } from '../../services/settings'
+import { addcompdet, getcomdet } from '../../services/settings'
 import Forms from 'components/Common/form';
 import {
     Button,
@@ -30,7 +30,16 @@ class Orgprofile extends Forms {
     };
 
     async componentDidMount() {
-
+        try {
+            const { data } = await getcomdet()
+            const res = data[0]
+            if (res) {
+                this.setState({ data: res })
+            }
+        }
+        catch (ex) {
+            toast('error')
+        }
     }
 
 
