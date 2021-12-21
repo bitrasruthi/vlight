@@ -45,6 +45,7 @@ class Profile extends Forms {
     emergencyNumber: Joi.number().min(10).required(),
     Address: Joi.string().min(3).required(),
     City: Joi.string().min(3).required(),
+    Country: Joi.string().min(3).required(),
     Pincode: Joi.number().min(6).required(),
     emergencyAddress: Joi.string().min(3).required(),
     AboutMe: Joi.string().min(3).required(),
@@ -138,13 +139,13 @@ class Profile extends Forms {
           <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
             className=" py-4 py-sm-3 ">
             <Row style={{ marginTop: '220px', marginLeft: '3rem' }}>
-              <Col style={{ marginLeft: '370px' }} className="order-xl-2 mb-5 mb-xl-0" xl="1">
-                <Card style={{ marginRight: '-270px', marginLeft: '70px' }} className="card-profile shadow">
+              <Col style={{marginLeft: '910px',  marginTop: '-px',  position: 'absolute'}} className="order-xl-2 mb-5 mb-xl-0" xl="1">
+                <Card style={{ marginRight: '-270px', marginLeft: '50px', paddingBottom: '418px',  }} className="card-profile shadow">
                   <Row className="justify-content-center">
                     <Col className="order-lg-2" lg="3">
                       <div className="card-profile-image">
                         <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                          <img style={{ marginLeft: '0px' }}
+                          <img style={{marginLeft: '0px'}}
                             alt="..."
                             className="rounded-circle"
                             src={
@@ -184,8 +185,8 @@ class Profile extends Forms {
                 </Card>
               </Col>
 
-              <Col style={{ marginLeft: '550px', marginTop: '-105px', paddingRight: '-300px' }} className="order-xl-2 mb--6 mb-xl-0" xl="6">
-                <Card style={{ marginRight: '-50px', marginTop: '-960px' }} className="card-profile shadow">
+              <Col style={{ marginLeft: '-40px', marginTop: '555px',  paddingRight: '-300px', position: 'absolute' }} className="order-xl-2 mb--6 mb-xl-0" xl="9">
+                <Card style={{ marginRight: '-320px', marginTop: '150px', }} className="card-profile shadow">
                   <CardHeader className="bg-gradient-purple border-0">
                     <h3 className="">Education Details</h3>
                     {/* conflicts test  */}
@@ -200,7 +201,7 @@ class Profile extends Forms {
                         </Button> */}
                     {/* </Col> */}
                   </CardHeader>
-                  <CardBody style={{ background: '#F7FAFC', marginBottom: '50px', }} className="mt pt-lg-7">
+                  <CardBody style={{ background: '#F7FAFC', marginBottom: '0px', }} className="mt pt-lg-7">
                     <p style={{ marginBottom: '300px' }}></p>
                     <EduCard />
                   </CardBody>
@@ -208,28 +209,71 @@ class Profile extends Forms {
               </Col>
 
 
-              <Col lg="6" md="7" style={{ marginLeft: "20%", paddingTop: "auto", position: 'absolute' }}>
-                <Card className="bg-secondary shadow border-0" >
-                  <CardHeader className="bg-gradient-success border-0">
-                    <Col style={{ marginLeft: '200px', paddingBottom: '10px' }} xs="8">
-                      <h3 className="mb--3">Add New Employee</h3>
-                    </Col>
-
+              <Col style={{marginLeft: '-40px', position: 'absolute',}} className="order-xl-1" xl="9">
+                <Card  className="bg-secondary shadow">
+                  <CardHeader className="bg-white border-0">
+                    <Row className="align-items-center">
+                      <Col xs="8">
+                        <h3 className="mb-0">My Account</h3>
+                      </Col>
+                      <Col className="text-right" xs="4">
+                        {/* <Button
+                        color="primary"
+                        href="#pablo"
+                        onClick={(e) => e.preventDefault()}
+                        size="sm"
+                      >
+                        Settings
+                      </Button> */}
+                      </Col>
+                    </Row>
                   </CardHeader>
-                  <CardBody className="px-lg-3 py-sm-5">
-                    <Form role="form" onSubmit={this.handleSubmit}>
+                  <CardBody  >
+                    <Form role="form"
+                      onSubmit={this.handleSubmit}
+                      style={{
+                        padding: "0px 20px",
+                        textAlign: "",
+                        color: "",
+                      }}>
+                    <Col sm={{ size: 4 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
                       {this.renderInput("FirstName", "First Name",)}
+                      </Col>
+                      <Col sm={{ size: 4 }} style={{marginLeft: '285px', marginTop: '-100px'}}className='mr-sm-2'>
                       {this.renderInput("MiddleName", "Middle Name",)}
+                      </Col>
+                      <Col sm={{ size: 4 }} style={{marginLeft: '570px', marginTop: '-100px'}}className='mr-sm-2'>
                       {this.renderInput("LastName", "Last Name",)}
+                      </Col>
+                      <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
                       {this.renderInput("Address", "Address",)}
-                      {this.renderInput("City", "City",)}
-                      {this.renderInput("Country", "Country",)}
-                      {this.renderInput("Pincode", "Pincode",)}
-                      {this.renderInput("AboutMe", "About me",)}
-                      {this.renderInput("fatherName", "Father Name",)}
-                      {this.renderInput("motherName", "Mother Name",)}
+                      </Col>
+                      <Col sm={{ size: 6 }} style={{marginLeft: '430px', marginTop: '-100px'}}className='mr-sm-2'>
                       {this.renderInput("emergencyAddress", "Emergency Address",)}
+                      </Col>
+                      <Col sm={{ size: 4 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
+                      
+                      {this.renderInput("City", "City",)}
+                      </Col>
+
+                      <Col sm={{ size: 4 }} style={{marginLeft: '285px', marginTop: '-100px'}}className='mr-sm-2'>
+                      {this.renderInput("Country", "Country",)}
+                      </Col>
+                      <Col sm={{ size: 4 }} style={{marginLeft: '570px', marginTop: '-100px'}}className='mr-sm-2'>
+                      {this.renderInput("Pincode", "Pincode",)}
+                      </Col>
+                      <Col sm={{ size: 12 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
+                      {this.renderInput("AboutMe", "About me",)}
+                      </Col>
+                      <Col sm={{ size: 4 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
+                      {this.renderInput("fatherName", "Father Name",)}
+                      </Col>
+                      <Col sm={{ size: 4 }} style={{marginLeft: '285px', marginTop: '-100px'}}className='mr-sm-2'>
+                      {this.renderInput("motherName", "Mother Name",)}
+                      </Col>
+                      <Col sm={{ size: 4 }} style={{marginLeft: '570px', marginTop: '-100px'}}className='mr-sm-2'>
                       {this.renderInput("emergencyNumber", "Emergency Number",)}
+                      </Col>
                       {/* {this.renderInput("last_updated_on", "Last Updated On",)} */}
                       <div className="text-center">
                         <Button style={{ background: '#B965E0', border: 'none' }}

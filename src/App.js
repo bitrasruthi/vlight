@@ -43,6 +43,7 @@ import eduDetailsDegree from "components/Employee Files/eduDetailsDegree";
 import EduCardDegree from './components/Employee Files/eduCardDegree';
 import EducationBlock from "components/Employee Files/educationBlock";
 import Orgprofile from "components/Admin Files/orgProfile";
+import PasswordHide from "components/Common/passwordHide";
 class App extends React.Component {
   render() {
     return (
@@ -75,6 +76,7 @@ class App extends React.Component {
 
                 <ProtectedRoute path="/navbar" component={NavBar} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} />
+                <Route path="/passwordhide" component={PasswordHide} />
                 <EmpProtectedRoute path="/edashboard" component={EDashboard} />
 
                 <Route path="/countdown" component={Countdown} />
