@@ -69,6 +69,7 @@ class AttList extends Forms {
 
 
   async componentDidMount() {
+    await this.setState({ loadstatus: true, isLoading: true, })
     try {
       if (!this.props.getattlist) {
         await get_attlist(this.state.skip);
@@ -77,7 +78,7 @@ class AttList extends Forms {
 
       const dd = await this.props.getattlist;
       await this.setState({ employess: dd, i: dd.skip || 1 });
-      await this.setState({ isLoading: false });
+      await this.setState({ isLoading: false, loadstatus: false });
     }
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -125,7 +126,7 @@ class AttList extends Forms {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <ESidebar />
-        <Col lg="8" md="7" style={{ width: '624px',marginLeft: "1rem", paddingTop: "px", position: 'absolute', }}>
+        <Col lg="8" md="7" style={{ width: '624px', marginLeft: "1rem", paddingTop: "px", position: 'absolute', }}>
 
           <EmpTable
             employess={employess}
@@ -135,7 +136,7 @@ class AttList extends Forms {
             disabled={this.state.loadstatus}
           />
         </Col>
-      
+
       </div>
     );
   }
