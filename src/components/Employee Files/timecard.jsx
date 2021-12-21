@@ -5,6 +5,7 @@ import { checkIn } from "../../services/inService";
 import { checkOut } from "../../services/outService";
 import Forms from "../../components/Common/form";
 import { gettime } from '../../services/settings'
+import { getCurrentUser } from "services/authService";
 
 
 import {
@@ -12,14 +13,17 @@ import {
   Card,
   CardBody,
 
+  Col,
+
   Row,
 } from "reactstrap";
 
 class TimeCard extends Forms {
-  state = { inTime: "", outTime: "", timelimit: '', disabled: false };
+  state = { inTime: "", outTime: "", timelimit: '', disabled: false, name: '', };
   schema = {
     inTime: Joi.string(),
     outTime: Joi.string(),
+    
 
   };
 
@@ -47,7 +51,7 @@ class TimeCard extends Forms {
         await this.setState({ disabled: true })
         this.setState({ errors });
       }
-      if (ex.response && ex.response.status === 401) {
+      if (ex.response && ex.response.status === 402) {
         const errors = { ...this.state.errors };
         errors.inTime = ex.response.inTime;
         toast.warn("Contact Admin");
@@ -92,6 +96,10 @@ class TimeCard extends Forms {
     }
   };
   async componentDidMount() {
+    const pp = await getCurrentUser();
+            this.setState({name: pp.EmployeeName})
+            console.log(this.state.name);
+            
     await this.setState({ disabled: true })
     const time = await gettime()
     const present = { ...time.data[0] }
@@ -111,8 +119,9 @@ class TimeCard extends Forms {
             className="bg-secondary shadow border-0"
           >
             <CardBody className="px-lg-7 py-lg-1">
-              <h1 style={{ textAlign: "center" }}>Welcome !!!</h1>
-
+              <Col style={{ textAlign: "center", marginLeft: '-70px', }} >
+              <h1 style={{ textAlign: "center", paddingLeft: '0px', width: '300px' }}>Welcome {this.state.name}!!!</h1>
+              </Col>
               <h3
                 className="card-title"
                 style={{ textAlign: "center", marginTop: "20px" }}

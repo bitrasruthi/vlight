@@ -75,20 +75,31 @@ class Orgprofile extends Forms {
         return <div>
             <Sidebar />
 
-            <Col lg="6" md="7" style={{ marginLeft: "30%", paddingTop: "28px" }}>
-                <Card className="bg-secondary shadow border-0" >
-                    <CardHeader className="bg-gradient-success">
-                        <Row>
-                        </Row>
-                    </CardHeader>
-                    <CardBody className="px-lg-3 py-sm-5">
-                        <Form role="form" onSubmit={this.handleSubmit}>
+            <Col lg="6" md="7" style={{ marginLeft: "20%", paddingTop: "auto", position: 'absolute' }}>
+        <Card className="bg-secondary shadow border-0" >
+          <CardHeader className="bg-gradient-success border-0">
+            <Col style={{ marginLeft: '200px', paddingBottom: '10px' }} xs="8">
+              <h3 className="mb--3">Update Company Details</h3>
+            </Col>
 
+          </CardHeader>
+          <CardBody  className="px-lg-3 py-sm-5">
+                        <Form role="form" onSubmit={this.handleSubmit}>
+                        <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
                             {this.renderInput("established", "Established", 'date')}
+                            </Col>
+                            <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
                             {this.renderInput("type", "Type")}
+                            </Col>
+                            <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
                             {this.renderInput("companyIdCode", "Company Id ")}
+                            </Col>
+                            <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
                             {this.renderInput("companyMailId", "Mail id")}
+                            </Col>
+                            <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
                             {this.renderInput("companyContactNumber", "Contact number")}
+                            </Col>
 
 
                             <div className="text-center">
@@ -99,6 +110,7 @@ class Orgprofile extends Forms {
                             </div>
                         </Form>
                     </CardBody>
+                    
                 </Card>
             </Col>
         </div>;

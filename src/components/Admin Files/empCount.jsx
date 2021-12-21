@@ -4,6 +4,7 @@ import {
   Card,
   CardBody,
   CardTitle,
+  Container,
 
   Row,
   Col,
@@ -12,124 +13,120 @@ import {
 class ECard extends React.Component {
 
   render() {
-    return <div>
-      {/* <Col style={{ marginLeft: '500px', marginTop: '100px', }} lg="2" xl="4">
-        <Card style={{ marginTop: 'auto', marginRight: '0px', paddingBottom: '20px', paddingTop: '18px', paddingRight: '0px' }} className="card-stats mb-6 mb-0">
-         */}
-      <Col style={{ marginLeft: '250px', marginTop: '130px' }} lg="6" xl="3">
-        <Card className="card-stats mb-4 mb-xl-0">
-          <CardBody>
-            <Row>
-              <div style={{marginBottom: '30px'}}className="col">
-                <CardTitle
-                  tag="h5"
-                  className="text-uppercase text-muted mb-0"
-                >
-                  Total Employees
-                </CardTitle>
-                <span className="h2 font-weight-bold mb-0">
-                  {this.props.count}
-                </span>
-              </div>
-              <Col className="col-auto">
-                <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                <i class="fas fa-users"></i>
-                                </div>
-              </Col>
-            </Row>
-            <p className="mt-3 mb-0 text-muted text-sm">
-              <span className="text-success mr-2">
-                <i className="fa fa-arrow-up" />
-              </span>{" "}
-              <span  className="text-nowrap">Since last month</span>
-            </p>
-          </CardBody>
-        </Card>
-      </Col>
-      <Col style={{ marginLeft: '520px', marginTop: '-152px' }} lg="6" xl="3">
-        <Card className="card-stats mb-4 mb-xl-0">
-          <CardBody>
-            <Row>
-              <div className="col">
-                <CardTitle
-                  tag="h5"
-                  className="text-uppercase text-muted mb-0"
-                >
-                  Total Hours
-                </CardTitle>
-                <span className="h2 font-weight-bold mb-0">
-                  {this.props.totalmonthhours}
-                </span>
-              </div>
-              <Col className="col-auto">
-                <div className="icon icon-shape bg-orange text-white rounded-circle shadow">
-                  <i className="fas fa-chart-bar" />
-                </div>
-              </Col>
-            </Row>
-            <p className="mt-3 mb-0 text-muted text-sm">
-              <span className="text-success mr-2">
-                <i className="fa fa-arrow-up" /> AVG
-              </span>{" "}
-              <span className="text-nowrap">Since last month</span>
-            </p>
-          </CardBody>
-        </Card>
-      </Col>
-      <Col style={{ marginLeft: '790px', marginTop: '-152px' }} lg="6" xl="3">
-        <Card className="card-stats mb-4 mb-xl-0">
-          <CardBody>
-            <Row>
-              <div className="col">
-                <CardTitle
-                  tag="h5"
-                  className="text-uppercase text-muted mb-0"
-                >
-                  Total Hours
-                </CardTitle>
-                <span className="h2 font-weight-bold mb-0">
-                  {this.props.totalweekhours}
-                </span>
-              </div>
-              <Col className="col-auto">
-                <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                  <i className="fas fa-chart-bar" />
-                </div>
-              </Col>
-            </Row>
-            <p className="mt-3 mb-0 text-muted text-sm">
-              <span className="text-success mr-2">
-                <i className="fa fa-arrow-up" /> AVG
-              </span>{" "}
-              <span className="text-nowrap">Since last month</span>
-            </p>
-          </CardBody>
-        </Card>
-      </Col>
-      {/* <Row>
-              <div className="col">
-                <CardTitle
-                  tag="h5"
-                  className="text-uppercase text-muted mb-0"
-                >
-                  {this.props.title}
-                </CardTitle>
-                <span style={{ paddingLeft: '40px' }} className="h2 font-weight-bold mb-0">{this.props.count}</span>
-              </div>
-              <Col className="col">
-                <div style={{ marginLeft: '0px' }} className="icon icon-shape bg-warning text-white rounded-circle shadow">
-                  <i className="fas fa-chart-pie" />
-                </div>
-              </Col>
-            </Row> */}
-      {/* <p className="mt-3 mb-0 text-muted text-sm">
-                      <span className="text-danger mr-2">
-                        <i className="fas fa-arrow-down" /> 3.48%
+    return <>
+        <Container fluid>
+          <div className="header-body">
+            {/* Card stats */}
+            <Row style={{marginTop: '250px'}}>
+            <Col style={{marginLeft: '155px', marginTop: '-168px',  }} lg="6" xl="3">
+                <Card style={{marginRight: '-50px',}} className="card-stats mb-4 mb-xl-0">
+                  <CardBody style={{marginBottom: 'px'}}>
+                    <Row style={{paddingTop: '50px', paddingBottom: '0px'}}>
+                      <div className="col">
+                        <CardTitle
+                         style={{marginTop: '-50px', marginRight: '0px', paddingTop: '10px', marginLeft: '20px' }}
+                          tag="h3"
+                          className="text-uppercase mb-0"
+                        >
+                          TOTAL EMPLOYEES
+                          <Col style={{marginLeft: '160px', marginTop:"-34px"}} className="col-auto">
+                        <div  className="icon icon-shape bg-danger text-white rounded-circle shadow">
+                          <i className="fas fa-users" />
+                        </div>
+                      </Col>
+                        </CardTitle>
+                      </div>
+                      <Col>
+                        <h4 style={{marginLeft: '-30px', textAlign: 'center', marginRight: '0px', marginTop: '20px'}} className="h1 font-weight-bold mb-3">
+                        {this.props.count}
+                        </h4>
+                        </Col>
+                      
+                    </Row>
+                    <p style={{paddingTop: '0px'}} className="mt-3 mb-0 text-muted text-sm">
+                      <span className="text-success mr-2">
+                        <i className="fa fa-arrow-up" /> 
                       </span>{" "}
-                      <span className="text-nowrap">Since last week</span>
-                    </p> */}
-
-    </div>;
+                      <span style={{marginLeft: '80px'}} className="text-nowrap">Since last month</span>
+                      <span className="text-nowrap"></span>
+                    </p>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col style={{marginLeft: '477px', marginTop: '-198px',  }} lg="6" xl="3">
+                <Card style={{marginRight: '-50px',}} className="card-stats mb-4 mb-xl-0">
+                  <CardBody style={{marginBottom: 'px'}}>
+                    <Row style={{paddingTop: '50px', paddingBottom: '0px'}}>
+                      <div className="col">
+                        <CardTitle
+                         style={{marginTop: '-50px', marginRight: '0px', paddingTop: '10px', marginLeft: '0px' }}
+                          tag="h3"
+                          className="text-uppercase mb-0"
+                        >
+                          PRODUCTION HOURS
+                          <Col style={{marginLeft: '180px', marginTop:"-34px"}} className="col-auto">
+                        <div  className="icon icon-shape bg-orange text-white rounded-circle shadow">
+                          <i className="fas fa-chart-bar" />
+                        </div>
+                      </Col>
+                        </CardTitle>
+                      </div>
+                      <Col>
+                        <h4 style={{marginLeft: '-0px', textAlign: 'center', marginRight: '0px', marginTop: '20px'}} className="h1 font-weight-bold mb-3">
+                        {this.props.totalmonthhours}
+                        </h4>
+                        </Col>
+                      
+                    </Row>
+                    <p style={{paddingTop: '0px'}} className="mt-3 mb-0 text-muted text-sm">
+                      <span className="text-success mr-2">
+                        <i className="fa fa-arrow-up" /> AVG
+                      </span>{" "}
+                      <span style={{marginLeft: '80px'}} className="text-nowrap">Since last month</span>
+                      <span className="text-nowrap"></span>
+                    </p>
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col style={{marginLeft: '800px', marginTop: '-198px',  }} lg="6" xl="3">
+                <Card style={{marginRight: '-50px',}} className="card-stats mb-4 mb-xl-0">
+                  <CardBody style={{marginBottom: 'px'}}>
+                    <Row style={{paddingTop: '50px', paddingBottom: '0px'}}>
+                      <div className="col">
+                        <CardTitle
+                         style={{marginTop: '-50px', marginRight: '0px', paddingTop: '10px', marginLeft: '0px' }}
+                          tag="h3"
+                          className="text-uppercase mb-0"
+                        >
+                          PRODUCTION HOURS
+                          <Col style={{marginLeft: '180px', marginTop:"-34px"}} className="col-auto">
+                        <div  className="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                          <i className="fas fa-chart-bar" />
+                        </div>
+                      </Col>
+                        </CardTitle>
+                      </div>
+                      <Col>
+                        <h4 style={{marginLeft: '-0px', textAlign: 'center', marginRight: '0px', marginTop: '20px'}} className="h1 font-weight-bold mb-3">
+                        {this.props.totalweekhours}
+                        </h4>
+                        </Col>
+                      
+                    </Row>
+                    <p style={{paddingTop: '0px'}} className="mt-3 mb-0 text-muted text-sm">
+                      <span className="text-success mr-2">
+                        <i className="fa fa-arrow-up" /> AVG
+                      </span>{" "}
+                      <span style={{marginLeft: '80px'}} className="text-nowrap">Since last week</span>
+                      <span className="text-nowrap"></span>
+                    </p>
+                  </CardBody>
+                </Card>
+              </Col>
+      </Row>
+      </div>
+      </Container>
+    </>
     
   }
 }

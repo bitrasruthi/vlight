@@ -6,19 +6,23 @@ import EProcard from 'components/Employee Files/empProHor';
 import { getemppro } from '../../services/prodService'
 import { toast } from "react-toastify";
 import WEProcard from 'components/Employee Files/weekempProd'
+import get_employeelist  from 'reduxstore/actions/employeeAction';
+import { getCurrentUser } from './../../services/authService';
 
 
 
 class EDashboard extends React.Component {
     state = {
         lastMonthHours: '',
-        lastWeekHours: ''
+        lastWeekHours: '',
+        name: ''
     }
 
     async componentDidMount() {
 
         try {
             const dd = await getemppro();
+            
             await this.setState({ lastMonthHours: dd.data.lastMonthHours, lastWeekHours: dd.data.lastWeekHours });
         }
         catch (ex) {
