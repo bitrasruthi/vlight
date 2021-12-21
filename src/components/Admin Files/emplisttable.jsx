@@ -27,7 +27,10 @@ class EmployeeTable extends React.Component {
     this.setState({openModal : false})
 }
 
+
+
   columns = [
+    
     {
       path: "EmployeeId",
       label: "Employee Id",
@@ -36,6 +39,7 @@ class EmployeeTable extends React.Component {
       //   <Link to={`/empattlist/${emp.EmployeeId}`}> {emp.EmployeeId}</Link>
       // ),
     },
+    
     { path: "EmployeeName", label: "Name" },
     { path: "Email", label: "Email" },
     { path: "Phone", label: "Phone" },

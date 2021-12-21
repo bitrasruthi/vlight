@@ -14,6 +14,7 @@ class Table extends React.Component {
     super();
     this.state.isLoading = true;
   }
+  
 
   handleloading = () => { };
 

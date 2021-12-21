@@ -59,7 +59,7 @@ export default class Settings extends React.Component {
           <DropdownItem>
             <Link style={{ color: "darkgray" }} to="/orgprofile">
               {" "}
-              Org Pro
+              Company Profile
             </Link>
           </DropdownItem>
         </DropdownMenu>
