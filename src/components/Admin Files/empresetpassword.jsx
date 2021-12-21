@@ -20,7 +20,7 @@ class EmpRestPassword extends Forms {
     state = {
         data: {
             EmployeeId: "",
-            password: "",
+            Password: "",
 
         },
         loadstatus: false,
@@ -30,7 +30,7 @@ class EmpRestPassword extends Forms {
 
     schema = {
         EmployeeId: Joi.string().required(),
-        password: Joi.string().required(),
+        Password: Joi.string().required(),
     };
 
 
@@ -68,7 +68,7 @@ class EmpRestPassword extends Forms {
                     <Form role="form" onSubmit={this.handleSubmit}>
 
                         {this.renderInput("EmployeeId", "Employee ID")}
-                        {this.renderInput("password", "Password")}
+                        {this.renderInput("Password", "Password")}
 
                         <div className="text-center">
                             <Button disabled={this.state.loadstatus} style={{ background: '#2DCECB', border: 'none' }} className="my-4" color="primary" type="submit">
