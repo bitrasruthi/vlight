@@ -60,7 +60,16 @@ class LeaveTable extends React.Component {
           </Link></button>
       ),
     },
-    { path: "status", label: "Status" },
+    {
+      key: "status",
+      label: 'Status',
+      content: (emp) => (
+
+        <span className={`badge badge-${emp.status === 'pending' ? 'dark' : `${emp.status === 'reject' ? 'danger' : 'success'}`}`}>
+          {emp.status}
+        </span>
+      ),
+    },
   ];
 
   onApprove = async () => {
