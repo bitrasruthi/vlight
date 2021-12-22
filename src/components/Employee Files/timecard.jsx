@@ -119,12 +119,12 @@ class TimeCard extends Forms {
             className="bg-secondary shadow border-0"
           >
             <CardBody className="px-lg-7 py-lg-1">
-              <Col style={{ textAlign: "center", marginLeft: '-70px', }} >
-              <h1 style={{ textAlign: "center", paddingLeft: '0px', width: '300px' }}>Welcome {this.state.name}!!!</h1>
+              <Col style={{ textAlign: "center", marginLeft: '-70px', marginTop: '10px' }} >
+              <h1 style={{ textAlign: "center", paddingLeft: '0px', width: '300px', }}>Welcome {this.state.name}!!!</h1>
               </Col>
               <h3
                 className="card-title"
-                style={{ textAlign: "center", marginTop: "20px" }}
+                style={{ textAlign: "center", marginTop: "0px" }}
               >
                 {new Date().toLocaleDateString()}
               </h3>
