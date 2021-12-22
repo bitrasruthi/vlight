@@ -69,10 +69,6 @@ class EmpAttList extends Forms {
 
 
 
-
-
-
-
   async componentDidMount() {
     try {
       await this.setState({ id: this.props.match.params.id })
@@ -87,7 +83,7 @@ class EmpAttList extends Forms {
       await this.setState({ isLoading: false });
     }
     catch (er) {
-      this.setState({ isLoading: false });
+      // this.setState({ isLoading: false });
       toast("no data")
     }
   }
@@ -107,7 +103,7 @@ class EmpAttList extends Forms {
         toast.error(ex.response.data.data);
       }
       if (ex.response && ex.response.status === 400) {
-        this.setState({ loadstatus: true, i: this.state.i - 1 })
+        await this.setState({ loadstatus: true, i: this.state.i - 1 })
       }
     }
   };
@@ -123,7 +119,7 @@ class EmpAttList extends Forms {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className="py-2 py-sm-3 ">
         <Sidebar />
-        <Col lg="8" md="7" style={{ marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
+        <Col lg="8" md="7" style={{ width: '586px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 
           <EmpTable 
             employess={employess}
@@ -141,25 +137,7 @@ class EmpAttList extends Forms {
         <Col>
           {this.state.employess.length ? '' : <p> No Data</p>}
 
-          {this.state.isLoading ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                // alignItems: "center",
-                height: "100vh",
-              }}
-            >
-              <ReactLoading
-                type="bars"
-                color="#aaaa"
-                height={"10%"}
-                width={"10%"}
-              />
-            </div>
-          ) : (
-            ""
-          )}
+         
         </Col>
         <Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
           <Card className="card__wrap--inner bg-secondary shadow border-0">

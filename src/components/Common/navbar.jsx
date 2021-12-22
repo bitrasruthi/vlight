@@ -18,7 +18,13 @@ import {
   Container,
   Media,
 } from "reactstrap";
+import SearchBox from './searchbox';
 class NavBar extends React.Component {
+state={
+  searchQuery:"",
+}
+
+
     render() { 
         return <div>
             <Sidebar/>
@@ -28,16 +34,9 @@ class NavBar extends React.Component {
             <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
         <Container fluid>
          
-        <Form style={{marginTop: '-250px'}} className="navbar-search navbar-search-dark form-inline mr-auto d-none d-md-flex ml-lg-auto">
-            <FormGroup className="mb-0">
-              <InputGroup className="input-group-alternative">
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
-                    <i className="fas fa-search" />
-                  </InputGroupText>
-                </InputGroupAddon>
-                <Input placeholder="Search" type="text" />
-              </InputGroup>
+        <Form style={{marginTop: '-250px', }} className="navbar-search navbar-search-dark form-inline mr-auto d-none d-md-flex ml-lg-auto">
+            <FormGroup  className="mb-0">
+            <SearchBox/>
             </FormGroup>
           </Form>
           <Nav className="align-items-center d-md">

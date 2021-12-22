@@ -54,7 +54,7 @@ class TimeCard extends Forms {
       if (ex.response && ex.response.status === 402) {
         const errors = { ...this.state.errors };
         errors.inTime = ex.response.inTime;
-        toast.warn("Contact Admin");
+        toast.warn("You are too late!!! please contact Admin");
         await this.setState({ disable: true })
         this.setState({ errors });
       }
@@ -120,7 +120,7 @@ class TimeCard extends Forms {
           >
             <CardBody className="px-lg-7 py-lg-1">
               <Col style={{ textAlign: "center", marginLeft: '-70px', marginTop: '10px' }} >
-              <h1 style={{ textAlign: "center", paddingLeft: '0px', width: '300px', }}>Welcome {this.state.name}!!!</h1>
+              <h1 style={{ textAlign: "center", paddingLeft: '0px', width: '300px', }}>Welcome <span className="text-uppercase">{this.state.name}</span></h1>
               </Col>
               <h3
                 className="card-title"

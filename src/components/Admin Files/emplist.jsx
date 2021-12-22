@@ -26,7 +26,7 @@ class Employees extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state.isLoading = true;
+    // this.state.isLoading = true;
   }
 
   handlePageChange = (page) => {
@@ -48,7 +48,7 @@ class Employees extends React.Component {
     }
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        this.setState({ isLoading: false });
+        // this.setState({ isLoading: false });
         toast("no data")
       }
     }
@@ -112,25 +112,7 @@ class Employees extends React.Component {
         />
         </Col>
         {/* </Col> */}
-        {this.state.isLoading ? (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100vh",
-            }}
-          >
-            <ReactLoading
-              type="bars"
-              color="#aaaa"
-              height={"10%"}
-              width={"10%"}
-            />
-          </div>
-        ) : (
-          ""
-        )}
+      
         {/* <Paginations
           itemsCount={totalCount}
           pageSize={pageSize}
