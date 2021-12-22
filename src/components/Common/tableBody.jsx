@@ -32,36 +32,36 @@ class TableBody extends React.Component {
     this.setState({ isLoading: false });
   }
 
-  renderLoadButton(disabled, onload) {
+  // renderLoadButton(disabled, onload) {
 
-    // const notify = () => toast("Login Successful");
-    if (!disabled) {
-      return (
-        <Row>
-          <div style={{ marginLeft: '200px' }}>
-            <Button variant="contained" onClick={onload} style={{
-              zIndex: '1001', marginLeft: '0px',
-            }}>
-              more
-            </Button>
-          </div>
-        </Row>
+  //   // const notify = () => toast("Login Successful");
+  //   if (!disabled) {
+  //     return (
+  //       <Row>
+  //         <div style={{ marginLeft: '200px' }}>
+  //           <Button variant="contained" onClick={onload} style={{
+  //             zIndex: '1001', marginLeft: '0px',
+  //           }}>
+  //             more
+  //           </Button>
+  //         </div>
+  //       </Row>
 
-      );
-    }
+  //     );
+  //   }
 
-    return (
-      <Row>
-        <div style={{ marginLeft: '200px' }}>
-          <h1 variant="contained" style={{
-            zIndex: '1001', marginLeft: '0px',
-          }}>
-            No Data
-          </h1>
-        </div>
-      </Row>
-    );
-  }
+  //   return (
+  //     <Row>
+  //       <div style={{ marginLeft: '200px' }}>
+  //         <h1 variant="contained" style={{
+  //           zIndex: '1001', marginLeft: '0px',
+  //         }}>
+  //           No Data
+  //         </h1>
+  //       </div>
+  //     </Row>
+  //   );
+  // }
 
   render() {
     const { data, columns, onload, disabled } = this.props;
