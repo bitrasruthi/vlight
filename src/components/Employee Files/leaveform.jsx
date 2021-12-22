@@ -114,7 +114,7 @@ class LeaveForm extends Forms {
                 {/* {this.renderButton("Submit")}
                  */}
                 <div style={{ textAlign: 'center' }}>
-                  <Button disabled={this.validate()} style={{ marginLeft: '0px', marginTop: '0px', background: '#B665E0', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>
+                  <Button disabled={this.state.loadstatus} style={{ marginLeft: '0px', marginTop: '0px', background: '#B665E0', color: 'white', border: 'none' }} variant="contained" onClick={this.onApprove}>
                     Submit
                   </Button>
 
