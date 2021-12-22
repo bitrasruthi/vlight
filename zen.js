@@ -1,1 +1,2 @@
-console.log('sruthi')
+const y = `badge badge-${'rejected' === 'pending' ? 'dark' : `${'rejeced' == 'rejected' ? 'danger' : 'success'}`}`
+console.log(y)

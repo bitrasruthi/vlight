@@ -64,8 +64,7 @@ class LeaveTable extends React.Component {
       key: "status",
       label: 'Status',
       content: (emp) => (
-
-        <span className={`badge badge-${emp.status === 'pending' ? 'dark' : `${emp.status === 'reject' ? 'danger' : 'success'}`}`}>
+        <span className={`badge badge-${emp.status === 'pending' ? 'dark' : `${emp.status === 'Rejected' ? 'danger' : 'success'}`}`}>
           {emp.status}
         </span>
       ),
@@ -93,6 +92,8 @@ class LeaveTable extends React.Component {
 
 
   async componentDidMount() {
+
+    console.log()
     const dd = await this.props.getleavelist;
     // let leaveid = this.state.match.params.id
     console.log(dd);

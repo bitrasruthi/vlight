@@ -39,7 +39,7 @@ class LeaveForm extends Forms {
   handleChange(event) { this.setState({ value: event.target.options }); }
 
   doSubmit = async () => {
-    this.setState({ loadstatus: true })
+    await this.setState({ loadstatus: true })
     try {
       const { data } = this.state;
       const dd = await applyLeave(data);
