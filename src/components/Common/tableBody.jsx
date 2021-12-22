@@ -38,44 +38,54 @@ class TableBody extends React.Component {
     if (!disabled) {
       return (
         <Row>
-         <div style={{marginLeft: '200px'}}>
-        <Button variant="contained" onClick={onload} style={{
-          zIndex: '1001', marginLeft: '0px',
-        }}>
-          more
-        </Button>
-        </div>
+          <div style={{ marginLeft: '200px' }}>
+            <Button variant="contained" onClick={onload} style={{
+              zIndex: '1001', marginLeft: '0px',
+            }}>
+              more
+            </Button>
+          </div>
         </Row>
 
       );
     }
 
-    return null;
+    return (
+      <Row>
+        <div style={{ marginLeft: '200px' }}>
+          <h1 variant="contained" style={{
+            zIndex: '1001', marginLeft: '0px',
+          }}>
+            No Data
+          </h1>
+        </div>
+      </Row>
+    );
   }
 
   render() {
     const { data, columns, onload, disabled } = this.props;
     return (
       <>
-      <tbody style={{ zIndex: "1001" }}>
-        
-        {data.map((item) => (
-          <tr key={item._id}>
-            {columns.map((column) => (
-              <td style={{ textAlign: 'center', fontSize: '15px' }} key={this.createkey(item, column)}>
-                {this.renderCell(item, column)}
-              </td>
-            ))}
-          </tr>
-        ))}
-        {/* <Button variant="contained" disabled={disabled} onClick={onload} style={{
+        <tbody style={{ zIndex: "1001" }}>
+
+          {data.map((item) => (
+            <tr key={item._id}>
+              {columns.map((column) => (
+                <td style={{ textAlign: 'center', fontSize: '15px' }} key={this.createkey(item, column)}>
+                  {this.renderCell(item, column)}
+                </td>
+              ))}
+            </tr>
+          ))}
+          {/* <Button variant="contained" disabled={disabled} onClick={onload} style={{
           zIndex: '1001', marginLeft: 'auto',
         }}>
         More
       </Button> */}
 
-      </tbody>
-     
+        </tbody>
+
       </>
     );
   }

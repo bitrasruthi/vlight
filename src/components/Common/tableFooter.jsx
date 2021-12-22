@@ -32,36 +32,55 @@ class TableFooter extends React.Component {
     this.setState({ isLoading: false });
   }
 
-  renderLoadButton(disabled, onload) {
+  renderLoadButton(disabled, onload, loading) {
 
     // const notify = () => toast("Login Successful");
     if (!disabled) {
       return (
-        
-        <Button className="bg-gradient-pink"  variant="contained" onClick={onload} style={{
+
+        <Button className="bg-gradient-pink" variant="contained" onClick={onload} style={{
           zIndex: '', marginLeft: '0px', border: 'none'
         }}>
           more
         </Button>
-        
+
 
       );
     }
 
-    return null;
+    return (
+      loading ? <Row>
+        <div style={{ marginLeft: '200px' }}>
+          <h1 variant="contained" style={{
+            zIndex: '1001', marginLeft: '0px',
+          }}>
+            No Data
+          </h1>
+        </div>
+      </Row> :
+        <Row>
+          <div style={{ marginLeft: '200px' }}>
+            <h1 variant="contained" style={{
+              zIndex: '1001', marginLeft: '0px',
+            }}>
+              Loading...
+            </h1>
+          </div>
+        </Row>
+    );
   }
 
   render() {
-    const { onload, disabled } = this.props;
+    const { onload, disabled, loading } = this.props;
     return (
       <>
-      <tfoot className="table-responsive" >
+        <tfoot className="table-responsive" >
 
-       {this.renderLoadButton(disabled, onload)}      
-       
+          {this.renderLoadButton(disabled, onload, loading)}
 
-      </tfoot>
-     
+
+        </tfoot>
+
       </>
     );
   }

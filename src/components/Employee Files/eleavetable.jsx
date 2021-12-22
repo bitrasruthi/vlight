@@ -10,7 +10,15 @@ class ELeavsTable extends React.Component {
     { path: "subject", label: "Subject" },
     { path: "reason", label: "Reason" },
     { path: "leave_type", label: "Leave Type" },
-    { path: "status", label: "Status" },
+    {
+      key: "status",
+      label: 'Status',
+      content: (emp) => (
+        <span className={`badge badge-${emp.status === 'pending' ? 'dark' : `${emp.status === 'Rejected' ? 'danger' : 'success'}`}`}>
+          {emp.status}
+        </span>
+      ),
+    },
   ];
 
   state = {
@@ -26,7 +34,7 @@ class ELeavsTable extends React.Component {
   }
 
   render() {
-    const { leaves, sortColumn, onSort, onload, disabled } = this.props;
+    const { leaves, sortColumn, onSort, onload, disabled, loading } = this.props;
     return (
       <div>
         <ESidebar />
@@ -37,6 +45,7 @@ class ELeavsTable extends React.Component {
           onSort={onSort}
           onload={onload}
           disabled={disabled}
+          loading={loading}
         />
       </div>
     );

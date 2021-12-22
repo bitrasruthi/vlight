@@ -20,6 +20,7 @@ class ELeavsList extends React.Component {
     skip: 0,
     i: 0,
     isLoading: true,
+    loading: false,
     sortColumn: { path: "Date", order: "asc" },
   };
 
@@ -40,6 +41,7 @@ class ELeavsList extends React.Component {
 
 
   async componentDidMount() {
+    await this.setState({ loadstatus: true, isLoading: true, })
     try {
       if (!this.props.getempleavelist) {
         await get_empleavelist(this.state.skip);
@@ -50,7 +52,8 @@ class ELeavsList extends React.Component {
 
       const dd = await this.props.getempleavelist;
       await this.setState({ leaves: dd.data, i: dd.skip || 1 });
-      this.setState({ isLoading: false });
+      await this.setState({ isLoading: false, loadstatus: false });
+
     }
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -62,19 +65,24 @@ class ELeavsList extends React.Component {
   }
   onloadmore = async () => {
     const { i } = this.state
+    await this.setState({ loadstatus: true, loading: false })
     try {
       var skip = i * 2
       await this.setState({ i: this.state.i + 1 })
       await get_moreempleavelist(skip)
       const dd = await this.props.getempleavelist;
 
-      this.setState({ leaves: dd })
+      await this.setState({ leaves: dd })
+      await this.setState({ loadstatus: false, loading: true })
+
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
+        await this.setState({ loadstatus: true })
       }
       if (ex.response && ex.response.status === 400) {
-        this.setState({ loadstatus: true, i: this.state.i - 1 })
+        await this.setState({ loadstatus: true, i: this.state.i - 1 })
+        await this.setState({ loadstatus: true, loading: true })
       }
     }
   };
@@ -84,13 +92,14 @@ class ELeavsList extends React.Component {
     return (
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
-        <Col lg="8" md="7" style={{width:'668px', marginLeft: "8rem", paddingTop: "px", position: 'absolute' }}>
+        <Col lg="8" md="7" style={{ width: '668px', marginLeft: "8rem", paddingTop: "px", position: 'absolute' }}>
           <ELeavsTable
             leaves={leaves}
             sortColumn={sortColumn}
             onSort={this.handleSort}
             onload={this.onloadmore}
             disabled={this.state.loadstatus}
+            loading={this.state.loading}
           />
 
         </Col>

@@ -32,6 +32,8 @@ class LeaveForm extends Forms {
     mindate: '',
     loadstatus: false,
     errors: [],
+    maxdate: '',
+    mindate: '',
     options: [{ select: '' }, { CasualLeave: 'Casual Leave' }, { Sickleave: 'Sick Leave' }],
     To: [{ select: '' }, { Admin: 'Admin' }],
   };
@@ -58,7 +60,24 @@ class LeaveForm extends Forms {
       }
     }
   };
+  async componentDidMount() {
+    let date = new Date();
+    let d1 = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 20);
 
+    var dd = d1.getDate();
+    var mm = d1.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var yyyy = d1.getFullYear();
+    if (dd < 10) {
+      dd = '0' + dd
+    }
+    if (mm < 10) {
+      mm = '0' + mm
+    }
+
+    var min = yyyy + '-' + mm + '-' + dd;
+    await this.setState({ maxdate: min })
+    console.log(this.state)
+  }
 
 
   schema = {
@@ -71,7 +90,8 @@ class LeaveForm extends Forms {
   };
 
   render() {
-    const { options, To } = this.state;
+    const { options, To, maxdate } = this.state;
+    const { from_Date } = this.state.data
     return (
       <div>
         <ESidebar />
@@ -92,7 +112,7 @@ class LeaveForm extends Forms {
                 </Col>
 
                 <Col sm={{ size: 6 }} style={{ marginLeft: '300px', marginTop: '-100px' }} className='mr-sm-2'>
-                  {this.renderInput("to_Date", "To Date", "date")}
+                  {this.renderInput("to_Date", "To Date", "date", maxdate, from_Date)}
                 </Col>
 
                 <Col sm={{ size: 8 }} style={{ marginLeft: 'px', marginTop: '-0px' }} className='mr-sm-2'>

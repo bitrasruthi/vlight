@@ -14,7 +14,7 @@ class Table extends React.Component {
     super();
     this.state.isLoading = true;
   }
-  
+
 
   handleloading = () => { };
 
@@ -23,12 +23,12 @@ class Table extends React.Component {
   }
 
   render() {
-    const { columns, sortColumn, onSort, data, onload, disabled } = this.props;
+    const { columns, sortColumn, onSort, data, onload, disabled, loading } = this.props;
     return (
 
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-4 py-sm-3 ">
-        <table  style={{ marginTop: 'px', marginLeft: '20rem', textAlign: 'center' }} className="table table-bordered table-responsive">
+        <table style={{ marginTop: 'px', marginLeft: '20rem', textAlign: 'center' }} className="table table-bordered table-responsive">
           <TableHeader
             columns={columns}
             sortColumn={sortColumn}
@@ -36,7 +36,7 @@ class Table extends React.Component {
           />
 
           <TableBody columns={columns} data={data} onload={onload} disabled={disabled} />
-          <TableFooter onload={onload} disabled={disabled}/>
+          <TableFooter onload={onload} disabled={disabled} loading={loading} />
         </table>
 
       </div>

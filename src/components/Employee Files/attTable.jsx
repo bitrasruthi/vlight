@@ -23,7 +23,7 @@ class EmpTable extends React.Component {
   }
 
   render() {
-    const { employess, sortColumn, onSort, onload, disabled } = this.props;
+    const { employess, sortColumn, onSort, onload, disabled, loading } = this.props;
     return (
       <div>
         <Table
@@ -33,6 +33,7 @@ class EmpTable extends React.Component {
           onSort={onSort}
           onload={onload}
           disabled={disabled}
+          loading={loading}
         />
       </div>
     );
