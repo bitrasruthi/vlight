@@ -27,8 +27,8 @@ export function registerEduDetails(user) {
 }
 
 export async function updateEduDetails(data) {
- return await http.post(atturl(data.qualification), data);
-    // return ser;
+   const {data:ser}= await http.post(atturl(data.qualification), data);
+    return ser;
   }
   
   

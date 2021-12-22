@@ -101,9 +101,17 @@ class EduDetails extends Forms {
     }
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
+
         const errors = { ...this.state.errors };
-        errors.institute = ex.response.data;
-        this.setState({ errors });
+        toast.error(ex.response.data.data);
+        console.log(this.state)
+        errors.institute = ex.response.data.data;
+        await this.setState({ errors });
+
+        setTimeout(async () => {
+          await this.setState({ disabled: false })
+        }, 2000);
+
       }
     }
 
