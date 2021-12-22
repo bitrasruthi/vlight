@@ -48,6 +48,7 @@ class ApproveReject extends Forms {
       // console.log(this.props);
       await leavestatus({ _id: this.props.leaveid, status: leave.status });
       window.location = "/leavelist";
+      
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);

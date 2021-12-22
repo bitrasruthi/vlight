@@ -103,26 +103,7 @@ class ELeavsList extends React.Component {
           />
 
         </Col>
-        {this.state.isLoading ? (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              // alignItems: "center",
-              height: "100vh",
-            }}
-          >
-
-            <ReactLoading
-              type="bars"
-              color="#aaaa"
-              height={"10%"}
-              width={"10%"}
-            />
-          </div>
-        ) : (
-          ""
-        )}
+       
 
       </div>
     );
