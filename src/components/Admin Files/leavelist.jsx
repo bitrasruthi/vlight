@@ -125,25 +125,7 @@ class LeaveList extends React.Component {
         }}>
         Load more
       </Button> */}
-          {this.state.isLoading ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                // alignItems: "center",
-                height: "100vh",
-              }}
-            >
-              <ReactLoading
-                type="bars"
-                color="black"
-                height={"10%"}
-                width={"10%"}
-              />
-            </div>
-          ) : (
-            ""
-          )}
+         
         </Col>
       </div>
     );

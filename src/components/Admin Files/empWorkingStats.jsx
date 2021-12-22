@@ -126,7 +126,7 @@ class EmpWorkingStas extends Forms {
 
 
           <CardHeader className="bg-gradient-success border-0">
-            <span style={{ marginLeft: '120px' }} className="h2 font-weight-bold mb-0 ">{this.state.pHours}
+            <span style={{ marginLeft: '80px' }} className="h2 font-weight-bold mb-0 ">{this.state.pHours}
             </span>
           </CardHeader>
 

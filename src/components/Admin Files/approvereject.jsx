@@ -59,7 +59,7 @@ class ApproveReject extends Forms {
     const dd = await this.props.getleavelist;
     // let leaveid = this.state.match.params.id
     await this.setState({ data: dd })
-    console.log(this.props.data);
+    console.log(this.props.getleavelist);
     // let leave = leavelist.find((obj) => obj._id === leaveid);
 
     // await this.setState({ leave });
@@ -67,7 +67,7 @@ class ApproveReject extends Forms {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.getleavelist[0].EmployeeName)
     return (
       <div style={{ marginTop: '0px', height: '430px', width: '350px', marginRight: "-0px" }}  >
         <Col lg="9" md="9" style={{
@@ -83,23 +83,23 @@ class ApproveReject extends Forms {
             <CardBody style={{ textAlign: 'center' }} className="px-lg-3 py-sm-5">
               <div style={{ textAlign: 'center' }} className="row">
                 <h3>Name: </h3>
-                <p style={{ marginLeft: '10px' }}>{this.props.data.EmployeeName}</p>
+                <p style={{ marginLeft: '10px' }}>{this.props.getleavelist[0].EmployeeName}</p>
               </div>
               <div className="row">
                 <h3>From Date: </h3>
-                <p style={{ marginLeft: '10px' }}>{this.props.data.from_Date}</p>
+                <p style={{ marginLeft: '10px' }}>{this.props.getleavelist[0].from_Date}</p>
               </div>
               <div className="row">
                 <h3>To Date: </h3>
-                <p style={{ marginLeft: '10px' }}>{this.props.data.to_Date}</p>
+                <p style={{ marginLeft: '10px' }}>{this.props.getleavelist[0].to_Date}</p>
               </div>
               <div className="row">
                 <h3>Subject: </h3>
-                <p style={{ marginLeft: '10px' }}>{this.props.data.subject}</p>
+                <p style={{ marginLeft: '10px' }}>{this.props.getleavelist[0].subject}</p>
               </div>
               <div className="row">
                 <h3>Reason: </h3>
-                <p style={{ marginLeft: '10px' }}>{this.props.data.reason}</p>
+                <p style={{ marginLeft: '10px' }}>{this.props.getleavelist[0].reason}</p>
               </div>
               <div style={{ marginTop: '15px' }}>
                 <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', border: 'none' }}
