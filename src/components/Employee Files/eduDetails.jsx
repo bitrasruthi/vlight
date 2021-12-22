@@ -92,9 +92,9 @@ class EduDetails extends Forms {
       //  const tt = await this.setState({data: pp.data});
       //   console.log(tt);
       toast.success("Education details Updated Successfully");
-      // setTimeout(() => {
-      //   window.location = "/profile";
-      // }, 2000);
+      setTimeout(() => {
+        window.location = "/profile";
+      }, 2000);
 
     }
     catch (ex) {
