@@ -7,6 +7,7 @@ class Hrstable extends React.Component {
         { path: "EmployeId", label: "Employe Id", },
         { path: "lastMonthHours", label: "lastMonthHours" },
         { path: "lastWeekHours", label: "lastWeekHours" },
+        { path: "monthWorkingdays", label: "Working Days" },
     ];
 
     render() {

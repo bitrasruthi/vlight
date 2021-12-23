@@ -99,6 +99,7 @@ class Employees extends React.Component {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <Sidebar />
+        <h2 style={{textAlign: 'center', marginLeft: '150px'}}>Employee List</h2>
 
         <Col lg="8" md="7" style={{ width:'920px', marginLeft: "rem", paddingTop: "px", position: 'absolute' }}>
 

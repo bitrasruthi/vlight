@@ -92,7 +92,8 @@ class ELeavsList extends React.Component {
     return (
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
-        <Col lg="8" md="7" style={{ width: '668px', marginLeft: "8rem", paddingTop: "px", position: 'absolute' }}>
+          <h2 style={{textAlign: 'center'}}>My Leave List</h2>
+        <Col lg="8" md="7" style={{ width: '754px', marginLeft: "rem", paddingTop: "px", position: 'absolute' }}>
           <ELeavsTable
             leaves={leaves}
             sortColumn={sortColumn}
@@ -103,7 +104,26 @@ class ELeavsList extends React.Component {
           />
 
         </Col>
+        {this.state.isLoading ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              // alignItems: "center",
+              height: "100vh",
+            }}
+          >
 
+            <ReactLoading
+              type="bars"
+              color="#aaaa"
+              height={"10%"}
+              width={"10%"}
+            />
+          </div>
+        ) : (
+          ""
+        )}
 
       </div>
     );

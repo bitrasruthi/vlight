@@ -38,6 +38,7 @@ class ELeavsTable extends React.Component {
     return (
       <div>
         <ESidebar />
+        
         <Table
           columns={this.columns}
           data={leaves}

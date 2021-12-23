@@ -57,7 +57,7 @@ class TableFooter extends React.Component {
     }
 
     return (
-      loading ? <Row>
+      loading ?
         <div style={{ marginLeft: '200px' }}>
           <h1 variant="contained" style={{
             zIndex: '1001', marginLeft: '0px',
@@ -65,8 +65,7 @@ class TableFooter extends React.Component {
             No Data
           </h1>
         </div>
-      </Row> :
-        <Row>
+      :
           <div style={{ marginLeft: '200px' }}>
             <h1 variant="contained" style={{
               zIndex: '1001', marginLeft: '0px',
@@ -74,7 +73,6 @@ class TableFooter extends React.Component {
               Loading..
             </h1>
           </div>
-        </Row>
     );
   }
 

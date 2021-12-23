@@ -110,6 +110,8 @@ class LeaveList extends React.Component {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <Sidebar />
+        <h2 style={{textAlign: 'center', marginLeft: '150px'}}>Employee Leave List</h2>
+
         <Col lg="9" md="9" style={{ marginLeft: "-2rem", paddingTop: "px", position: 'absolute' }}>
 
           <LeaveTable

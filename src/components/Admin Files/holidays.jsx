@@ -89,6 +89,8 @@ class Holidays extends Forms {
         <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
           className=" py-2 py-sm-3 ">
           <Sidebar />
+          <h2 style={{textAlign: 'center', marginLeft: '-190px'}}>Holiday List</h2>
+
           <Col lg="3" md="7" style={{ width: '258px', marginLeft: "10rem", paddingTop: "px", position: 'absolute', }}>
 
 

@@ -130,7 +130,9 @@ class AttList extends Forms {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <ESidebar />
-        <Col lg="8" md="7" style={{ width: '624px', marginLeft: "1rem", paddingTop: "px", position: 'absolute', }}>
+        <h2 style={{textAlign: 'center'}}>My Attendance</h2>
+
+        <Col lg="8" md="7" style={{ width: '624px', marginLeft: "3rem", paddingTop: "px", position: 'absolute', }}>
 
           <EmpTable
             employess={employess}
