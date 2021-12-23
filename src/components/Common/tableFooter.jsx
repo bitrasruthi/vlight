@@ -37,43 +37,15 @@ class TableFooter extends React.Component {
     // const notify = () => toast("Login Successful");
     if (!disabled) {
       return (
-        loading ? <Row>
-          <div style={{ marginLeft: '200px' }}>
-            <h1 variant="contained" style={{
-              zIndex: '1001', marginLeft: '0px',
-            }}>
-              loading..
-            </h1>
-          </div>
-        </Row> :
-          <Button className="bg-gradient-pink" variant="contained" onClick={onload} style={{
-            zIndex: '', marginLeft: '0px', border: 'none'
-          }}>
-            more
-          </Button>
-
-
+        <Button className="bg-gradient-pink" variant="contained" onClick={onload} style={{
+          zIndex: '', marginLeft: '0px', border: 'none'
+        }}>
+          more
+        </Button>
       );
     }
 
-    return (
-      loading ?
-        <div style={{ marginLeft: '200px' }}>
-          <h1 variant="contained" style={{
-            zIndex: '1001', marginLeft: '0px',
-          }}>
-            No Data
-          </h1>
-        </div>
-      :
-          <div style={{ marginLeft: '200px' }}>
-            <h1 variant="contained" style={{
-              zIndex: '1001', marginLeft: '0px',
-            }}>
-              Loading..
-            </h1>
-          </div>
-    );
+    return 'no data';
   }
 
   render() {

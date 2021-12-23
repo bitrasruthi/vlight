@@ -8,6 +8,7 @@ import ESidebar from "../Sidebar/eSidebar";
 import { toast } from "react-toastify";
 import Forms from "components/Common/form";
 import ReactLoading from "react-loading";
+import moment from "moment";
 
 
 import {
@@ -70,6 +71,7 @@ class AttList extends Forms {
 
 
   async componentDidMount() {
+ 
     await this.setState({ loadstatus: true, isLoading: true, })
     try {
       if (!this.props.getattlist) {
@@ -94,6 +96,7 @@ class AttList extends Forms {
     //   employess: dd.data,
     // });
   }
+
 
   onloadmore = async () => {
     const { i } = this.state
