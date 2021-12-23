@@ -57,8 +57,12 @@ class ELeavsList extends React.Component {
     }
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        this.setState({ isLoading: false });
-        toast("no data")
+        await this.setState({ loadstatus: true, loading: true })
+
+      }
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data.data);
+        await this.setState({ loadstatus: true, loading: true })
       }
     }
 
@@ -70,9 +74,10 @@ class ELeavsList extends React.Component {
       var skip = i * 2
       await this.setState({ i: this.state.i + 1 })
       await get_moreempleavelist(skip)
+      console.log('sss')
       const dd = await this.props.getempleavelist;
-
-      await this.setState({ leaves: dd })
+      console.log(dd)
+      await this.setState({ leaves: dd.data })
       await this.setState({ loadstatus: false, loading: true })
 
     } catch (ex) {
@@ -92,8 +97,8 @@ class ELeavsList extends React.Component {
     return (
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
-          <h1 style={{textAlign: 'center',color: '#F3A4B4', marginLeft: '190px'}}>My Leave List</h1>
-        <Col lg="8" md="7" style={{ width: '663px', marginLeft: "rem", paddingTop: "px", position: 'absolute' }}>
+        <h2 style={{ textAlign: 'center' }}>My Leave List</h2>
+        <Col lg="8" md="7" style={{ width: '754px', marginLeft: "rem", paddingTop: "px", position: 'absolute' }}>
           <ELeavsTable
             leaves={leaves}
             sortColumn={sortColumn}
@@ -104,26 +109,7 @@ class ELeavsList extends React.Component {
           />
 
         </Col>
-        {this.state.isLoading ? (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              // alignItems: "center",
-              height: "100vh",
-            }}
-          >
 
-            <ReactLoading
-              type="bars"
-              color="#aaaa"
-              height={"10%"}
-              width={"10%"}
-            />
-          </div>
-        ) : (
-          ""
-        )}
 
       </div>
     );

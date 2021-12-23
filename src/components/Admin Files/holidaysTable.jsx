@@ -20,7 +20,7 @@ class HoliTable extends React.Component {
   }
 
   render() {
-    const { holidays, sortColumn, onSort, disabled } = this.props;
+    const { holidays, sortColumn, onSort, disabled, loading } = this.props;
     return (
       <div>
         <Table
@@ -29,6 +29,7 @@ class HoliTable extends React.Component {
           sortColumn={sortColumn}
           onSort={onSort}
           disabled={disabled}
+          loading={loading}
         />
       </div>
     );

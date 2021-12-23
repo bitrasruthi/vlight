@@ -33,6 +33,7 @@ class EmpWorkingStas extends Forms {
     employees: [],
     errors: [],
     pHours: '',
+    loading: true,
     sortColumn: { path: "", order: "" },
 
   };
@@ -44,19 +45,28 @@ class EmpWorkingStas extends Forms {
   };
   async componentDidMount() {
     try {
+      await this.setState({ loading: false });
+
       if (!this.props.getthrslist) {
         await get_hrslist();
       }
       const tt = await this.props.getthrslist;
       const values = Object.values(tt.finaldata)
       await this.setState({ employees: values });
+      await this.setState({ loading: true });
+
 
     }
     catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        // toast.error(ex.response.data.data);
+        await this.setState({ loadstatus: true, loading: true });
+      }
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         errors.to_Date = ex.response.data.data;
         this.setState({ errors });
+        await this.setState({ isLoading: false });
         toast('somthing wrong please refresh the page')
       }
     }
@@ -97,15 +107,16 @@ class EmpWorkingStas extends Forms {
     return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
       className=" py-5 py-sm-1 ">
       <Sidebar />
-      <h1 style={{textAlign: 'center', marginLeft: '-100px',color: '#F3A4B4'}}>Employee Working Status</h1>
+      <h1 style={{ textAlign: 'center', marginLeft: '-100px', color: '#F3A4B4' }}>Employee Working Status</h1>
 
-      <Col lg="9" md="7" style={{ width:'658px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
+      <Col lg="9" md="7" style={{ width: '658px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 
         <Hrstable
           employees={employees}
           sortColumn={sortColumn}
           onSort={this.handleSort}
           disabled={this.state.loadmore}
+          loading={this.state.loading}
         />
       </Col>
 

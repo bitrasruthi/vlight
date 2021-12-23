@@ -93,6 +93,7 @@ class EmpAttList extends Forms {
 
   onloadmore = async () => {
     const { i } = this.state
+    await this.setState({ loadstatus: true, loading: false })
 
     try {
       var skip = i * 2
@@ -101,12 +102,18 @@ class EmpAttList extends Forms {
       await get_moreempattlist(this.state.id, skip)
       const dd = await this.props.getademplist;
       this.setState({ employess: dd })
+      await this.setState({ loadstatus: false, loading: true })
+
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
+        await this.setState({ loadstatus: false, loading: true })
+
       }
       if (ex.response && ex.response.status === 400) {
         await this.setState({ loadstatus: true, i: this.state.i - 1 })
+        await this.setState({ loading: true })
+
       }
     }
   };
@@ -122,7 +129,7 @@ class EmpAttList extends Forms {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className="py-2 py-sm-3 ">
         <Sidebar />
-        <h1 style={{textAlign: 'center', marginLeft: '-150px', color: '#F3A4B4'}}>Employee Attendance</h1>
+        <h1 style={{ textAlign: 'center', marginLeft: '-150px', color: '#F3A4B4' }}>Employee Attendance</h1>
 
         <Col lg="8" md="7" style={{ width: '624px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 
@@ -132,6 +139,7 @@ class EmpAttList extends Forms {
             onSort={this.handleSort}
             onload={this.onloadmore}
             disabled={this.state.loadstatus}
+            loading={this.state.loading}
           />
           {/* <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
             zIndex: '1001'
@@ -145,7 +153,7 @@ class EmpAttList extends Forms {
 
         </Col>
         <Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
-          <Card  className="card__wrap--inner bg-secondary shadow border-0">
+          <Card className="card__wrap--inner bg-secondary shadow border-0">
             {/* <h1
               style={{
                 marginLeft: "60px",

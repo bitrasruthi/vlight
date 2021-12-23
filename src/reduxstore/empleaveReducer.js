@@ -3,16 +3,18 @@ import { GET_EMPLEAVE_LIST,GET_MOREEMPLEAVE_LIST } from "../reduxstore/actions/e
 const empleaveReducer = (state = null, { type, payload }) => {
   switch (type) {
     case GET_EMPLEAVE_LIST:
+      
       return payload;
 
     case GET_MOREEMPLEAVE_LIST:
-  
-      payload.data.forEach(element => {
-        state.push(element)
+      console.log(payload.data.data.data)
+      payload.data.data.data.forEach(element => {
+        state.data.push(element)
       }); 
-      state.skip = payload.skip
       console.log(state)
+      state.skip = payload.skip
       return state;
+
     default:
       return state;
   }

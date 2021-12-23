@@ -11,7 +11,7 @@ class Hrstable extends React.Component {
     ];
 
     render() {
-        const { employees, sortColumn, onSort, disabled } = this.props;
+        const { employees, sortColumn, onSort, disabled, loading } = this.props;
         return (
             <Table
                 columns={this.columns}
@@ -19,6 +19,7 @@ class Hrstable extends React.Component {
                 onSort={onSort}
                 data={employees}
                 disabled={disabled}
+                loading={loading}
 
             />
         );

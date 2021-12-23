@@ -23,7 +23,7 @@ class TerminateEmp extends Forms {
     skip: 0,
     i: 0,
     loadstatus: false,
-
+    loading: false,
     employees: [],
     sortColumn: { path: "", order: "" },
 
@@ -37,7 +37,7 @@ class TerminateEmp extends Forms {
 
   async componentDidMount() {
     try {
-
+      await this.setState({ loadstatus: true });
       if (!this.props.getterminatedlist) {
         await get_termlist(this.state.skip);
         await this.setState({ i: this.state.i + 1 })
@@ -47,12 +47,16 @@ class TerminateEmp extends Forms {
       const dd = await this.props.getterminatedlist;
       console.log(dd)
       await this.setState({ employees: dd.data, i: dd.skip || 1 });
-      await this.setState({ isLoading: false });
+      await this.setState({ loadstatus: false });
     }
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        this.setState({ isLoading: false });
+        await this.setState({ loadstatus: true });
         toast("no data")
+      }
+      if (ex.response && ex.response.status === 404) {
+        await this.setState({ loadstatus: true, loading: true });
+
       }
     }
   }
@@ -101,7 +105,7 @@ class TerminateEmp extends Forms {
     return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
       className=" py-5 py-sm-1 ">
       <Sidebar />
-      <h1 style={{textAlign: 'center', marginLeft: '-150px',color: '#F3A4B4'}}>Terminated Employees</h1>
+      <h1 style={{ textAlign: 'center', marginLeft: '-150px', color: '#F3A4B4' }}>Terminated Employees</h1>
 
       <Col lg="6" md="7" style={{ width: '544px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 
@@ -111,6 +115,7 @@ class TerminateEmp extends Forms {
           onSort={this.handleSort}
           onload={this.onloadmore}
           disabled={this.state.loadstatus}
+          loading={this.state.loading}
         />
       </Col>
 

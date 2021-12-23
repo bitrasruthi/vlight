@@ -12,7 +12,7 @@ class TerminateEmpTable extends React.Component {
   ];
 
   render() {
-    const { employees, onSort, sortColumn, onload, disabled } = this.props;
+    const { employees, onSort, sortColumn, onload, disabled, loading } = this.props;
     return (
       <Table
         columns={this.columns}
@@ -21,6 +21,7 @@ class TerminateEmpTable extends React.Component {
         onSort={onSort}
         onload={onload}
         disabled={disabled}
+        loading={loading}
       // LoadingComponent={Spinner}
       />
     );

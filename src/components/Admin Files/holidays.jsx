@@ -23,6 +23,7 @@ class Holidays extends Forms {
     data: { date: '', festival: '' },
     isLoading: true,
     loadmore: true,
+    loading: true,
     holidays: [],
     errors: [],
     sortColumn: { path: "Date", order: "asc" },
@@ -46,7 +47,6 @@ class Holidays extends Forms {
   }
 
   async componentDidMount() {
-
     try {
       if (!this.props.gethoildayslist) {
         await get_hoildays();
@@ -55,12 +55,14 @@ class Holidays extends Forms {
       const dd = await this.props.gethoildayslist[0].holidays;
       // const ff = dd[0].holidays;
       await this.setState({ holidays: dd });
-      await this.setState({ isLoading: false });
+
     }
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        this.setState({ isLoading: false });
-        toast("Please Add Holidays")
+
+      }
+      if (ex.response && ex.response.status === 404) {
+        toast.error(ex.response.data.data);
       }
     }
   }
@@ -89,7 +91,7 @@ class Holidays extends Forms {
         <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
           className=" py-2 py-sm-3 ">
           <Sidebar />
-          <h1 style={{textAlign: 'center', marginLeft: '-190px',color: '#F3A4B4'}}>Holiday List</h1>
+          <h1 style={{ textAlign: 'center', marginLeft: '-190px', color: '#F3A4B4' }}>Holiday List</h1>
 
           <Col lg="3" md="7" style={{ width: '258px', marginLeft: "10rem", paddingTop: "px", position: 'absolute', }}>
 
@@ -99,27 +101,9 @@ class Holidays extends Forms {
               sortColumn={sortColumn}
               onSort={this.handleSort}
               disabled={this.state.loadmore}
+              loading={this.state.loading}
             />
 
-            {this.state.isLoading ? (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  // alignItems: "center",
-                  height: "100vh",
-                }}
-              >
-                <ReactLoading
-                  type="bars"
-                  color="#aaaa"
-                  height={"10%"}
-                  width={"10%"}
-                />
-              </div>
-            ) : (
-              ""
-            )}
           </Col>
 
           <Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
