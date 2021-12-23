@@ -78,7 +78,7 @@ class ELeavsList extends React.Component {
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
-        await this.setState({ loadstatus: true })
+        await this.setState({ loadstatus: true, loading: true })
       }
       if (ex.response && ex.response.status === 400) {
         await this.setState({ loadstatus: true, i: this.state.i - 1 })
@@ -103,7 +103,7 @@ class ELeavsList extends React.Component {
           />
 
         </Col>
-       
+
 
       </div>
     );

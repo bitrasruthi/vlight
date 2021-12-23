@@ -102,20 +102,23 @@ class AttList extends Forms {
       var skip = i * 2
       await this.setState({ i: this.state.i + 1 })
 
-      await get_moreattlist(skip)
+      const rr = await get_moreattlist(skip)
+      console.log(rr)
       const dd = await this.props.getattlist;
       await this.setState({ employess: dd })
       await this.setState({ loadstatus: false, loading: true })
 
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
+        console.log(ex.response.status)
         toast.error(ex.response.data.data);
-        await this.setState({ loadstatus: true })
+        await this.setState({ loadstatus: false, loading: false })
 
       }
       if (ex.response && ex.response.status === 400) {
+        console.log(ex.response.status)
         await this.setState({ loadstatus: true, i: this.state.i - 1 })
-        await this.setState({ loadstatus: true, loading: true })
+        await this.setState({ loading: false })
 
       }
     }

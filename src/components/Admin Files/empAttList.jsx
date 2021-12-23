@@ -31,6 +31,7 @@ class EmpAttList extends Forms {
     i: 0,
     loadstatus: false,
     id: [],
+    loading: false,
     isLoading: true,
     errors: [],
     currentPage: 1,
@@ -70,6 +71,7 @@ class EmpAttList extends Forms {
 
 
   async componentDidMount() {
+    await this.setState({ loadstatus: true, isLoading: true, })
     try {
       await this.setState({ id: this.props.match.params.id })
       if (!this.props.getattlist) {
@@ -80,10 +82,11 @@ class EmpAttList extends Forms {
 
       const dd = await this.props.getademplist;
       await this.setState({ employess: dd });
-      await this.setState({ isLoading: false });
+      await this.setState({ isLoading: false, loadstatus: false });
+
     }
     catch (er) {
-      // this.setState({ isLoading: false });
+      this.setState({ isLoading: false });
       toast("no data")
     }
   }
@@ -121,7 +124,7 @@ class EmpAttList extends Forms {
         <Sidebar />
         <Col lg="8" md="7" style={{ width: '586px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 
-          <EmpTable 
+          <EmpTable
             employess={employess}
             sortColumn={sortColumn}
             onSort={this.handleSort}
@@ -137,7 +140,7 @@ class EmpAttList extends Forms {
         <Col>
           {this.state.employess.length ? '' : <p> No Data</p>}
 
-         
+
         </Col>
         <Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
           <Card className="card__wrap--inner bg-secondary shadow border-0">
@@ -171,8 +174,8 @@ class EmpAttList extends Forms {
                     {" "}
                     {/* {this.renderButton("Search")}{" "} */}
                     <Button style={{ marginLeft: '0px', marginTop: '0px', background: '#2DCE8A', border: 'none' }} variant="contained" onClick={this.onApprove}>
-                Search
-              </Button>
+                      Search
+                    </Button>
                   </div>
 
                   {/* <Button

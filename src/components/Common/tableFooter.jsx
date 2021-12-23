@@ -37,12 +37,20 @@ class TableFooter extends React.Component {
     // const notify = () => toast("Login Successful");
     if (!disabled) {
       return (
-
-        <Button className="bg-gradient-pink" variant="contained" onClick={onload} style={{
-          zIndex: '', marginLeft: '0px', border: 'none'
-        }}>
-          more
-        </Button>
+        loading ? <Row>
+          <div style={{ marginLeft: '200px' }}>
+            <h1 variant="contained" style={{
+              zIndex: '1001', marginLeft: '0px',
+            }}>
+              loading..
+            </h1>
+          </div>
+        </Row> :
+          <Button className="bg-gradient-pink" variant="contained" onClick={onload} style={{
+            zIndex: '', marginLeft: '0px', border: 'none'
+          }}>
+            more
+          </Button>
 
 
       );
@@ -63,7 +71,7 @@ class TableFooter extends React.Component {
             <h1 variant="contained" style={{
               zIndex: '1001', marginLeft: '0px',
             }}>
-              Loading...
+              Loading..
             </h1>
           </div>
         </Row>
