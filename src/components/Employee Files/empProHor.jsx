@@ -17,7 +17,7 @@ class EProcard extends React.Component {
     return <div style={{ marginLeft: '85px' }}>
       <div className="container" style={{ paddingLeft: "400px", paddingRight: "200px", marginLeft: '200px', paddingTop: "200px" }}>
         <Card
-          style={{ marginTop: "-440px", }}
+          style={{ marginTop: "-455px", }}
           className="bg-secondary shadow border-0"
         >
           <CardBody style={{ marginBottom: '0px' }} className="px-lg-7 py-lg-4">
@@ -26,12 +26,12 @@ class EProcard extends React.Component {
               <CardBody >
                 <div>
                       <Col className="col-auto">
-                    <div style={{marginLeft: '30px'}} className="icon icon-shape bg-danger text-white rounded-circle shadow">
+                    <div style={{marginLeft: '30px', }} className="icon icon-shape bg-danger text-white rounded-circle shadow">
                       <i className="fas fa-chart-bar" />
                     </div>
                   </Col>
                     </div>
-                <Row>
+                <Row style={{marginTop: '10px'}}>
                   <div className="col">
                     <CardTitle
                       tag="h5"
@@ -39,7 +39,7 @@ class EProcard extends React.Component {
                     >
                     </CardTitle>
                    
-                    <span style={{marginLeft: '10px'}}className="h2 font-weight-bold mb-0">
+                    <span style={{marginLeft: '10px', }}className="h2 font-weight-bold mb-0">
                       {this.props.hrs}
                     </span>
                   </div>
@@ -51,7 +51,7 @@ class EProcard extends React.Component {
                 </p>
               </CardBody>
             </Card>
-            <Card style={{ marginLeft: '120px', marginRight: '-70px', marginTop: '-153px' }} className="card-stats mb-4 mb-xl-0">
+            <Card style={{ marginLeft: '120px', marginRight: '-70px', marginTop: '-160px' }} className="card-stats mb-4 mb-xl-0">
               <CardBody >
                 <div>
                 <Col className="col-auto">
@@ -60,7 +60,7 @@ class EProcard extends React.Component {
                     </div>
                   </Col>
                 </div>
-                <Row>
+                <Row style={{marginTop: '10px'}}>
                   <div className="col">
                     <CardTitle
                       tag="h5"
