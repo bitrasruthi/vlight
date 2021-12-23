@@ -17,13 +17,20 @@ class EProcard extends React.Component {
     return <div style={{ marginLeft: '85px' }}>
       <div className="container" style={{ paddingLeft: "400px", paddingRight: "200px", marginLeft: '200px', paddingTop: "200px" }}>
         <Card
-          style={{ marginTop: "-400px", }}
+          style={{ marginTop: "-440px", }}
           className="bg-secondary shadow border-0"
         >
           <CardBody style={{ marginBottom: '0px' }} className="px-lg-7 py-lg-4">
-            <h3 style={{ textAlign: "center", marginTop: '0px' }}>Total Production Hours</h3>
+            <h1 style={{ textAlign: "center", marginLeft: '-40px', width: '300px', }}>Total Production Hours</h1>
             <Card style={{ marginLeft: '-70px', marginRight: '120px' }} className="card-stats mb-4 mb-xl-0">
               <CardBody >
+                <div>
+                      <Col className="col-auto">
+                    <div style={{marginLeft: '30px'}} className="icon icon-shape bg-danger text-white rounded-circle shadow">
+                      <i className="fas fa-chart-bar" />
+                    </div>
+                  </Col>
+                    </div>
                 <Row>
                   <div className="col">
                     <CardTitle
@@ -31,24 +38,28 @@ class EProcard extends React.Component {
                       className="text-uppercase text-muted mb-0"
                     >
                     </CardTitle>
-                    <span className="h2 font-weight-bold mb-0">
+                   
+                    <span style={{marginLeft: '10px'}}className="h2 font-weight-bold mb-0">
                       {this.props.hrs}
                     </span>
                   </div>
-                  <Col className="col-auto">
-                    <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                      <i className="fas fa-chart-bar" />
-                    </div>
-                  </Col>
+                  
                 </Row>
                 <p className="mt-3 mb-0 text-muted text-sm">
                   <span className="text-success mr-2" />
-                  <span className="text-nowrap">Last Month</span>
+                  <span style={{marginLeft: '30px'}} className="text-nowrap">Last Month</span>
                 </p>
               </CardBody>
             </Card>
-            <Card style={{ marginLeft: '120px', marginRight: '-70px', marginTop: '-120px' }} className="card-stats mb-4 mb-xl-0">
+            <Card style={{ marginLeft: '120px', marginRight: '-70px', marginTop: '-153px' }} className="card-stats mb-4 mb-xl-0">
               <CardBody >
+                <div>
+                <Col className="col-auto">
+                    <div style={{marginLeft: '30px'}}className="icon icon-shape bg-orange text-white rounded-circle shadow">
+                      <i  className="fas fa-chart-bar" />
+                    </div>
+                  </Col>
+                </div>
                 <Row>
                   <div className="col">
                     <CardTitle
@@ -56,19 +67,15 @@ class EProcard extends React.Component {
                       className="text-uppercase text-muted mb-0"
                     >
                     </CardTitle>
-                    <span className="h2 font-weight-bold mb-0">
+                    <span style={{marginLeft: '10px'}} className="h2 font-weight-bold mb-0">
                       {this.props.whrs}
                     </span>
                   </div>
-                  <Col className="col-auto">
-                    <div className="icon icon-shape bg-orange text-white rounded-circle shadow">
-                      <i className="fas fa-chart-bar" />
-                    </div>
-                  </Col>
+                 
                 </Row>
                 <p className="mt-3 mb-0 text-muted text-sm">
                   <span className="text-success mr-2" />
-                  <span className="text-nowrap">Last Week</span>
+                  <span style={{marginLeft: '30px'}} className="text-nowrap">Last Week</span>
                 </p>
               </CardBody>
             </Card>

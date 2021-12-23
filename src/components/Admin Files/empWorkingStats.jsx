@@ -97,7 +97,7 @@ class EmpWorkingStas extends Forms {
     return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
       className=" py-5 py-sm-1 ">
       <Sidebar />
-      <h2 style={{textAlign: 'center', marginLeft: '-100px'}}>Employee Working Status</h2>
+      <h1 style={{textAlign: 'center', marginLeft: '-100px',color: '#F3A4B4'}}>Employee Working Status</h1>
 
       <Col lg="9" md="7" style={{ width:'658px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 

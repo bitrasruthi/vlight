@@ -122,7 +122,9 @@ class EmpAttList extends Forms {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className="py-2 py-sm-3 ">
         <Sidebar />
-        <Col lg="8" md="7" style={{ width: '586px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
+        <h1 style={{textAlign: 'center', marginLeft: '-150px', color: '#F3A4B4'}}>Employee Attendance</h1>
+
+        <Col lg="8" md="7" style={{ width: '624px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 
           <EmpTable
             employess={employess}
@@ -143,7 +145,7 @@ class EmpAttList extends Forms {
 
         </Col>
         <Col lg="3" md="3" style={{ marginLeft: "75%", marginTop: "auto", position: "fixed", }}>
-          <Card className="card__wrap--inner bg-secondary shadow border-0">
+          <Card  className="card__wrap--inner bg-secondary shadow border-0">
             {/* <h1
               style={{
                 marginLeft: "60px",

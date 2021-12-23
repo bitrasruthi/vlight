@@ -45,7 +45,8 @@ class LeaveForm extends Forms {
     try {
       const { data } = this.state;
       const dd = await applyLeave(data);
-
+      console.log(dd);
+      
       toast.success(dd.data);
       setTimeout(() => {
         window.location = state ? state.from.pathname : "/eleavelist";

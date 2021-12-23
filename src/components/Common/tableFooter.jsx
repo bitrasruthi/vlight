@@ -45,8 +45,8 @@ class TableFooter extends React.Component {
       );
     }
 
-    else if(!loading) return 'loading...';
-    else return 'No data'
+    else if(!loading) return <h2 style={{color: '#F3A4B4'}}>Loading...</h2> ;
+    else return <h2 style={{color: '#F3A4B4'}}>No Data</h2>
 
   }
 

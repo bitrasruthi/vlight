@@ -101,7 +101,7 @@ class TerminateEmp extends Forms {
     return <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
       className=" py-5 py-sm-1 ">
       <Sidebar />
-      <h2 style={{textAlign: 'center', marginLeft: '-100px'}}>Terminated Employees</h2>
+      <h1 style={{textAlign: 'center', marginLeft: '-150px',color: '#F3A4B4'}}>Terminated Employees</h1>
 
       <Col lg="6" md="7" style={{ width: '544px', marginLeft: "rem", paddingTop: "px", position: 'absolute', }}>
 
