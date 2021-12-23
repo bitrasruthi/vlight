@@ -9,7 +9,7 @@ async function get_leavelist(skip) {
 
   store.dispatch({
     type: GET_LEAVE_LIST,
-    payload: data.data,
+    payload: data.data.data,
   });
 }
 export async function get_moreleavelist(skip1) {
@@ -18,7 +18,7 @@ export async function get_moreleavelist(skip1) {
     
   store.dispatch({
     type: GET_MORELEAVE_LIST,
-    payload: { data:data.data, skip:data.skip || skip1}
+    payload: { data:data.data.data, skip:data.skip || skip1}
   });
 }
 

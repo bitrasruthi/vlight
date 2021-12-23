@@ -22,11 +22,12 @@ class LeaveList extends React.Component {
     searchQuery: "",
     sortColumn: { path: "", order: "" },
     isLoading: true,
-    openModal : false,
-    Button
+    openModal: false,
+    loading: false,
+
   };
 
-  
+
 
   async componentDidMount() {
     try {
@@ -66,7 +67,8 @@ class LeaveList extends React.Component {
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
-        this.setState({ loadstatus: true })
+        await this.setState({ loadstatus: true, loading: true });
+
 
       }
       if (ex.response && ex.response.status === 400) {
@@ -110,7 +112,7 @@ class LeaveList extends React.Component {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <Sidebar />
-        <h2 style={{textAlign: 'center', marginLeft: '150px'}}>Employee Leave List</h2>
+        <h2 style={{ textAlign: 'center', marginLeft: '150px' }}>Employee Leave List</h2>
 
         <Col lg="9" md="9" style={{ marginLeft: "-2rem", paddingTop: "px", position: 'absolute' }}>
 
@@ -120,6 +122,8 @@ class LeaveList extends React.Component {
             onSort={this.handleSort}
             onload={this.onloadmore}
             disabled={this.state.loadstatus}
+            loading={this.state.loading}
+
           />
           {/* {this.renderLoadButton('More')} */}
           {/* <Button variant="contained" disabled={this.state.loadstatus} onClick={this.onloadmore} style={{
@@ -127,7 +131,7 @@ class LeaveList extends React.Component {
         }}>
         Load more
       </Button> */}
-         
+
         </Col>
       </div>
     );

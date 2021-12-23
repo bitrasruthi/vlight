@@ -106,7 +106,7 @@ class LeaveTable extends React.Component {
 
 
   render() {
-    const { leaves, onSort, sortColumn, onload, disabled } = this.props;
+    const { leaves, onSort, sortColumn, onload, disabled, loading } = this.props;
 
     return (
       <div>
@@ -118,6 +118,7 @@ class LeaveTable extends React.Component {
           onSort={onSort}
           onload={onload}
           disabled={disabled}
+          loading={loading}
         // LoadingComponent={Spinner}
         />
 
