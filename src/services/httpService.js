@@ -10,7 +10,7 @@ axios.interceptors.response.use(null, (error) => {
   
   const expectedError =
     error.response &&
-    error.response.status <= 400 &&
+    error.response.status <= 405 &&
     error.response.status < 500;
   
     const loginerro =
@@ -32,6 +32,8 @@ axios.interceptors.response.use(null, (error) => {
 
   return Promise.reject(error);
 });
+
+
 
 export function setJwt(jwt) {
   axios.defaults.headers.common["x-auth-token"] = jwt;
