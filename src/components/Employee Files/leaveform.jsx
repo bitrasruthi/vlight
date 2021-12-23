@@ -55,7 +55,7 @@ class LeaveForm extends Forms {
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
-        errors.from_Date = ex.response.data;
+        errors.from_Date = ex.response.data.data;
         this.setState({ errors });
       }
     }
@@ -95,8 +95,8 @@ class LeaveForm extends Forms {
   schema = {
     from_Date: Joi.date().required(),
     to_Date: Joi.date().required(),
-    subject: Joi.string().required(),
-    reason: Joi.string().required(),
+    subject: Joi.string().min(5).required(),
+    reason: Joi.string().min(5).required(),
     leave_type: Joi.string().required(),
     To: Joi.string().required(),
   };
