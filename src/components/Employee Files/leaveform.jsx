@@ -32,8 +32,7 @@ class LeaveForm extends Forms {
     mindate: '',
     loadstatus: false,
     errors: [],
-    maxdate: '',
-    mindate: '',
+    today: '',
     options: [{ select: '' }, { CasualLeave: 'Casual Leave' }, { Sickleave: 'Sick Leave' }],
     To: [{ select: '' }, { Admin: 'Admin' }],
   };
@@ -46,7 +45,7 @@ class LeaveForm extends Forms {
       const { data } = this.state;
       const dd = await applyLeave(data);
       console.log(dd);
-      
+
       toast.success(dd.data);
       setTimeout(() => {
         window.location = state ? state.from.pathname : "/eleavelist";
@@ -64,6 +63,7 @@ class LeaveForm extends Forms {
   async componentDidMount() {
     let date = new Date();
     let d1 = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 20);
+    let d2 = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
     var dd = d1.getDate();
     var mm = d1.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
@@ -76,8 +76,19 @@ class LeaveForm extends Forms {
     }
 
     var min = yyyy + '-' + mm + '-' + dd;
-    await this.setState({ maxdate: min })
-    console.log(this.state)
+    var dd2 = d2.getDate();
+    var mm2 = d2.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var yyyy2 = d2.getFullYear();
+    if (dd2 < 10) {
+      dd2 = '0' + dd
+    }
+    if (mm2 < 10) {
+      mm2 = '0' + mm
+    }
+
+    var min2 = yyyy2 + '-' + mm2 + '-' + dd2;
+    await this.setState({ maxdate: min, today: min2 })
+
   }
 
 
@@ -91,7 +102,7 @@ class LeaveForm extends Forms {
   };
 
   render() {
-    const { options, To, maxdate } = this.state;
+    const { options, To, maxdate, today } = this.state;
     const { from_Date } = this.state.data
     return (
       <div>
@@ -109,7 +120,7 @@ class LeaveForm extends Forms {
               <Form role="form" onSubmit={this.handleSubmit}>
 
                 <Col sm={{ size: 6 }} style={{ marginLeft: '3px', marginTop: '-0px', zIndex: 1001 }}>
-                  {this.renderInput("from_Date", "From Date", "date")}
+                  {this.renderInput("from_Date", "From Date", "date", maxdate, today)}
                 </Col>
 
                 <Col sm={{ size: 6 }} style={{ marginLeft: '300px', marginTop: '-100px' }} className='mr-sm-2'>

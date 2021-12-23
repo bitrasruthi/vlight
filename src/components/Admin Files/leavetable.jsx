@@ -24,9 +24,13 @@ class LeaveTable extends React.Component {
 
   onClickButton = e => {
     // e.preventDefault()
-    this.setState({ openModal: true })
-    console.log(e._id);
-    this.setState({ leaveid: e._id })
+    if (e.status === 'pending') {
+      this.setState({ openModal: true })
+      console.log(e);
+      this.setState({ leaveid: e._id })
+      return;
+    }
+    toast('error')
     // const dd = this.props.match.params.id 
     // console.log(this);
   }
@@ -55,20 +59,13 @@ class LeaveTable extends React.Component {
       key: "Apprej",
       label: 'Approve/Reject',
       content: (emp) => (
-        <button className="btn btn-danger btn-sm" onClick={() => this.onClickButton(emp)}>
-          <Link style={{ color: 'white' }} to={`/leavelist/${emp._id}`}> Action
+
+        <button className={`btn btn-sm btn-${emp.status === 'pending' ? 'dark' : `${emp.status === 'Rejected' ? 'danger' : 'success'}`}`} onClick={() => this.onClickButton(emp)}>
+          <Link style={{ color: 'white' }} to={`/leavelist/${emp._id}`}> {emp.status}
           </Link></button>
       ),
     },
-    {
-      key: "status",
-      label: 'Status',
-      content: (emp) => (
-        <span className={`badge badge-${emp.status === 'pending' ? 'dark' : `${emp.status === 'Rejected' ? 'danger' : 'success'}`}`}>
-          {emp.status}
-        </span>
-      ),
-    },
+
   ];
 
   onApprove = async () => {
