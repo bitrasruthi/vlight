@@ -45,7 +45,9 @@ class TableFooter extends React.Component {
       );
     }
 
-    return 'no data';
+    else if(!loading) return 'loading...';
+    else return 'No data'
+
   }
 
   render() {

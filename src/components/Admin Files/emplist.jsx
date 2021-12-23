@@ -21,6 +21,7 @@ class Employees extends React.Component {
     loadstatus: false,
     limit: 2,
     skip: 0,
+    loading: false,
     i: 0,
   };
 
@@ -73,7 +74,7 @@ class Employees extends React.Component {
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         // toast.error(ex.response.data.data);
-        await this.setState({ loadstatus: false });
+        await this.setState({ loadstatus: true, loading: true });
       }
       if (ex.response && ex.response.status === 400) {
         this.setState({ loadstatus: true, i: this.state.i - 1 })
@@ -109,6 +110,7 @@ class Employees extends React.Component {
           onSort={this.handleSort}
           onload={this.onloadmore}
           disabled={this.state.loadstatus}
+          loading={this.state.loading}
         // onDelete={this.handleDelete}
         />
         </Col>

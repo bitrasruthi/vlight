@@ -57,7 +57,7 @@ class EmployeeTable extends React.Component {
   ];
 
   render() {
-    const { employees, onSort, sortColumn, onload, disabled } = this.props;
+    const { employees, onSort, sortColumn, onload, disabled, loading } = this.props;
 
     return (
       <div>
@@ -67,6 +67,7 @@ class EmployeeTable extends React.Component {
         sortColumn={sortColumn}
         onSort={onSort}
         onload={onload}
+        loading={loading}
         disabled={disabled}
       // LoadingComponent={Spinner}
       />
