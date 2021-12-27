@@ -30,7 +30,7 @@ class LeaveTable extends React.Component {
       this.setState({ leaveid: e._id })
       return;
     }
-    toast('error')
+    // toast('error')
     // const dd = this.props.match.params.id 
     // console.log(this);
   }
@@ -60,7 +60,8 @@ class LeaveTable extends React.Component {
       label: 'Approve/Reject',
       content: (emp) => (
 
-        <button className={`btn btn-sm btn-${emp.status === 'pending' ? 'dark' : `${emp.status === 'Rejected' ? 'danger' : 'success'}`}`} onClick={() => this.onClickButton(emp)}>
+        <button className={`btn btn-sm btn-${emp.status === 'pending' ? 'dark' : 
+        `${emp.status === 'Rejected' ? 'danger'  : 'success'}`}`} onClick={() => this.onClickButton(emp)}>
           <Link style={{ color: 'white' }} to={`/leavelist/${emp._id}`}> {emp.status}
           </Link></button>
       ),
