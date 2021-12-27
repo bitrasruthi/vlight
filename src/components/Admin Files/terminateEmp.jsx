@@ -31,13 +31,13 @@ class TerminateEmp extends Forms {
 
   schema = {
     EmployeeId: Joi.string().required(),
-    Reason: Joi.string().required(),
+    Reason: Joi.string().min(5).required(),
     AgreementDone: Joi.string().required(),
   };
 
   async componentDidMount() {
     try {
-      await this.setState({ loadstatus: true });
+      await this.setState({ loadstatus: true, loading: false });
       if (!this.props.getterminatedlist) {
         await get_termlist(this.state.skip);
         await this.setState({ i: this.state.i + 1 })
@@ -47,14 +47,14 @@ class TerminateEmp extends Forms {
       const dd = await this.props.getterminatedlist;
       console.log(dd)
       await this.setState({ employees: dd.data, i: dd.skip || 1 });
-      await this.setState({ loadstatus: false });
+      await this.setState({ loadstatus: false, loading: true });
     }
     catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        await this.setState({ loadstatus: true });
+      if (ex.response && ex.response.status === 404) {
+        await this.setState({ loadstatus: true, loading: true });
         toast("no data")
       }
-      if (ex.response && ex.response.status === 404) {
+      if (ex.response && ex.response.status === 400) {
         await this.setState({ loadstatus: true, loading: true });
 
       }

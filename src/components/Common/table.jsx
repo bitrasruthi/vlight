@@ -36,8 +36,8 @@ class Table extends React.Component {
           />
 
           <TableBody columns={columns} data={data} onload={onload} disabled={disabled} />
-          <div style={{width: '100%'}}>
-          <TableFooter onload={onload} disabled={disabled} loading={loading} />
+          <div style={{ width: '100%' }}>
+            <TableFooter onload={onload} disabled={disabled} loading={loading} />
           </div>
         </table>
 
