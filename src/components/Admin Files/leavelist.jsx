@@ -57,25 +57,25 @@ class LeaveList extends React.Component {
   onloadmore = async () => {
     const { i, limit } = this.state
     try {
-      this.setState({ loadstatus: true })
+      this.setState({ loadstatus: true, loading: false })
       var skip = i * limit
       await this.setState({ i: this.state.i + 1 })
 
       await get_moreleavelist(skip)
       const dd = await this.props.getleavelist;
       await this.setState({ leaves: dd })
-      await this.setState({ loadstatus: false });
+      await this.setState({ loadstatus: false, loading: true });
 
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
-        await this.setState({ loadstatus: true, loading: true });
+        await this.setState({ loadstatus: false, loading: true });
 
 
       }
       if (ex.response && ex.response.status === 400) {
         this.setState({ loadstatus: true, i: this.state.i - 1 })
-        this.setState({ loadstatus: true })
+        this.setState({ loading: true })
 
       }
     }

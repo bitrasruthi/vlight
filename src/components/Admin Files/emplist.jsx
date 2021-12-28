@@ -64,14 +64,14 @@ class Employees extends React.Component {
     const { i } = this.state
 
     try {
-      await this.setState({ loadstatus: true });
+      await this.setState({ loadstatus: true, loading: false });
       var skip = i * 2
       await this.setState({ i: this.state.i + 1 })
 
       await get_moreemployeelist(skip)
       const dd = await this.props.getemployeelist.data;
       await this.setState({ employees: dd })
-      await this.setState({ loadstatus: false });
+      await this.setState({ loadstatus: false, loading: true });
 
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
@@ -80,7 +80,7 @@ class Employees extends React.Component {
       }
       if (ex.response && ex.response.status === 400) {
         this.setState({ loadstatus: true, i: this.state.i - 1 })
-        await this.setState({ isLoading: false });
+        await this.setState({ loading: true });
 
       }
     }
