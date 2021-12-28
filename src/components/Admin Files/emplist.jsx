@@ -62,9 +62,9 @@ class Employees extends React.Component {
 
   onloadmore = async () => {
     const { i } = this.state
+    await this.setState({ loadstatus: true, loading: false });
 
     try {
-      await this.setState({ loadstatus: true, loading: false });
       var skip = i * 2
       await this.setState({ i: this.state.i + 1 })
 
@@ -76,10 +76,11 @@ class Employees extends React.Component {
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {
         // toast.error("No data");
+        toast.error(ex.response.data.data);
+
         await this.setState({ loadstatus: true, loading: true });
       }
       if (ex.response && ex.response.status === 400) {
-        this.setState({ loadstatus: true, i: this.state.i - 1 })
         await this.setState({ loading: true, loading: true });
 
       }
