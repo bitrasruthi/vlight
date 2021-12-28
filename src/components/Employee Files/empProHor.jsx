@@ -39,7 +39,7 @@ class EProcard extends React.Component {
                     >
                     </CardTitle>
                    
-                    <span style={{marginLeft: '10px', }}className="h2 font-weight-bold mb-0">
+                    <span style={{marginLeft: '-5px', }}className="h2 font-weight-bold mb-0">
                       {this.props.hrs}
                     </span>
                   </div>
@@ -67,7 +67,7 @@ class EProcard extends React.Component {
                       className="text-uppercase text-muted mb-0"
                     >
                     </CardTitle>
-                    <span style={{marginLeft: '10px'}} className="h2 font-weight-bold mb-0">
+                    <span style={{marginLeft: '-5px'}} className="h2 font-weight-bold mb-0">
                       {this.props.whrs}
                     </span>
                   </div>
