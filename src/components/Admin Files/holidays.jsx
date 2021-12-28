@@ -95,9 +95,9 @@ class Holidays extends Forms {
         <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
           className=" py-2 py-sm-3 ">
           <Sidebar />
-          <h1 style={{ textAlign: 'center', marginLeft: '-190px', color: '#F3A4B4' }}>Holiday List</h1>
+          <h1 style={{ textAlign: 'center', marginLeft: '-30px', color: '#F3A4B4' }}>Holiday List</h1>
 
-          <Col lg="3" md="7" style={{ width: '258px', marginLeft: "10rem", paddingTop: "px", position: 'absolute', }}>
+          <Col lg="4" md="7" style={{ width: '361px', marginLeft: "10rem", paddingTop: "px", position: 'absolute', }}>
 
 
             <HoliTable
