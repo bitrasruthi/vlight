@@ -18,6 +18,7 @@ import {
 
 
 
+
 class AddNew extends Forms {
   state = {
     data: {
@@ -34,6 +35,7 @@ class AddNew extends Forms {
     errors: [],
     roles: [],
     maxdate: '',
+    today: '',
     mindate: '',
   };
 
@@ -42,12 +44,12 @@ class AddNew extends Forms {
   schema = {
 
     EmployeeName: Joi.string()
-      .min(3)
+      .min(5)
       .max(50)
       .required().label(
         `"a" should be a type of 'text '`,
       ),
-      joiningDate: Joi.date().required(),
+    joiningDate: Joi.date().required(),
     Phone: Joi.string()
       .length(10)
       .regex(/^[6-9]{1}[0-9]{9}$/)
@@ -65,6 +67,7 @@ class AddNew extends Forms {
   async componentDidMount() {
     let date = new Date();
     let d1 = new Date(date.getFullYear() - 18, date.getMonth(), date.getDate());
+    let d2 = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
     var dd = d1.getDate();
     var mm = d1.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
@@ -75,9 +78,19 @@ class AddNew extends Forms {
     if (mm < 10) {
       mm = '0' + mm
     }
+    var dd2 = d2.getDate();
+    var mm2 = d2.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var yyyy2 = d2.getFullYear();
+    if (dd2 < 10) {
+      dd2 = '0' + dd
+    }
+    if (mm2 < 10) {
+      mm2 = '0' + mm
+    }
 
     var min = yyyy + '-' + mm + '-' + dd;
-    await this.setState({ maxdate: min })
+    var today = yyyy2 + '-' + mm2 + '-' + dd2;
+    await this.setState({ maxdate: min, today })
     console.log(this.state)
   }
 
@@ -113,7 +126,7 @@ class AddNew extends Forms {
 
   render() {
 
-    const { loadstatus, maxdate, mindate } = this.state
+    const { loadstatus, maxdate, mindate, today } = this.state
     return <div>
       <Sidebar />
       {/* <NavBar/> */}
@@ -125,40 +138,40 @@ class AddNew extends Forms {
             </Col>
 
           </CardHeader>
-          <CardBody  className="px-lg-3 py-sm-5">
+          <CardBody className="px-lg-3 py-sm-5">
             <Form role="form" onSubmit={this.handleSubmit}>
-            <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
-              {this.renderInput("joiningDate", "Joining Date", "date")}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '3px', marginTop: '-0px' }}>
+                {this.renderInput("joiningDate", "Joining Date", "date", today)}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
-              {this.renderInput("EmployeeName", "Employee Name")}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '300px', marginTop: '-100px' }} className='mr-sm-2'>
+                {this.renderInput("EmployeeName", "Employee Name")}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
-              {this.renderInput("Phone", "Phone")}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '3px', marginTop: '-0px' }}>
+                {this.renderInput("Phone", "Phone")}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
-              {this.renderInput("Email", "Email ID")}
-              </Col>
-              
-              <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
-              {this.renderInput("Role", "Designation")}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '300px', marginTop: '-100px' }} className='mr-sm-2'>
+                {this.renderInput("Email", "Email ID")}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
-              {this.renderInput("DateOfBirth", "Date Of Birth", "date", maxdate,)}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '3px', marginTop: '-0px' }}>
+                {this.renderInput("Role", "Designation")}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '3px',  marginTop: '-0px'}}>
-              {this.renderInput("NetSalary", "Net Salary")}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '300px', marginTop: '-100px' }} className='mr-sm-2'>
+                {this.renderInput("DateOfBirth", "Date Of Birth", "date", maxdate,)}
               </Col>
 
-              <Col sm={{ size: 6 }} style={{marginLeft: '300px', marginTop: '-100px'}}className='mr-sm-2'>
-              {this.renderInput("AgreementYears", "Agreement Years", 'number', '3', '0')}
+              <Col sm={{ size: 6 }} style={{ marginLeft: '3px', marginTop: '-0px' }}>
+                {this.renderInput("NetSalary", "Net Salary")}
               </Col>
-              <Col row style={{marginLeft: '250px', marginTop: '0px', marginBottom: '0px'}} >
+
+              <Col sm={{ size: 6 }} style={{ marginLeft: '300px', marginTop: '-100px' }} className='mr-sm-2'>
+                {this.renderInput("AgreementYears", "Agreement Years", 'number', '3', '0')}
+              </Col>
+              <Col row style={{ marginLeft: '250px', marginTop: '0px', marginBottom: '0px' }} >
                 <Button disabled={loadstatus} style={{ background: '#2DCECB', color: 'black', border: 'none' }} className="my-2" color="primary" type="submit">
                   Add
                 </Button>

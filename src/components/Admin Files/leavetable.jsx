@@ -30,7 +30,7 @@ class LeaveTable extends React.Component {
       this.setState({ leaveid: e._id })
       return;
     }
-    // toast('error')
+    toast('status already updated')
     // const dd = this.props.match.params.id 
     // console.log(this);
   }

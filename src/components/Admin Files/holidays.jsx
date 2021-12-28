@@ -50,10 +50,15 @@ class Holidays extends Forms {
     try {
       if (!this.props.gethoildayslist) {
         await get_hoildays();
-
       }
-      const dd = await this.props.gethoildayslist[0].holidays;
+      var dd = await this.props.gethoildayslist[0].holidays;
       // const ff = dd[0].holidays;
+      var gg = dd.map(function (currentValue, Index) {
+        currentValue.SERIAL_NO = Index + 1
+        return currentValue
+      })
+
+      console.log(gg);
       await this.setState({ holidays: dd });
 
     }

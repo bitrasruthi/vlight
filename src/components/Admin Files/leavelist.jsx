@@ -30,6 +30,7 @@ class LeaveList extends React.Component {
 
 
   async componentDidMount() {
+    await this.setState({ loadstatus: true, loading: false })
     try {
 
       if (!this.props.getleavelist) {
@@ -42,7 +43,8 @@ class LeaveList extends React.Component {
       // console.log(dd)
       await this.setState({ leaves: dd, i: dd.skip || 1 })
 
-      this.setState({ isLoading: false });
+      await this.setState({ loadstatus: false, loading: true });
+
     }
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -112,7 +114,7 @@ class LeaveList extends React.Component {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <Sidebar />
-        <h1 style={{textAlign: 'center', marginLeft: '150px',color: '#F3A4B4'}}>Employee Leave List</h1>
+        <h1 style={{ textAlign: 'center', marginLeft: '150px', color: '#F3A4B4' }}>Employee Leave List</h1>
 
         <Col lg="9" md="9" style={{ marginLeft: "-2rem", paddingTop: "px", position: 'absolute' }}>
 

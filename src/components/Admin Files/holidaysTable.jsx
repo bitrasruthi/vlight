@@ -3,6 +3,7 @@ import React from "react";
 
 class HoliTable extends React.Component {
   columns = [
+    { path: "SERIAL_NO", label: "S.NO" },
     { path: "date", label: "Date" },
     { path: "festival", label: "Festival" },
   ];
