@@ -35,6 +35,7 @@ class Employees extends React.Component {
   };
 
   async componentDidMount() {
+    await this.setState({ loadstatus: true, loading: false })
     try {
       if (!this.props.getemployeelist) {
         await get_employeelist(this.state.skip);
@@ -45,7 +46,8 @@ class Employees extends React.Component {
       const dd = await this.props.getemployeelist;
       console.log(dd)
       await this.setState({ employees: dd.data, i: dd.skip || 1 });
-      await this.setState({ isLoading: false });
+      await this.setState({ loadstatus: false, loading: true });
+
     }
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -100,22 +102,22 @@ class Employees extends React.Component {
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
         <Sidebar />
-        <h1 style={{textAlign: 'center', marginLeft: '150px', color: '#F3A4B4'}}>Employee List</h1>
+        <h1 style={{ textAlign: 'center', marginLeft: '150px', color: '#F3A4B4' }}>Employee List</h1>
 
-        <Col lg="8" md="7" style={{ width:'920px', marginLeft: "rem", paddingTop: "px", position: 'absolute' }}>
+        <Col lg="8" md="7" style={{ width: '920px', marginLeft: "rem", paddingTop: "px", position: 'absolute' }}>
 
-        <EmployeeTable
-          employees={data}
-          sortColumn={sortColumn}
-          onSort={this.handleSort}
-          onload={this.onloadmore}
-          disabled={this.state.loadstatus}
-          loading={this.state.loading}
-        // onDelete={this.handleDelete}
-        />
+          <EmployeeTable
+            employees={data}
+            sortColumn={sortColumn}
+            onSort={this.handleSort}
+            onload={this.onloadmore}
+            disabled={this.state.loadstatus}
+            loading={this.state.loading}
+          // onDelete={this.handleDelete}
+          />
         </Col>
         {/* </Col> */}
-      
+
         {/* <Paginations
           itemsCount={totalCount}
           pageSize={pageSize}

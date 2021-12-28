@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 import {
  
     FormGroup,
@@ -11,7 +12,7 @@ import {
 const Inputs = ({name, error, label, max,min, ...rest}) => {
   
     return ( 
-        <div className="form-group">
+        <div className="form-group"  data-placement="top" title={error}>
 <FormGroup>
                     <label htmlFor={name}>{label}</label>
                 {/* <InputGroup className="input-group-alternative"> */}
@@ -23,12 +24,15 @@ const Inputs = ({name, error, label, max,min, ...rest}) => {
                             name={name} 
                             className="form-control" />
                 {/* </InputGroup> */}
+                <small id="emailHelp" class="form-text text-muted ">{error}</small>
               </FormGroup>
                     {/* <input  {...rest}
                             id={name} 
                             name={name} 
                             className="form-control" /> */}
-                    {error && <div className="alert alert-danger">{error}</div>}        
+                            
+                    {/* {error && <div data-tip={error} ></div>}         */}
+                    {/* {error && <div className="alert alert-danger">{error}</div>}         */}
                 </div>
      );
 }
