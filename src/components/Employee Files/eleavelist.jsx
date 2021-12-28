@@ -97,8 +97,8 @@ class ELeavsList extends React.Component {
     return (
       <div style={{ height: '', position: "absolute", left: '0', width: '100%', }}
         className=" py-2 py-sm-3 ">
-        <h2 style={{ textAlign: 'center', color: '#F3A4B4', marginLeft: '0px' }}>My Leave List</h2>
-        <Col lg="8" md="7" style={{ width: '757px', marginLeft: "rem", paddingTop: "px", position: 'absolute' }}>
+        <h2 style={{ textAlign: 'center', color: '#F3A4B4', marginLeft: '5rem' }}>My Leave List</h2>
+        <Col lg="9" md="9" style={{ width: '757px', marginLeft: "5rem", paddingTop: "px", position: 'absolute' }}>
           <ELeavsTable
             leaves={leaves}
             sortColumn={sortColumn}

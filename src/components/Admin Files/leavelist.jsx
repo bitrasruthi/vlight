@@ -116,7 +116,7 @@ class LeaveList extends React.Component {
         <Sidebar />
         <h1 style={{ textAlign: 'center', marginLeft: '150px', color: '#F3A4B4' }}>Employee Leave List</h1>
 
-        <Col lg="9" md="9" style={{ marginLeft: "-2rem", paddingTop: "px", position: 'absolute' }}>
+        <Col lg="9" md="9" style={{ width: '991px', marginLeft: "-2rem", paddingTop: "px", position: 'absolute' }}>
 
           <LeaveTable
             leaves={data}

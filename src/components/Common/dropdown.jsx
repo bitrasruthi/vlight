@@ -44,7 +44,8 @@ const Dropdown = ({
           ))}
         </select>
       </div> */}
-      {error && <div className="alert alert-danger">{error}</div>}
+      {error && <small id="emailHelp" class="form-text text-danger " style={{width: 'auto '}}>{error}</small>}
+
     </div>
   );
 };

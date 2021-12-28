@@ -98,7 +98,7 @@ class Holidays extends Forms {
           <Sidebar />
           <h1 style={{ textAlign: 'center', marginLeft: '-190px', color: '#F3A4B4' }}>Holiday List</h1>
 
-          <Col lg="3" md="7" style={{ width: '258px', marginLeft: "10rem", paddingTop: "px", position: 'absolute', }}>
+          <Col lg="3" md="7" style={{ width: '311px', marginLeft: "10rem", paddingTop: "px", position: 'absolute', }}>
 
 
             <HoliTable

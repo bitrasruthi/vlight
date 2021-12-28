@@ -104,7 +104,7 @@ class Employees extends React.Component {
         <Sidebar />
         <h1 style={{ textAlign: 'center', marginLeft: '150px', color: '#F3A4B4' }}>Employee List</h1>
 
-        <Col lg="8" md="7" style={{ width: '920px', marginLeft: "rem", paddingTop: "px", position: 'absolute' }}>
+        <Col lg="9" md="9" style={{ width: '994px', marginLeft: "rem", paddingTop: "px", position: 'absolute' }}>
 
           <EmployeeTable
             employees={data}

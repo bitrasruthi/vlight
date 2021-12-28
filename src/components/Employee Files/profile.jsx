@@ -187,8 +187,8 @@ class Profile extends Forms {
 
               <Col style={{ marginLeft: '-40px', marginTop: '555px',  paddingRight: '-300px', position: 'absolute' }} className="order-xl-2 mb--6 mb-xl-0" xl="9">
                 <Card style={{ marginRight: '-320px', marginTop: '150px', }} className="card-profile shadow">
-                  <CardHeader className="bg-gradient-purple border-0">
-                    <h3 className="">Education Details</h3>
+                  <CardHeader style={{textAlign: 'center'}} className="bg-white border-0">
+                    <h2 className="">Education Details</h2>
                     {/* conflicts test  */}
                     {/* <Col className="text-right" xs="4">
                         {/* <Button

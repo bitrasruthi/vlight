@@ -24,7 +24,7 @@ const Inputs = ({name, error, label, max,min, ...rest}) => {
                             name={name} 
                             className="form-control" />
                 {/* </InputGroup> */}
-                <small id="emailHelp" class="form-text text-muted ">{error}</small>
+                <small id="emailHelp" class="form-text text-danger " >{error}</small>
               </FormGroup>
                     {/* <input  {...rest}
                             id={name} 
