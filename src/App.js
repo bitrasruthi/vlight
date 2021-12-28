@@ -44,6 +44,7 @@ import EduCardDegree from './components/Employee Files/eduCardDegree';
 import EducationBlock from "components/Employee Files/educationBlock";
 import Orgprofile from "components/Admin Files/orgProfile";
 import PasswordHide from "components/Common/passwordHide";
+import Deleteholi from "components/Admin Files/deleteholi";
 class App extends React.Component {
   render() {
     return (
@@ -88,6 +89,7 @@ class App extends React.Component {
                 <ProtectedRoute path="/empattlist/:id" component={EmpAttList} />
                 <ProtectedRoute path="/holidays" component={Holidays} />
                 <ProtectedRoute path="/officehours" component={OfficeHours} />
+                <ProtectedRoute path="/holidays/:id" component={Deleteholi} />
                 <Route path="/empoptions" component={EmpOptions} />
                 <Route path="/orgprofile" component={Orgprofile} />
                 <EmpProtectedRoute path="/profile" component={Profile} />

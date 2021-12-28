@@ -58,13 +58,12 @@ class Holidays extends Forms {
         return currentValue
       })
 
-      console.log(gg);
       await this.setState({ holidays: dd });
 
     }
     catch (ex) {
       if (ex.response && ex.response.status === 400) {
-
+        toast('400')
       }
       if (ex.response && ex.response.status === 404) {
         toast.error(ex.response.data.data);
@@ -98,7 +97,7 @@ class Holidays extends Forms {
           <Sidebar />
           <h1 style={{ textAlign: 'center', marginLeft: '-190px', color: '#F3A4B4' }}>Holiday List</h1>
 
-          <Col lg="3" md="7" style={{ width: '311px', marginLeft: "10rem", paddingTop: "px", position: 'absolute', }}>
+          <Col lg="3" md="7" style={{ width: '258px', marginLeft: "10rem", paddingTop: "px", position: 'absolute', }}>
 
 
             <HoliTable

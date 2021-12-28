@@ -80,7 +80,7 @@ class Employees extends React.Component {
       }
       if (ex.response && ex.response.status === 400) {
         this.setState({ loadstatus: true, i: this.state.i - 1 })
-        await this.setState({ loading: true });
+        await this.setState({ loading: true, loading: true });
 
       }
     }
